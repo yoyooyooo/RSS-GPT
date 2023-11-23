@@ -5,6 +5,947 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>Dart 脚本：flutter 应用一键打包+发布</title>
+<link>https://juejin.cn/post/7304538454875586587</link>
+<guid>https://juejin.cn/post/7304538454875586587</guid>
+<content:encoded><![CDATA[
+<div> <p>highlight: androidstudio
+theme: channing-cyan
+&#24341;&#35328;
+&#36817;&#26399;&#25972;&#29702;&#25216;&#26415;&#26632;&#65292;&#23558;&#38470;&#32493;&#24635;&#32467;&#20998;&#20139;&#19968;&#20123;&#39033;&#30446;&#23454;&#25112;&#20013;&#29992;&#21040;&#30340;&#23454;&#29992;&#24037;&#20855;&#12290;&#26412;&#31687;&#20998;&#20139;&#24320;&#21457;&#27969;&#31243;&#20013;&#24517;&#19981;&#21487;&#32570;&#30340;&#19968;&#20010;&#29615;&#33410;&#65292;&#25552;...</p> <div>
+<hr />
+<h2>highlight: androidstudio
+theme: channing-cyan</h2>
+<h3>&#24341;&#35328;</h3>
+<p>&#36817;&#26399;&#25972;&#29702;&#25216;&#26415;&#26632;&#65292;&#23558;&#38470;&#32493;&#24635;&#32467;&#20998;&#20139;&#19968;&#20123;&#39033;&#30446;&#23454;&#25112;&#20013;&#29992;&#21040;&#30340;&#23454;&#29992;&#24037;&#20855;&#12290;&#26412;&#31687;&#20998;&#20139;&#24320;&#21457;&#27969;&#31243;&#20013;&#24517;&#19981;&#21487;&#32570;&#30340;&#19968;&#20010;&#29615;&#33410;&#65292;<strong>&#25552;&#27979;</strong>&#12290;</p>
+<h3>&#38386;&#32842;&#19968;&#19979;</h3>
+<p>&#24403;&#28982;&#65292;&#23545;&#20110;&#25171;&#21253;&#65292;&#25105;&#20204;&#21487;&#20197;&#30452;&#25509;&#20351;&#29992;&#21629;&#20196;&#34892;&#30452;&#25509;&#25171;&#21253;&#20363;&#22914;&#65306;</p>
+<pre><code>flutter build apk --verbose
+</code></pre>
+<p>&#21482;&#26159;&#65292;&#30456;&#27604;&#36755;&#20837;&#21629;&#20196;&#34892;&#65292;&#25105;&#26356;&#20542;&#21521;&#20110;<code>&#19968;&#38190;&#25805;&#20316;</code>&#65292;&#26356;&#20542;&#21521;&#20889;&#19968;&#20010;&#25171;&#21253;&#33050;&#26412;&#65292;&#25105;&#21487;&#20197;&#22312;&#33050;&#26412;&#37324;&#32534;&#36753;&#20010;&#24615;&#21270;&#25805;&#20316;&#65292;&#20363;&#22914;&#65306;&#30246;&#36523;&#12289;&#20462;&#25913;&#20135;&#29289;&#65288;apk&#12289;ipa&#65289;&#21517;&#31216;&#12289;&#25351;&#23450;&#25171;&#21253;&#25104;&#21151;&#21518;&#20107;&#21153;&#31561;&#31561;&#12290;</p>
+<p>&#27604;&#22914;&#22312;&#39033;&#30446;&#37324;&#26032;&#24314;&#19968;&#20010;&#25991;&#20214;&#22841;&#65292;&#22914; <code>script</code>, &#24403;&#38656;&#35201;&#25171;&#21253;&#21457;&#24067;&#26102;&#65292;&#21491;&#38190; Run &#23601; Ok &#20102;&#12290;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b07d73a84c142d38a14820ea38499e4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=651&amp;h=519&amp;s=108055&amp;e=png&amp;b=35383a" /></p>
+<p>&#19979;&#38754;&#65292;&#23567;&#32534;&#25972;&#29702;&#20102;&#22522;&#30784;&#27454; dart &#33050;&#26412;&#65292;&#29992;&#20110; <code>&#25171;&#21253;</code> &#21644; <code>&#19978;&#20256;&#33970;&#20844;&#33521;</code>&#12290;&#26377;&#38656;&#35201;&#30340;&#21516;&#23398;&#21487;&#33258;&#34892;&#28155;&#21152;&#20010;&#24615;&#21270;&#22788;&#29702;&#12290;</p>
+<h3>Android &#25171;&#21253;&#33050;&#26412;</h3>
+<p>&#35813;&#33050;&#26412;&#29992;&#20110; apk &#25171;&#21253;&#65292;apk &#20197;&#24403;&#21069;&#26102;&#38388;&#25139;&#21517;&#31216;&#65292;&#25171;&#21253;&#25104;&#21151;&#21518;&#21487;&#36873;&#30452;&#25509;&#25171;&#24320;&#25991;&#20214;&#22841;&#25110;&#21457;&#24067;&#33970;&#20844;&#33521;&#12290;</p>
+<pre><code>import 'dart:io';
+import 'package:intl/intl.dart';
+import 'package:yaml/yaml.dart' as yaml;
+import 'pgy_tool.dart'; //&#33970;&#20844;&#33521;&#21457;&#24067;&#33050;&#26412;&#65292;&#19979;&#38754;&#20250;&#32473;&#20986;
+
+void main(List&lt;String&gt; args) async {
+  //&#26159;&#21542;&#19978;&#20256;&#33970;&#20844;&#33521;
+  bool uploadPGY = true;
+
+  // &#33719;&#21462;&#39033;&#30446;&#26681;&#30446;&#24405;
+  final _projectPath = await Process.run(
+    'pwd',
+    [],
+  );
+  final projectPath = (_projectPath.stdout as String).replaceAll(
+    '\n',
+    '',
+  );
+  // &#25511;&#21046;&#21488;&#25171;&#21360;&#39033;&#30446;&#30446;&#24405;
+  stdout.write('&#39033;&#30446;&#30446;&#24405;&#65306;$projectPath &#24320;&#22987;&#32534;&#35793;\n');
+
+  final process = await Process.start(
+    'flutter',
+    [
+      'build',
+      'apk',
+      '--verbose',
+    ],
+    workingDirectory: projectPath,
+    mode: ProcessStartMode.inheritStdio,
+  );
+  final buildResult = await process.exitCode;
+  if (buildResult != 0) {
+    stdout.write('&#25171;&#21253;&#22833;&#36133;&#65292;&#35831;&#26597;&#30475;&#26085;&#24535;');
+    return;
+  }
+  process.kill();
+
+  //&#24320;&#22987;&#37325;&#21629;&#21517;
+  final file = File('$projectPath/pubspec.yaml');
+  final fileContent = file.readAsStringSync();
+  final yamlMap = yaml.loadYaml(fileContent) as yaml.YamlMap;
+
+  //&#33719;&#21462;&#24403;&#21069;&#29256;&#26412;&#21495;
+  final version = (yamlMap['version'].toString()).replaceAll(
+    '+',
+    '_',
+  );
+  final appName = yamlMap['name'].toString();
+
+  // apk &#30340;&#36755;&#20986;&#30446;&#24405;
+  final apkDirectory = '$projectPath/build/app/outputs/flutter-apk/';
+  const buildAppName = 'app-release.apk';
+  final timeStr = DateFormat('yyyyMMddHHmm').format(
+    DateTime.now(),
+  );
+
+  final resultNameList = [
+    appName,
+    version,
+    timeStr,
+  ].where((element) =&gt; element.isNotEmpty).toList();
+
+  final resultAppName = '${resultNameList.join('_')}.apk';
+  final appPath = apkDirectory + resultAppName;
+
+  //&#37325;&#21629;&#21517;apk&#25991;&#20214;
+  final apkFile = File(apkDirectory + buildAppName);
+  await apkFile.rename(appPath);
+  stdout.write('apk &#25171;&#21253;&#25104;&#21151; &gt;&gt;&gt;&gt;&gt; $appPath \n');
+
+  if (uploadPGY) {
+    // &#19978;&#20256;&#33970;&#20844;&#33521;
+    final pgyPublisher = PGYTool(
+      apiKey: '&#33970;&#20844;&#33521;&#25511;&#21046;&#21488;&#20869;&#20320;&#30340;&#24212;&#29992;&#30340;apiKey',
+      buildType: 'android',
+    );
+    final uploadSuccess = await pgyPublisher.publish(appPath);
+    if (uploadSuccess) {
+      File(appPath).delete();
+    }
+  } else {
+    // &#30452;&#25509;&#25171;&#24320;&#25991;&#20214;
+    await Process.run(
+      'open',
+      [apkDirectory],
+    );
+  }
+}
+</code></pre>
+<h3>Ipa &#25171;&#21253;&#33050;&#26412;</h3>
+<p>ipa &#25171;&#21253;&#33050;&#26412;&#21644; apk &#25171;&#21253;&#33050;&#26412;&#31867;&#20284;&#65292;&#21482;&#26159;&#36807;&#31243;&#20013;&#22810;&#20102;&#19968;&#27493;&#25805;&#20316;&#65292;&#21024;&#38500;&#20043;&#21069;&#30340;&#26500;&#24314;&#25991;&#20214;&#65292;&#22914;&#19979;&#65306;</p>
+<pre><code>import 'dart:io';
+import 'package:yaml/yaml.dart' as yaml;
+import 'package:intl/intl.dart';
+
+import 'pgy_tool.dart';
+
+void main() async {
+  const originIpaName = '&#20320;&#30340;&#24212;&#29992;&#21517;&#31216;';
+  //&#26159;&#21542;&#19978;&#20256;&#33970;&#20844;&#33521;
+  bool uploadPGY = true;
+
+  // &#33719;&#21462;&#39033;&#30446;&#26681;&#30446;&#24405;
+  final _projectPath = await Process.run(
+    'pwd',
+    [],
+  );
+  final projectPath = (_projectPath.stdout as String).replaceAll(
+    '\n',
+    '',
+  );
+  // &#25511;&#21046;&#21488;&#25171;&#21360;&#39033;&#30446;&#30446;&#24405;
+  stdout.write('&#39033;&#30446;&#30446;&#24405;&#65306;$projectPath &#24320;&#22987;&#32534;&#35793;\n');
+
+  // &#32534;&#35793;&#30446;&#24405;
+  final buildPath = '$projectPath/build/ios';
+
+  // &#20999;&#25442;&#21040;&#39033;&#30446;&#30446;&#24405;
+  Directory.current = projectPath;
+
+  // &#21024;&#38500;&#20043;&#21069;&#30340;&#26500;&#24314;&#25991;&#20214;
+  if (Directory(buildPath).existsSync()) {
+    Directory(buildPath).deleteSync(
+      recursive: true,
+    );
+  }
+
+  final process = await Process.start(
+    'flutter',
+    [
+      'build',
+      'ipa',
+      '--target=$projectPath/lib/main.dart',
+      '--verbose',
+    ],
+    workingDirectory: projectPath,
+    mode: ProcessStartMode.inheritStdio,
+  );
+
+  final buildResult = await process.exitCode;
+  if (buildResult != 0) {
+    stdout.write('ipa &#32534;&#35793;&#22833;&#36133;&#65292;&#35831;&#26597;&#30475;&#26085;&#24535;');
+    return;
+  }
+
+  process.kill();
+  stdout.write('ipa &#32534;&#35793;&#25104;&#21151;&#65281;\n');
+
+  //&#24320;&#22987;&#37325;&#21629;&#21517;
+  final file = File('$projectPath/pubspec.yaml');
+  final fileContent = file.readAsStringSync();
+  final yamlMap = yaml.loadYaml(fileContent) as yaml.YamlMap;
+
+  //&#33719;&#21462;&#24403;&#21069;&#29256;&#26412;&#21495;
+  final version = (yamlMap['version'].toString()).replaceAll(
+    '+',
+    '_',
+  );
+  final appName = yamlMap['name'].toString();
+
+  // ipa &#30340;&#36755;&#20986;&#30446;&#24405;
+  final ipaDirectory = '$projectPath/build/ios/ipa/';
+  const buildAppName = '$originIpaName.ipa';
+  final timeStr = DateFormat('yyyyMMddHHmm').format(
+    DateTime.now(),
+  );
+
+  final resultNameList = [
+    appName,
+    version,
+    timeStr,
+  ].where((element) =&gt; element.isNotEmpty).toList();
+
+  final resultAppName = '${resultNameList.join('_')}.ipa';
+  final appPath = ipaDirectory + resultAppName;
+
+  //&#37325;&#21629;&#21517;ipa&#25991;&#20214;
+  final ipaFile = File(ipaDirectory + buildAppName);
+  await ipaFile.rename(appPath);
+  stdout.write('ipa &#25171;&#21253;&#25104;&#21151; &gt;&gt;&gt;&gt;&gt; $appPath \n');
+
+  if (uploadPGY) {
+    // &#19978;&#20256;&#33970;&#20844;&#33521;
+    final pgyPublisher = PGYTool(
+      apiKey: '&#33970;&#20844;&#33521;&#25511;&#21046;&#21488;&#20869;&#20320;&#30340;&#24212;&#29992;&#30340;apiKey',
+      buildType: 'ios',
+    );
+    pgyPublisher.publish(appPath);
+  } else {
+    // &#30452;&#25509;&#25171;&#24320;&#25991;&#20214;
+    await Process.run(
+      'open',
+      [ipaDirectory],
+    );
+  }
+}
+</code></pre>
+<h3>&#33970;&#20844;&#33521;&#21457;&#24067;&#33050;&#26412;</h3>
+<p>&#19978;&#38754;&#25171;&#21253;&#33050;&#26412;&#20013;&#19978;&#20256;&#21040;&#33970;&#20844;&#33521;&#37117;&#35843;&#29992;&#20102;&#36825;&#21477;&#20195;&#30721;&#65306;</p>
+<pre><code>// &#19978;&#20256;&#33970;&#20844;&#33521;
+    final pgyPublisher = PGYTool(
+      apiKey: '&#33970;&#20844;&#33521;&#25511;&#21046;&#21488;&#20869;&#20320;&#30340;&#24212;&#29992;&#30340;apiKey',
+      buildType: 'ios',
+    );
+    pgyPublisher.publish(appPath);
+</code></pre>
+<ul>
+<li><code>appPath</code>&#65306;&#23601;&#26159;&#25171;&#21253;&#25104;&#21151;&#30340; apk/ipa &#26412;&#22320;&#36335;&#24452;</li>
+<li><code>buildType</code>&#65306;&#20998;&#21035;&#23545;&#24212;&#20004;&#20010;&#20540; android&#12289;ios</li>
+<li><code>apiKey</code>&#65306;&#33970;&#20844;&#33521;&#25511;&#21046;&#21488;&#20869;&#20320;&#30340;&#24212;&#29992;&#23545;&#24212;&#30340;apiKey&#65292;&#22914;&#19979;&#25152;&#31034;</li>
+</ul>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3b7d3c50567a45f7bb4f92c08d139c1e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1907&amp;h=534&amp;s=106382&amp;e=png&amp;b=fefefe" /></p>
+<p><strong>PGYTool</strong> &#23545;&#24212;&#30340;&#21457;&#24067;&#33050;&#26412;&#22914;&#19979;&#65306;</p>
+<pre><code>import 'dart:async';
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:rxdart/rxdart.dart';
+
+// &#33970;&#20844;&#33521;&#24037;&#20855;&#31867;
+class PGYTool {
+  final getTokenPath = 'https://www.pgyer.com/apiv2/app/getCOSToken';
+  final getAppInfoPath = 'https://www.pgyer.com/apiv2/app/buildInfo';
+  final String apiKey;
+  final String buildType; //android&#12289;ios
+
+  PGYTool({
+    required this.apiKey,
+    required this.buildType,
+  });
+
+  //&#21457;&#24067;&#24212;&#29992;
+  Future&lt;bool&gt; publish(String appFilePath) async {
+    final dio = new Dio();
+    stdout.write('&#24320;&#22987;&#33719;&#21462;&#33970;&#20844;&#33521;token');
+    final tokenResponse = await _getToken(dio);
+    if (tokenResponse == null) {
+      stdout.write('&gt;&gt;&gt;&gt;&gt;&gt; &#33719;&#21462;token&#22833;&#36133; \n');
+      return false;
+    }
+    stdout.write('&gt;&gt;&gt;&gt;&gt;&gt; &#33719;&#21462;token&#25104;&#21151; \n');
+    final endpoint = tokenResponse['data']['endpoint'] ?? '';
+    final params = tokenResponse['data']['params'] ?? {};
+    stdout.write('&#33970;&#20844;&#33521;&#19978;&#20256;&#22320;&#22336;&#65306;$endpoint\n');
+    Map&lt;String, dynamic&gt; map = {
+      ...params,
+    };
+    map['file'] = await MultipartFile.fromFile(appFilePath);
+    final controller = StreamController&lt;MapEntry&lt;int, int&gt;&gt;();
+    controller.stream
+        .throttleTime(const Duration(seconds: 1), trailing: true)
+        .listen(
+      (event) =&gt; stdout.write(
+        '${event.key}/${event.value}  ${(event.key.toDouble() / event.value.toDouble() * 100).toStringAsFixed(2)}% \n',
+      ),
+      onDone: () {
+        controller.close();
+      },
+      onError: (e) {
+        controller.close();
+      },
+    );
+    final uploadRsp = await dio.post(
+      endpoint,
+      data: FormData.fromMap(map),
+      onSendProgress: (count, total) {
+        controller.sink.add(
+          MapEntry&lt;int, int&gt;(
+            count,
+            total,
+          ),
+        );
+      },
+    );
+    await Future.delayed(const Duration(seconds: 1));
+    if (uploadRsp.statusCode != 204) {
+      stdout.write('&gt;&gt;&gt;&gt;&gt; &#33970;&#20844;&#33521;&#19978;&#20256;&#22833;&#36133; \n');
+      return false;
+    }
+    stdout.write('&gt;&gt;&gt;&gt;&gt; &#33970;&#20844;&#33521;&#19978;&#20256;&#25104;&#21151; \n');
+    await Future.delayed(const Duration(seconds: 3));
+    await _getAppInfo(dio, tokenResponse['data']['key']);
+    return true;
+  }
+
+  // &#33719;&#21462;&#33970;&#20844;&#33521;token
+  Future&lt;Map&lt;String, dynamic&gt;?&gt; _getToken(Dio dio) async {
+    Response&lt;Map&lt;String, dynamic&gt;&gt;? tokenResponse;
+    try {
+      tokenResponse = await dio.post&lt;Map&lt;String, dynamic&gt;&gt;(
+        getTokenPath,
+        queryParameters: {
+          '_api_key': apiKey,
+          'buildType': buildType,
+        },
+      );
+    } catch (_) {
+      stdout.write('_getToken error : $_');
+    }
+    if (tokenResponse == null) return null;
+    final responseJson = tokenResponse.data ?? {};
+    final tokenCode = responseJson['code'] ?? 100;
+    if (tokenCode != 0) {
+      return null;
+    } else {
+      return responseJson;
+    }
+  }
+
+  // tokenKey &#26159;&#33719;&#21462;token&#20013;&#30340;&#36820;&#22238;&#20540;Key
+  Future&lt;void&gt; _getAppInfo(Dio dio, String tokenKey, {int retryCount = 3}) async {
+    final response = await dio.get&lt;Map&lt;String, dynamic&gt;&gt;(
+      getAppInfoPath,
+      queryParameters: {
+        '_api_key': apiKey,
+        'buildKey': tokenKey,
+      },
+    ).then((value) {
+      return value.data ?? {};
+    });
+    final responseCode = response['code'];
+    if (responseCode == 1247 &amp;&amp; retryCount &gt; 0) {
+      //&#24212;&#29992;&#27491;&#22312;&#21457;&#24067;&#20013;&#65292;&#38388;&#38548; 3 &#31186;&#37325;&#26032;&#33719;&#21462;
+      stdout.write('&gt;&gt;&gt;&gt;&gt; &#24212;&#29992;&#27491;&#22312;&#21457;&#24067;&#20013;&#65292;&#38388;&#38548; 3 &#31186;&#37325;&#26032;&#33719;&#21462;&#21457;&#24067;&#20449;&#24687;\n');
+      await Future.delayed(const Duration(seconds: 3));
+      return _getAppInfo(dio, tokenKey, retryCount: retryCount - 1);
+    }
+    final appName = response['data']['buildName'];
+    final appVersion = response['data']['buildVersion'];
+    final appUrl = response['data']['buildShortcutUrl'];
+    final updateTime = response['data']['buildUpdated'];
+    if (appName != null) {
+      stdout.write('$appName &#29256;&#26412;&#26356;&#26032;&#65288;$appVersion&#65289;\n');
+      stdout.write('&#19979;&#36733;&#22320;&#22336;&#65306;https://www.pgyer.com/$appUrl\n');
+      stdout.write('&#26356;&#26032;&#26102;&#38388;&#65306;$updateTime\n');
+    }
+  }
+}
+</code></pre>
+<p>&#36816;&#34892;&#21457;&#24067;&#33050;&#26412;&#21518;&#65292;&#25511;&#21046;&#21488;&#20250;&#23558;&#24212;&#29992;&#30340;&#19978;&#20256;&#25104;&#21151;&#21518;&#30340;&#19979;&#36733;&#22320;&#22336;&#25171;&#21360;&#20986;&#26469;&#12290;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-23T07:33:22+00:00</pubDate>
+</item>
+<item>
+<title>React-hook源码阅读（下） - 一文搞定useEffect及其他effect hook</title>
+<link>https://juejin.cn/post/7304540179183370255</link>
+<guid>https://juejin.cn/post/7304540179183370255</guid>
+<content:encoded><![CDATA[
+<div> <p>&#20174;&#31532;&#19968;&#31687; React-hook&#28304;&#30721;&#38405;&#35835; - useState&#65288;&#19978;&#65289; &#20102;&#35299;&#20102;React Hook&#30340;&#22522;&#26412;&#21407;&#29702;&#20197;&#21450;useState&#30340;&#20855;&#20307;&#36923;&#36753;
+&#20174;&#31532;&#20108;&#31687; React-hook&#28304;&#30721;&#38405;&#35835;&#65288;&#20013;&#65289; - &#36225;&#28909;&#25171;&#38081; &#25105;&#20204;...</p> <div>
+<p>&#20174;&#31532;&#19968;&#31687; <a href="https://juejin.cn/post/7302781262321139747" rel="noopener noreferrer" target="_blank" title="https://juejin.cn/post/7302781262321139747">React-hook&#28304;&#30721;&#38405;&#35835; - useState&#65288;&#19978;&#65289;</a> &#20102;&#35299;&#20102;<code>React Hook</code>&#30340;&#22522;&#26412;&#21407;&#29702;&#20197;&#21450;<code>useState</code>&#30340;&#20855;&#20307;&#36923;&#36753;</p>
+<p>&#20174;&#31532;&#20108;&#31687; <a href="https://juejin.cn/post/7303727255090790412" rel="noopener noreferrer" target="_blank" title="https://juejin.cn/post/7303727255090790412">React-hook&#28304;&#30721;&#38405;&#35835;&#65288;&#20013;&#65289; - &#36225;&#28909;&#25171;&#38081;</a> &#25105;&#20204;&#26681;&#25454;&#31532;&#19968;&#31687;&#30340;&#20869;&#23481;&#36225;&#28909;&#25171;&#38081;&#65292; &#20102;&#35299;6&#20010;&#24120;&#35265;<code>hook</code>&#30340;&#21407;&#29702;</p>
+<p>&#36825;&#19968;&#31687;&#65292; &#25105;&#20204;&#36208;&#20837; <code>Effect</code> &#30456;&#20851;&#30340;&#21407;&#29702;&#65292; &#28041;&#21450;&#30340; <code>hook</code> &#26377; <code>useEffect</code>, <code>useLayoutEffect</code>, <code>useInsertionEffect</code>,  <code>useImperativeHandle</code></p>
+<p>&#24635;&#20307;&#25991;&#31456;&#30340;&#24605;&#36335;&#20026;&#20808;&#36890;&#36807;<code>useEffect</code>&#36739;&#35814;&#32454;&#20102;&#35299;<code>Effect</code>&#30456;&#20851;&#22788;&#29702;&#65292; &#28982;&#21518;&#27604;&#36739;&#20854;&#20182;<code>Hook</code>&#12290; &#22914;&#26524;&#23545;&#28304;&#30721;&#19981;&#26159;&#24456;&#24863;&#20852;&#36259;&#21487;&#20197;&#30452;&#25509;&#30475;&#24635;&#32467;</p>
+<h2>&#19968;&#12289;useEffect</h2>
+<h3>mountEffect</h3>
+<p>&#36824;&#26159;&#32769;&#35268;&#30697;&#65292; &#20808;&#25214;&#21021;&#27425;&#25346;&#36733;&#30340;&#20837;&#21475;<code>mountEffect</code>&#12290; &#36825;&#37324;&#36890;&#36807;&#21028;&#26029;&#20102;<code>Mode</code>&#21028;&#26029;&#20182;&#36208;&#20837;&#21738;&#20010;&#20998;&#25903;&#65292; &#26412;&#36136;&#19978;&#37117;&#26159;&#35843;&#29992;&#20102;<code>mountEffectImpl</code>&#12290; &#21482;&#19981;&#36807;<code>fiber flags</code>&#20256;&#20837;&#30340;&#22810;&#20102;<code>MountPassiveDev</code>&#12290; &#19981;&#36807;&#25105;&#20204;&#30340;&#20851;&#27880;&#37325;&#28857;&#19968;&#33324;&#37117;&#22312;<code>hook flags</code>&#30340;<code>Passive</code></p>
+<pre><code>function mountEffect(create, deps) {
+  if ( (currentlyRenderingFiber$1.mode &amp; StrictEffectsMode) !== NoMode) {
+    return mountEffectImpl(MountPassiveDev | Passive | PassiveStatic, Passive$1, create, deps);
+  } else {
+    return mountEffectImpl(Passive | PassiveStatic, Passive$1, create, deps);
+  }
+}
+</code></pre>
+<p>&#25509;&#30528;&#30475;&#20182;&#35843;&#29992;&#30340; <code>mountEffectImpl</code>&#12290; &#36825;&#37324;&#19968;&#20849;&#20570;&#20102;&#19977;&#27493;&#65292; &#20855;&#20307;&#21487;&#30475;&#27880;&#37322;</p>
+<pre><code>function mountEffectImpl(fiberFlags, hookFlags, create, deps): void {
+  const hook = mountWorkInProgressHook();
+  const nextDeps = deps === undefined ? null : deps;  // &#36825;&#37324;&#23545;&#20256;&#20837;&#30340;deps&#20570;&#20102;&#22788;&#29702;
+  // &#36825;&#37324;&#32473;&#24403;&#21069;&#30340;Fiber&#25171;&#19978;&#20102;flags&#26631;&#31614;&#65292; &#34920;&#31034;&#26377;&#21103;&#20316;&#29992;&#65292; &#22312;commit&#38454;&#27573;&#20250;&#20351;&#29992;&#21040;
+  currentlyRenderingFiber.flags |= fiberFlags; 
+  // &#25346;&#36733;&#19978;hook&#30340;&#38142;&#34920;
+  hook.memoizedState = pushEffect(
+    HookHasEffect | hookFlags,
+    create,
+    undefined,  // &#21487;&#20197;&#30475;&#21040;&#36825;&#37324;&#26242;&#26102;&#26159;&#19981;&#25910;&#38598;destroy&#30340;
+    nextDeps,
+  );
+}
+</code></pre>
+<p>&#25509;&#30528;&#32487;&#32493;&#30475;<code>pushEffect</code>&#12290; &#36825;&#37324;&#20027;&#35201;&#23601;&#26159;&#26681;&#25454;<code>useEffect hook</code>&#23545;&#35937;&#24418;&#25104;&#23436;&#25972;&#30340;<code>Effect</code>&#38142;&#34920;&#12290; &#25918;&#22312;<code>hook</code>&#38142;&#34920;&#19978;&#20197;&#21450;<code>updateQueue</code></p>
+<pre><code>function pushEffect(tag, create, destroy, deps) {
+ // &#29983;&#25104;&#20102;&#23545;&#24212;&#30340;Effect&#23545;&#35937;&#65292; &#26368;&#21518;&#26159;&#35201;&#25346;&#19978;hook&#38142;&#34920;&#30340;
+  var effect = {
+    tag: tag,
+    create: create,
+    destroy: destroy,
+    deps: deps,
+    // Circular
+    next: null
+  };
+  // &#25343;&#21040;&#24403;&#21069;Fiber&#30340;updateQueue
+  var componentUpdateQueue = currentlyRenderingFiber$1.updateQueue;
+  // &#36825;&#37324;&#23601;&#26159;&#29983;&#25104;&#38142;&#34920;&#30340;&#36807;&#31243;&#20102;&#65292; &#20027;&#35201;&#26159;&#22788;&#29702;&#20102;updateQueue&#21644;effect&#38142;&#34920;&#65292; &#20855;&#20307;&#25928;&#26524;&#21487;&#20197;&#30475;&#19979;&#38754;&#30340;&#22270;&#31034;
+  if (componentUpdateQueue === null) {
+    componentUpdateQueue = createFunctionComponentUpdateQueue();
+    currentlyRenderingFiber$1.updateQueue = componentUpdateQueue;
+    componentUpdateQueue.lastEffect = effect.next = effect;
+  } else {
+    var lastEffect = componentUpdateQueue.lastEffect;
+    if (lastEffect === null) {
+      componentUpdateQueue.lastEffect = effect.next = effect;
+    } else {
+      var firstEffect = lastEffect.next;
+      lastEffect.next = effect;
+      effect.next = firstEffect;
+      componentUpdateQueue.lastEffect = effect;
+    }
+  }
+  return effect;
+}
+</code></pre>
+<p>&#26469;&#20010;&#20363;&#23376;&#65292; &#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#36208;&#23436;<code>hook</code>&#20043;&#21518;&#35813;&#20989;&#25968;<code>Fiber</code>&#21464;&#25104;&#21861;&#26679;&#21862;</p>
+<pre><code>export default function MyApp() {
+  const [count, setCount] =  useState(1);
+  const [count1, setCount1] = useState(2);
+  useEffect(() =&gt; { 
+    console.log('1');
+    return () =&gt; console.log('3')
+  }, [])
+  useEffect(() =&gt; {
+    console.log('2');
+  }, [count])
+  return (
+    &lt;div onClick={() =&gt; setCount(count + 1)}&gt;{count}&lt;/div&gt;
+  )
+}
+</code></pre>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce6f64b6d3544ffca4df5a1e4c1d882f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3644&amp;h=1760&amp;s=943684&amp;e=png&amp;b=fffdfd" /></p>
+<h3>updateEffect</h3>
+<p>&#20102;&#35299;&#23436;<code>mountEffect</code>&#20570;&#20102;&#20160;&#20040;&#21518;&#25105;&#20204;&#32487;&#32493;&#30475;<code>updateEffect</code>&#12290; &#21487;&#20197;&#30475;&#21040;&#20063;&#26159;&#20256;&#20837;<code>Passive</code></p>
+<pre><code>function updateEffect(create, deps) {
+  return updateEffectImpl(Passive, Passive$1, create, deps);
+}
+</code></pre>
+<ul>
+<li>&#30452;&#25509;&#30475;<code>updateEffectImpl</code>&#12290; &#36825;&#37324;&#30340;&#27969;&#31243;&#20063;&#24456;&#28165;&#26224;&#65292; &#23601;&#19981;&#36184;&#36848;&#20102;</li>
+</ul>
+<pre><code>function updateEffectImpl(fiberFlags, hookFlags, create, deps): void {
+  const hook = updateWorkInProgressHook();
+  const nextDeps = deps === undefined ? null : deps;  // &#25343;&#21040;&#29616;&#22312;&#30340;&#20381;&#36182;
+  let destroy = undefined;
+  if (currentHook !== null) {
+    const prevEffect = currentHook.memoizedState;
+    destroy = prevEffect.destroy;  
+    if (nextDeps !== null) {
+      const prevDeps = prevEffect.deps;
+      // &#36825;&#37324;&#27604;&#36739;&#20102;&#21069;&#21518;&#20381;&#36182;&#65292; &#22914;&#26524;&#19968;&#33268;&#30340;&#35805;&#22788;&#29702;hook&#20043;&#21518;&#23601;reuturn&#20986;&#21435;&#20102;
+      if (areHookInputsEqual(nextDeps, prevDeps)) { 
+        hook.memoizedState = pushEffect(hookFlags, create, destroy, nextDeps);
+        return;
+      }
+    }
+  }
+  // &#22914;&#26524;&#20381;&#36182;&#19981;&#19968;&#33268;&#30340;&#35805;&#21017;&#32473;Fiber&#25171;&#19978;Passive&#30340;&#26631;&#24535;
+  currentlyRenderingFiber.flags |= fiberFlags;
+  hook.memoizedState = pushEffect(
+    HookHasEffect | hookFlags,  // effect&#30340;tag&#30001;hookFlags&#20915;&#23450;
+    create,
+    destroy,
+    nextDeps,
+  );
+}
+</code></pre>
+<p>&#20174;<code>mountEffect</code>&#21644;<code>udpateEffect</code>&#37117;&#26377;&#19968;&#20010;&#20851;&#38190;&#30340;&#25805;&#20316;&#23601;&#26159;&#32473;&#24403;&#21069;&#30340;<code>Fiber flags</code>&#25171;&#19978;<code>Passive</code>&#30340;&#26631;&#24535;&#12290; &#35813;&#26631;&#24535;&#22312;<code>commit</code>&#38454;&#27573;&#30340;&#26102;&#20505;&#23545;<code>Effect</code>&#36827;&#34892;&#22788;&#29702;&#12290;</p>
+<p>&#20174;&#36825;&#37324;&#20320;&#23601;&#33021;&#30693;&#36947;&#20026;&#20160;&#20040;</p>
+<ul>
+<li><code>useEffect deps</code>&#20256;&#20837;&#31354;&#25968;&#32452;&#30340;&#26102;&#20505;&#21482;&#20250;&#22312;&#21021;&#27425;&#28210;&#26579;&#35843;&#29992;&#19968;&#27425;&#65306; &#22240;&#20026;&#20004;&#20010;&#31354;&#25968;&#32452;&#20013;&#27809;&#24471;&#27604;&#36739;&#65292;&#25925;&#27599;&#27425;&#37117;&#35748;&#20026;l&#20004;&#20010;&#25968;&#32452;&#20013;&#30340;&#27599;&#19968;&#39033;&#37117;&#26159;&#19968;&#33268;&#30340;&#65292; &#26159;&#27809;&#26377;&#21464;&#21270;&#30340;&#65292; &#20250;&#30452;&#25509;<code>return</code>&#20986;&#21435;&#65292; &#32780;&#19981;&#20250;&#25171;&#19978;<code>flags</code>&#26631;&#31614;</li>
+<li><code>useEffect</code>&#20026;&#20160;&#20040;&#26080;&#35770;&#22914;&#20309;&#37117;&#26368;&#23569;&#20250;&#35843;&#29992;&#19968;&#27425;&#65306; &#22240;&#20026;<code>mountEffect</code>&#30340;&#26102;&#20505;&#27809;&#26377;&#20854;&#20182;&#26465;&#20214;&#21487;&#20197;<code>return</code>&#20986;&#21435;&#65292; &#19968;&#23450;&#20250;&#25171;&#19978;<code>flags</code>&#26631;&#31614;</li>
+</ul>
+<p>&#37027;&#20040;&#25171;&#19978;<code>flags</code>&#26631;&#31614;&#20043;&#21518;&#65292; <code>React</code>&#26159;&#22914;&#20309;&#21435;&#22788;&#29702;<code>useEffect</code>&#30340;&#22238;&#35843;&#20989;&#25968;&#21602;&#12290; &#25105;&#20204;&#21487;&#20197;&#36208;&#21040;<code>commit</code>&#38454;&#27573;&#65292;<a href="https://juejin.cn/post/7301909438541250571" rel="noopener noreferrer" target="_blank"> React&#28304;&#30721;&#38405;&#35835;&#65288;&#22235;&#65289;- commit</a> &#36825;&#31687;&#25991;&#31456;&#26377;&#26356;&#20855;&#20307;&#30340;<code>commit</code>&#27969;&#31243;&#65292; &#36825;&#31687;&#20027;&#35201;&#20197;<code>Effect</code>&#20026;&#20027;&#12290;</p>
+<h3>&#22914;&#20309;&#22788;&#29702;useEffect&#65288;&#37325;&#28857;&#65289;</h3>
+<h4>&#24322;&#27493;&#21407;&#29702;</h4>
+<p>&#20808;&#26469;&#19968;&#24352;&#23439;&#35266;&#22270;&#65288;&#24405;&#21046;&#30340;&#26159;&#21021;&#27425;&#28210;&#26579;&#38454;&#27573;&#65289;, &#21487;&#20197;&#30475;&#21040;&#22270;&#30340;&#24038;&#36793;&#26159;&#36827;&#20837;&#20102;<code>commit</code>&#27573;&#65292;&#26368;&#21518;&#36890;&#36807;<code>DOM API appendChild</code>&#23558;&#22788;&#29702;&#22909;&#30340;<code>DOM</code>&#26641;&#25346;&#36733;&#21040;&#39029;&#38754;&#19978;&#65292;&#28982;&#21518;&#20132;&#20986;&#32447;&#31243;&#65292; &#27983;&#35272;&#22120;&#36827;&#34892;&#28210;&#26579;&#12290; &#25509;&#30528;&#20877;&#25191;&#34892;&#20102;&#22270;&#30340;&#21491;&#36793;&#37096;&#20998;&#65292; &#36825;&#19968;&#37096;&#20998;&#23454;&#38469;&#19978;&#23601;&#26159;&#22312;&#22788;&#29702;&#35302;&#21457;&#30340;<code>useEffect</code>&#30340;&#22238;&#35843;&#12290;</p>
+<p>&#24635;&#30340;&#27969;&#31243;&#23601;&#26159; <code>commit</code>&#38454;&#27573;&#65288;&#23439;&#20219;&#21153;&#65289; - &#27983;&#35272;&#22120;&#28210;&#26579; -  <code>useEffect</code>&#30456;&#20851;&#22238;&#35843;&#25191;&#34892;&#65288;&#23439;&#20219;&#21153;&#65289;
+<img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93eeeca4115f461fb0e742e8f68be8ff~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1464&amp;h=544&amp;s=78715&amp;e=png&amp;b=f5f8fd" /></p>
+<p>&#37027;&#20040;&#26159;&#22914;&#20309;&#36798;&#21040;<code>useEffect</code>&#20570;&#21040;&#22312;&#28210;&#26579;&#20043;&#21518;&#25191;&#34892;&#30340;&#30446;&#30340;&#21602;&#65306; React&#26159;&#22312;<code>commit</code>&#30340;&#20934;&#22791;&#38454;&#27573;&#20013;&#36827;&#34892;&#22788;&#29702;&#30340;&#65292; &#36890;&#36807;&#20197; <a href="https://juejin.cn/post/7301623567882977292#heading-6" rel="noopener noreferrer" target="_blank">schduleCallback</a> &#20026;&#20837;&#21475;&#30340;&#26041;&#27861;&#36827;&#34892;&#35843;&#24230;&#65288;&#36825;&#37324;&#26412;&#36136;&#19978;&#26159;&#36890;&#36807;<code>MessageChannel</code>&#30340;&#26041;&#24335;&#36798;&#21040;&#35753;&#19968;&#20123;&#25805;&#20316;&#33021;&#22815;&#22312;&#25512;&#20837;&#23439;&#20219;&#21153;&#38431;&#21015;&#31561;&#24453;&#25191;&#34892;&#65292; &#24314;&#35758;&#23398;&#20064;&#36335;&#32447;&#65306;<a href="https://juejin.cn/post/7301909438541250571#heading-3" rel="noopener noreferrer" target="_blank">flushPassiveEffects</a>  -&gt; <a href="https://juejin.cn/post/7301623567882977292#heading-6" rel="noopener noreferrer" target="_blank">schduleCallback</a> -&gt;  <a href="https://juejin.cn/post/7301623567882977292#heading-10" rel="noopener noreferrer" target="_blank">requestHostCallback</a> -&gt;  <a href="https://juejin.cn/post/7301623567882977292#heading-11" rel="noopener noreferrer" target="_blank">schedulePerformWorkUntilDeadline</a>&#65289;&#65292;&#35753; <a href="https://juejin.cn/post/7301909438541250571#heading-3" rel="noopener noreferrer" target="_blank">flushPassiveEffects</a>  &#33021;&#22815;&#22312;&#19979;&#19968;&#20010;&#23439;&#20219;&#21153;&#36827;&#34892;&#22788;&#29702;</p>
+<blockquote>
+<ul>
+<li>&#20174;&#38142;&#25509;&#28857;&#36827;&#21435;&#37117;&#26377;&#34542;&#35814;&#32454;&#30340;&#35299;&#37322;&#20102;&#65292; &#36825;&#37324;&#23601;&#19981;&#22810;&#35828;&#20102;</li>
+<li>&#20197;&#19979;&#20855;&#20307;&#30340;&#28304;&#30721;&#27969;&#31243;&#24314;&#35758;&#20808;&#30475;&#19968;&#31687;commit&#30340;&#22522;&#30784;&#28304;&#30721;&#20043;&#21518;&#20877;&#30475;&#36825;&#20010;&#65292; &#20250;&#33298;&#26381;&#27969;&#30021;&#24456;&#22810;&#65292; &#22240;&#20026;&#37117;&#26159;&#21516;&#19968;&#20010;&#22871;&#36335;&#12290; &#22914;&#26524;&#30475;&#19981;&#19979;&#21435;&#30340;&#35805;&#21487;&#20197;&#36339;&#36807;&#28304;&#30721;&#30452;&#25509;&#30475;&#24635;&#32467;</li>
+</ul>
+</blockquote>
+<p>&#37027;&#20040;&#25105;&#20204;&#32487;&#32493;&#30475;<code>flushPassiveEffects</code>&#36825;&#20010;&#20989;&#25968;&#31350;&#31455;&#20570;&#20102;&#20160;&#20040;&#65311;</p>
+<p>&#36825;&#37324;&#21021;&#22987;&#21270;&#20102;&#25402;&#22810;&#19996;&#35199;&#65292; &#25105;&#30465;&#30053;&#20102;&#65292;&#25105;&#20204;&#30452;&#25509;&#20851;&#27880;&#20027;&#27969;&#31243;&#12290; &#21487;&#20197;&#30475;&#21040;&#20027;&#35201;&#23601;&#26159;&#35843;&#29992;&#20102;<code>flushPassiveEffectsImpl</code></p>
+<pre><code>export function flushPassiveEffects(): boolean {
+  if (rootWithPendingPassiveEffects !== null) {
+    .....
+    try {
+      ......
+      return flushPassiveEffectsImpl();
+    } finally {
+      ......
+    }
+  }
+  return false;
+}
+</code></pre>
+<ul>
+<li>&#37027;&#20040;<code>flushPassiveEffectsImpl</code>&#21448;&#20570;&#20102;&#20160;&#20040;&#12290; &#26368;&#37325;&#35201;&#30340;&#23601;&#26159;<code>commitPassiveUnmountEffects</code>&#21644;<code>commitPassiveMountEffects</code>&#12290; &#25509;&#19979;&#21435;&#20250;&#37325;&#28857;&#20171;&#32461;&#36825;&#20004;&#20010;&#20989;&#25968;</li>
+</ul>
+<pre><code>function flushPassiveEffectsImpl() {
+  ..... 
+  // &#36825;&#37324;&#23601;&#26159;&#20027;&#27969;&#31243;&#20102;
+  commitPassiveUnmountEffects(root.current);
+  commitPassiveMountEffects(root, root.current, lanes, transitions);
+ ....
+  flushSyncCallbacks();
+  return true;
+}
+</code></pre>
+<h4>&#22788;&#29702;destory</h4>
+<p><code>commitPassiveUnmountEffects</code>&#20316;&#20026;&#20837;&#21475;&#20989;&#25968;&#65292; &#36825;&#37324;&#30340;&#20889;&#27861;&#24456;&#20687;<code>commit</code>&#38454;&#27573;&#30340;<a href="https://juejin.cn/post/7301909438541250571#heading-6" rel="noopener noreferrer" target="_blank"><code>beforMutation</code></a>&#21644;<a href="https://juejin.cn/post/7301909438541250571#heading-23" rel="noopener noreferrer" target="_blank"><code>layout</code></a>&#38454;&#27573;&#12290; &#37117;&#26159;&#20197;&#19968;&#20010;&#20989;&#25968;<code>xxxEffects</code>&#20026;&#20837;&#21475;&#65292; &#28982;&#21518;&#20351;&#29992;<code>xx_beign</code>&#21644;<code>xx_complete</code>&#20989;&#25968;&#21435;&#25628;&#32034;<code>Fiber</code>&#26641;&#20174;&#32780;&#33021;&#22815;&#22312;&#30446;&#26631;&#33410;&#28857;&#36890;&#36807;<code>xxxOnFiber</code>&#25191;&#34892;&#19968;&#20123;&#25805;&#20316;&#30340;&#36807;&#31243;</p>
+<blockquote>
+<p>&#25105;&#31216;&#20043;&#20026;React&#24120;&#35265;&#22235;&#20214;&#22871;</p>
+</blockquote>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8056a608d6d249159f335d5a7c326978~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=910&amp;h=277&amp;s=21682&amp;e=png&amp;b=ffffff" />
+&#35813;&#20989;&#25968;&#23601;&#26159;&#19968;&#20010;&#20837;&#21475;&#20989;&#25968;</p>
+<pre><code>export function commitPassiveUnmountEffects(firstChild: Fiber): void {
+  nextEffect = firstChild;
+  commitPassiveUnmountEffects_begin();
+}
+</code></pre>
+<p>&#22914;&#26524;&#24819;&#20102;&#35299;<code>xxbeigin</code>&#21644;<code>xxxcomplete</code>&#30340;&#27969;&#31243;&#21487;&#20197;&#30475; <a href="https://juejin.cn/post/7301909438541250571#heading-10" rel="noopener noreferrer" target="_blank">beforeMutation&#24635;&#32467;</a> &#26377;&#22270;&#35299;&#12290;</p>
+<blockquote>
+<p>&#36825;&#37324;&#30340;<code>commitPassiveUnmountEffects_begin</code>&#20570;&#20102;&#26356;&#22810;&#30340;&#20107;&#24773;&#65292; &#20026;&#20102;&#25972;&#20307;&#24615;&#65288;&#32780;&#19988;&#28041;&#21450;&#21518;&#38754;&#38656;&#35201;&#20855;&#20307;&#35762;&#30340;&#36923;&#36753;&#65289;&#65292; &#25925;&#36825;&#37096;&#20998;&#25918;&#22312;&#21518;&#38754;&#35762;</p>
+</blockquote>
+<p>&#37027;&#20040;&#25105;&#20204;&#23601;&#21482;&#38656;&#35201;&#30475;&#20004;&#28857;</p>
+<ul>
+<li>&#20160;&#20040;&#33410;&#28857;&#26159;&#30446;&#26631;&#33410;&#28857;</li>
+<li>&#30446;&#26631;&#33410;&#28857;&#20570;&#20102;&#20160;&#20040;&#20107;&#24773;</li>
+</ul>
+<p>&#23545;&#20110;&#31532;&#19968;&#28857;&#25105;&#20204;&#30475;<code>xxcomplete</code>, &#20316;&#20026;<code>commitPassiveUnmountOnFiber</code>&#30340;&#20837;&#21475;&#20989;&#25968;&#65292; &#36825;&#37324;&#38480;&#21046;&#20102;<code>flags</code>&#19978;&#26377;<code>Passive</code>&#65292; &#21487;&#20197;&#22238;&#39038;&#20043;&#21069;&#30340;<code>mountEffect</code>&#21644;<code>updateEffect</code>&#65292; &#25105;&#20204;&#32473;&#33410;&#28857;&#25171;&#19978;&#30340;<code>flags</code>&#23601;&#26377;<code>Passvive</code></p>
+<pre><code>  if ((fiber.flags &amp; Passive) !== NoFlags) {
+      commitPassiveUnmountOnFiber(fiber);
+  }
+</code></pre>
+<p>&#23545;&#20110;&#31532;&#20108;&#28857;&#65292; &#25105;&#20204;&#22238;&#24402;&#20851;&#27880;<code>commitPassiveUnmountOnFiber</code>&#12290; &#36825;&#37324;&#36890;&#36807;&#21028;&#26029;&#20102;&#32452;&#20214;&#20989;&#25968;&#65292; &#36208;&#20837;<code>commitHookEffectListUnmount</code></p>
+<pre><code>function commitPassiveUnmountOnFiber(finishedWork: Fiber): void {
+  switch (finishedWork.tag) {
+    case FunctionComponent:
+    case ForwardRef:
+    case SimpleMemoComponent: {
+        .... 
+        commitHookEffectListUnmount(
+          HookPassive | HookHasEffect,
+          finishedWork,
+          finishedWork.return,
+        );
+        ...
+      break;
+    }
+  }
+}
+</code></pre>
+<p>&#36825;&#20010;&#20989;&#25968;&#23601;&#26159;&#26368;&#32456;&#30495;&#27491;&#22788;&#29702;<code>Unmount</code>&#30340;&#26680;&#24515;&#20989;&#25968;&#20102;&#12290; &#21487;&#20197;&#30475;&#21040;&#36825;&#37324;&#23601;&#26159;&#25343;&#21040;&#24403;&#21069;<code>Fiber</code>&#19978;&#30340;<code>updateQueue</code>, &#28982;&#21518;&#20174;&#22836;&#24320;&#22987;&#65292; &#36827;&#34892;&#36941;&#21382;&#65292; &#23545;&#20110;&#27599;&#19968;&#20010;<code>effect</code>&#65292; &#25343;&#20986;&#26469;<code>effect</code>&#30340;<code>destroy</code>&#65292;&#28982;&#21518;&#28165;&#31354;&#20102;, &#20877;&#35843;&#29992;<code>safelyCallDestroy</code>&#65288;&#20854;&#23454;&#23601;&#26159;&#25191;&#34892;<code>destroy</code>&#20989;&#25968;&#65292; &#20043;&#25152;&#20197;&#21629;&#21517;&#20026;<code>safelyxx</code>&#23601;&#26159;&#22240;&#20026;&#37324;&#38754;&#22810;&#20102;<code>try catch</code>&#21435;&#25429;&#33719;&#38169;&#35823;&#65289;&#21435;&#22788;&#29702;</p>
+<pre><code>function commitHookEffectListUnmount(
+  flags: HookFlags,
+  finishedWork: Fiber,
+  nearestMountedAncestor: Fiber | null,
+) {
+  const updateQueue: FunctionComponentUpdateQueue | null = (finishedWork.updateQueue: any);
+  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
+  if (lastEffect !== null) {
+    const firstEffect = lastEffect.next;
+    let effect = firstEffect;
+    do {
+      if ((effect.tag &amp; flags) === flags) {
+        // Unmount
+        const destroy = effect.destroy;
+        effect.destroy = undefined;
+        if (destroy !== undefined) {
+          safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy);
+      }
+      effect = effect.next;
+    } while (effect !== firstEffect);
+  }
+}
+</code></pre>
+<p>&#26080;&#22870;&#31454;&#29468;&#65306; &#21021;&#27425;&#25191;&#34892;&#35843;&#29992;<code>flushPassiveEffects</code>&#36208;&#21040;&#36825;&#37324;&#20250;&#25191;&#34892;<code>destory</code>&#21527;</p>
+<p>&#31572;&#26696;&#26159;&#19981;&#20250;&#30340;&#12290; &#20320;&#21487;&#20197;&#22238;&#30475;<code>mountEffect</code>&#65292; &#25105;&#20204;&#22312;&#25346;&#36733;&#21040;<code>hook</code>&#38142;&#34920;&#19978;&#30340;&#26102;&#20505;&#65292; &#27492;&#26102;&#23384;&#20837;&#30340;<code>destroy</code>&#20026;<code>undefined</code></p>
+<h5>&#23567;&#24635;&#32467;</h5>
+<p><strong>commitPassiveUnmountEffects</strong>&#20989;&#25968;&#20027;&#35201;&#27969;&#31243;&#23601;&#26159;&#25214;&#21040;<code>Fiber</code>&#26641;&#19978;&#24102;&#26377;<code>Passive</code>&#30340;&#33410;&#28857;&#65292; &#21462;&#20986;&#23427;&#30340;<code>destroy</code>&#20989;&#25968;&#65292; &#28982;&#21518;&#25191;&#34892;&#12290; &#24182;&#19988;&#28165;&#31354;<code>destroy</code>&#20989;&#25968;</p>
+<p>&#25191;&#34892;&#23436;<code>commitPassiveUnmountEffects</code>&#30340;&#19979;&#19968;&#27493;&#23601;&#26159;&#25191;&#34892;<code>commitPassiveMountEffects</code>&#65292; &#25105;&#20204;&#32487;&#32493;&#30475;</p>
+<h4>&#22788;&#29702;create</h4>
+<p><code>commitPassiveMountEffects</code>&#20316;&#20026;&#20837;&#21475;&#20989;&#25968;&#65292; &#21487;&#20197;&#30475;&#21040;&#36825;&#37324;&#30340;&#27969;&#31243;&#20063;&#26159;&#32463;&#20856;&#22235;&#20214;&#22871;</p>
+<p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03964909a87c4536b87ae9e7ecc473ca~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=937&amp;h=280&amp;s=22026&amp;e=png&amp;b=fefefe" /></p>
+<p>&#25105;&#20204;&#36824;&#26159;&#20851;&#27880;&#20004;&#20010;&#28857;</p>
+<ul>
+<li>&#20160;&#20040;&#33410;&#28857;&#26159;&#30446;&#26631;&#33410;&#28857;</li>
+<li>&#30446;&#26631;&#33410;&#28857;&#20570;&#20102;&#20160;&#20040;&#20107;&#24773;</li>
+</ul>
+<p>&#23545;&#20110;&#31532;&#19968;&#28857;&#65292; &#30475;<code>commitPassiveMountEffects_complete</code>&#20989;&#25968;&#12290; &#21487;&#20197;&#30475;&#21040;&#36825;&#37324;&#20381;&#26087;&#26159;&#21028;&#26029;&#20102;<code>flags</code>&#19978;&#24102;&#26377;<code>Passive</code></p>
+<pre><code>if ((fiber.flags &amp; Passive) !== NoFlags) {
+     commitPassiveMountOnFiber(
+       root,
+       fiber,
+       committedLanes,
+       committedTransitions,
+     );
+}
+</code></pre>
+<p>&#23545;&#20110;&#31532;&#20108;&#20010;&#28857;&#65292; &#30475;<code>commitPassiveMountOnFiber</code>&#20989;&#25968;&#12290; &#36825;&#37324;&#30340;&#36923;&#36753;&#36824;&#26159;&#30456;&#24403;&#22810;&#30340;&#65292; &#23545;<code>Fiber tag</code>&#36827;&#34892;&#20102;&#21028;&#26029;&#65292; &#20854;&#20013;&#23545;&#20989;&#25968;&#32452;&#20214;&#65292; &#26681;&#32452;&#20214;&#31561;&#37117;&#26377;&#19981;&#21516;&#30340;&#22788;&#29702;&#12290; &#36825;&#37324;&#20851;&#27880;&#20989;&#25968;&#32452;&#20214;&#12290; &#21487;&#20197;&#30475;&#21040;&#35843;&#29992;&#20102;&#20989;&#25968;<code>commitHookEffectListMount</code></p>
+<pre><code>function commitPassiveMountOnFiber(
+  finishedRoot: FiberRoot,
+  finishedWork: Fiber,
+  committedLanes: Lanes,
+  committedTransitions: Array&lt;Transition&gt; | null,
+): void {
+  switch (finishedWork.tag) {
+    case FunctionComponent:
+    case ForwardRef:
+    case SimpleMemoComponent: {
+     ...
+      commitHookEffectListMount(HookPassive | HookHasEffect, finishedWork);
+      break;
+    }
+    case HostRoot: ....
+    case LegacyHiddenComponent:
+    case OffscreenComponent:....
+    case CacheComponent: ....
+      break;
+    }
+  }
+}
+</code></pre>
+<p>&#32487;&#32493;&#30475;<code>commitHookEffectListMount</code>&#12290; &#21487;&#20197;&#30475;&#21040;&#36825;&#37324;&#30340;&#36923;&#36753;&#26377;&#28857;&#31867;&#20284;&#20110;<code>commitHookEffectListUnmount</code>&#12290; &#20063;&#26159;&#21435;&#25214;&#21040;<code>Fiber</code>&#33410;&#28857;&#30340;<code>updateQueue</code>&#65292; &#28982;&#21518;&#36941;&#21382;&#20182;&#65292; &#25343;&#21040;&#27599;&#19968;&#20010;<code>Effect</code>&#19978;&#30340;<code>create()</code>&#20989;&#25968;&#65292; &#36825;&#20063;&#23601;&#26159;&#25105;&#20204;&#20256;&#20837;&#32473;<code>useEffect</code>&#30340;&#22238;&#35843;&#20989;&#25968;&#65292; &#25343;&#21040;&#20043;&#21518;&#23545;&#20182;&#36827;&#34892;&#35843;&#29992;&#65292; &#35843;&#29992;&#30340;&#32467;&#26524;&#20877;&#36171;&#20540;&#32473;<code>Effect</code>&#30340;<code>destory</code></p>
+<pre><code>function commitHookEffectListMount(flags: HookFlags, finishedWork: Fiber) {
+  const updateQueue: FunctionComponentUpdateQueue | null = (finishedWork.updateQueue: any);
+  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
+  if (lastEffect !== null) {
+    const firstEffect = lastEffect.next;
+    let effect = firstEffect;
+    do {
+      if ((effect.tag &amp; flags) === flags) {
+        // Mount
+        const create = effect.create;
+        effect.destroy = create();
+      }
+      .....
+      effect = effect.next;
+    } while (effect !== firstEffect);
+  }
+}
+</code></pre>
+<h5>&#23567;&#24635;&#32467;</h5>
+<p>&#36825;&#20010;&#20989;&#25968;&#30340;&#20316;&#29992;&#23601;&#26159;&#25343;&#21040;<code>Fiber</code>&#19978;&#30340;<code>updateQueue</code>, &#28982;&#21518;&#25191;&#34892;&#27599;&#19968;&#20010;<code>Effect</code>&#19978;&#30340;<code>create()</code>&#20989;&#25968;&#65292; &#24182;&#19988;&#25226;&#25191;&#34892;&#32467;&#26524;&#36171;&#20540;&#32473;<code>Effect</code>&#19978;&#30340;<code>destory</code></p>
+<p>&#21040;&#36825;&#37324;&#23601;&#33021;&#35299;&#31572;&#20026;&#20160;&#20040;&#25105;&#20204;&#22312;<code>mountEffect</code>&#30340;&#26102;&#20505;&#19981;&#30452;&#25509;&#32473;<code>effect</code>&#30340;<code>destory</code>&#36827;&#34892;&#36171;&#20540;
+&#22914;&#26524;&#19968;&#24320;&#22987;&#23601;&#30452;&#25509;&#36171;&#20540;&#30340;&#35805;&#65288;&#32780;&#19988;&#20320;&#35201;&#36171;&#20540;&#30340;&#35805;&#20063;&#24471;&#35843;&#29992;&#21543;&#65292; &#36825;&#35843;&#29992;&#26102;&#38388;&#20063;&#19981;&#21512;&#29702;hhh&#65289;&#65292; &#37027;&#20040;&#25105;&#20204;&#22312;&#21021;&#27425;&#22788;&#29702;<code>useEffect</code>&#30340;&#26102;&#20505;&#23601;&#20250;&#21435;&#35843;&#29992;<code>destory</code>&#20989;&#25968;&#20102;&#12290; &#36825;&#26174;&#28982;&#19981;&#31526;&#21512;<code>destory</code>&#30340;&#23450;&#20041;</p>
+<p>&#37027;&#25105;&#20204;&#23545;<code>destory</code>&#30340;&#23450;&#20041;&#26159;&#20160;&#20040;&#65306; &#22312;&#27599;&#27425;&#20381;&#36182;&#39033;&#21464;&#26356;&#37325;&#26032;&#28210;&#26579;&#21518;&#65292;<code>React </code>&#23558;&#39318;&#20808;&#20351;&#29992;&#26087;&#20540;&#36816;&#34892;<code>cleanup</code>&#20989;&#25968;&#65292;&#28982;&#21518;&#20351;&#29992;&#26032;&#20540;&#36816;&#34892;<code>setup</code>&#20989;&#25968;</p>
+<p>&#37027;&#24590;&#20040;&#20570;&#21040;&#26087;&#20540;&#25191;&#34892;<code>destory</code>&#65292; &#26032;&#20540;&#25191;&#34892;<code>create</code>&#20989;&#25968;&#30340;&#21602;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7fa344ee88d2456f8df5d1cf2c0db176~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1788&amp;h=491&amp;s=220938&amp;e=png&amp;b=fffdfd" /></p>
+<p>OK&#65292; &#20320;&#20197;&#20026;&#36208;&#21040;&#36825;&#37324;&#23601;&#32467;&#26463;&#20102;&#65311; &#21035;&#24536;&#35760;&#25105;&#20204;&#19978;&#38754;&#36339;&#36807;&#30340;<code>commitPassiveUnmountEffects_begin</code>&#12290;</p>
+<h4>&#22788;&#29702;&#21368;&#36733;&#30340;destory</h4>
+<p><code>commitPassiveUnmountEffects_begin</code>&#20316;&#20026;&#20837;&#21475;&#20989;&#25968;</p>
+<p>&#36825;&#37324;&#20027;&#35201;&#26159;&#23545;&#21024;&#38500;&#30340;&#33410;&#28857;&#36827;&#34892;&#39069;&#22806;&#30340;&#22788;&#29702;&#12290; &#20026;&#20160;&#20040;&#21602;&#65292;&#35201;&#32771;&#34385;&#21040;&#24403;&#25105;&#20204;&#19968;&#20010;&#32452;&#20214;&#35201;&#34987;&#21368;&#36733;&#30340;&#26102;&#20505;&#65292; &#20854;<code>useEffect</code>&#30340;<code>cleanup</code>&#20989;&#25968;&#24212;&#35813;&#37117;&#34987;&#25191;&#34892;&#19968;&#27425;&#12290; &#36825;&#19968;&#22359;&#30340;&#36923;&#36753;&#30446;&#30340;&#23601;&#26159;&#36825;&#20010;</p>
+<p><code>render</code>&#38454;&#27573;&#29983;&#25104;<code>Fiber</code>&#26641;&#30340;&#26102;&#20505;&#23601;&#23545;&#21024;&#38500;&#30340;&#33410;&#28857;&#36827;&#34892;&#20102;&#22788;&#29702;&#65292; &#20855;&#20307;&#21487;&#20197;&#30475;<a href="https://juejin.cn/post/7301909438541250571#heading-13" rel="noopener noreferrer" target="_blank">recursivelyTraverseMutationEffects</a>&#65288;&#30475;&#25130;&#22270;&#23601;&#22815;&#20102;&#65292; &#38142;&#25509;&#20013;&#20889;&#30340;&#26159;<code>commit</code>&#38454;&#27573;&#20013;&#30340;<code>mutation</code>&#38454;&#27573;&#23545;&#25171;&#19978;&#21024;&#38500;<code>flags</code>&#33410;&#28857;&#30340;&#36827;&#34892;&#21024;&#38500;&#30495;&#23454;<code>DOM</code>&#33410;&#28857;&#30340;&#22788;&#29702;&#65289;</p>
+<p>&#37027;&#25105;&#20204;&#26681;&#25454;&#19978;&#38754;&#30340;&#24605;&#36335;&#26469;&#35828;&#65306; &#25512;&#27979;&#36825;&#37324;&#30340;&#24605;&#36335;&#24212;&#35813;&#23601;&#26159;&#25214;&#21040;&#34987;&#21024;&#38500;&#30340;<code>Fiber</code>&#33410;&#28857;&#65292; &#28982;&#21518;&#25343;&#21040;&#20182;&#30340;<code>updateQueue</code>&#65292; &#22914;&#26524;<code>updateQueue</code>&#19981;&#20026;&#31354;&#30340;&#35805;&#65292; &#23601;&#36941;&#21382;&#27599;&#19968;&#20010;<code>effect</code>&#23545;&#35937;&#65292; &#25343;&#21040;<code>destory</code>&#20989;&#25968;&#36827;&#34892;&#25191;&#34892;</p>
+<p>&#25509;&#19979;&#21435;&#30475;&#28304;&#30721;&#21644;&#25105;&#20204;&#25512;&#27979;&#30340;&#19968;&#19981;&#19968;&#26679;</p>
+<pre><code>function commitPassiveUnmountEffects_begin() {
+  while (nextEffect !== null) {
+    const fiber = nextEffect;
+    const child = fiber.child;
+    // &#23376;&#33410;&#28857;&#26377;&#21024;&#38500;&#33410;&#28857;&#65292; ChildDeletion&#23601;&#26159;&#24403;&#23376;&#33410;&#28857;&#34987;&#21024;&#38500;&#26102;&#20250;&#25171;&#19978;&#30340;flags
+    // &#36825;&#19968;&#22359;&#23601;&#26159;&#25384;&#20010;&#25343;&#21040;&#21024;&#38500;&#30340;&#33410;&#28857;&#65292;&#28982;&#21518;&#35843;&#29992;commitPassiveUnmountEffectsInsideOfDeletedTree_begin
+    if ((nextEffect.flags &amp; ChildDeletion) !== NoFlags) {
+      const deletions = fiber.deletions;
+      if (deletions !== null) {
+        for (let i = 0; i &lt; deletions.length; i++) {
+          const fiberToDelete = deletions[i];
+          nextEffect = fiberToDelete;
+          commitPassiveUnmountEffectsInsideOfDeletedTree_begin(
+            fiberToDelete,
+            fiber,
+          );
+        }
+        // &#26029;&#24320;Child&#38142;&#21644;Sibling&#38142;
+         const previousFiber = fiber.alternate;
+          if (previousFiber !== null) {
+            let detachedChild = previousFiber.child;
+            if (detachedChild !== null) {
+              previousFiber.child = null;
+              do {
+                const detachedSibling = detachedChild.sibling;
+                detachedChild.sibling = null;
+                detachedChild = detachedSibling;
+              } while (detachedChild !== null);
+            }
+          }
+        nextEffect = fiber;
+      }
+    }
+    // &#36825;&#37324;&#21024;&#38500;&#20102;&#26080;&#20851;&#36923;&#36753;....
+  }
+}
+</code></pre>
+<p>&#36827;&#26469;&#20102;<code>commitPassiveUnmountEffectsInsideOfDeletedTree_begin</code> &#20043;&#21518;&#20250;&#39034;&#30528;&#20182;&#30340;<code>Child</code>&#38142;&#21644;<code>Sibling</code>&#38142;&#65288;&#36923;&#36753;&#20301;&#20110;<code>commitPassiveUnmountEffectsInsideOfDeletedTree_complete</code>&#65289;&#35843;&#29992;<code>commitPassiveUnmountInsideDeletedTreeOnFiber</code>&#12290; &#36825;&#20010;&#20989;&#25968;&#20869;&#37096;&#20854;&#23454;&#26412;&#36136;&#19978;&#23601;&#26159;&#35843;&#29992;&#20102;<code>commitHookEffectListUnmount</code>&#12290;<code>commitHookEffectListUnmount</code>&#23601;&#26159;&#22788;&#29702;<code>destory</code>&#30340;&#26680;&#24515;&#20989;&#25968;. &#20063;&#23601;&#26159;&#35828;&#21644;&#25105;&#20204;&#25512;&#27979;&#30340;&#27969;&#31243;&#26159;&#19968;&#33268;&#30340;&#12290;</p>
+<pre><code>function commitPassiveUnmountEffectsInsideOfDeletedTree_begin(
+  deletedSubtreeRoot: Fiber,
+  nearestMountedAncestor: Fiber | null,
+) {
+  while (nextEffect !== null) {
+    const fiber = nextEffect&#65307;
+    commitPassiveUnmountInsideDeletedTreeOnFiber(fiber, nearestMountedAncestor);
+    const child = fiber.child;
+    if (child !== null) {
+      child.return = fiber;
+      nextEffect = child;
+    } else {
+      commitPassiveUnmountEffectsInsideOfDeletedTree_complete(
+        deletedSubtreeRoot,
+      );
+    }
+  }
+}
+</code></pre>
+<h3>&#24635;&#32467;</h3>
+<p>&#25105;&#20204;&#26803;&#29702;&#19968;&#19979;<code>useEffect</code>&#30340;&#30456;&#20851;&#27969;&#31243;</p>
+<p>&#39318;&#20808;&#26159;&#21021;&#27425;&#28210;&#26579;&#38454;&#27573;</p>
+<ul>
+<li><code>render</code>&#38454;&#27573;&#30340;&#26102;&#20505;&#65292; &#27492;&#26102;&#35843;&#29992;&#30340;&#26159;<code>mountEffect</code>&#65292; &#20250;&#24418;&#25104;<code>hook</code>&#23545;&#35937;&#25346;&#19978;<code>hook</code>&#38142;&#34920;&#12290; &#24182;&#19988;&#24418;&#25104;<code>Effect</code>&#38142;&#34920;&#65292; <code>udpateQueue</code>&#23384;&#25918;&#23545;&#24212;&#30340;<code>Effect</code>&#38142;&#34920;&#12290;&#36824;&#20250;&#32473;<code>Fiber</code>&#25171;&#19978;<code>Passive</code>&#30340;<code>flag</code></li>
+<li><code>commit</code>&#38454;&#27573;&#30340;&#26102;&#20505;&#65292;&#22312;&#20934;&#22791;&#38454;&#27573;&#21033;&#29992;<code>MessageChannel</code>&#65292; &#35753;&#22788;&#29702;<code>useEffect</code>&#30340;&#27969;&#31243;&#24322;&#27493;&#25191;&#34892;&#65292; &#20063;&#23601;&#26159;&#25512;&#21040;&#19979;&#19968;&#20010;&#23439;&#20219;&#21153;&#22788;&#29702;</li>
+<li>&#24322;&#27493;&#22788;&#29702;<code>useEffect</code>&#65306;
+<ul>
+<li>&#39318;&#20808;&#20808;&#22788;&#29702;&#34987;&#21024;&#38500;&#30340;&#33410;&#28857;&#25191;&#34892;<code>destory</code>&#20989;&#25968;&#65288;&#36825;&#37324;&#19968;&#33324;&#27809;&#26377;&#30340;&#65289;</li>
+<li>&#28982;&#21518;&#25214;&#21040;&#25171;&#19978;<code>Passive</code>&#30340;<code>Fiber</code>&#33410;&#28857;&#65288;&#25152;&#26377;&#20351;&#29992;&#21040;<code>useEffect</code>&#30340;&#33410;&#28857;&#37117;&#20250;&#26377;&#35813;&#26631;&#31614;&#65289;</li>
+<li>&#28982;&#21518;&#20250;&#20808;&#22788;&#29702;<code>destory</code>&#65292; &#22240;&#20026;&#27492;&#26102;<code>destory</code>&#20026;<code>undefined</code>&#65292; &#25925;&#19981;&#22788;&#29702;&#12290;</li>
+<li>&#28982;&#21518;&#20877;&#22788;&#29702;<code>create</code>&#65292; &#27492;&#26102;&#26159;&#36941;&#21382;<code>updateQueue</code>&#19978;&#23384;&#25918;&#30340;<code>effect</code> &#38142;&#34920;&#65292; &#28982;&#21518;&#25384;&#20010;&#25191;&#34892;<code>create</code>&#20989;&#25968;&#12290; &#20854;&#25191;&#34892;&#32467;&#26524;&#20877;&#36171;&#20540;&#32473;<code>distory</code></li>
+</ul>
+</li>
+</ul>
+<p>&#65288;&#36825;&#20063;&#23601;&#26159;&#20026;&#20160;&#20040;<code>useEffect</code>&#22312;&#21021;&#27425;&#28210;&#26579;&#30340;&#26102;&#20505;&#20250;&#25191;&#34892;&#19968;&#27425;&#65289;</p>
+<p>&#25509;&#30528;&#20989;&#25968;&#21487;&#33021;&#22240;&#20854;&#20182;&#26102;&#20505;&#20135;&#29983;&#20102;&#21464;&#21160;&#65292; &#37325;&#26032;&#25191;&#34892;&#32452;&#20214;&#20989;&#25968;&#65292; &#27492;&#26102;&#36208;&#20837;&#20102;<code>update</code>&#27969;&#31243;</p>
+<ul>
+<li><code>render</code>&#38454;&#27573;&#30340;&#26102;&#20505;&#65292; &#27492;&#26102;&#35843;&#29992;&#30340;&#26159;<code>updateEffect</code>&#65292; &#23545;&#21069;&#21518;&#30340;<code>deps</code>&#25968;&#32452;&#36827;&#34892;&#27973;&#27604;&#36739;&#30340;&#21028;&#26029;&#65292; &#22914;&#26524;&#21069;&#21518;&#20381;&#36182;&#19968;&#33268;&#30340;&#35805;&#21017;&#19981;&#22788;&#29702;&#65292; &#19981;&#19968;&#33268;&#30340;&#35805;&#21017;&#32473;&#24403;&#21069;&#30340;<code>Fiber</code>&#25171;&#19978;<code>Passive</code>&#30340;<code>flag</code></li>
+<li><code>commit</code>&#38454;&#27573;&#21644;&#21021;&#27425;&#28210;&#26579;&#19968;&#33268;</li>
+<li>&#24322;&#27493;&#22788;&#29702;<code>useEffect</code>&#65306;
+<ul>
+<li>&#39318;&#20808;&#20808;&#22788;&#29702;&#34987;&#21024;&#38500;&#30340;&#33410;&#28857;&#25191;&#34892;<code>destory</code>&#20989;&#25968;</li>
+<li>&#28982;&#21518;&#25214;&#21040;&#25171;&#19978;<code>Passive</code>&#30340;<code>Fiber</code>&#33410;&#28857;&#65288;&#36825;&#37324;&#21482;&#26377;&#20381;&#36182;&#25913;&#21464;&#20102;&#30340;&#33410;&#28857;&#25165;&#20250;&#25171;&#65289;</li>
+<li>&#28982;&#21518;&#23545;&#20110;&#30446;&#26631;&#33410;&#28857;&#20250;&#20808;&#22788;&#29702;<code>destory</code>&#65292; &#27492;&#26102;&#22240;&#20026;&#21021;&#27425;&#28210;&#26579;/&#19978;&#19968;&#27425;<code>commit</code>&#22788;&#29702;&#36807;&#65292; &#25152;&#20197;&#22914;&#26524;&#20195;&#30721;&#20013;&#26377;&#30340;&#35805;&#36825;&#37324;&#19968;&#33324;&#37117;&#20250;&#26377;&#65292; &#20063;&#26159;&#36941;&#21382;<code>updateQueue</code>&#19978;&#30340;<code>Effect</code>&#38142;&#34920;&#65292; &#25343;&#21040;<code>destory</code>&#20989;&#25968;&#36827;&#34892;&#25191;&#34892;</li>
+<li><code>create</code>&#22788;&#29702;&#21516;&#21021;&#27425;&#28210;&#26579;</li>
+</ul>
+</li>
+</ul>
+<h2>&#20108;&#12289;useLayoutEffect</h2>
+<h3>mountLayoutEffect</h3>
+<p>&#36824;&#26159;&#20808;&#30475;<code>mountLayoutEffect</code>&#12290;&#35830;&#20320;&#20250;&#21457;&#29616;&#65292; &#36825;&#37324;&#21644;<code>mountEffect</code>&#30340;&#36923;&#36753;&#20063;&#22522;&#26412;&#19968;&#33268;&#65292; &#37117;&#26159;&#35843;&#29992;&#20102;<code>mountEffectImpl</code>&#65292; &#26368;&#22823;&#30340;&#21306;&#21035;&#23601;&#26159;&#36825;&#37324;&#25171;&#19978;&#30340;<code>hook flags</code>&#26159;<code>HookLayout</code></p>
+<pre><code>function mountLayoutEffect(
+  create: () =&gt; (() =&gt; void) | void,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+  let fiberFlags: Flags = UpdateEffect;
+  if (enableSuspenseLayoutEffectSemantics) {
+    fiberFlags |= LayoutStaticEffect;
+  }
+  return mountEffectImpl(fiberFlags, HookLayout, create, deps);
+}
+</code></pre>
+<h3>udpateLayoutEffect</h3>
+<p>&#20877;&#30475;<code>udpateLayoutEffect</code>, &#20063;&#26159;&#30452;&#25509;&#35843;&#29992;&#30340;<code>updateEffectImpl</code>&#12290; &#21482;&#19981;&#36807;&#20182;&#20256;&#20837;&#30340;<code>flags</code>&#36824;&#26159;<code>HookLayout</code></p>
+<pre><code>function updateLayoutEffect(
+  create: () =&gt; (() =&gt; void) | void,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+  return updateEffectImpl(UpdateEffect, HookLayout, create, deps);
+}
+</code></pre>
+<p>&#26082;&#28982;&#26159;&#35843;&#29992;&#30340;&#19968;&#26679;&#30340;&#20989;&#25968;&#65292; &#37027;&#20040;&#23601;&#35828;&#26126;&#20182;&#24418;&#25104;&#30340;<code>hook</code>&#23545;&#35937;&#65292; <code>effect</code>&#38142;&#37117;&#26159;&#19968;&#33268;&#30340;&#36923;&#36753;&#65292; &#21253;&#25324;<code>updateQueue</code>&#12290; &#20307;&#29616;&#19981;&#19968;&#26679;&#30340;&#23601;&#26159;&#27599;&#19968;&#20010;<code>effect</code>&#23545;&#35937;&#20013;&#30340;<code>tag</code>&#12290; &#36825;&#20010;<code>tag</code>&#36319;&#25105;&#20204;&#20256;&#20837;&#30340;<code>flags</code>&#26377;&#20851;</p>
+<p>&#20320;&#20250;&#21457;&#29616;&#25105;&#20204;&#19978;&#38754;&#35762;&#36848;&#30340;<code>React</code>&#22914;&#20309;&#22788;&#29702;<code>useEffect</code>&#30340;&#36807;&#31243;&#37117;&#26159;&#20381;&#36182;&#30528;<code>Passive</code>&#30340;&#26631;&#31614;&#21435;&#23547;&#25214;&#65292; &#37027;&#20040;&#25105;&#20204;<code>commit</code>&#38454;&#27573;&#22788;&#29702;<code>useLayoutEffect</code>&#30340;&#36923;&#36753;&#33258;&#28982;&#23601;&#19981;&#19968;&#26679;&#20102;</p>
+<p><strong><code>commit</code>&#38454;&#27573;&#26159;&#22312;<code>mutation</code>&#38454;&#27573;&#21435;&#22788;&#29702;<code>useLayoutEffect</code>&#19978;&#30340;<code>destory</code>&#20989;&#25968;&#12290; &#22312;<code>layout</code>&#38454;&#27573;&#22788;&#29702;<code>useLayoutEffect</code>&#19978;&#30340;<code>create</code>&#20989;&#25968;</strong></p>
+<h3>&#22788;&#29702;destory</h3>
+<p>&#23545;&#20110;<code>destory</code>&#20989;&#25968;&#65292; &#20854;&#23454;&#26412;&#36136;&#19978;&#35843;&#29992;&#30340;&#36824;&#26159;<code>commitPassiveUnmountOnFiber</code>&#12290; &#21482;&#19981;&#36807;&#21644;<code>useEffect</code>&#35843;&#29992;&#26102;&#26426;&#19981;&#19968;&#26679;</p>
+<h4>deps&#21464;&#26356;&#23548;&#33268;</h4>
+<p>&#23545;&#20110;<code>deps</code>&#20135;&#29983;&#21464;&#26356;&#38656;&#35201;&#25191;&#34892;&#30340;<code>destory</code>&#20989;&#25968;&#30340;&#25191;&#34892;&#36335;&#32447;&#26159;</p>
+<p><code>commitMutationEffects</code>&#65288;&#36827;&#20837;<code>mutation</code>&#38454;&#27573;&#65289;-&gt;</p>
+<p><code>commitMutationEffectsOnFiber</code>&#65288;&#36825;&#37324;&#36890;&#36807;<code>switch case tag</code>&#36827;&#34892;&#31579;&#36873;&#21040;<code>FunctionComponent</code>&#20043;&#21518;&#21448;&#36890;&#36807;&#31579;&#36873;&#20102;<code>fiber flags</code>&#26159;&#21542;&#23384;&#22312;<code>Update</code>&#65289;  -&gt;</p>
+<p><code>commitHookEffectListUnmount</code>&#65288;&#36825;&#20010;&#22312;&#19978;&#38754;&#24050;&#32463;&#26377;&#35762;&#35299;&#30456;&#20851;&#36923;&#36753;&#20102;, &#27880;&#24847;&#36825;&#37324;&#20256;&#20837;&#30340;<code>flags</code>&#20026;<code>Layout | HasEffect</code>&#65289; -&gt;</p>
+<p><code>safelyCallDestroy</code>&#65288;&#25191;&#34892;<code>destory</code>&#20989;&#25968;&#65289;</p>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d747f09326141a3824c7bea9c5129bc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=797&amp;h=269&amp;s=29655&amp;e=png&amp;b=fdfdfd" />
+<img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/adeb8a74aa1a458facc84f115c95fe9f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1035&amp;h=585&amp;s=83049&amp;e=png&amp;b=fefbfb" /></p>
+<h4>&#21368;&#36733;&#23548;&#33268;</h4>
+<p>&#23545;&#20110;&#21024;&#38500;&#33410;&#28857;&#30340;&#35805;&#65292; &#36825;&#37324;&#24050;&#32463;&#26377;&#35814;&#32454;&#35762;&#35299;&#20102;&#12290; &#35843;&#29992;&#36923;&#36753;&#23601;&#26159;</p>
+<p><code>commitMutationEffects</code>&#65288;&#36827;&#20837;<code>mutation</code>&#38454;&#27573;&#65289;-&gt;</p>
+<p><code>commitMutationEffectsOnFiber</code> -&gt; ( &#36825;&#37324;&#26080;&#35770;<code>Switch Case tag</code>&#21040;&#21738;&#20010;&#37117;&#19968;&#23450;&#20250;&#36827;&#20837;&#19979;&#19968;&#27493;, &#19978;&#38754;<code>deps</code>&#30340;&#21464;&#26356;&#27809;&#26377;&#20889;&#26159;&#22240;&#20026;&#19981;&#37325;&#35201;hhh, &#21453;&#27491;&#21448;&#20250;&#36882;&#24402;&#22238;&#26469;&#65289; -&gt;</p>
+<p><code>recursivelyTraverseMutationEffects</code> &#65288;&#36825;&#20010;&#30340;&#31532;&#19968;&#27493;&#30446;&#26631;&#23601;&#26159;&#22788;&#29702;&#21024;&#38500;&#33410;&#28857;&#65289;-&gt;</p>
+<p><code>commitDeletionEffects</code>&#65288;&#21024;&#38500;&#33410;&#28857;&#27969;&#31243;&#30340;&#20837;&#21475;&#20989;&#25968;&#65289; -&gt;</p>
+<p><code>commitDeletionEffectsOnFiber</code> &#65288;&#36890;&#36807;<code>Switch Case Fiber tag</code>&#23450;&#20301;&#21040;<code>FunctionComponent</code>&#28982;&#21518;&#31579;&#36873; <code>effect tag</code>&#20026;<code>Layout | HasEffect</code> &#65292; <a href="https://juejin.cn/post/7301909438541250571#heading-20" rel="noopener noreferrer" target="_blank">FunctionComponent</a> &#36825;&#37324;&#26377;&#35814;&#32454;&#35762;&#35299;&#65289; -&gt;</p>
+<p><code>safelyCallDestroy</code></p>
+<h3>&#22788;&#29702;create</h3>
+<p>&#36825;&#20010;&#36923;&#36753;&#21644;<code>useEffect</code>&#30340;&#35843;&#29992;&#20063;&#26159;&#19968;&#33268;&#30340;&#65292; &#19981;&#36807;&#35843;&#29992;&#23427;&#30340;&#22320;&#26041;&#22312;<code>commit</code>&#30340;<code>layout</code>&#38454;&#27573;&#12290; &#20197; <a href="https://juejin.cn/post/7301909438541250571#heading-26" rel="noopener noreferrer" target="_blank">commitLayoutEffectOnFiber</a> &#20026;&#20837;&#21475;&#65292; &#35843;&#29992;&#20102;<code>commitHookEffectListMount</code>&#65288;<code>useEffect</code>&#23601;&#26159;&#35843;&#29992;&#23427;&#22788;&#29702;&#30340;&#65289;&#12290;</p>
+<p>&#19981;&#21516;&#30340;&#23601;&#26159;&#20256;&#20837;&#30340;&#21442;&#25968;&#19981;&#21516;&#65292; <code>useEffect</code>&#35843;&#29992;&#30340;&#26102;&#20505;&#20256;&#20837;&#30340;<code>flags</code>&#20026; <code>HookPassive | HookHasEffect</code>&#12290; <code>useLayoutEffect</code>&#35843;&#29992;&#30340;&#26102;&#20505;&#20256;&#20837;&#30340;<code>flags</code>&#20026; <code>HookLayout | HookHasEffect</code>&#12290; <code>commitHookEffectListMount</code>&#20869;&#37096;&#23601;&#26159;&#36890;&#36807;&#20256;&#20837;&#30340;<code>flags</code>&#36827;&#34892;&#35782;&#21035;&#35843;&#29992;&#30340;</p>
+<h3>&#24635;&#32467;</h3>
+<p><code>useLayoutEffect</code>&#21644;<code>useEffect</code>&#30340;&#22788;&#29702;&#36923;&#36753;&#22522;&#26412;&#37117;&#26159;&#19968;&#26679;&#30340;&#12290; &#21807;&#19968;&#19981;&#21516;&#30340;&#23601;&#26159;&#25191;&#34892;&#30340;&#26102;&#38388;&#12290; &#22522;&#20110;<code>flags</code>&#30340;&#21306;&#21035;&#30340;&#20570;&#21040;&#19968;&#26679;&#30340;&#36923;&#36753;&#36798;&#21040;&#20004;&#31181;&#25928;&#26524;&#12290;</p>
+<p>&#36825;&#37324;&#20877;&#24635;&#32467;&#19968;&#27874;&#21152;&#28145;&#21360;&#35937;</p>
+<p><code>useLayoutEffect</code>&#30340;<code>destory</code>&#20989;&#25968;&#25191;&#34892;&#26102;&#26426;&#22312;<code>commit</code>&#38454;&#27573;&#30340;<code>mutation</code>&#38454;&#27573;&#65292; <code>create</code>&#20989;&#25968;&#25191;&#34892;&#26102;&#38388;&#22312;<code>commit</code>&#38454;&#27573;&#30340;<code>layout</code>&#38454;&#27573;</p>
+<p><code>useEffect</code>&#30340;<code>destory</code>&#20989;&#25968;&#21644;<code>create</code>&#20989;&#25968;&#37117;&#26159;&#21033;&#29992;<code>MessageChannel</code>&#36798;&#21040;&#22312;&#28210;&#26579;&#20043;&#21518;&#30340;&#23439;&#20219;&#21153;&#36827;&#34892;&#12290; &#21516;&#27493;&#39034;&#24207;&#25191;&#34892;&#23601;&#26159;&#20808;<code>destory</code>&#21518;<code>create</code></p>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1883b615ae4349a1ad922361651a0119~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1760&amp;h=927&amp;s=658101&amp;e=png&amp;b=fff9f9" /></p>
+<h2>&#19977;&#12289;useInsertionEffect</h2>
+<h3>mountInsertionEffect</h3>
+<p>&#21487;&#20197;&#30475;&#21040;&#20063;&#26159;&#35843;&#29992;&#20102;<code>mountEffectImpl</code>&#65292; &#21482;&#19981;&#36807;&#20256;&#20837;&#30340;<code>hook flags</code>&#20026;<code>HookInsertion</code></p>
+<pre><code>function mountInsertionEffect(
+  create: () =&gt; (() =&gt; void) | void,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+  return mountEffectImpl(UpdateEffect, HookInsertion, create, deps);
+}
+</code></pre>
+<h3>updateInsertionEffect</h3>
+<p>&#21487;&#20197;&#30475;&#21040;&#20063;&#26159;&#35843;&#29992;&#20102;<code>updateEffectImpl</code>&#65292;&#21482;&#19981;&#36807;&#20256;&#20837;&#30340;<code>hook flags</code>&#20026;<code>HookInsertion</code></p>
+<pre><code>function updateInsertionEffect(
+  create: () =&gt; (() =&gt; void) | void,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+  return updateEffectImpl(UpdateEffect, HookInsertion, create, deps);
+}
+</code></pre>
+<h3>&#22788;&#29702;destory</h3>
+<p><strong>&#20854;&#23454;&#25105;&#20204;&#22312;&#20102;&#35299;useLayoutEffect&#30340;&#26102;&#20505;&#24050;&#32463;&#25509;&#35302;&#20102;&#65292; &#36319;useLayout&#30340;&#35843;&#29992;&#26102;&#38388;&#26159;&#19968;&#26679;&#30340;</strong></p>
+<h4>&#21368;&#36733;&#23548;&#33268;</h4>
+<p>&#19968;&#26679;&#22312;<code>commitDeletionEffectsOnFiber</code>&#20013;&#65292;&#22914;&#22270;&#25152;&#31034;
+<img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/66ad822df6f84b00a9eea08cdb27f45f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1101&amp;h=666&amp;s=68181&amp;e=png&amp;b=ffffff" /></p>
+<h4>deps&#21464;&#26356;&#23548;&#33268;</h4>
+<p>&#19968;&#26679;&#22312;<code>commitMutationEffectsOnFiber</code>&#20013;&#22914;&#22270;&#25152;&#31034;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0201856c0c9a4485a0db54c7fea0faed~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1030&amp;h=656&amp;s=61803&amp;e=png&amp;b=fefefe" /></p>
+<h3>&#22788;&#29702;create</h3>
+<p>hhh&#20320;&#30475;&#19978;&#38754;&#37027;&#20010;&#22270;&#65292; &#20854;&#23454;&#24050;&#32463;&#22788;&#29702;&#20102;&#65292; &#35843;&#29992;&#20102;<code>commtHookEffectListUnmount</code>&#22788;&#29702;<code>destory</code>&#20043;&#21518;&#23601;&#35843;&#29992;&#20102;<code>commitHookEffectListMount</code>&#21435;&#22788;&#29702;<code>create</code></p>
+<h3>&#24635;&#32467;</h3>
+<p>&#21487;&#20197;&#30475;&#21040;&#65292; &#20854;&#23454;&#19978;&#38754;&#19977;&#31181;hook&#37117;&#26159;&#20381;&#36182;&#30528;flags&#22312;&#23454;&#29616;&#22312;&#19981;&#21516;&#26102;&#26426;&#21435;&#25191;&#34892;&#36923;&#36753;&#12290;</p>
+<ul>
+<li>&#23545;&#20110;<code>useInsertionEffect</code>&#26469;&#35828;<code>flag</code>&#20026;<code>Insertion</code></li>
+<li>&#23545;&#20110;<code>useLayoutEffect</code>&#26469;&#35828;<code>flag</code>&#20026;<code>Layout</code></li>
+<li>&#23545;&#20110;<code>useEffect</code>&#26469;&#35828;<code>flag</code>&#20026;<code>Passive</code>
+<img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/23376876559e4fd4bc9b18859bc8c84d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=664&amp;h=166&amp;s=13138&amp;e=png&amp;b=ffffff" /></li>
+</ul>
+<p>&#25105;&#20204;&#25226;&#22270;&#20877;&#26356;&#26032;&#19968;&#19979;</p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fce22b5119ef4bd39ca8b9f7a67856e2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2240&amp;h=927&amp;s=907802&amp;e=png&amp;b=fff9f9" /></p>
+<h2>&#22235;&#12289;useImperativeHandle</h2>
+<blockquote>
+<p>&#20063;&#35768;&#20320;&#20250;&#22909;&#22855;&#65292; &#35830;&#25105;&#24590;&#20040;&#25226;<code>useImperativeHandle</code>&#25918;&#22312;&#36825;&#37324;&#35762;&#65292; &#36825;&#19968;&#31687;&#19981;&#26159;&#22312;&#23558;effect&#30456;&#20851;&#30340;&#21527;&#12290; &#21035;&#24613;&#65292; &#20320;&#24448;&#19979;&#30475;&#30475;</p>
+</blockquote>
+<p>&#25105;&#20043;&#21069;&#20986;&#36807;&#19968;&#31687;&#25991;&#31456;&#35762;&#36807;<code>useImperativeHandle</code>&#30340;&#29992;&#27861;&#65292; &#19981;&#20102;&#35299;&#30340;&#21487;&#20197;&#30475; <a href="https://juejin.cn/post/7211805251216670777#heading-3" rel="noopener noreferrer" target="_blank">useImperativeHandle</a></p>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f59fc29c8a0b4d64aa58c8a4ea9a3274~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=909&amp;h=163&amp;s=18026&amp;e=png&amp;b=ffffff" />
+&#35830;&#20320;&#20250;&#21457;&#29616;&#36825;&#19981;&#23601;&#31867;&#20284;&#20110;<code>Effect</code>&#30340;&#36923;&#36753;&#65292; &#22312;&#20381;&#36182;&#21464;&#26356;&#20043;&#21518;&#65292; &#21435;&#25191;&#34892;&#19968;&#20123;&#25805;&#20316;&#12290; &#35753;&#25105;&#20204;&#25506;&#31350;&#19968;&#19979;&#26159;&#19981;&#26159;&#36825;&#22238;&#20107;</p>
+<p>Ok&#65292; &#25509;&#19979;&#21435;&#25353;&#29031;&#25105;&#20204;&#30340;&#22871;&#36335;&#20808;&#30475;mountImperativeHandle</p>
+<h3>mountImperativeHandle</h3>
+<p>&#20320;&#20250;&#21457;&#29616;&#65292; &#20182;&#20381;&#26087;&#20351;&#29992;&#20102;<code>mountEffectImpl</code>&#12290; &#19988;<strong>&#20182;&#30340;<code>hook flags</code>&#20256;&#20837;&#30340;&#26159;<code>HookLayout</code>&#12290; &#25925;&#25105;&#20204;&#23601;&#20102;&#35299;&#20102;&#20182;&#30340;&#35843;&#29992;&#26102;&#26426;</strong>&#12290; &#36825;&#37324;&#20256;&#20837;&#30340;<code>create</code>&#20989;&#25968;&#26159;<code>imperativeHandleEffect</code>&#12290; &#28982;&#21518;&#23558;&#25105;&#20204;&#20256;&#20837;&#30340;<code>ref</code>&#65292; <code>create</code>&#20316;&#20026;&#21442;&#25968;&#20256;&#20837;</p>
+<pre><code>function mountImperativeHandle&lt;T&gt;(
+  ref: {|current: T | null|} | ((inst: T | null) =&gt; mixed) | null | void,
+  create: () =&gt; T,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+ // &#36825;&#37324;&#23545;deps&#36827;&#34892;&#20102;&#22788;&#29702;&#65292; &#23558;ref&#20063;&#25918;&#20837;deps&#20013;
+  const effectDeps =
+    deps !== null &amp;&amp; deps !== undefined ? deps.concat([ref]) : null;
+
+  let fiberFlags: Flags = UpdateEffect;
+  if (enableSuspenseLayoutEffectSemantics) {
+    fiberFlags |= LayoutStaticEffect;
+  }
+  return mountEffectImpl(
+    fiberFlags,
+    HookLayout,
+    imperativeHandleEffect.bind(null, create, ref),
+    effectDeps,
+  );
+}
+</code></pre>
+<p><code>imperativeHandleEffect</code>&#21448;&#26159;&#20160;&#20040;&#21602;&#12290; &#21487;&#20197;&#30475;&#21040;&#22522;&#26412;&#36923;&#36753;&#26159;&#36890;&#36807;&#35843;&#29992;&#20256;&#20837;&#30340;<code>create</code>&#20989;&#25968;&#65292; &#36171;&#20540;&#32473;<code>ref</code>&#12290; &#28982;&#21518;&#22788;&#29702;&#20102;<code>destory</code>&#20989;&#25968;&#65292; &#22312;&#26356;&#26032;&#30340;&#26102;&#20505;&#33021;&#22815;&#37325;&#32622;<code>ref</code>&#20540;&#12290;</p>
+<pre><code>function imperativeHandleEffect&lt;T&gt;(
+  create: () =&gt; T,
+  // &#20256;&#20837;&#30340;ref&#21487;&#20197;&#26159;ref&#23545;&#35937;&#20063;&#21487;&#20197;&#26159;&#19968;&#20010;&#20989;&#25968;
+  ref: {|current: T | null|} | ((inst: T | null) =&gt; mixed) | null | void,
+) {
+  if (typeof ref === 'function') {
+    const refCallback = ref;
+    const inst = create(); // &#25343;&#21040;&#26292;&#38706;&#32473;&#29238;&#32452;&#20214;&#30340;ref&#23545;&#35937;
+    refCallback(inst); // &#20316;&#20026;&#21442;&#25968;&#20256;&#20837;ref&#20989;&#25968;
+    return () =&gt; {
+      refCallback(null);  // &#36825;&#26159;destory&#20989;&#25968;&#65292;&#32473;&#20182;&#37325;&#32622;
+    };
+  } else if (ref !== null &amp;&amp; ref !== undefined) {
+    const refObject = ref;
+    const inst = create(); // &#25343;&#21040;&#26292;&#38706;&#32473;&#29238;&#32452;&#20214;&#30340;ref&#23545;&#35937;
+    refObject.current = inst;  // &#32473;&#20256;&#20837;&#30340;ref&#36171;&#20540;
+    return () =&gt; {
+      refObject.current = null;  // destory&#20989;&#25968;&#65292; &#32473;&#20182;&#37325;&#32622;
+    };
+  }
+}
+</code></pre>
+<h3>updateImperativeHandle</h3>
+<p>&#36825;&#37324;&#30340;&#36923;&#36753;&#27809;&#20160;&#20040;&#22909;&#35762;&#20102;&#65292; &#36319;<code>mountImperativeHandle</code>&#24046;&#19981;&#22810;</p>
+<pre><code>function updateImperativeHandle&lt;T&gt;(
+  ref: {|current: T | null|} | ((inst: T | null) =&gt; mixed) | null | void,
+  create: () =&gt; T,
+  deps: Array&lt;mixed&gt; | void | null,
+): void {
+  const effectDeps =
+    deps !== null &amp;&amp; deps !== undefined ? deps.concat([ref]) : null;
+  return updateEffectImpl(
+    UpdateEffect,
+    HookLayout,
+    imperativeHandleEffect.bind(null, create, ref),
+    effectDeps,
+  );
+}
+</code></pre>
+<p>&#25925;<code>useImperativeHandle</code>&#30340;&#19968;&#25972;&#20010;&#35843;&#29992;&#36923;&#36753;&#21644;<code>useLayoutEffect</code>&#37117;&#24456;&#31867;&#20284;&#12290; &#21306;&#21035;&#23601;&#22312;&#20110;&#65292;<code>useLayoutEffect</code>&#30340;<code>create</code>&#20989;&#25968;&#21644;<code>destory</code>&#20989;&#25968;&#26159;&#25105;&#20204;&#20256;&#20837;&#30340;&#21442;&#25968;&#12290; &#32780;<code>useImperativeHandle</code>&#30340;<code>create</code>&#20989;&#25968;&#21644;<code>destory</code>&#20989;&#25968;&#37117;&#26159;&#22266;&#23450;&#30340;</p>
+<h2>&#32467;&#26463;&#35821;</h2>
+<p><code>React hook</code>&#30340;&#30456;&#20851;&#36923;&#36753;&#23601;&#21040;&#36825;&#19968;&#31687;&#32467;&#26463;&#65292; &#19977;&#31687;&#19979;&#26469;&#25105;&#20204;&#19968;&#20849;&#20102;&#35299;&#20102;11&#20010;<code>hook</code>&#21407;&#29702;&#65292; &#22522;&#26412;&#35206;&#30422;&#20102;&#24120;&#35265;&#30340;<code>hook</code>&#12290; &#30456;&#20449;&#20320;&#30475;&#23436;&#36825;&#19977;&#31687;&#20063;&#33021;&#22815;&#26377;&#19968;&#23450;&#25910;&#33719;&#65292; &#23545;&#20110;&#20160;&#20040;&#22330;&#26223;&#20351;&#29992;&#20160;&#20040;<code>hook</code>&#20063;&#26377;&#20102;&#19968;&#23450;&#30340;&#20102;&#35299;&#12290;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-23T07:22:55+00:00</pubDate>
+</item>
+
+<item>
 <title>threejs开发可视化数字城市效果</title>
 <link>https://juejin.cn/post/7304272076650283042</link>
 <guid>https://juejin.cn/post/7304272076650283042</guid>
@@ -464,7 +1405,6 @@ if (context) {
 <p><a href="https://juejin.cn/post/7237006769540399164" rel="noopener noreferrer" target="_blank"># Javascript&#22522;&#30784;&#20043;&#20889;&#19968;&#20010;&#22909;&#29609;&#30340;&#28857;&#20987;&#25928;&#26524;</a></p>
 <p><a href="https://juejin.cn/post/7236668944341286967" rel="noopener noreferrer" target="_blank"># Javascript&#22522;&#30784;&#20043;&#40736;&#26631;&#25302;&#25289;&#25341;</a></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T04:10:10+00:00</pubDate>
 </item>
 <item>
@@ -873,7 +1813,6 @@ example
 <li><a href="https://juejin.cn/post/7118294114734440455" rel="noopener noreferrer" target="_blank">vue3+ts+vite&#39033;&#30446;&#20013;&#20351;&#29992;eslint+prettier+stylelint+husky&#25351;&#21335;</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T12:45:35+00:00</pubDate>
 </item>
 <item>
@@ -1049,7 +1988,6 @@ callback(false)
 <p>&#22914;&#38656;&#20316;&#32773;&#34917;&#20805;&#25110;&#20462;&#25913;&#65292;&#27426;&#36814;&#22312;&#35780;&#35770;&#21306;&#30041;&#35328;&#12290;</p>
 <p><strong>END</strong></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T11:53:35+00:00</pubDate>
 </item>
 <item>
@@ -1159,7 +2097,6 @@ touch src/index.ts
 <p>&#20405;&#26435;&#35831;&#32852;&#31995;&#65292;&#39532;&#19978;&#21024;&#38500;</p>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T10:31:04+00:00</pubDate>
 </item>
 <item>
@@ -1408,7 +2345,6 @@ setFromCamera( coords, camera ) {
 }
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T10:20:00+00:00</pubDate>
 </item>
 <item>
@@ -1416,7 +2352,6 @@ setFromCamera( coords, camera ) {
 <link>https://juejin.cn/post/7304182005286027301</link>
 <guid>https://juejin.cn/post/7304182005286027301</guid>
 <content:encoded><![CDATA[
-
 <p>&#20316;&#20026;&#29616;&#20195;&#21069;&#31471;&#24320;&#21457;&#20013;&#19981;&#21487;&#25110;&#32570;&#30340;&#19968;&#37096;&#20998;&#65292;Canvas&#25216;&#26415;&#22312;&#23454;&#29616;&#22270;&#24418;&#12289;&#21160;&#30011;&#21644;&#20132;&#20114;&#21151;&#33021;&#26041;&#38754;&#26377;&#30528;&#37325;&#35201;&#30340;&#20316;&#29992;&#12290;&#23545;&#20110;&#24819;&#35201;&#23398;&#20064;Canvas&#25216;&#26415;&#30340;&#20154;&#26469;&#35828;&#65292;&#19968;&#20010;&#22909;&#30340;&#23398;&#20064;&#36335;&#24452;&#26159;&#33267;&#20851;&#37325;&#35201;&#30340;&#12290;&#22312;&#26412;&#25991;&#20013;&#65292;&#25105;&#20204;&#23558;&#28145;&#20837;&#25506;&#35752;&#22914;&#20309;&#23398;&#20064;Canvas&#25216;&#26415;&#65292;&#36890;&#36807;&#25552;&#20379;&#30456;&#20851;&#30340;&#28436;&#31034;&#31034;&#20363;&#20195;&#30721;&#21644;API&#35843;&#29992;&#25351;&#21335;&#65292;&#24110;&#21161;&#35835;&#32773;&#20840;&#38754;&#20102;&#35299;&#21644;&#25484;&#25569;Canvas&#25216;&#26415;&#12290;</p>
 <h2>&#20102;&#35299;Canvas</h2>
 <p>Canvas&#26159;HTML5&#20013;&#30340;&#19968;&#20010;&#26631;&#31614;&#65292;&#23427;&#21487;&#20197;&#29992;&#26469;&#32472;&#21046;&#22270;&#24418;&#12289;&#21160;&#30011;&#21644;&#20132;&#20114;&#20803;&#32032;&#12290;&#22312;&#23398;&#20064;Canvas&#25216;&#26415;&#20043;&#21069;&#65292;&#25105;&#20204;&#39318;&#20808;&#35201;&#23545;Canvas&#36827;&#34892;&#21021;&#27493;&#20102;&#35299;&#12290;</p>
@@ -1481,7 +2416,6 @@ draw();
 <h2>&#24635;&#32467;</h2>
 <p>&#23398;&#20064;Canvas&#25216;&#26415;&#38656;&#35201;&#25105;&#20204;&#20840;&#38754;&#20102;&#35299;&#20854;&#22522;&#26412;&#32472;&#22270;&#25805;&#20316;&#21644;API&#35843;&#29992;&#26041;&#27861;&#12290;&#36890;&#36807;&#26412;&#25991;&#25552;&#20379;&#30340;&#31034;&#20363;&#20195;&#30721;&#21644;&#25351;&#21335;&#65292;&#30456;&#20449;&#20320;&#24050;&#32463;&#25484;&#25569;&#20102;&#23398;&#20064;Canvas&#25216;&#26415;&#30340;&#22522;&#26412;&#35201;&#28857;&#12290;&#24076;&#26395;&#20320;&#33021;&#22815;&#36827;&#19968;&#27493;&#28145;&#20837;&#23398;&#20064;&#65292;&#25506;&#32034;Canvas&#22312;&#21069;&#31471;&#24320;&#21457;&#20013;&#30340;&#26356;&#22810;&#28508;&#21147;&#65292;&#24182;&#23558;&#20854;&#24212;&#29992;&#20110;&#23454;&#38469;&#39033;&#30446;&#20013;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T09:59:51+00:00</pubDate>
 </item>
 <item>
@@ -1489,7 +2423,6 @@ draw();
 <link>https://juejin.cn/post/7304181050943488051</link>
 <guid>https://juejin.cn/post/7304181050943488051</guid>
 <content:encoded><![CDATA[
-
 <p>&#39318;&#20808;&#38382;&#19968;&#19979;&#33258;&#24049;&#65292;&#20026;&#20160;&#20040;&#35201;&#29992; TypeScript &#26469;&#24320;&#21457; npm &#21253;&#65311;</p>
 <p>&#29992; TypeScript &#24320;&#21457;npm&#21253;&#65292;&#38656;&#35201;&#37197;&#32622;&#19968;&#22534;&#19996;&#35199;&#65292;&#27604;&#22914;&#24320;&#21457;&#36807;&#31243;&#20013;&#38656;&#35201;&#20351;&#29992;<code>ts-node</code>&#25110;&#32773;<code>esno</code>&#36825;&#26679;&#30340;&#24037;&#20855;&#25226; TS &#36716;&#21270;&#20026; JS&#21518;&#20877;&#25191;&#34892;&#65292;&#24320;&#21457;&#23436;&#25104;&#21518;&#20063;&#38656;&#35201;&#26500;&#24314;&#31561;&#31561;&#12290;</p>
 <p>&#22914;&#26524;&#25105;&#30340;&#21253;&#27604;&#36739;&#31616;&#21333;&#65292;&#25105;&#30452;&#25509;&#29992; JavaScript &#19981;&#39321;&#21527;&#65311;</p>
@@ -1603,7 +2536,6 @@ export default {
 <p>&#21478;&#22806;&#65292;tsconfig.json&#20013;&#30340;<code>"target": "ES5"</code>&#21487;&#20197;&#24110;&#25105;&#20204;&#23558;&#20195;&#30721;&#25171;&#21253;&#20026;<code>ES5</code>&#30340;&#35821;&#27861;&#65292;&#25152;&#20197;&#36825;&#37324;&#19981;&#29992;&#20877;&#20351;&#29992;<code>babel</code>&#26469;&#36827;&#34892;&#35821;&#27861;&#36716;&#25442;&#20102;&#12290;</p>
 <p>&#20851;&#20110; rollup &#36825;&#19968;&#37096;&#20998;&#21487;&#20197;&#21442;&#32771;&#32593;&#19978;&#30340;&#36164;&#26009;&#65292;&#36825;&#37324;&#23601;&#19981;&#20570;&#35814;&#32454;&#20171;&#32461;&#20102;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T09:47:52+00:00</pubDate>
 </item>
 <item>
@@ -1611,7 +2543,6 @@ export default {
 <link>https://juejin.cn/post/7304271989903261711</link>
 <guid>https://juejin.cn/post/7304271989903261711</guid>
 <content:encoded><![CDATA[
-
 <p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4149a30b5aad4df99ce6d8b283a0c50d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1760&amp;h=486&amp;s=243897&amp;e=png&amp;b=ddd6fe" /></p>
 <p><a href="https://github.com/antvis/G2" rel="noopener noreferrer" target="_blank">G2</a> &#26159;&#34434;&#34433;&#38598;&#22242; AntV &#22242;&#38431;&#25512;&#20986;&#30340;&#19968;&#22871;&#21487;&#35270;&#21270;&#35821;&#27861;&#65292;&#19987;&#27880;&#20110;&#21019;&#36896;&#22522;&#20110;&#32593;&#39029;&#30340;&#21487;&#35270;&#21270;&#12290;G2 &#22312;&#20170;&#24180;&#30340; 3 &#26376; 21 &#26085;&#21644; AVA &#22242;&#38431;&#19968;&#36215;&#21457;&#24067;&#20102; 5.0 &#27491;&#24335;&#29256;&#26412;&#65292;&#20854;&#19987;&#19994;&#12289;&#31616;&#20171;&#30340;&#35821;&#27861;&#24110;&#24191;&#22823;&#24320;&#21457;&#32773;&#35299;&#20915;&#20102;&#22823;&#22823;&#23567;&#23567;&#30340;&#21487;&#35270;&#21270;&#38590;&#39064;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#26469;&#30475;&#30475; G2 &#26632;&#22242;&#38431;&#36817;&#19968;&#24180;&#26469;&#30340;&#24037;&#20316;&#65292;&#20197;&#21450;&#23545;&#26410;&#26469;&#30340;&#23637;&#26395;&#12290;</p>
 <p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1160b4af31a6423eaf6e2cb66faa6da9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1920&amp;h=1080&amp;s=789071&amp;e=jpg&amp;b=292521" /></p>
@@ -1677,7 +2608,6 @@ export default {
 <p>&#36825;&#23601;&#26159; G2 &#26632;&#22242;&#38431;&#26368;&#36817;&#19968;&#24180;&#30340;&#20027;&#35201;&#24037;&#20316;&#20102;&#65292;&#20063;&#26159;&#26412;&#23626; 1122 G2 &#26632;&#23545;&#22806;&#30340;&#21457;&#24067;&#20869;&#23481;&#12290;&#27426;&#36814;&#22823;&#23478;&#20351;&#29992; G2 &#26632;&#20135;&#21697;&#65292;&#24182;&#19988;&#20197;&#20219;&#20309;&#24418;&#24335;&#26469;&#21442;&#19982;&#24320;&#21457;&#65292;&#35753;&#25105;&#20204;&#19968;&#36215;&#35753;&#23427;&#20204;&#21464;&#24471;&#26356;&#22909;&#65292;&#23454;&#29616;&#25105;&#20204;&#30340;&#24895;&#26223;&#65306;&#22312;&#25968;&#25454;&#30340;&#28023;&#27915;&#37324;&#33719;&#24471;&#35270;&#35273;&#21270;&#24605;&#32771;&#30340;&#33021;&#21147;&#65281;</p>
 <p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/511dc4c1ba524b44bbb1b5fea75557ae~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2636&amp;h=1530&amp;s=644648&amp;e=jpg&amp;b=fdfaf9" /></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T02:23:34+00:00</pubDate>
 </item>
 <item>
@@ -1685,7 +2615,6 @@ export default {
 <link>https://juejin.cn/post/7304263961238945827</link>
 <guid>https://juejin.cn/post/7304263961238945827</guid>
 <content:encoded><![CDATA[
-
 <p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b6a7c963515d4143a42102fa720f4b9a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3840&amp;h=1496&amp;s=1081521&amp;e=png&amp;b=e3e9fe" /></p>
 <p>AntV &#26159;&#19968;&#20010;&#24320;&#28304;&#30340;&#20225;&#19994;&#32423;&#25968;&#25454;&#21487;&#35270;&#21270;&#35299;&#20915;&#26041;&#26696;&#65292;&#22238;&#39038;&#36807;&#21435; 6 &#24180;&#30340;&#21697;&#29260;&#26085;&#20027;&#39064;&#65292;&#21487;&#20197;&#30475;&#21040;&#25105;&#20204;&#25104;&#38271;&#30340;&#36275;&#21360;&#65306;</p>
 <p><em>2017 &#24320;&#28304;&middot;&#24320;&#25918; | 2018 &#30693;&#24515;&middot;&#30693;&#26032; | 2019 &#30693;&#28304;&middot;&#33268;&#36828; | 2020 &#21033;&#19994;&middot;&#31435;&#19994; | 2021 &#26684;&#29289;&middot;&#38761;&#24735; | 2022 &#36828;&#26041;&middot;&#36828;&#33459;</em></p>
@@ -1790,7 +2719,6 @@ export default {
 <li>2022&#65306;<a href="https://www.yuque.com/antv/blog/1122_6" rel="noopener noreferrer" target="_blank">&#36828;&#26041; &middot; &#36828;&#33459;</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T02:08:08+00:00</pubDate>
 </item>
 <item>
@@ -1798,7 +2726,6 @@ export default {
 <link>https://juejin.cn/post/7304270299981496374</link>
 <guid>https://juejin.cn/post/7304270299981496374</guid>
 <content:encoded><![CDATA[
-
 <p>&#26368;&#36817;&#25105;&#20204;&#22312;&#20570;&#19968;&#20010;&#26032;&#20135;&#21697;&#65292;&#35753;AI&#22823;&#27169;&#22411;&#25198;&#28436;&#38754;&#35797;&#23448;&#12290;</p>
 <p>&#35828;&#23454;&#22312;&#65292;&#25552;&#20986;&#36825;&#20010;&#24819;&#27861;&#65292;&#26368;&#21021;&#23581;&#35797;&#30340;&#26102;&#20505;&#65292;&#25105;&#26159;&#19981;&#25265;&#20160;&#20040;&#24076;&#26395;&#30340;&#12290;&#34429;&#28982;chatGPT&#30340;&#33021;&#21147;&#30456;&#24403;&#24778;&#33395;&#65292;&#20294;&#26159;&#35201;&#35753;&#23427;&#23436;&#25104;&#19968;&#20010;&#25216;&#26415;&#38754;&#35797;&#30340;&#23436;&#25972;&#36807;&#31243;&#65292;&#32780;&#19981;&#26159;&#20043;&#21069;&#37027;&#20123;&#31616;&#21333;&#30340;&#20889;&#20889;&#26085;&#25253;&#65292;&#20986;&#20986;&#25991;&#26696;&#20043;&#31867;&#30340;&#24037;&#20316;&#65292;&#24819;&#19968;&#19979;&#37117;&#35273;&#24471;&#36824;&#26159;&#38750;&#24120;&#38590;&#30340;&#12290;</p>
 <p>&#20294;&#26159;&#65292;&#23454;&#38469;&#30340;&#32467;&#26524;&#22823;&#22823;&#36229;&#20986;&#25105;&#30340;&#39044;&#26399;&#65292;&#36825;&#26159;&#25105;&#20204;&#20869;&#37096;&#27979;&#35797;&#30340;&#37096;&#20998;&#25928;&#26524;&#65288;&#38754;&#35797;&#20154;&#29289;&#20026;&#34394;&#26500;&#65289;&#65306;</p>
@@ -1849,7 +2776,6 @@ export default {
 <p>&#26368;&#21518;&#65292;&#22240;&#20026;&#25105;&#20204;&#30340;&#20135;&#21697;&#36824;&#22788;&#20110;&#20869;&#27979;&#38454;&#27573;&#65292;&#26410;&#27491;&#24335;&#24320;&#25918;&#65292;&#25152;&#20197;&#22312;&#36825;&#37324;&#23601;&#26242;&#19988;&#20808;&#19981;&#20844;&#24320;&#20135;&#21697;&#30340;&#32593;&#22336;&#20102;&#65292;&#26377;&#20852;&#36259;&#30340;&#21516;&#23398;&#21487;&#20197;&#22312;&#25991;&#31456;&#19979;&#26041;&#30041;&#35328;&#65292;&#19968;&#26086;&#25105;&#20204;&#30340;&#20135;&#21697;ready&#65292;&#25105;&#20250;&#31532;&#19968;&#26102;&#38388;&#32473;&#22823;&#23478;&#36992;&#35831;&#30721;&#65292;&#35753;&#22823;&#23478;&#20813;&#36153;&#20307;&#39564;&#12290;</p>
 <p>&#21478;&#22806;&#65292;&#20026;&#20102;&#39564;&#35777;&#38656;&#27714;&#65292;<strong>&#25105;&#20204;&#29616;&#22312;&#25552;&#20379;&#19968;&#20123; 1v1 &#30495;&#20154;&#27169;&#25311;&#38754;&#35797;&#30340;&#26426;&#20250;&#12290;</strong> &#38754;&#35797;&#23448;&#37117;&#26159;&#21069;&#23383;&#33410;&#36339;&#21160;&#30340;&#39640;&#38454;&#24037;&#31243;&#24072;&#65288;&#21253;&#25324;&#25105;&#65289;&#65292;&#38024;&#23545;&#22823;&#21378;&#38754;&#35797;&#35201;&#27714;&#32473;&#22823;&#23478;&#25552;&#20379;&#27169;&#25311;&#38754;&#35797;&#21644;&#25351;&#23548;&#65292;&#26377;&#20852;&#36259;&#30340;&#21516;&#23398;&#21487;&#20197;&#30041;&#35328;&#25110;&#31169;&#20449;&#25105;&#35814;&#32842;&#65292;&#20063;&#21487;&#20197;&#21152;&#25105;&#20204;&#36127;&#36131;&#20154;&#30340;&#24494;&#20449;&#21495; <strong>daige__winer</strong> &#36827;&#34892;&#39044;&#32422;&#12290;&#21442;&#19982; 1v1 &#27169;&#25311;&#38754;&#35797;&#30340;&#21516;&#23398;&#65292;&#20063;&#33021;&#33719;&#24471;&#25105;&#20204;&#20135;&#21697;&#30340;&#20248;&#20808;&#20307;&#39564;&#30340;&#26426;&#20250;&#12290;&#21517;&#39069;&#26377;&#38480;&#65292;&#20808;&#21040;&#20808;&#24471;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T02:06:17+00:00</pubDate>
 </item>
 <item>
@@ -1857,7 +2783,6 @@ export default {
 <link>https://juejin.cn/post/7304272076642058274</link>
 <guid>https://juejin.cn/post/7304272076642058274</guid>
 <content:encoded><![CDATA[
-
 <h2>&#21069;&#35328;</h2>
 <p>&#23553;&#35013;&#23436;&#39029;&#38754;&#36890;&#29992;&#27169;&#22359;&#21518;&#65292;&#29616;&#22312;&#25105;&#20204;&#27491;&#24335;&#36827;&#20837;&#39029;&#38754;&#30340;&#26500;&#24314;&#12290;&#25628;&#32034;&#26639;&#12289;&#25353;&#38062;&#26639;&#21644;&#34920;&#26684;&#23601;&#19981;&#20877;&#22810;&#20570;&#36184;&#36848;&#20102;&#65292;&#37117;&#22823;&#21516;&#23567;&#24322;&#21482;&#26159;&#20256;&#20837;&#21442;&#25968;&#19981;&#21516;&#12290;&#25105;&#20204;&#20027;&#35201;&#26469;&#35762;&#25353;&#38062;&#30340;&#21151;&#33021;&#12290;&#21487;&#20197;&#20998;&#20026;&#20197;&#19979;&#20004;&#31867;</p>
 <ul>
@@ -2310,7 +3235,6 @@ const columns = [
 <h2>&#20195;&#30721;</h2>
 <p>&#19978;&#36848;&#23454;&#29616;&#30340;&#20195;&#30721;&#37117;&#25918;&#22312;<a href="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin" rel="noopener noreferrer" target="_blank" title="https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FAlan-222%2Freact-antd5-admin">react-antd5-admin</a>&#65292;&#22823;&#23478;&#21487;&#33258;&#34892;&#26597;&#38405;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T01:40:25+00:00</pubDate>
 </item>
 <item>
@@ -2318,7 +3242,6 @@ const columns = [
 <link>https://juejin.cn/post/7304267413616017435</link>
 <guid>https://juejin.cn/post/7304267413616017435</guid>
 <content:encoded><![CDATA[
-
 <h1>&#19968;&#12289;Vue3&#32467;&#26500;&#20998;&#26512;</h1>
 <h3>1&#12289;Vue2&#19982;Vue3&#30340;&#23545;&#27604;</h3>
 <ul>
@@ -2923,7 +3846,6 @@ export function trackEffects(
 <p>&#26469;&#28304;&#65306;&#20140;&#19996;&#20113;&#24320;&#21457;&#32773;&#31038;&#21306; &#33258;&#29503;&#20854;&#35828;Tech &#36716;&#36733;&#35831;&#27880;&#26126;&#26469;&#28304;</p>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T01:28:00+00:00</pubDate>
 </item>
 <item>
@@ -2931,7 +3853,6 @@ export function trackEffects(
 <link>http://www.geekpark.net/news/327987</link>
 <guid>http://www.geekpark.net/news/327987</guid>
 <content:encoded><![CDATA[
-
 <p><span>&#20316;&#32773; | Jesse</span>&nbsp;</p>
 <p><span>&#32534;&#36753; | &#38742;&#23431;</span></p>
 <p>&#32463;&#36807;&#21313;&#20960;&#24180;&#30340;&#21457;&#23637;&#65292;&#22823;&#37096;&#20998;&#26234;&#33021;&#25163;&#26426;&#31995;&#32479;&#37117;&#24050;&#36208;&#21521;&#23436;&#21892;&#65292;&#21151;&#33021;&#24840;&#21457;&#36235;&#21516;&#12290;</p>
@@ -3003,7 +3924,6 @@ export function trackEffects(
 <p>&#25152;&#20197;&#36825;&#22330;&#21464;&#38761;&#65292;&#26082;&#26159;&#20174;&#12300;&#30028;&#38754;&#20132;&#20114;&#12301;&#21040;&#12300;&#23545;&#35805;&#20132;&#20114;&#12301;&#30340;&#36716;&#21464;&#65292;&#26356;&#26159;&#20174;&#12300;&#29992;&#25143;&#23398;&#20064;&#20351;&#29992;&#35745;&#31639;&#26426;&#12301;&#21040;&#12300;&#35745;&#31639;&#26426;&#20027;&#21160;&#29702;&#35299;&#29992;&#25143;&#38656;&#35201;&#12301;&#30340;&#36716;&#21464;&#12290;</p>
 <p>&#36825;&#20214;&#20107;&#65292;OPPO &#24050;&#32463;&#36808;&#20986;&#20102;&#31532;&#19968;&#27493;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T00:56:12+00:00</pubDate>
 </item>
 <item>
@@ -3011,7 +3931,6 @@ export function trackEffects(
 <link>http://www.geekpark.net/news/327986</link>
 <guid>http://www.geekpark.net/news/327986</guid>
 <content:encoded><![CDATA[
-
 <p><img src="https://imgslim.geekpark.net/uploads/image/file/bf/db/bfdb93c4459ba4f8a814f3ec96966b4e.png" /></p>
 <h2><span>OpenAI</span><span> &#23448;&#23459; Sam Altman &#22238;&#24402;</span></h2>
 <p><img src="https://imgslim.geekpark.net/uploads/image/file/52/bd/52bdfb5a69e29f450621fa6ecf27e8ca.png" /></p>
@@ -3062,7 +3981,6 @@ export function trackEffects(
 <p><img src="https://imgslim.geekpark.net/uploads/image/file/ae/7e/ae7eb48cccf8a8c2b1c432970a91317c.png" /></p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T00:36:47+00:00</pubDate>
 </item>
 <item>
@@ -3070,7 +3988,6 @@ export function trackEffects(
 <link>https://www.daemonology.net/hn-daily/2023-11-22.html</link>
 <guid>https://www.daemonology.net/hn-daily/2023-11-22.html</guid>
 <content:encoded><![CDATA[
-
 <p>The 10 highest-rated articles on
 <a href="https://news.ycombinator.com/" rel="noopener noreferrer" target="_blank">Hacker News</a>
 on November 22, 2023 which have not appeared on any previous
@@ -3119,7 +4036,6 @@ are:</p>
 </li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-23T00:00:00+00:00</pubDate>
 </item>
 <item>
@@ -3127,7 +4043,6 @@ are:</p>
 <link>https://juejin.cn/post/7303546495777734665</link>
 <guid>https://juejin.cn/post/7303546495777734665</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: channing-cyan</h2>
 <h4>&#21069;&#35328;</h4>
@@ -3205,7 +4120,6 @@ setInterval(refreshToken, 5 * 60 * 1000); // &#27599;5&#20998;&#38047;&#21047;&#
 <h4>&#21518;&#32493;&#20248;&#21270;</h4>
 <p>&#22312;&#23454;&#29616;&#36807;&#31243;&#20013;&#65292;&#20250;&#21457;&#29616;&#35813;&#23454;&#29616;&#26041;&#24335;&#22823;&#37096;&#20998;&#37117;&#26159;&#22312;&#35831;&#27714;&#25318;&#25130;&#21644;&#30456;&#24212;&#25318;&#25130;&#20013;&#35774;&#32622;&#30340;&#65292;&#36825;&#26679;&#24102;&#26469;&#30340;&#38382;&#39064;&#23601;&#26159;&#65292;&#32806;&#21512;&#24615;&#39640;&#65292;&#25509;&#21475;&#37325;&#35797;&#30340;&#26426;&#21046;&#19981;&#22826;&#22909;&#12290;&#21478;&#19968;&#26041;&#38754;&#65292;&#25105;&#35273;&#24471;<code>token&#26080;&#24863;&#30693;&#21047;&#26032;</code>&#28041;&#21450;&#21040;&#20102;&#25509;&#21475;&#37325;&#21457;&#65292;&#25105;&#29702;&#35299;&#30340;&#26159;&#25509;&#21475;&#32500;&#24230;&#30340;&#12290;&#25152;&#20197;&#22312;&#21518;&#32493;&#20250;&#32771;&#34385;&#23553;&#35013;&#19968;&#20010;class&#31867;&#26469;&#23454;&#29616;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T04:05:01+00:00</pubDate>
 </item>
 <item>
@@ -3213,7 +4127,6 @@ setInterval(refreshToken, 5 * 60 * 1000); // &#27599;5&#20998;&#38047;&#21047;&#
 <link>https://juejin.cn/post/7304269145083904054</link>
 <guid>https://juejin.cn/post/7304269145083904054</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: juejin
 highlight: a11y-dark</h2>
@@ -3768,7 +4681,6 @@ highlight: a11y-dark</h2>
 </ul>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T15:38:18+00:00</pubDate>
 </item>
 <item>
@@ -3776,10 +4688,8 @@ highlight: a11y-dark</h2>
 <link>https://blog.bitsrc.io/react-design-patterns-for-2024-5f2696868222?source=rss----5c2fdf847f4a---4</link>
 <guid>https://blog.bitsrc.io/react-design-patterns-for-2024-5f2696868222?source=rss----5c2fdf847f4a---4</guid>
 <content:encoded><![CDATA[
-
 <h4>Build Better React Components using these Design Patterns in&nbsp;2024</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*otNwHo94lhmxwbHP.png" /></figure><p>If you&rsquo;ve worked in React, one of the first things you&rsquo;ve learned is to think in components. Rather than implementing one single component for an entire UI collection, you&rsquo;re encouraged to break it down into smaller, reusable units. For example, consider the React component diagram:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*C2Qk_w8QEKhR7skV.png" /></figure><p>Figure: <a href="https://bit.cloud/showoff/design/~graph" rel="noopener noreferrer" target="_blank">A simple React component diagram</a></p><p>We have three components:</p><ol><li>Typography</li><li>Footer</li><li>Sizeable Box</li></ol><p>As you can see, the Typography component is used by both the Footer and the Sizeable Box. By doing so, we build a more straightforward application to maintain and troubleshoot errors. However, that's not&nbsp;all.</p><blockquote>If you know how to think in components, you can leverage design patterns on your React components to improve your code&rsquo;s overall modularity, scalability, and maintainability.</blockquote><p>So, here are five design patterns you must consider when working with&nbsp;React.</p><h3>Pattern 01: The Base Component</h3><p>First, when working with React, try to create base components for your application.</p><blockquote>A <a href="https://blog.bitsrc.io/how-to-build-better-react-components-in-2024-2d930b1f30b1" rel="noopener noreferrer" target="_blank">Base UI Component</a> is a component that has a pre-defined behavior that the consumer can customize.</blockquote><p>For example, in every application, you&rsquo;d have a Base Theme, Base Button Design, or Base Typography that you might use to achieve a similar look and feel. But, something different here is&nbsp;that:</p><ul><li>You have a set of pre-defined configurations that your component applies. So, your consumer does not need to do any additional configuration but can quickly use the base configuration of the component instead.</li><li>You also let consumers override the behavior of your component and provide a custom definition that defines the overall look and feel of the component.</li></ul><p>A good implementation of the Base Component pattern can be illustrated with a simple Button component. For instance:</p><ol><li>Your Button component might have different variations, such as an outlined or a filled&nbsp;variant.</li><li>Your Button might have an initial label on&nbsp;it</li></ol><p>You can design your component in such a manner and let your consumers change its behavior. For example, <a href="https://bit.cloud/lakinduhewa/react-design-patterns/base/button" rel="noopener noreferrer" target="_blank">look at this implementation I&rsquo;ve done of the Button component</a> using the Base Component Pattern:</p><pre>import React, { ButtonHTMLAttributes } from 'react';<br /><br />type ButtonVariant = 'filled' | 'outlined';<br /><br />export type ButtonProps = {<br />  /**<br />   * the variant of the button to use <br />   * @default 'outlined'<br />   */<br />  variant?: ButtonVariant;<br />} &amp; ButtonHTMLAttributes&lt;HTMLButtonElement&gt;;;<br /><br />const ButtonStyles: { [key in ButtonVariant]: React.CSSProperties } = {<br />  filled: {<br />    backgroundColor: 'blue', // Change this to your filled button color<br />    color: 'white',<br />  },<br />  outlined: {<br />    border: '2px solid blue', // Change this to your outlined button color<br />    backgroundColor: 'transparent',<br />    color: 'blue',<br />  },<br />};<br /><br />export function Button({ variant = 'outlined', children, style, ...rest }: ButtonProps) {<br />  return (<br />    &lt;button<br />      type='button'<br />      style={{<br />        ...ButtonStyles[variant],<br />        padding: '10px 20px',<br />        borderRadius: '5px',<br />        cursor: 'pointer',<br />        ...style<br />      }} {...rest}&gt;<br />      {children}<br />    &lt;/button&gt;<br />  );<br />}</pre><p>If you observe closely, the Prop type for the Button merges with the overall prop types of the HTML button. This means that apart from the default configured props, consumers can pass their own configurations, such as an onClick or even an aria-label onto this component, and it will be handled using the&nbsp;...rest being spread onto the button component.</p><p>To see the Base Button component being used in different contexts, <a href="https://bit.cloud/lakinduhewa/react-design-patterns/base/button/~compositions" rel="noopener noreferrer" target="_blank">have a look at its implemetations</a>:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*0Pv-YjhCTsip71io.png" /></figure><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*gIXKRq2jqoSt10GP.png" /></figure><p><strong>Figure: Different contexts that the base component is used&nbsp;in</strong></p><p>As you can see, based on contexts, you can determine the behavior of your component. By doing so, you let your component become the foundation of something much&nbsp;bigger!</p><h3>Pattern 02: Component Composition</h3><p>Next, after you&rsquo;ve successfully created your base components, there are cases where you want to create something out of your base components.</p><p>For example, you might use the Button component that we created earlier to implement a standard Delete button component. This Delete button component can be used across your application to keep all delete actions consistent and might have a fixed color, variant, and even a font&nbsp;type.</p><blockquote>Therefore, if you run into cases where you feel like you&rsquo;re combining a set of components repeatedly to create the same output, wrap it in a component.</blockquote><p><a href="https://bit.cloud/lakinduhewa/react-design-patterns/composition/delete-button" rel="noopener noreferrer" target="_blank">Let&rsquo;s look at one such implementation</a>:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/588/0*ZfalDjbxI4tD-VvL.png" /></figure><p><strong>Figure: Building a component using the composition pattern</strong></p><p>As depicted above using the <a href="https://bit.cloud/lakinduhewa/react-design-patterns/composition/delete-button/~graph" rel="noopener noreferrer" target="_blank">dependency graph</a>, the Delete button uses the Button component to provide a standard implementation for all Delete related operations. It's codebase would look something like&nbsp;this:</p><pre>import { Button, ButtonProps } from '@lakinduhewa/react-design-patterns.base.button';<br />import React from 'react';<br /><br />export type DeleteButtonProps = {} &amp; ButtonProps;<br /><br />export function DeleteButton({ ...rest }: DeleteButtonProps) {<br />  return (<br />    &lt;Button<br />      variant='filled'<br />      style={{<br />        background: 'red',<br />        color: 'white'<br />      }}<br />      {...rest}<br />    &gt;<br />      DELETE<br />    &lt;/Button&gt;<br />  );<br />}</pre><p>The DeleteButton would use the Button component that we implemented in Pattern 01 to create an output like&nbsp;this:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/679/0*vory4BIxQLUahGBk.png" /></figure><p>As you can see, we can now use a consistent Delete button across our application. Additionally, when you&rsquo;re using build systems like <a href="https://bit.de" rel="noopener noreferrer" target="_blank">Bit</a> to design and build your components, you can leverage their CI server to <a href="https://bit.cloud/lakinduhewa/react-design-patterns/~ripple-ci/job/lakinduhewa-main-tlP1aG7L0" rel="noopener noreferrer" target="_blank">automatically propagate changes</a> to the DeleteButton if the implementation of the Button component changes, as shown&nbsp;below:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/771/0*xg3OkifWcOlJcRWe.png" /></figure><p><strong>Figure: A CI Build on&nbsp;Bit</strong></p><h3>Pattern 03: Using&nbsp;Hooks</h3><p>Alright, you&rsquo;ve probably heard of React Hooks. They&rsquo;ve <a href="https://legacy.reactjs.org/docs/hooks-overview.html" rel="noopener noreferrer" target="_blank">been around since React v16</a> and let you manage concepts like state and effects without a Class component. So, in a nutshell, you can eliminate the need for Class Components with the Hooks API. But we all know the basic state and effect hooks. So, we&rsquo;re not going to talk about that. Instead, we&rsquo;re going to talk about how you can leverage hooks to improve the overall maintainability of your component.</p><p>For example, consider the following scenario:</p><ol><li>You have a BlogList component.</li><li>The BlogList component communicates with a simple API to fetch a list of blog posts and it renders the list on the component.</li></ol><p>In such cases, you would likely write your API logic directly in a functional component as shown&nbsp;below:</p><pre>import React, { useState, useEffect } from 'react';<br />import axios from 'axios';<br /><br />const BlogList = () =&gt; {<br />    const [blogs, setBlogs] = useState([]);<br />    const [isLoading, setIsLoading] = useState(true);<br />    const [error, setError] = useState(null);<br /><br />    useEffect(() =&gt; {<br />        axios.get('https://api.example.com/blogs')<br />            .then(response =&gt; {<br />                setBlogs(response.data);<br />                setIsLoading(false);<br />            })<br />            .catch(error =&gt; {<br />                setError(error);<br />                setIsLoading(false);<br />            });<br />    }, []);<br /><br />    if (isLoading) return &lt;div&gt;Loading...&lt;/div&gt;;<br />    if (error) return &lt;div&gt;Error: {error.message}&lt;/div&gt;;<br /><br />    return (<br />        &lt;div&gt;<br />            &lt;h2&gt;Blog List&lt;/h2&gt;<br />            &lt;ul&gt;<br />                {blogs.map(blog =&gt; (<br />                    &lt;li key={blog.id}&gt;{blog.title}&lt;/li&gt;<br />                ))}<br />            &lt;/ul&gt;<br />        &lt;/div&gt;<br />    );<br />};<br /><br />export default BlogList;</pre><p>This component will work just fine. It will fetch the list of blog posts and it&rsquo;ll render it in the UI. But, you&rsquo;re coupling your UI logic to your API&nbsp;logic.</p><blockquote>In an ideal world, your React component does not need to know how it&rsquo;s getting the data. All it cares is receiving an array of items and then rendering it on the&nbsp;DOM.</blockquote><p>So, the best way to achieve this is to abstract your API logic onto a React Hook that you can call inside your component. Doing so breaks the coupling of the API call and the component. By doing so, you can change the underlying implementation of the invocation to get the data without impacting the component.</p><p>One such implementation would look something like&nbsp;this:</p><h4>1. <a href="https://bit.cloud/lakinduhewa/react-design-patterns/hooks/use-blog" rel="noopener noreferrer" target="_blank">The useBlog&nbsp;hook</a></h4><pre>import { useEffect, useState } from 'react';<br />import { Blog } from './blog.type';<br />import { Blogs } from './blog.mock';<br /><br />export function useBlog() {<br />  const [blogs, setBlogs] = useState&lt;Blog[]&gt;([]);<br />  const [loading, setLoading] = useState&lt;boolean&gt;(false);<br /><br />  useEffect(() =&gt; {<br />    setLoading(true);<br />    setTimeout(() =&gt; {<br />      setBlogs(Blogs);<br />      setLoading(false);<br />    }, 3000);<br />  }, []);<br /><br />  return { blogs, loading }<br />}</pre><p>As shown above, the useBlog hook fetches a list of blogs and assigns it to a state variable and exposes the variables for the consumer (BlogList) to&nbsp;use:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/573/0*IveS568MyTooGI78.png" /></figure><p><strong>Figure: The Hook in&nbsp;Action</strong></p><h4>2. <a href="https://bit.cloud/lakinduhewa/react-design-patterns/hooks/blog-list" rel="noopener noreferrer" target="_blank">The BlogList component</a></h4><pre>import React from 'react';<br />import { useBlog } from '@lakinduhewa/react-design-patterns.hooks.use-blog';<br /><br />export function BlogList() {<br />  const { blogs, loading } = useBlog();<br /><br />  if (loading) {<br />    return (<br />      &lt;p&gt;We are loading the blogs...&lt;/p&gt;<br />    )<br />  }<br /><br />  return (<br />    &lt;ul&gt;<br />      {blogs.map((blog) =&gt; &lt;ol<br />        key={blog.id}<br />      &gt;<br />        {blog.title}<br />      &lt;/ol&gt;)}<br />    &lt;/ul&gt;<br />  );<br />}</pre><figure><img alt="" src="https://cdn-images-1.medium.com/max/894/0*vcQhUtJOH6UyZ4v-.png" /></figure><p><strong>Figure: The BlogList in&nbsp;action</strong></p><p>We&rsquo;ve successfully used the hook in the BlogList component by invoking useBlog and using the state variables offered to us. By doing so, we can reduce the huge chunk of code that we initially started with, and maintain two components with minimal code and&nbsp;effort!</p><p>Plus, when you&rsquo;re using build systems like Bit (like I do), all you have to do is import the useBlog component onto your local development environment and then make a change and push it back to Bit Cloud. Its build server can propagate the changes across the tree, so you don't even need access to the entire project to make a simple&nbsp;change!</p><h3>Pattern 04: React Providers</h3><p>This pattern revolves around sharing state across a set of components. We&rsquo;ve all become a victim to prop drilling at some point in our careers. But, if you haven&rsquo;t, prop drilling is when you pass a prop down a tree of components only for it to be used at the lowest level and not anywhere else. For example, consider this&nbsp;diagram:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/366/0*1ff1oYYe20OOW1ep.png" /></figure><p><strong>Figure: Prop&nbsp;Drilling</strong></p><p>As you can see, we are passing a prop isLoading from the BlogListComponent all the way to Loader down the tree. But, the isLoading is only used in the Loader component. So, in such cases, you introduce unnecessary props across your components and can take a tool in performance too, as React will re-render your tree when isLoading changes, even though it isn't being&nbsp;used.</p><p>So, one fix is to use the React Context Provider pattern by introducing a React Context. A React Context is a state manager for a set of components in which you provide a particular context for a set of components. By doing so, you can define and manage your state in the Context and let your components access the context at different levels and use the props that they need. By doing so, you eliminate prop-drilling.</p><p>One example of using this in practise is a Theme component. For instance, you want your Theme to be accessed globally in your app. But passing the theme down every component you use is not practical. Instead, you can create a Context that holds the theme information, and then consume the context to set the theme. Let&rsquo;s <a href="https://bit.cloud/lakinduhewa/react-design-patterns/contexts/consumer-component" rel="noopener noreferrer" target="_blank">explore my Theme Context to get a better understanding</a> of&nbsp;this:</p><pre>import { useContext, createContext } from 'react';<br /><br />export type SampleContextContextType = {<br />  /**<br />   * primary color of theme.<br />   */<br />  color?: string;<br />};<br /><br />export const SampleContextContext = createContext&lt;SampleContextContextType&gt;({<br />  color: 'aqua'<br />});<br /><br />export const useSampleContext = () =&gt; useContext(SampleContextContext);</pre><p>The context defines a theme color that it&rsquo;ll use to configure the font color across all of its implementations. Next, I&rsquo;ve also exposed a hook&#8202;&mdash;&#8202;useSampleContext that lets consumers directly consume the&nbsp;Context.</p><p>But, that&rsquo;s not all. We&rsquo;ll also need to define a Provider. The provider is the component that answers the questions&#8202;&mdash;&#8202;&ldquo;To what components shall I share my state with?&rdquo; You can <a href="https://bit.cloud/lakinduhewa/react-design-patterns/contexts/sample-context/~code/sample-context-context-provider.tsx" rel="noopener noreferrer" target="_blank">implement a provider like&nbsp;this</a>:</p><pre>import React, { ReactNode } from 'react';<br />import { SampleContextContext } from './sample-context-context';<br /><br />export type SampleContextProviderProps = {<br />  /**<br />   * primary color of theme.<br />   */<br />  color?: string,<br /><br />  /**<br />   * children to be rendered within this theme.<br />   */<br />  children: ReactNode<br />};<br /><br />export function SampleContextProvider({ color, children }: SampleContextProviderProps) {<br />  return &lt;SampleContextContext.Provider value={{ color }}&gt;{children}&lt;/SampleContextContext.Provider&gt;<br />}</pre><p>As you can see, the provider plays a crucial role in managing the initial state and setting the context of the components that can access the&nbsp;state.</p><p>Next, you can create a <a href="https://bit.cloud/lakinduhewa/react-design-patterns/contexts/consumer-component" rel="noopener noreferrer" target="_blank">consumer component</a> that consumes the&nbsp;state:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*BebYERJacmV-IWBV.png" /></figure><p><strong>Figure: The consumer component</strong></p><h3>Pattern 05: Conditional Rendering</h3><p>The final pattern that I&rsquo;d like to leave you wish is conditional rendering. Now, we all know conditional rendering in React. It&rsquo;s where you render a component based on a condition.</p><p>But, we fail to implement this correctly. We usually implement conditional rendering like&nbsp;this:</p><pre>// ComponentA.js<br />const ComponentA = () =&gt; {<br />    return &lt;div&gt;This is Component A&lt;/div&gt;;<br />};<br /><br />// ComponentB.js<br />const ComponentB = () =&gt; {<br />    return &lt;div&gt;This is Component B&lt;/div&gt;;<br />};<br /><br />// ConditionalComponent.js<br />import React, { useState } from 'react';<br />import ComponentA from './ComponentA';<br />import ComponentB from './ComponentB';<br /><br />const ConditionalComponent = () =&gt; {<br />    const [toggle, setToggle] = useState(true);<br /><br />    return (<br />        &lt;div&gt;<br />            &lt;button onClick={() =&gt; setToggle(!toggle)}&gt;Toggle Component&lt;/button&gt;<br />            {toggle ? &lt;ComponentA /&gt; : &lt;ComponentB /&gt;}<br />        &lt;/div&gt;<br />    );<br />};<br /><br />export default ConditionalComponent;</pre><p>If you noticed, we couple conditional-based logic onto our JSX fragments. Generally, you don&rsquo;t want to add any compute-related logic onto your JSX and only render UI components in&nbsp;it.</p><p>One way to solve this is using the Conditional Render Component pattern. You can create a reusable React component that would render two components based on a condition. <a href="https://bit.cloud/lakinduhewa/react-design-patterns/base/conditional" rel="noopener noreferrer" target="_blank">It&rsquo;s implementation would look something like&nbsp;this</a>:</p><pre>import React, { ReactNode } from 'react';<br /><br />export type ConditionalProps = {<br />  /**<br />   * the condition to test against<br />   */<br />  condition: boolean<br />  /**<br />   * the component to render when condition is true<br />   */<br />  whenTrue: ReactNode<br />  /**<br />   * the component to render when condition is false<br />   */<br />  whenFalse: ReactNode<br />};<br /><br />export function Conditional({ condition, whenFalse, whenTrue }: ConditionalProps) {<br />  return condition ? whenTrue : whenFalse;<br />}</pre><p>As you can see, we&rsquo;ve created a component that conditionally renders two components. This will give us a clean code when we integrate this into our other components as we eliminate the need to have complex rendering logic inside our React components. You can use it like&nbsp;this:</p><pre>export const ConditionalTrue = () =&gt; {<br />  return (<br />    &lt;Conditional<br />      condition<br />      whenFalse="You're False"<br />      whenTrue="You're True"<br />    /&gt;<br />  );<br />}<br /><br />export const ConditionalFalse = () =&gt; {<br />  return (<br />    &lt;Conditional<br />      condition={false}<br />      whenFalse="You're False"<br />      whenTrue="You're True"<br />    /&gt;<br />  );<br />}</pre><p>This would create outputs like&nbsp;this:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*xL8vkuzLJWr9xtGs.png" /></figure><h3>Wrapping Up</h3><p>And that&rsquo;s it! Mastering these five design patterns will keep you well-prepared for 2024 and will let you build highly scalable and maintainable</p><p>If you&rsquo;d like to explore the patterns we discussed in this article, feel free to <a href="https://bit.cloud/lakinduhewa/react-design-patterns" rel="noopener noreferrer" target="_blank">check out my scope on Bit&nbsp;Cloud</a>.</p><p>I hope you found this article&nbsp;helpful.</p><p>Thank you for&nbsp;reading!</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/component-driven-development-and-composable-applications-a-guide-7a0934e60936" rel="noopener noreferrer" target="_blank">Composable Applications and Component-Driven Development: a Guide</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/creating-a-developer-website-with-bit-components-3f4083a7f050" rel="noopener noreferrer" target="_blank">Creating a Developer Website with Bit components</a></li><li><a href="https://blog.bitsrc.io/5-tools-for-building-react-component-libraries-in-2023-d8fb8e4c13b4" rel="noopener noreferrer" target="_blank">5 Tools for Building React Component Libraries in 2023</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=5f2696868222" /><hr /><p><a href="https://blog.bitsrc.io/react-design-patterns-for-2024-5f2696868222" rel="noopener noreferrer" target="_blank">Top 5 React Design Patterns That You Should Know in 2024</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T12:16:42+00:00</pubDate>
 </item>
 <item>
@@ -3787,10 +4697,8 @@ highlight: a11y-dark</h2>
 <link>https://blog.bitsrc.io/how-to-create-a-modular-react-library-6c6e919ff92c?source=rss----5c2fdf847f4a---4</link>
 <guid>https://blog.bitsrc.io/how-to-create-a-modular-react-library-6c6e919ff92c?source=rss----5c2fdf847f4a---4</guid>
 <content:encoded><![CDATA[
-
 <h4>Learn how you can build a modular React library using Storybook and&nbsp;Bit</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*H9MJ6d6ca6C_ylakHcHaNA.png" /><figcaption>A component-driven build using <a href="https://bit.cloud" rel="noopener noreferrer" target="_blank">Ripple CI&#8202;</a>&mdash;&#8202;the build propagates from the modified component to the Storybook app that documents it</figcaption></figure><p>If you&rsquo;re building modular UI components, you&rsquo;ll need some sort of a way to develop and preview them before you ship them out to the public. You can achieve this by using build systems like <a href="https://bit.dev" rel="noopener noreferrer" target="_blank">Bit</a>. Bit lets you design, develop, build and version your components in isolation while letting you preview all of the modular components.</p><p>However, we&rsquo;ve all become accustomed to the unique features that Storybook brings to the table. So, this blog post aims to bring the best of both&nbsp;worlds:</p><ol><li>A build system for your components</li><li>A preview engine for your components</li></ol><p>So, let&rsquo;s see how we can set up a workflow for publishing React components with <a href="https://bit.dev" rel="noopener noreferrer" target="_blank">Bit</a> and <a href="https://storybook.js.org/" rel="noopener noreferrer" target="_blank">Storybook</a>.</p><p>We&rsquo;ll use Bit to handle the component development, build pipeline, package publishing, and even the Storybook app deployment.</p><ul><li><a href="https://bit.dev" rel="noopener noreferrer" target="_blank">Bit. Composable software.</a></li><li><a href="https://storybook.js.org/" rel="noopener noreferrer" target="_blank">Storybook: Frontend workshop for UI development</a></li></ul><blockquote>Bit enables component documentation and previewing out of the box. However, these features do not aim to replace Storybook.</blockquote><h4>This blog goes through the following steps:</h4><ol><li>Create a new Bit workspace that includes a reusable React development environment with pre-configured tools like TypeScript, ESLint, Jest, and more. <em>Additional dev environments can be used to support other component types.</em></li><li>Create a new React component and preview it with&nbsp;Bit</li><li>Copy an existing Storybook app component into the workspace</li><li>Create a story for the new React component</li><li>Configure the Storybook app component deployment.</li><li>Create a free <a href="https://bit.cloud" rel="noopener noreferrer" target="_blank">bit.cloud</a> account to host our components and run the&nbsp;CI</li><li>Publish the component packages and deploy the Storybook app.</li></ol><h4>1. Create a new Bit workspace</h4><p>Install Bit.</p><pre>npx @teambit/bvm install</pre><p>Create a workspace with a <a href="https://bit.dev/docs/react-env/set-up-your-env" rel="noopener noreferrer" target="_blank">React dev environment</a> already included. You can add other dev environments to support different components if&nbsp;needed.</p><pre>bit new react my-sb-workspace --env bitdev.react/react-env</pre><h4>2. Create a new React component</h4><p>Run the following to generate a React component using a template provided by your reusable React dev environment:</p><pre>bit create react actions/button</pre><p>Your new component should have the following files generated:</p><pre>.<br />&#9500;&#9472;&#9472; button.composition.tsx  &lt;- your component previews/examples (for Bit)<br />&#9500;&#9472;&#9472; button.docs.mdx &lt;- your component docs (for Bit)<br />&#9500;&#9472;&#9472; button.module.scss <br />&#9500;&#9472;&#9472; button.tsx<br />&#9492;&#9472;&#9472; index.ts  &lt;-- the entry file for your component </pre><blockquote>Bit automatically detects dependencies and intelligently resolves dependnecy versions and types, for each Bit component.</blockquote><blockquote>Consequently, each package generated for its corresponding Bit component will also have its dependnecies (listed in its <em>package.json</em>) handled automatically by&nbsp;Bit.</blockquote><p>To preview your component using Bit&rsquo;s workspace UI, run the following:</p><pre>bit start</pre><p>Your component should be previewed on the component page:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*bAM3CgmMZC2MXhE5qhdo-g.png" /><figcaption>The &lsquo;button&rsquo; component previewed by Bit&rsquo;s workspace UI</figcaption></figure><h4>3. Copy (&ldquo;fork&rdquo;) a demo Storybook app into your workspace</h4><pre>bit fork bitdesign.storybook/examples/storybook-react-app my-storybook-app</pre><h4>4. Create a new story inside the Storybook app</h4><p>Create a story file inside the stories directory, nested inside the app directory:</p><pre>touch button.stories.ts</pre><p>Import the previously created Bit component into the story file. Note that <a href="https://bit.dev/docs/getting-started/composing/use-dependencies" rel="noopener noreferrer" target="_blank">Bit components are always imported/required using their package name</a>, even when maintained in the same workspace!</p><pre>/** @filename: my-storybook-app/stories/button.stories.ts */<br /><br />import type { StoryObj } from '@storybook/react';<br /><br />/** import the Bit component to document */<br />import { Button, ButtonProps } from '@my-org/my-scope.actions.button';<br /><br />const meta = {<br />  /** the title is the component ID, in this case */<br />  title: 'my-org.my-scope/actions/button',<br />  component: Button,<br />  // ...<br />};<br /><br />export default meta;<br /><br />type Story = StoryObj&lt;ButtonProps&gt;;<br /><br />export const Basic: Story = {<br />  args: {<br />    children: 'Click here!',<br />  },<br />};</pre><h4>5. Run your Storybook app&nbsp;locally</h4><p>Run the following to make your app loadable by your workspace:</p><pre>bit use my-storybook-app</pre><p>Run the app using its app name (configured in the *.storybook.cjs plugin&nbsp;file):</p><pre>bit run storybook-app</pre><p>The Storybook app should include the new&nbsp;story:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*WPFuDCrjJ4HLyoPB0YF41g.png" /><figcaption>The &lsquo;button&rsquo; component previewed by Storybook</figcaption></figure><h4>6. Create a free bit.cloud account</h4><p>To use Bit&rsquo;s default CI for components and to host components and their packages, create a <a href="https://bit.cloud" rel="noopener noreferrer" target="_blank">bit.cloud</a> account, and a &lsquo;remote scope&rsquo;, a hosting place, for your components.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*48SS50_Lvm9NpM-KeWeykQ.png" /></figure><p>Once an account and a new remote scope are created, rename the current default scope with you new scope name (with the pattern account.scope ):</p><pre>bit scope rename my-org.my-scope john-doe.my-design-scope --refactor</pre><h4>7. Publish components and deploy the Storybook app</h4><p>Set your Storybook app with the proper Chromatic project&nbsp;token:</p><pre>/** @filename: my-storybook-app/my-storybook-app.storybook.cjs */<br /><br />const { join } = require('path');<br /><br />/** @type {import("@teambit/storybook.apps.sb-app-type").StorybookOptions} */<br />module.exports.default = {<br />  // ...<br />  deploy: {<br />    projectToken: process.env.CHROMATIC_MY_PROJECT,<br />  },<br />};</pre><p>To learn about additional deployment options, see the <a href="https://bit.cloud/bitdesign/storybook" rel="noopener noreferrer" target="_blank">Bit Storybook docs</a>.</p><h4>8. Set Ripple CI secrets with your Chromatic project&nbsp;token</h4><p>To set up your CI secrets, head over to your organization page (bit.cloud/YOUR_BIT_ORG), and select Settings -&gt; <a href="https://bit.dev/reference/ci/ripple-ci#" rel="noopener noreferrer" target="_blank">Ripple&nbsp;CI</a>.</p><p>Add your secret variables to your organization to make them available for Ripple CI. Add a secret variable named `CHROMATIC_MY_PROJECT` and set it with your Chromatic project&nbsp;token.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*jPvf_I-j-zWZk5l3ztf19A.png" /></figure><p>Run the following to version your components:</p><pre>bit tag --message "create storybook app. add a story for the form component"</pre><p>The following step will build your UI components and Storybook app (component) using Bit&rsquo;s default CI system, tailored for Bit components. Once done, the components will be hosted on your remote scope on <a href="https://bit.cloud" rel="noopener noreferrer" target="_blank">bit.cloud</a>, published, and deployed (the Storybook app).</p><p>Once your all set, run the following:</p><pre>bit export </pre><h4>Automatic builds and deployments</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*Us0H851DNWSO6daTDV9MNA.png" /></figure><p>Bit and Ripple CI will make sure to auto version, build, publish and deploy components when their direct/indirect dependency has been modified.</p><p>This will make sure your components are always in-sync with the latest&nbsp;change.</p><p>When changing any component that is being documented in the storybook app, the app component itself will also be built, versioned, and deployed&#8202;&mdash;&#8202;automatically. This will make sure your component documentation is always up to&nbsp;date!</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/creating-a-developer-website-with-bit-components-3f4083a7f050" rel="noopener noreferrer" target="_blank">Creating a Developer Website with Bit components</a></li><li><a href="https://blog.bitsrc.io/5-tools-for-building-react-component-libraries-in-2023-d8fb8e4c13b4" rel="noopener noreferrer" target="_blank">5 Tools for Building React Component Libraries in 2023</a></li><li><a href="https://blog.bitsrc.io/getting-started-with-a-new-vue-js-project-in-2023-7ea97498ab6a" rel="noopener noreferrer" target="_blank">Getting Started with a New Vue.js Project in 2023</a></li><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=6c6e919ff92c" /><hr /><p><a href="https://blog.bitsrc.io/how-to-create-a-modular-react-library-6c6e919ff92c" rel="noopener noreferrer" target="_blank">How To Create A Modular React Library?</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T12:04:12+00:00</pubDate>
 </item>
 <item>
@@ -3798,7 +4706,6 @@ highlight: a11y-dark</h2>
 <link>https://juejin.cn/post/7304182005326544933</link>
 <guid>https://juejin.cn/post/7304182005326544933</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: channing-cyan
 highlight: vs2015</h2>
@@ -4066,7 +4973,6 @@ import { buildProps, definePropType } from 'element-plus/es/utils/vue/props/runt
 <p>&#20854;&#23454;&#20320;&#22312;&#24341;&#20837;transfer&#20316;&#20026;&#33258;&#23450;&#20041;&#32452;&#20214;&#26102;&#65292;&#20250;&#25253;&#24456;&#22810;&#38169;&#35823;&#65292;&#19968;&#28857;&#28857;&#30340;&#25913;&#23601;&#22909;&#21862;&#12290;</p>
 <h3>&#30475;&#21040;&#36825;&#37324;&#30340;&#30475;&#23448;&#65292;&#40635;&#28902;&#28857;&#20010;&#36190;&#36190;&#21703;</h3>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T10:31:51+00:00</pubDate>
 </item>
 <item>
@@ -4074,7 +4980,6 @@ import { buildProps, definePropType } from 'element-plus/es/utils/vue/props/runt
 <link>http://www.geekpark.net/news/327979</link>
 <guid>http://www.geekpark.net/news/327979</guid>
 <content:encoded><![CDATA[
-
 <p>&#25991; | &#24184;&#33433;</p>
 <p>&#32534;&#36753; | &#37073;&#29572;</p>
 <p>&nbsp;</p>
@@ -4094,7 +4999,6 @@ import { buildProps, definePropType } from 'element-plus/es/utils/vue/props/runt
 <p>&#32780;&#36825;&#27425;&#21361;&#26426;&#20013;&#26292;&#38706;&#20986;&#26469;&#30340;&#38382;&#39064;&#65292;&#22914; OpenAI &#20869;&#37096;&#26263;&#27969;&#28044;&#21160;&#30340;&#27966;&#31995;&#20043;&#20105;&#12289;Altman &#19982;&#33891;&#20107;&#20250;&#29190;&#21457;&#30683;&#30462;&#30340;&#30495;&#23454;&#21407;&#22240;&#12289;&#28909;&#34935;&#21830;&#19994;&#21270;&#30340;&#20048;&#35266;&#30789;&#35895;&#20225;&#19994;&#23478;&#19982;&#25285;&#24551;&#25216;&#26415;&#23433;&#20840;&#30340;&#20445;&#23432;&#31185;&#23398;&#23478;&#20043;&#20105;&#31561;&hellip;&hellip;&#20173;&#31561;&#24453;&#26102;&#38388;&#22238;&#31572;&#12290;</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T09:35:53+00:00</pubDate>
 </item>
 <item>
@@ -4102,7 +5006,6 @@ import { buildProps, definePropType } from 'element-plus/es/utils/vue/props/runt
 <link>https://juejin.cn/post/7304183399886028835</link>
 <guid>https://juejin.cn/post/7304183399886028835</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: smartblue</h2>
 <blockquote>
@@ -4226,7 +5129,6 @@ function ParentComponent() {
 <li><a href="https://juejin.cn/spost/7257285697395752997" rel="noopener noreferrer" target="_blank" title="https://juejin.cn/spost/7257285697395752997">&#38754;&#35797;&#24517;&#22791;&#65292;&#23398;&#20250;&#20351;&#29992; Vue3 + ts &#25163;&#20889;&#23454;&#29616;&#25302;&#25341;hook&#65281;</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T07:49:38+00:00</pubDate>
 </item>
 <item>
@@ -4234,7 +5136,6 @@ function ParentComponent() {
 <link>https://juejin.cn/post/7304182623570526249</link>
 <guid>https://juejin.cn/post/7304182623570526249</guid>
 <content:encoded><![CDATA[
-
 <p>&#29256;&#26412;&#35828;&#26126;&#65306;</p>
 <ul>
 <li>"tinymce": "5.6.0"</li>
@@ -4414,7 +5315,6 @@ editor.fire('removeAnnotation')
 <li><a href="https://www.tiny.cloud/docs/" rel="noopener noreferrer" target="_blank">Documentation | Docs | TinyMCE</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T07:31:34+00:00</pubDate>
 </item>
 <item>
@@ -4422,7 +5322,6 @@ editor.fire('removeAnnotation')
 <link>https://juejin.cn/post/7303847314895552524</link>
 <guid>https://juejin.cn/post/7303847314895552524</guid>
 <content:encoded><![CDATA[
-
 <h1>&#24320;&#21457;&#25554;&#20214;</h1>
 <h2>&#25554;&#20214;&#24320;&#21457;&#30693;&#35782;</h2>
 <p>VSCode&#25554;&#20214;&#24320;&#21457;&#38656;&#35201;&#21069;&#31471;&#24320;&#21457;&#30340;&#22522;&#30784;&#30693;&#35782;&#65292;&#21253;&#25324;&#20294;&#19981;&#38480;&#20110;Javascript&#65288;&#24517;&#39035;&#65289;&#12289;HTML&#21644;CSS&#65288;&#38750;&#24517;&#39035;&#65289;&#12290;</p>
@@ -4928,7 +5827,6 @@ if (repeat &gt; 0) {
 <h6><em>&#36716;&#36733;&#35831;&#27880;&#26126;&ldquo;&#26469;&#33258;&#25496;&#37329;-EvenZhu&rdquo;</em></h6>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T05:51:27+00:00</pubDate>
 </item>
 <item>
@@ -4936,7 +5834,6 @@ if (repeat &gt; 0) {
 <link>https://juejin.cn/post/7303878646702997543</link>
 <guid>https://juejin.cn/post/7303878646702997543</guid>
 <content:encoded><![CDATA[
-
 <h1>Store &#20026;&#20160;&#20040;&#38656;&#35201;&#34987;&#24179;&#26367;&#65311;</h1>
 <p>&#39318;&#20808;&#65292;Store &#65288;e.g Redux&#12289;Mobx&#65289;&#26159;&#20026;&#20102;&#31649;&#29702;&#22823;&#22411;&#39033;&#30446;&#30340;&#20840;&#23616;&#29366;&#24577;&#30340;&#65292;Store &#20026;&#25152;&#26377;&#30340;&#20840;&#23616;&#29366;&#24577;&#25552;&#20379;&#20102;&#21487;&#39044;&#27979;&#65292;&#21487;&#25805;&#20316;&#65292;&#27969;&#31243;&#21270;&#30340; API &#26041;&#27861;&#12290;</p>
 <p>&#20294;&#26159;&#65292;&#26159;&#19981;&#26159;&#25152;&#26377;&#30340;&#20840;&#23616;&#29366;&#24577;&#37117;&#38656;&#35201;&#23384;&#25918;&#22312; Store &#20013;&#21602;&#65311;</p>
@@ -5291,7 +6188,6 @@ export default CtxModel;
 </ol>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T04:36:15+00:00</pubDate>
 </item>
 <item>
@@ -5299,7 +6195,6 @@ export default CtxModel;
 <link>https://juejin.cn/post/7303546495777980425</link>
 <guid>https://juejin.cn/post/7303546495777980425</guid>
 <content:encoded><![CDATA[
-
 <p>&#26412;&#25991;&#21487;&#37197;&#21512;&#26412;&#20154;<a href="https://www.bilibili.com/video/BV1mM411Z7Wj/" rel="noopener noreferrer" target="_blank">&#24405;&#21046;&#30340;&#35270;&#39057;</a>&#19968;&#36215;&#39135;&#29992;&#12290;</p>
 <h3>&#24341;&#35328;</h3>
 <p>&#26368;&#36817;&#25105;&#22312;&#23398;&#21487;&#35270;&#21270;&#30340;&#19996;&#35199;&#65292;&#20511;&#27492;&#26469;&#24041;&#22266;&#19968;&#19979;&#23398;&#20064;&#30340;&#20869;&#23481;&#65292;&#21521;&#37327;&#36816;&#31639;&#26159;&#35745;&#31639;&#26426;&#22270;&#24418;&#23398;&#30340;&#22522;&#30784;&#65292;&#36825;&#20010;&#20363;&#23376;&#23601;&#26159;&#21521;&#37327;&#30340;&#19968;&#31181;&#24212;&#29992;&#65292;&#26159;&#21033;&#29992;&#21521;&#37327;&#26469;&#35745;&#31639;&#28857;&#21040;&#32447;&#27573;&#30340;&#36317;&#31163;&#65292;&#36825;&#20010;&#20363;&#23376;&#20013;&#21487;&#35270;&#21270;&#30340;&#23637;&#31034;&#37319;&#29992;Canvas2D&#26469;&#23454;&#29616;&#12290;</p>
@@ -5634,7 +6529,6 @@ canvas.addEventListener('mousemove', e =&gt; {
 </li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T05:17:13+00:00</pubDate>
 </item>
 <item>
@@ -5642,11 +6536,9 @@ canvas.addEventListener('mousemove', e =&gt; {
 <link>https://developer.mozilla.org/en-US/blog/getting-started-with-css-container-queries/</link>
 <guid>https://developer.mozilla.org/en-US/blog/getting-started-with-css-container-queries/</guid>
 <content:encoded><![CDATA[
-
 <p>CSS container queries are a powerful new tool for our CSS layout toolbox.</p>
 <br /><br />
 ]]></content:encoded>
-
 <pubDate>2023-11-22T07:15:46+00:00</pubDate>
 </item>
 <item>
@@ -5654,11 +6546,9 @@ canvas.addEventListener('mousemove', e =&gt; {
 <link>https://www.lukew.com/ff/entry.asp?2037</link>
 <guid>https://www.lukew.com/ff/entry.asp?2037</guid>
 <content:encoded><![CDATA[
-
 <p>As more companies work to integrate AI into new and existing software, high-level interaction patterns are emerging.</p>
 <br /><br />
 ]]></content:encoded>
-
 <pubDate>2023-11-21T00:04:44+00:00</pubDate>
 </item>
 <item>
@@ -5666,7 +6556,6 @@ canvas.addEventListener('mousemove', e =&gt; {
 <link>https://juejin.cn/post/7303841665240236072</link>
 <guid>https://juejin.cn/post/7303841665240236072</guid>
 <content:encoded><![CDATA[
-
 <blockquote>
 <p>&#19978;&#19968;&#31687;&#20171;&#32461;&#20102;&#22914;&#20309;&#21019;&#24314;&#20803;&#32032;&#21644;&#22914;&#20309;&#28210;&#26579;&#20803;&#32032;&#65292;&#20294;&#26159;&#36882;&#24402;&#35843;&#29992;&#30340;&#38382;&#39064;&#22312;&#20110;&#65292;&#23427;&#21487;&#33021;&#23548;&#33268;&#20027;&#32447;&#31243;&#38271;&#26102;&#38388;&#38459;&#22622;&#65292;&#20174;&#32780;&#23548;&#33268;&#31967;&#31957;&#30340;&#29992;&#25143;&#20307;&#39564;&#12290;&#22914;&#26524;&#20803;&#32032;&#26641;&#24456;&#22823;&#65292;&#21576;&#29616;&#36807;&#31243;&#21487;&#33021;&#20250;&#33457;&#36153;&#22826;&#38271;&#26102;&#38388;&#65292;&#20174;&#32780;&#23548;&#33268;&#20854;&#20182;&#20219;&#21153;&#30340;&#24310;&#36831;&#65292;&#20363;&#22914;&#22788;&#29702;&#29992;&#25143;&#36755;&#20837;&#25110;&#20445;&#25345;&#21160;&#30011;&#27969;&#30021;&#12290;&#25152;&#20197;&#25105;&#20204;&#23558;&#25226;&#24037;&#20316;&#20998;&#35299;&#25104;&#23567;&#21333;&#20803;&#65292;&#22312;&#25105;&#20204;&#23436;&#25104;&#27599;&#20010;&#21333;&#20803;&#21518;&#65292;&#22914;&#26524;&#26377;&#20854;&#20182;&#38656;&#35201;&#20570;&#30340;&#20107;&#24773;&#65292;&#25105;&#20204;&#23558;&#35753;&#27983;&#35272;&#22120;&#20013;&#26029;&#28210;&#26579;&#12290;&#36825;&#23601;&#31867;&#20284;&#25805;&#20316;&#31995;&#32479;&#30340;&#36827;&#31243;&#35843;&#24230;&#12290;</p>
 </blockquote>
@@ -5827,7 +6716,6 @@ function performUnitOfWork(fiber) {
 
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T03:29:42+00:00</pubDate>
 </item>
 <item>
@@ -5835,7 +6723,6 @@ function performUnitOfWork(fiber) {
 <link>https://juejin.cn/post/7303847314894880780</link>
 <guid>https://juejin.cn/post/7303847314894880780</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>highlight: a11y-dark
 theme: qklhk-chocolate</h2>
@@ -5945,7 +6832,6 @@ export const arrayMethods = Object.create(arrayProto);
 </blockquote>
 <p>&#31616;&#21333;&#26469;&#35828;&#23601;&#26159;&#65292;&#37325;&#20889;&#20102;&#25968;&#32452;&#20013;&#30340;&#37027;&#20123;&#21407;&#29983;&#26041;&#27861;&#65292;&#39318;&#20808;&#33719;&#21462;&#21040;&#36825;&#20010;&#25968;&#32452;&#30340;__ob__&#65292;&#20063;&#23601;&#26159;&#23427;&#30340; Observer &#23545;&#35937;&#65292;&#22914;&#26524;&#26377;&#26032;&#30340;&#20540;&#65292;&#23601;&#35843;&#29992;observeArray &#32487;&#32493;&#23545;&#26032;&#30340;&#20540;&#35266;&#23519;&#21464;&#21270;&#65288;&#20063;&#23601;&#26159;&#36890;&#36807; <code>target__proto__ == arrayMethods</code> &#26469;&#25913;&#21464;&#20102;&#25968;&#32452;&#23454;&#20363;&#30340;&#22411;&#65289;&#65292;&#28982;&#21518;&#25163;&#21160;&#35843;&#29992; notify&#65292;&#36890;&#30693;&#28210;&#26579; watcher&#65292;&#25191;&#34892; update&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T03:11:30+00:00</pubDate>
 </item>
 <item>
@@ -5953,7 +6839,6 @@ export const arrayMethods = Object.create(arrayProto);
 <link>https://juejin.cn/post/7303878037590900774</link>
 <guid>https://juejin.cn/post/7303878037590900774</guid>
 <content:encoded><![CDATA[
-
 <h1>&#19968;&#12289;&#32553;&#30053;&#22270;&#30340;&#20316;&#29992;</h1>
 <p>&#32553;&#30053;&#22270;&#65292;&#33021;&#22815;&#35753;&#21019;&#20316;&#32773;&#30452;&#35266;&#30475;&#21040;&#22270;&#32440;&#30340;&#35774;&#35745;&#24773;&#20917;&#12290;&#36890;&#24120;&#26377;2&#20010;&#22330;&#26223;&#38656;&#35201;&#26597;&#30475;&#22270;&#32440;&#32553;&#30053;&#22270;&#65306;</p>
 <ol>
@@ -6080,7 +6965,6 @@ export const arrayMethods = Object.create(arrayProto);
 </ol>
 <p>&#33267;&#27492;&#65292;&#33258;&#36866;&#24212;&#30340;&#32553;&#30053;&#22270;&#65292;&#23601;&#21487;&#20197;&#25353;&#25105;&#20204;&#35774;&#23450;&#30340;&#35268;&#21017;&#26174;&#31034;&#20102;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T02:55:41+00:00</pubDate>
 </item>
 <item>
@@ -6088,7 +6972,6 @@ export const arrayMethods = Object.create(arrayProto);
 <link>https://juejin.cn/post/7303797991009419275</link>
 <guid>https://juejin.cn/post/7303797991009419275</guid>
 <content:encoded><![CDATA[
-
 <p>&#27492;&#31687;&#20998;&#26512;&#19968;&#19979; <code>element-ui</code> &#32452;&#20214;&#24211;&#20013;&#65292;<code>repeat-click</code> &#25351;&#20196;&#30340;&#20316;&#29992;&#21644;&#28304;&#20195;&#30721;&#12290;</p>
 <h1>&#19968;. repeat-click &#25351;&#20196;&#30340;&#24212;&#29992;</h1>
 <p><code>repeat-click</code> &#25351;&#20196;&#29992;&#20110;&#22312;&#29992;&#25143;&#22312;&#38271;&#25353;&#40736;&#26631;&#24038;&#38190;&#26102;&#65292;&#25345;&#32493;&#30340;&#25191;&#34892;&#20854;&#32465;&#23450;&#30340;&#26041;&#27861;&#65292;&#30452;&#21040;&#29992;&#25143;&#25260;&#36215;&#40736;&#26631;&#24038;&#38190;&#12290;</p>
@@ -6224,7 +7107,6 @@ export const arrayMethods = Object.create(arrayProto);
 &lt;/script&gt;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T02:53:09+00:00</pubDate>
 </item>
 <item>
@@ -6232,7 +7114,6 @@ export const arrayMethods = Object.create(arrayProto);
 <link>https://juejin.cn/post/7303816445041688639</link>
 <guid>https://juejin.cn/post/7303816445041688639</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: juejin</h2>
 <blockquote>
@@ -6473,7 +7354,6 @@ c. &#25152;&#20197;&#25105;&#20204;&#24517;&#39035;&#36890;&#36807; <code>.value
 <li><a href="https://juejin.cn/post/7303816445041688639" rel="noopener noreferrer" target="_blank">Vue3&#28304;&#30721;&#35299;&#26512;&#20043; ref</a></li>
 </ol>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T02:53:08+00:00</pubDate>
 </item>
 <item>
@@ -6481,7 +7361,6 @@ c. &#25152;&#20197;&#25105;&#20204;&#24517;&#39035;&#36890;&#36807; <code>.value
 <link>https://juejin.cn/post/7303797991009222667</link>
 <guid>https://juejin.cn/post/7303797991009222667</guid>
 <content:encoded><![CDATA[
-
 <p>&#28145;&#20837;&#27973;&#20986;Vue&#30340;&#21709;&#24212;&#24615;&#65288;&#19978;&#31687;&#65289;&#36816;&#34892;&#23436;&#20102;effect&#65292;&#25509;&#19979;&#26469;&#19968;&#27573;setTimeout&#20195;&#30721;&#65292;&#19979;&#31687;&#20250;&#22823;&#23478;&#19968;&#36215;&#25506;&#31350;setter&#36807;&#31243;&#37117;&#20570;&#20102;&#20160;&#20040;&#20107;&#12290;</p>
 <p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3e09f60bc5334c29afdf87a776ff9f40~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1238&amp;h=726&amp;s=107957&amp;e=png&amp;b=1f1f1f" /></p>
 <p>&#19978;&#22270;&#36825;&#19968;&#27573;&#20195;&#30721;&#65292;Vue&#31350;&#31455;&#20570;&#20102;&#20160;&#20040;&#20107;&#21602;&#65311;&#22823;&#27010;&#26377;&#20197;&#19979;&#19977;&#20214;&#65306;</p>
@@ -6629,7 +7508,6 @@ receiver&#26159;<code>{name: '&#24352;&#19977;'}</code>;<br />
 <p><img alt="3fa97d998bd4ba9d72435d933b0183f2.jpeg" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8db1f52f919f4d7f85e6397dc252f49c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=400&amp;h=400&amp;s=23969&amp;e=jpg&amp;b=d9c2b2" /></p>
 <p>&#29702;&#28165;getter&#21644;setter&#30340;&#24605;&#36335;&#20043;&#21518;&#65292;&#21457;&#29616;&#23454;&#29616;&#21709;&#24212;&#24615;&#24182;&#27809;&#26377;&#24819;&#35937;&#20013;&#30340;&#22256;&#38590;&#21834;&#65292;&#26377;&#20102;&#29702;&#35770;&#30340;&#21152;&#25345;&#65292;&#23601;&#35813;&#21160;&#25163;&#23454;&#36341;&#21862;&#65281;&#21152;&#27833;&#65281;&#65281;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T02:21:29+00:00</pubDate>
 </item>
 <item>
@@ -6637,7 +7515,6 @@ receiver&#26159;<code>{name: '&#24352;&#19977;'}</code>;<br />
 <link>https://juejin.cn/post/7303924750656045071</link>
 <guid>https://juejin.cn/post/7303924750656045071</guid>
 <content:encoded><![CDATA[
-
 <p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/de4822817b9148d8b4455dfce4aa3338~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2844&amp;h=1516&amp;s=523290&amp;e=png&amp;b=fbfbfb" /></p>
 <h2>&#21069;&#35328;</h2>
 <p>&#25991;&#23383;&#29305;&#25928;&#35774;&#35745;&#19968;&#30452;&#26159;&#22256;&#25200; <code>Web</code> &#21069;&#31471; <code>Css</code> &#19990;&#30028;&#22810;&#24180;&#30340;&#38382;&#39064;, &#27604;&#22914;&#22914;&#20309;&#29992;&#32431; <code>Css</code> &#23454;&#29616;&#25991;&#23383;&#25551;&#36793;, &#28176;&#21464;, &#38452;&#24433;&#31561;, &#30001;&#20110;&#21463;&#38480;&#20110;&#27983;&#35272;&#22120;&#20860;&#23481;&#24615;&#30340;&#38382;&#39064;, &#25105;&#20204;&#19981;&#24471;&#19981;&#20351;&#29992;&#20854;&#20182;&#26367;&#20195;&#26041;&#26696;&#26469;&#23454;&#29616;.</p>
@@ -6923,7 +7800,6 @@ export default TextCp;
 </li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T04:17:30+00:00</pubDate>
 </item>
 <item>
@@ -6931,7 +7807,6 @@ export default TextCp;
 <link>https://juejin.cn/post/7303797991009615883</link>
 <guid>https://juejin.cn/post/7303797991009615883</guid>
 <content:encoded><![CDATA[
-
 <h1>&#19968;&#12289;&#24418;&#29366;</h1>
 <h2>&#30697;&#24418; </h2>
 <pre><code>&lt;svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
@@ -7071,7 +7946,6 @@ style="fill:url(#grey_blue)"/&gt;
 &lt;/svg&gt;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T03:16:11+00:00</pubDate>
 </item>
 <item>
@@ -7079,7 +7953,6 @@ style="fill:url(#grey_blue)"/&gt;
 <link>https://juejin.cn/post/7303822514827264063</link>
 <guid>https://juejin.cn/post/7303822514827264063</guid>
 <content:encoded><![CDATA[
-
 <h2>&#29992;&#27861;</h2>
 <pre><code>var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
@@ -7458,7 +8331,6 @@ function url2Image(url, callback) {
 </tbody>
 </table>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T03:04:37+00:00</pubDate>
 </item>
 <item>
@@ -7466,7 +8338,6 @@ function url2Image(url, callback) {
 <link>https://juejin.cn/post/7303739610055393332</link>
 <guid>https://juejin.cn/post/7303739610055393332</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: hydrogen</h2>
 <h1>&#30475;&#30475; react &#19982; jsx</h1>
@@ -7749,7 +8620,6 @@ class App extends React.Component {
 }
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T14:53:40+00:00</pubDate>
 </item>
 <item>
@@ -7757,7 +8627,6 @@ class App extends React.Component {
 <link>https://juejin.cn/post/7303723984180609043</link>
 <guid>https://juejin.cn/post/7303723984180609043</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h1>&#20027;&#39064;&#21015;&#34920;&#65306;juejin, github, smartblue, cyanosis, channing-cyan, fancy, hydrogen, condensed-night-purple, greenwillow, v-green, vue-pro, healer-readable, mk-cute, jzman, geek-black, awesome-green, qklhk-chocolate</h1>
 <h1>&#36129;&#29486;&#20027;&#39064;&#65306;https://github.com/xitu/juejin-markdown-themes</h1>
@@ -8784,7 +9653,6 @@ const { data, isValidating} = useSWR(
 <p>&#21916;&#27426;&#36825;&#37096;&#20998;&#20869;&#23481;&#65292;&#23601;&#21152;&#20837;&#25105;&#20204;&#30340;QQ&#32676;&#65292;&#21644;&#22823;&#23478;&#19968;&#36215;&#20132;&#27969;&#25216;&#26415;&#21543;~</p>
 <p><strong>QQ&#32676;</strong>&#65306;<code>1032965518</code></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T12:29:05+00:00</pubDate>
 </item>
 <item>
@@ -8792,7 +9660,6 @@ const { data, isValidating} = useSWR(
 <link>https://juejin.cn/post/7303798788719837221</link>
 <guid>https://juejin.cn/post/7303798788719837221</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: github</h2>
 <h3>&#23567;&#31243;&#24207;&#32452;&#20214;&#21019;&#24314;</h3>
@@ -8888,7 +9755,6 @@ decrement() {
   // &#36827;&#34892;&#20462;&#25913;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T12:23:30+00:00</pubDate>
 </item>
 <item>
@@ -8896,7 +9762,6 @@ decrement() {
 <link>https://juejin.cn/post/7303741345324204084</link>
 <guid>https://juejin.cn/post/7303741345324204084</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: orange
 highlight: atom-one-dark</h2>
@@ -9461,7 +10326,6 @@ export function triggerEffects(effects) {
 <h2>&#21442;&#32771;&#36164;&#26009;</h2>
 <p><a href="https://www.cnblogs.com/CherishTheYouth/p/CherishTheYouth_20220810.html" rel="noopener noreferrer" target="_blank">Vue3&#21709;&#24212;&#24335;&#31995;&#32479;&#23454;&#29616;&#21407;&#29702;&#65288;&#20108;&#65289; - CherishTheYouth - &#21338;&#23458;&#22253;</a></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T11:31:58+00:00</pubDate>
 </item>
 <item>
@@ -9469,7 +10333,6 @@ export function triggerEffects(effects) {
 <link>http://www.geekpark.net/news/327935</link>
 <guid>http://www.geekpark.net/news/327935</guid>
 <content:encoded><![CDATA[
-
 <p><img src="https://imgslim.geekpark.net/uploads/image/file/c1/f5/c1f5752d4dcf353a668feca9205bea6c.png" /></p>
 <h2>&#28040;&#24687;&#31216; OpenAI &#33891;&#20107;&#20250;&#27491;&#19982; Altman &#23601;&#22238;&#24402;&#20107;&#23452;&#36827;&#34892;&#35848;&#21028;</h2>
 <p>11 &#26376; 22 &#26085;&#28040;&#24687;&#65292;&#25454;&#24429;&#21338;&#31038;&#65292;OpenAI &#33891;&#20107;&#20250;&#30446;&#21069;&#27491;&#22312;&#19982;&#33832;&#22982;&#12539;&#38463;&#23572;&#29305;&#26364;&#65288;Sam Altman&#65289;&#36827;&#34892;&#35848;&#21028;&#65292;&#35752;&#35770;&#35753;&#36825;&#20301; ChatGPT &#21069;&#39318;&#24109;&#25191;&#34892;&#23448;&#22238;&#24402;&#30340;&#21487;&#33021;&#12290;</p>
@@ -9535,7 +10398,6 @@ export function triggerEffects(effects) {
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T00:53:21+00:00</pubDate>
 </item>
 <item>
@@ -9543,7 +10405,6 @@ export function triggerEffects(effects) {
 <link>https://juejin.cn/post/7303739610055589940</link>
 <guid>https://juejin.cn/post/7303739610055589940</guid>
 <content:encoded><![CDATA[
-
 <h1>&#21069;&#35328;</h1>
 <p>&#22312;&#36825;&#20010;&#30693;&#35782;&#22823;&#29190;&#28856;&#128165;&#30340;&#26102;&#20195;&#65292;&#21508;&#24335;&#21508;&#26679;&#30340;&#20449;&#24687;&#20805;&#26021;&#30528;&#25105;&#20204;&#30340;&#23398;&#20064;&#19982;&#29983;&#27963;&#65292;&#36825;&#20123;&#20449;&#24687;&#37117;&#22312;&#23613;&#21487;&#33021;&#30340;&#28385;&#36275;&#25105;&#20204;&#30340;&#38656;&#27714;&#12290;&#23567;&#33559;&#24819;&#20102;&#24456;&#20037;&#12290;&#21457;&#29616;&#65292;&#22823;&#23478;&#37117;&#26159;&#24102;&#30528;&#38382;&#39064;&#21435;&#23547;&#25214;&#31572;&#26696;&#65292;&#20449;&#24687;&#36807;&#24230;&#21364;&#25104;&#20026;&#20102;&#25105;&#20204;&#21644;&#31572;&#26696;&#20043;&#38388;&#30340;&#38459;&#30861;&#65292;&#33021;&#19981;&#33021;&#35753;&#31572;&#26696;&#26469;&#33258;&#21160;&#23547;&#25214;&#38382;&#39064;&#21602;&#65311;</p>
 <p>&#21508;&#20301;&#19981;&#20165;&#21487;&#20197;&#22312;&#35780;&#35770;&#21306;&#38416;&#26126;&#33258;&#24049;&#30340;&#38656;&#27714;/&#38382;&#39064;&#65292;&#20063;&#21487;&#20197;&#23601;&#33258;&#24049;&#30340;&#35266;&#28857;&#23545;&#26576;&#20010;&#38382;&#39064;&#36827;&#34892;&#22238;&#22797;&#35752;&#35770;&#12290;</p>
@@ -9568,7 +10429,6 @@ export function triggerEffects(effects) {
 </ul>
 <p>&#20851;&#27880;&#20844;&#20247;&#21495;&#12300;<a href="https://web-oss.gumingnc.com/assets/20230823/Yy.rry6z/qrcode_for_gh_322c2d7a2432_344.jpg" rel="noopener noreferrer" target="_blank">Goodme&#21069;&#31471;&#22242;&#38431;</a>&#12301;&#65292;&#33719;&#21462;&#26356;&#22810;&#24178;&#36135;&#23454;&#36341;&#65292;&#27426;&#36814;&#20132;&#27969;&#20998;&#20139;~</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T00:01:55+00:00</pubDate>
 </item>
 <item>
@@ -9576,7 +10436,6 @@ export function triggerEffects(effects) {
 <link>https://www.daemonology.net/hn-daily/2023-11-21.html</link>
 <guid>https://www.daemonology.net/hn-daily/2023-11-21.html</guid>
 <content:encoded><![CDATA[
-
 <p>The 10 highest-rated articles on
 <a href="https://news.ycombinator.com/" rel="noopener noreferrer" target="_blank">Hacker News</a>
 on November 21, 2023 which have not appeared on any previous
@@ -9625,7 +10484,6 @@ are:</p>
 </li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-22T00:00:00+00:00</pubDate>
 </item>
 <item>
@@ -9633,7 +10491,6 @@ are:</p>
 <link>https://juejin.cn/post/7303797715393347636</link>
 <guid>https://juejin.cn/post/7303797715393347636</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: juejin
 highlight: a11y-dark</h2>
@@ -10124,7 +10981,6 @@ function baseCompile(template, options = {}) {
 </ul>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T15:59:32+00:00</pubDate>
 </item>
 <item>
@@ -10132,7 +10988,6 @@ function baseCompile(template, options = {}) {
 <link>https://www.zhangxinxu.com/wordpress/2023/11/cube-lut-colormapfilter-pixijs/</link>
 <guid>https://www.zhangxinxu.com/wordpress/2023/11/cube-lut-colormapfilter-pixijs/</guid>
 <content:encoded><![CDATA[
-
 <p>by <a href="https://www.zhangxinxu.com/" rel="noopener noreferrer" target="_blank">zhangxinxu</a> from <a href="https://www.zhangxinxu.com/wordpress/?p=11060" rel="noopener noreferrer" target="_blank">https://www.zhangxinxu.com/wordpress/?p=11060</a> &#37995;&#31354;&#38388;-&#37995;&#29983;&#27963;<br />
 &#26412;&#25991;&#27426;&#36814;&#20998;&#20139;&#19982;&#32858;&#21512;&#65292;&#20840;&#25991;&#36716;&#36733;&#23601;&#19981;&#24517;&#20102;&#65292;&#23562;&#37325;&#29256;&#26435;&#65292;&#22280;&#23376;&#23601;&#36825;&#20040;&#22823;&#65292;&#33509;&#24613;&#29992;&#21487;&#20197;&#32852;&#31995;&#25480;&#26435;&#12290;</p>
 <p></p>
@@ -10320,7 +11175,6 @@ const lut2Img = function (lutData) {
 &#26412;&#25991;&#22320;&#22336;&#65306;<a href="https://www.zhangxinxu.com/wordpress/?p=11060" rel="noopener noreferrer" target="_blank">https://www.zhangxinxu.com/wordpress/?p=11060</a></p>
 <p>&#65288;&#26412;&#31687;&#23436;&#65289;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T16:14:41+00:00</pubDate>
 </item>
 <item>
@@ -10328,7 +11182,6 @@ const lut2Img = function (lutData) {
 <link>https://juejin.cn/post/7303798788720115749</link>
 <guid>https://juejin.cn/post/7303798788720115749</guid>
 <content:encoded><![CDATA[
-
 <p>&#21069;&#31471;&#36716;&#20135;&#21697;3&#21608;&#24038;&#21491;&#65292;&#25226;&#33258;&#24049;&#30340;&#19968;&#20123;&#24863;&#21463;&#36890;&#36807;&#12298;<a href="https://juejin.cn/post/7283766477802864675" rel="noopener noreferrer" target="_blank">&#25105;&#36716;&#20135;&#21697;&#20102;-&#21069;&#31471;&#36716;&#20135;&#21697;&#26159;&#19968;&#31181;&#20160;&#20040;&#26679;&#30340;&#20307;&#39564;</a>&#12299;&#36825;&#31687;&#25991;&#31456;&#19982;&#22823;&#23478;&#20998;&#20139;&#65292;&#35780;&#35770;&#21306;&#24778;&#29616;&#19968;&#27874;&#22823;&#20332;&#12290;&#30001;&#20110;&#27604;&#36739;&#24537;&#65292;&#19981;&#30693;&#19981;&#35273;&#22909;&#20687;&#36716;&#30524;&#38388;&#24050;&#32463;&#21448;&#36807;&#21435;&#19968;&#20010;&#22810;&#26376;&#65292;&#36825;&#27425;&#36225;&#30528;&#21608;&#26411;&#27809;&#26377;&#24320;&#25104;&#20250;&#65292;&#32473;&#22823;&#23478;&#20998;&#20139;&#19968;&#19979;&#26368;&#36817;&#30340;&#12302;&#36259;&#20107;&#12303;&#12290;</p>
 <p>&#30446;&#21069;&#22312;&#24182;&#34892;&#20013;&#30340;&#19968;&#20010;&#39033;&#30446;&#20027;&#35201;&#26159;&#31867;&#20284;&#25991;&#20214;&#31649;&#29702;&#30340;&#21151;&#33021;&#65292;&#22312;&#36825;&#20010;&#39033;&#30446;&#20013;&#20027;&#35201;&#26159;&#26049;&#21548;&#30340;&#35282;&#33394;&#65292;&#36825;&#20010;&#39033;&#30446;&#30340;&#20135;&#21697;&#21644;&#38656;&#27714;&#26159;&#30001;&#20844;&#21496;&#30340;&#19968;&#20135;&#21697;&#26379;&#21451;&#26469;&#20570;&#12290;&#22312;&#25991;&#31456;&#20013;&#20135;&#21697;&#21151;&#33021;&#25551;&#36848;&#37096;&#20998;&#30001;&#20110;&#20247;&#25152;&#21608;&#30693;&#30340;&#21407;&#22240;&#65292;&#25105;&#21482;&#20250;&#31895;&#30053;&#30340;&#25552;&#19968;&#19979;&#12290;</p>
 <h2>&#23458;&#25143;&#35828;&#30340;</h2>
@@ -10442,7 +11295,6 @@ view.form.show() // &#26174;&#31034;&#31383;&#21475;
 <p>&#25105;&#35843;&#30740;&#20102;&#19968;&#20123;&#24120;&#35265;&#30340;&#26041;&#26696;&#65292;&#21457;&#29616;&#20182;&#20204;&#22823;&#22810;&#25968;&#37117;&#19981;&#21916;&#27426;&#65292;&#32463;&#24120;&#20307;&#31215;&#22826;&#22823;&#25110;&#35201;&#27714;&#20854;&#20182;&#35821;&#35328;&#65292;&#26377;&#19968; neutralino &#30475;&#36215;&#26469;&#23454;&#29616;&#19978;&#26159;&#24819;&#35201;&#30340;&#65292;&#20294; api &#22826;&#23569;&#65292;&#25152;&#20197;&#20915;&#23450;&#21547;&#27882;&#36896;&#22353;&#65292;&#22312; api &#35774;&#35745;&#19978;&#20250;&#32771;&#34385;&#36148;&#36817; neutralino &#20415;&#20110;&#20004;&#32773;&#36801;&#31227;&#12290;</p>
 <p>&#20195;&#30721;&#20179;&#24211;&#22312;&#36825;&#37324; <a href="https://github.com/wll8/sys-shim" rel="noopener noreferrer" target="_blank">https://github.com/wll8/sys-shim</a> &#65292;&#22914;&#26524;&#26377;&#24895;&#24847;&#30340;&#23567;&#20249;&#20276;&#65292;&#21487;&#20197; star &#25903;&#25345;&#19968;&#19979;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T13:07:25+00:00</pubDate>
 </item>
 <item>
@@ -10450,10 +11302,8 @@ view.form.show() // &#26174;&#31034;&#31383;&#21475;
 <link>https://blog.bitsrc.io/how-to-build-better-react-components-in-2024-2d930b1f30b1?source=rss----5c2fdf847f4a---4</link>
 <guid>https://blog.bitsrc.io/how-to-build-better-react-components-in-2024-2d930b1f30b1?source=rss----5c2fdf847f4a---4</guid>
 <content:encoded><![CDATA[
-
 <h4>4 Patterns for Extensible and Reusable React Components</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*CVoKGjS-r8O2xPUeYKf32g.png" /></figure><p>Extensible and reusable components are fundamental in modern React development, especially when aiming for efficient and scalable user interface design.</p><blockquote>This ensure that your React components are easy to maintain and are versatile enough to be adapted across various applications.</blockquote><p>The key to their success lies in their straightforward design and adaptability, which enables them to fit seamlessly into different contexts within an application or across various projects. By focusing on extensibility and reusability, you can create components that serve various purposes while maintaining a consistent design and functionality.</p><p>So, this article aims on achieving exactly that! We will take a look at how we can implement highly scalable and reusable React components that you can use across multiple applications! But, to do so, we will be relying on a Build Engine&#8202;&mdash;&#8202;<a href="https://bit.dev" rel="noopener noreferrer" target="_blank">Bit</a>.</p><blockquote>Bit lets you design and build anything in reusable independent components. Not only that, but it offers a CI server&#8202;&mdash;&#8202;Ripple CI thats capable of propagating changes across components trees to maintain consistency.</blockquote><p>At the end of this blog, you will be gain a practical perspective on how extensible and reusable patterns can be effectively implemented, enhancing collaboration and uniformity in UI development across diverse team projects.</p><h3>Practise 01: Building Base UI Components with Bit: A Closer&nbsp;Look</h3><blockquote>What exactly is a Base UI Component?</blockquote><p>A Base UI Component is a bare minimum component that has a pre-defined behavior that can be customized by the consumer. For example, take a look at this <a href="https://bit.cloud/bitdesign/basic-react/~components" rel="noopener noreferrer" target="_blank">Basic UI Collection that I&rsquo;ve hosted on Bit&nbsp;Cloud.</a></p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*Cwls2PrFh4jt7zmnRU9jIw.png" /><figcaption>Figure: The Basic UI Component Collection</figcaption></figure><p>It has everything that you need, in bare-bones to let you get started with your next React application with minimum&nbsp;effort.</p><blockquote>Every component that we&rsquo;ll be using in this demo is located under the <a href="https://bit.dev/reference/reference/scope/scope-overview/" rel="noopener noreferrer" target="_blank">Scope</a>&#8202;&mdash;&#8202;<a href="https://bit.cloud/bitdesign/basic-react" rel="noopener noreferrer" target="_blank">bitdesign.basic-react</a>.</blockquote><p>This scope acts as a centralized hub, providing various foundational components that are independent yet easily accessible for teams working on React projects. It facilitates a structured yet flexible approach, allowing teams to efficiently access, use, and individually customize these essential UI components, ensuring consistency and adaptability in their development workflows.</p><p>In our <a href="https://bit.cloud/bitdesign/basic-react" rel="noopener noreferrer" target="_blank">bitdesign.basic-react</a> Bit scope, we'll explore key components that demonstrate the principles of extensible and reusable design. These components are:</p><ul><li><a href="https://bit.cloud/bitdesign/basic-react/acme-theme" rel="noopener noreferrer" target="_blank">A Theme Component</a>: This component establishes the design language and tokens for the Acme brand, ensuring consistency in styling across all UI elements.</li><li><a href="https://bit.cloud/bitdesign/basic-react/actions/button" rel="noopener noreferrer" target="_blank">A Button Component</a>: A fundamental UI component designed for buttons, aligning with the Acme theme's guidelines.</li><li><a href="https://bit.cloud/bitdesign/basic-react/envs/acme-react-env" rel="noopener noreferrer" target="_blank">An Environment Component</a>: An environment component that forms the development setting for all base components. For example, it integrates the ACME theme, enabling each component to be developed and previewed with appropriate styling.</li></ul><h4>To build better components, you need traceability</h4><p>You&rsquo;re right. You need to keep track of what other components use a particular component. This can help track breaking changes, and highlight areas of impact right out of the&nbsp;gate!</p><p>With Bit, you can use its dependency graph to understand how your components interact. It illustrates the interconnectedness of components.</p><p>For example, in our scope,the ACME theme&rsquo;s updates directly impact related components like button and the acme-react-env. This graph ensures that changes in design or functionality are uniformly applied across all dependent components, as shown&nbsp;below:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*QoIwj4UmZw5irJGfaTMWJw.png" /><figcaption>Figure: Observing the <a href="https://bit.cloud/bitdesign/basic-react/~graph" rel="noopener noreferrer" target="_blank">Dependency Tree</a></figcaption></figure><p>This dependency graph is particularly beneficial in large-scale projects involving multiple teams. It aids in efficient change management, guaranteeing that updates within a scope are in sync and align with the broader organizational standards. By utilizing this feature, teams can maintain a cohesive and unified design language across different project segments.</p><h3>Practise 02: Exposing Component APIs for Enhanced Functionality and Type&nbsp;Safety</h3><p>Exporting a component&rsquo;s API and its types enhances its functionality and ensuring type safety, particularly when different teams are involved.</p><p>Here&rsquo;s an example of how the API and types for the Button component are exposed in bitdesign.basic-react/buttons/button:</p><pre>// index.ts in bitdesign.basic-react/buttons/button<br />export { Button } from './button';<br />export type { ButtonProps } from './button';</pre><p>When another team needs to extend this Button component, they can import its type and adapt it according to their specific requirements:</p><pre>import React from 'react';<br />import { ButtonProps as BaseButtonProps, Button as BaseButton } from '@bit/bitdesign.basic-react.buttons.button';<br /><br />export type ExtendedButtonProps = BaseButtonProps &amp; {<br />  // Additional props specific to the extended button<br />};<br /><br />export const ExtendedButton = ({ children, ...rest }: ExtendedButtonProps) =&gt; {<br />  // Implementation that utilizes the base Button component<br />  return &lt;BaseButton {...rest}&gt;{children}&lt;/BaseButton&gt;;<br />};</pre><p>This approach of extending types ensures that there&rsquo;s a consistent interface across different implementations. It makes the most of TypeScript&rsquo;s capabilities for improved compile-time checks and overall developer experience.</p><p>Moreover, thanks to Bit&rsquo;s dependency graph, every time the API in the base component is updated, components that extend or use it will also be updated. This automatic synchronization ensures that all teams are working with the most current version of the component, maintaining consistency and reliability across the project. This feature is particularly valuable in complex projects where multiple teams rely on shared components, as it keeps everyone aligned with the latest changes and improvements.</p><h3>Practise 03: Theming for Style Consistency with the Theme Component</h3><p>To maintain a consistent look and feel, base components are designed to be themeable.</p><p>This is achieved by utilizing a theme component, like <a href="https://bit.cloud/bitdesign/basic-react/acme-theme" rel="noopener noreferrer" target="_blank">bitdesign.basic-react/acme-theme</a>, which holds all design tokens as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" rel="noopener noreferrer" target="_blank">CSS variables</a>. This setup allows for easy overrides and ensures that components adhere to a unified design language.</p><p>For example, the Button component might use the theme as&nbsp;follow</p><pre>import { useTheme } from '@bitdesign.basic-react.acme-theme';<br /><br />const Button = ({ className, children }) =&gt; {<br />  const { primaryColor } = useTheme();<br />  const style = { background: primaryColor };<br />  return &lt;button style={style} className={className}&gt;{children}&lt;/button&gt;;<br />};</pre><p>The use of a theme component simplifies managing and applying design changes across all components, enhancing maintainability and scalability.</p><h3>Practise 04: Enhancing Customizability and Extendability</h3><h4>Enhancing Customizability with ClassName Prop</h4><p>The inclusion of a className prop in a component's API enhances its customizability. This feature allows users of the component to apply their own styles, making the component adaptable to different design contexts. Here&rsquo;s an implementation example:</p><pre>import classNames from 'classnames';<br />import styles from './button.module.scss';<br /><br />export type ButtonProps = {<br />  children?: ReactNode;<br />  className?: string;<br />} &amp; React.HTMLAttributes&lt;HTMLButtonElement&gt;;<br />export function Button({ className, children, ...rest }: ButtonProps) {<br />  return (<br />    &lt;button {...rest} className={classNames(styles.button, className)}&gt;<br />      {children}<br />    &lt;/button&gt;<br />  );<br />};</pre><p>In this snippet, the className prop works alongside the classNames utility. The styles.button provides the default styling defined in the component's stylesheet. The className prop, however, is for additional style&#8202;&mdash;&#8202;adding or overriding the orginal base style, by the consumer of the component.</p><p>The sequence in which these class names are applied is significant. Placing the className prop last in the classNames function ensures that any styles provided by this prop override the default styles in case of any conflicts. This design allows users to maintain the fundamental design and functionality of the component while customizing its appearance to suit specific requirements. It strikes a balance between maintaining a consistent base style and offering flexibility for customization, a vital aspect of creating reusable, adaptable components.</p><h4>Extendability with Spread&nbsp;Operator</h4><p>The spread operator (...rest) is a powerful feature in React that enhances the extendability of components by passing all additional props to them. This ensures the component inherits all native properties of the underlying HTML element, making it more flexible and adaptable for different use&nbsp;cases.</p><p>Here&rsquo;s an example of how to apply this pattern in the<a href="https://bit.cloud/bitdesign/basic-react/typography/text" rel="noopener noreferrer" target="_blank">bitdesign.basic-react/typorgraphy/text</a> component:</p><pre>import React, { HTMLAttributes, ReactNode } from 'react';<br /><br />type TextElements = 'span' | 'p';<br /><br />export type TextProps = {<br />  children?: ReactNode;<br />  className?: string;<br />  textElement?: TextElements;<br />} &amp; HTMLAttributes&lt;HTMLSpanElement | HTMLParagraphElement&gt;;<br />export function Text({ children, className, textElement = 'p', ...rest }: TextProps) {<br />  const TextElement = textElement;<br />  return (<br />    &lt;TextElement {...rest} className={className}&gt;<br />      {children}<br />    &lt;/TextElement&gt;<br />  );<br />}</pre><p>In this Text component, the spread operator is used to pass any additional HTML attributes to the rendered text element. This means you can use the Text component like any standard HTML paragraph (p) or span (span) element, applying native HTML attributes directly:</p><pre>&lt;Text id="unique-text-id" style={{ color: 'blue' }}&gt;Sample Text&lt;/Text&gt;</pre><p>Here, id and style are additional attributes passed to the Text component. They are applied directly to the underlying HTML element (p or span), demonstrating the component's extendability. This approach ensures that the Text component is not only customizable but also fully functional and compliant with standard HTML behavior, allowing for a wide range of applications in different contexts.</p><h3>The Benefits of Extensible and Customizable Components in&nbsp;Bit</h3><p>If you&rsquo;ve noticed in this article, I&rsquo;ve used Bit to create my React components and not&nbsp;npx.</p><blockquote>Well I have a good reason for&nbsp;that.</blockquote><p>Think of the bigger picture. Right now, I have one React component&#8202;&mdash;&#8202;Button. If I spin up 100 projects tomorrow, I can use this same Button without duplicating the component code inside each React project. Not only will I reduce huge lines of redundant code, but I&rsquo;ll also have a guaranteed consistent outcome every time. With Bit&rsquo;s dependency tree, I can guarantee that my apps will use the latest version of my Button without a single change in the rest of the&nbsp;app.</p><p>This promotes consistency in the user experience, as the underlying base components maintain a uniform standard while allowing for necessary variations.</p><h3>Well, How Does Bit Handle Component Changes?</h3><blockquote>Simply put; efficient change management on Bit is powered using it&rsquo;s CI Server&#8202;&mdash;&#8202;Ripple&nbsp;CI.</blockquote><p>In a <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering" rel="noopener noreferrer" target="_blank">component-based software engineering</a>, there is a constant need to efficiently manage and sync changes. Bit, particularly with its integration with <a href="https://bit.dev/reference/ci/ripple-ci" rel="noopener noreferrer" target="_blank">Ripple CI</a>, streamlines this process. Ripple CI facilitates the continuous integration and delivery of components, ensuring that updates and improvements are automatically propogated across the dependency graph.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*5-ManShz5qtPIpGUvoNaQA.png" /><figcaption>A release of a new blog post propagates to the blog component and then to the bit.dev&nbsp;app</figcaption></figure><p>When a component is updated, Ripple CI helps in automatically running tests and building processes for modified components. This ensures that any changes made to a component are stable and ready for use. Once a component passes all checks, Ripple CI aids in propagating these changes to all dependent components across different teams. This mechanism is especially beneficial in environments where multiple teams work with shared components, as it keeps everyone up-to-date and aligned with the latest versions.</p><h3>Wrapping Up</h3><p>By embracing the patterns of creating extensible and reusable components in Bit, you contribute to a more collaborative and efficient UI development ecosystem. This approach not only results in the creation of robust and reusable components but also fosters an environment where these components can be easily shared and adapted to different contexts. The integration with tools like Ripple CI further enhances this ecosystem by ensuring that changes are smoothly and consistently propagated across various teams and projects.</p><p>This methodology of component development drives innovation and efficiency, ensuring that software development becomes a more cohesive process. The resulting codebase is not only easier to maintain but also more flexible and responsive to the evolving needs of different projects and teams. By adopting these practices, organizations can significantly improve their development workflows, leading to higher quality software and a better overall user experience.</p><p>I hope you found this article&nbsp;helpful.</p><p>Thank you for&nbsp;reading!</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/component-driven-development-and-composable-applications-a-guide-7a0934e60936" rel="noopener noreferrer" target="_blank">Composable Applications and Component-Driven Development: a Guide</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/creating-a-developer-website-with-bit-components-3f4083a7f050" rel="noopener noreferrer" target="_blank">Creating a Developer Website with Bit components</a></li><li><a href="https://blog.bitsrc.io/5-tools-for-building-react-component-libraries-in-2023-d8fb8e4c13b4" rel="noopener noreferrer" target="_blank">5 Tools for Building React Component Libraries in 2023</a></li><li><a href="https://blog.bitsrc.io/getting-started-with-a-new-vue-js-project-in-2023-7ea97498ab6a" rel="noopener noreferrer" target="_blank">Getting Started with a New Vue.js Project in 2023</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=2d930b1f30b1" /><hr /><p><a href="https://blog.bitsrc.io/how-to-build-better-react-components-in-2024-2d930b1f30b1" rel="noopener noreferrer" target="_blank">How To Build Better React Components in 2024?</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T11:44:08+00:00</pubDate>
 </item>
 <item>
@@ -10461,7 +11311,6 @@ view.form.show() // &#26174;&#31034;&#31383;&#21475;
 <link>http://www.geekpark.net/news/327930</link>
 <guid>http://www.geekpark.net/news/327930</guid>
 <content:encoded><![CDATA[
-
 <p>&#25991; | &#24184;&#33433;</p>
 <p>&#32534;&#36753; | &#37073;&#29572;</p>
 <h2>&nbsp;</h2>
@@ -10522,7 +11371,6 @@ view.form.show() // &#26174;&#31034;&#31383;&#21475;
 <p>&#36825;&#26159; OpenAI &#26368;&#20851;&#38190;&#30340;&#25112;&#24441;&mdash;&mdash;&#20316;&#20026;&#19990;&#30028;&#26368;&#39030;&#23574;&#12289;&#26368;&#26377;&#20449;&#20208;&#30340;&#20154;&#24037;&#26234;&#33021;&#20844;&#21496;&#65292;&#23427;&#31532;&#19968;&#27425;&#38754;&#20020;&#20844;&#21496;&#27835;&#29702;&#32467;&#26500;&#24341;&#21457;&#30340;&#31649;&#29702;&#28151;&#20081;&#65292;&#31532;&#19968;&#27425;&#21644;&#30495;&#23454;&#12289;&#22797;&#26434;&#30340;&#21830;&#19994;&#19990;&#30028;&#30896;&#25758;&mdash;&mdash;&#32780;&#23427;&#33021;&#21542;&#24179;&#31283;&#28193;&#36807;&#36825;&#27425;&#38590;&#20851;&#65292;&#19981;&#20165;&#20915;&#23450;&#20102;&#36825;&#23478;&#20844;&#21496;&#30340;&#21629;&#36816;&#12289;&#20063;&#20915;&#23450;&#20102;&#26410;&#26469;&#30340; AI &#21830;&#19994;&#26684;&#23616;&#23558;&#21435;&#24448;&#20309;&#22788;&#12290;</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T11:43:24+00:00</pubDate>
 </item>
 <item>
@@ -10530,7 +11378,6 @@ view.form.show() // &#26174;&#31034;&#31383;&#21475;
 <link>https://juejin.cn/post/7303739766105505832</link>
 <guid>https://juejin.cn/post/7303739766105505832</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: cyanosis
 highlight: a11y-dark</h2>
@@ -10672,7 +11519,6 @@ const test = () =&gt; {
 <li>&#20026;&#20160;&#20040;ESM&#26159;&#24322;&#27493;&#30340;&#65306; <a href="https://www.ruanyifeng.com/blog/2020/08/how-nodejs-use-es6-module.html" rel="noopener noreferrer" target="_blank">Node.js &#22914;&#20309;&#22788;&#29702; ES6 &#27169;&#22359; - &#38446;&#19968;&#23792;&#30340;&#32593;&#32476;&#26085;&#24535; (ruanyifeng.com)</a></li>
 </ol>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T09:21:16+00:00</pubDate>
 </item>
 <item>
@@ -10680,7 +11526,6 @@ const test = () =&gt; {
 <link>https://juejin.cn/post/7303746615366664202</link>
 <guid>https://juejin.cn/post/7303746615366664202</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: smartblue</h2>
 <p>&#25216;&#26415;&#36873;&#22411;&#65306;Jest + Enzyme</p>
@@ -10821,7 +11666,6 @@ enzyme &#26159;&#19968;&#20010;&#27969;&#34892;&#30340; React &#32452;&#20214;&#
 enzyme-adapter-react-16 &#26159;&#36866;&#29992;&#20110; React 16 &#29256;&#26412;&#30340; Enzyme &#36866;&#37197;&#22120;&#12290;<br />
 @types/enzyme &#21644; @types/enzyme-adapter-react-16 &#26159; Enzyme &#30340;&#31867;&#22411;&#22768;&#26126;&#25991;&#20214;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T08:41:57+00:00</pubDate>
 </item>
 <item>
@@ -10829,7 +11673,6 @@ enzyme-adapter-react-16 &#26159;&#36866;&#29992;&#20110; React 16 &#29256;&#2641
 <link>https://juejin.cn/post/7303594200809783359</link>
 <guid>https://juejin.cn/post/7303594200809783359</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>theme: juejin</h2>
 <blockquote>
@@ -11294,7 +12137,6 @@ function triggerEffect(
 <li><a href="https://juejin.cn/post/7303816445041688639" rel="noopener noreferrer" target="_blank">Vue3&#28304;&#30721;&#35299;&#26512;&#20043; ref</a></li>
 </ol>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T08:17:56+00:00</pubDate>
 </item>
 <item>
@@ -11302,7 +12144,6 @@ function triggerEffect(
 <link>https://juejin.cn/post/7303723984179396627</link>
 <guid>https://juejin.cn/post/7303723984179396627</guid>
 <content:encoded><![CDATA[
-
 <p>&#20170;&#22825;&#25105;&#20204;&#26377;&#20010;&#33392;&#24040;&#30340;&#25361;&#25112;&#65292;&#37027;&#23601;&#26159;&#38405;&#35835;Vue&#30340;reactive&#28304;&#30721;&#65292;&#19968;&#31687;&#20889;&#23436;&#22826;&#38271;&#20102;&#65292;&#25105;&#24819;&#35201;&#38271;&#30171;&#20998;&#25104;&#22810;&#27425;&#30701;&#30171;&#65292;&#36825;&#26679;&#24863;&#21463;&#36215;&#26469;&#23601;&#20687;&#26080;&#30171;(&#25163;&#21160;doge)&#65292;&#21482;&#26377;&#20808;&#35835;&#30340;&#25026;&#20102;&#65292;&#25105;&#20204;&#25165;&#33021;&#19979;&#25163;&#27169;&#20223;&#65307;&#21152;&#27833;&#21543;&#23453;&#23376;&#20204;&#65281;&#65281;PS:&#26412;&#25991;&#20013;&#30340;&#20195;&#30721;&#37117;&#26159;&#31616;&#21333;&#29256;&#65292;&#22810;&#20313;&#30340;&#24050;&#34987;&#21098;&#26525;&#65292;&#26356;&#21152;&#31616;&#21333;&#28165;&#26224;&#26131;&#25026;&#65307;
 <img alt="c36253d974bea9a9f87a2e799a810d9a.jpg" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/904ebda01b0641e7b3947c543bbab02e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=1000&amp;s=76265&amp;e=jpg&amp;b=fbf9f9" />
 &#39318;&#20808;&#25105;&#20204;&#29992;&#30340;&#20363;&#23376;&#127792;&#36824;&#26159;&#19978;&#19978;&#19978;&#31687;&#37027;&#20010;&#65292;&#36825;&#27573;&#20195;&#30721;&#26159;&#25105;&#20204;&#32463;&#24120;&#29992;&#21040;&#30340;reactive&#21644;effect&#30340;&#26041;&#27861;&#65292;&#20170;&#22825;&#25105;&#20204;&#23601;&#19968;&#36215;&#26469;&#28145;&#20837;&#25366;&#25496;Vue&#21040;&#24213;&#20570;&#20102;&#20160;&#20040;&#20107;&#65307;</p>
@@ -11478,7 +12319,6 @@ Vue&#21709;&#24212;&#24615;&#30340;&#26680;&#24515;&#26159;&#20381;&#36182;&#259
 <li>&#24314;&#31435;&#20102;targetMap&#21644;activeEffect&#20043;&#38388;&#30340;&#32852;&#31995;&#65307;</li>
 </ol>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T07:58:28+00:00</pubDate>
 </item>
 <item>
@@ -11486,7 +12326,6 @@ Vue&#21709;&#24212;&#24615;&#30340;&#26680;&#24515;&#26159;&#20381;&#36182;&#259
 <link>https://juejin.cn/post/7303043776627900431</link>
 <guid>https://juejin.cn/post/7303043776627900431</guid>
 <content:encoded><![CDATA[
-
 <p>&#36215;&#21021;&#22312;boss&#19978;&#30475;&#21040;&#19968;&#20010;&#38754;&#35797;&#23448;&#21457;&#39064;&#65292;&#21033;&#29992;canvas&#23454;&#29616;&#22270;&#29255;&#35009;&#20999;&#65292;&#22312;&#23398;&#20064;&#36807;&#31243;&#20013;&#23454;&#29616;&#19977;&#20010;&#23567;&#21151;&#33021;&#65292;&#24182;&#22312;&#27492;&#22522;&#30784;&#19978;&#28145;&#20837;&#23398;&#20064;&#26126;&#30333;&#30456;&#20851;&#24037;&#20855;&#21644;&#33021;&#21147;&#12290;
 &#36825;&#31687;&#21338;&#23458;&#20027;&#35201;&#23454;&#29616;&#19977;&#20010;&#21151;&#33021;&#65306;&#21038;&#21038;&#21345;&#12289;&#22312;&#32447;&#31614;&#21517;&#12289;&#22270;&#29255;&#28034;&#25273;&#35009;&#20999;&#20855;&#20307;&#23454;&#29616;&#25928;&#26524;&#19979;&#22270;&#65306;
 <img alt="canvas02.gif" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4ac0a3312bb34844a53302c2c96c9c4a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2094&amp;h=404&amp;s=4922163&amp;e=gif&amp;f=2739&amp;b=f8f7f4" /></p>
@@ -12142,7 +12981,6 @@ function contrast() {
 <h2>4 &#26368;&#21518;&#25928;&#26524;</h2>
 <p><img alt="&#28034;&#25273;.gif" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a38a4615343e4295bb239721d39ebc07~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=970&amp;h=372&amp;s=2172513&amp;e=gif&amp;f=987&amp;b=fcfaf7" /></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-20T04:35:27+00:00</pubDate>
 </item>
 <item>
@@ -12150,7 +12988,6 @@ function contrast() {
 <link>https://juejin.cn/post/7303461209143132170</link>
 <guid>https://juejin.cn/post/7303461209143132170</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>highlight: a11y-dark</h2>
 <h1>&#21069;&#35328;</h1>
@@ -12249,7 +13086,6 @@ function contrast() {
 <h2>&#31505;&#33080;&#23436;&#25972;&#20195;&#30721;</h2>
 <p><a href="https://code.juejin.cn/pen/7302329874616680457" rel="noopener noreferrer" target="_blank">jcode</a></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T03:38:27+00:00</pubDate>
 </item>
 <item>
@@ -12257,7 +13093,6 @@ function contrast() {
 <link>https://juejin.cn/post/7303463043248832546</link>
 <guid>https://juejin.cn/post/7303463043248832546</guid>
 <content:encoded><![CDATA[
-
 <hr />
 <h2>highlight: agate</h2>
 <h1>&#34920;&#26684;&#25302;&#25341;&#25554;&#20214;-&#20174;&#38646;&#24320;&#22987;vue3+vite+ts+pinia+router4&#21518;&#21488;&#31649;&#29702;(10)</h1>
@@ -12395,7 +13230,6 @@ const  getDragableData = () =&gt;{
 <p><code>tableData.value.splice(parseInt(evt.newIndex), 0, copyRow);//&#25554;&#20837;&#21040;&#25302;&#21160;&#30340;&#20301;&#32622;</code></p>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T02:29:47+00:00</pubDate>
 </item>
 <item>
@@ -12403,7 +13237,6 @@ const  getDragableData = () =&gt;{
 <link>https://juejin.cn/post/7303727255090790412</link>
 <guid>https://juejin.cn/post/7303727255090790412</guid>
 <content:encoded><![CDATA[
-
 <p>&#25509;&#21147;<a href="https://juejin.cn/post/7302781262321139747" rel="noopener noreferrer" target="_blank"> React-hook&#28304;&#30721;&#38405;&#35835; - useState</a>&#12290;</p>
 <p>&#25105;&#20204;&#32487;&#32493;&#25353;&#29031;<code>useState</code>&#30340;&#22871;&#36335;&#26469;&#30475;&#20854;&#20182;<code>hook</code>&#12290; &#20027;&#25171;&#19968;&#20010;&#24555;&#36895;&#39640;&#25928;</p>
 <p>&#22914;&#26524;&#27809;&#26377;&#30475;&#36807;<code>useState</code>&#30340;&#36923;&#36753;&#30452;&#25509;&#30475;&#36825;&#19968;&#31687;&#30340;&#35805;&#21487;&#33021;&#20250;&#26377;&#28857;&#30475;&#19981;&#25026;&#12290; &#36825;&#19968;&#24352;&#20027;&#25171;&#30733;&#33756;&#65292; &#20316;&#20026;&#36807;&#28193;&#31687;&#65292; &#25226;&#31616;&#21333;&#24120;&#35265;&#30340;<code>hook</code>&#20808;&#36807;&#19968;&#36941;</p>
@@ -12687,7 +13520,6 @@ HooksDispatcherOnUpdate</a> &#21487;&#20197;&#30475;&#21040;&#12290; &#26080;&#3
 </code></pre>
 <p>&#36825;&#19968;&#31687;&#26681;&#25454;&#20043;&#21069;<code>useState</code>&#28041;&#21450;&#30340;&#36923;&#36753;&#25226;&#19968;&#20123;&#31616;&#21333;&#30340;<code>hook</code>&#36890;&#20851;&#20102;&#65292; &#19979;&#19968;&#31687;&#35762;&#35299;&#36319;<code>Effect</code>&#30456;&#20851;&#30340;<code>hook</code></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T06:55:30+00:00</pubDate>
 </item>
 <item>
@@ -12695,7 +13527,6 @@ HooksDispatcherOnUpdate</a> &#21487;&#20197;&#30475;&#21040;&#12290; &#26080;&#3
 <link>https://juejin.cn/post/7303435124526759976</link>
 <guid>https://juejin.cn/post/7303435124526759976</guid>
 <content:encoded><![CDATA[
-
 <p>##Rollup 4</p>
 <p>Vite &#29616;&#22312;&#20351;&#29992; Rollup 4&#65292;&#23427;&#20063;&#24102;&#26469;&#20102;&#19968;&#20123;&#37325;&#22823;&#30340;&#21464;&#21270;&#65292;&#29305;&#21035;&#26159;&#65306;</p>
 <ul>
@@ -12863,7 +13694,6 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 <p><a href="https://www.grapecity.com.cn/blogs/getting-started-use-sjs-in-vue-part1" rel="noopener noreferrer" target="_blank">&#26032;&#25163;&#20837;&#38376;-&#22312;Vue&#26694;&#26550;&#20013;&#23884;&#20837;&#21069;&#31471;Excel&#34920;&#26684;&#25554;&#20214;&#65288;&#19978;&#65289;</a></p>
 <p><a href="https://gcdn.grapecity.com.cn/showtopic-83956-1-28.html" rel="noopener noreferrer" target="_blank">VUE 3 &#32452;&#20214;&#24320;&#21457;&#23454;&#25112; &ndash; &#22312;&#32447;&#30005;&#23376;&#34920;&#26684;&#25991;&#26723;&#32534;&#36753;&#65288;&#19968;&#65289;</a></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T01:18:46+00:00</pubDate>
 </item>
 <item>
@@ -12871,7 +13701,6 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 <link>https://juejin.cn/post/7303461209142853642</link>
 <guid>https://juejin.cn/post/7303461209142853642</guid>
 <content:encoded><![CDATA[
-
 <p>&#38543;&#30528;5G&#12289;&#29289;&#32852;&#32593;&#12289;&#22823;&#25968;&#25454;&#31561;&#25216;&#26415;&#30340;&#39640;&#36895;&#21457;&#23637;&#65292;&#21508;&#39046;&#22495;&#36880;&#27493;&#21521;&#25968;&#23383;&#21270;&#12289;&#21487;&#35270;&#21270;&#30340;&#20154;&#24037;&#26234;&#33021;&#65288;AI&#65289;&#30340;&#26041;&#21521;&#19981;&#26029;&#36808;&#36827;&#12290;&#20840;&#29699;&#36827;&#20837;&#24037;&#19994; 4.0 &#26102;&#20195;&#65292;&#26631;&#24535;&#30528;&#20808;&#36827;&#30340;&#20449;&#24687;&#25216;&#26415;&#20110;&#21046;&#36896;&#19994;&#32039;&#23494;&#32467;&#21512;&#65292;&#23558;&#20174;&#21333;&#32431;&#30340;&#29983;&#20135;&#35201;&#32032;&#21521;&#25968;&#25454;&#39537;&#21160;&#12289;&#26234;&#33021;&#21270;&#12289;&#39640;&#24230;&#33258;&#21160;&#21270;&#30340;&#26041;&#21521;&#36716;&#22411;&#12290;</p>
 <p><strong>2023&#21363;&#23558;&#32467;&#26463;&#65292;&#32039;&#36319;&#34892;&#19994;&#21457;&#23637;&#65292;&#23567;&#32534;&#25972;&#29702;&#20102;2023&#24180;&#20960;&#27454;&#26368;&#28909;&#38376;&#30340;&#21069;&#31471;Web&#32452;&#24577;&#36719;&#20214;&#24037;&#20855;&#65292;&#20197;&#20379;&#21442;&#32771;&#65281;</strong></p>
 <h2><strong>FUXA</strong></h2>
@@ -12911,7 +13740,6 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 <h2>&#24635;&#32467;</h2>
 <p>&#20197;&#19978;&#21482;&#26159;&#37096;&#20998;Web&#32452;&#24577;&#36719;&#20214;&#65292;&#30446;&#21069;&#22269;&#20869;&#24066;&#22330;&#27969;&#34892;&#30340;&#36828;&#36828;&#19981;&#27490;&#36825;&#20123;&#65292;&#23569;&#35828;&#26377;&#20960;&#21313;&#27454;&#32452;&#24577;&#36719;&#20214;&#34987;&#21508;&#34892;&#19994;&#25152;&#24212;&#29992;&#12290;&#36825;&#37324;&#23601;&#19981;&#19968;&#19968;&#21015;&#20030;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T02:54:14+00:00</pubDate>
 </item>
 <item>
@@ -12919,13 +13747,10 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 <link>https://juejin.cn/pin/7303414348932481078</link>
 <guid>https://juejin.cn/pin/7303414348932481078</guid>
 <content:encoded><![CDATA[
-
 <p>&#29616;&#22312;IT&#30495;&#30340;&#22826;&#21367;&#20102;&#65292;&#25105;&#19968;&#20010;&#20154;&#35201;iOS Android&#21407;&#29983;&#24320;&#21457;&#65292;Flutter&#36328;&#31471;&#24320;&#21457;&#65292;Uniapp&#24320;&#21457;&#65292;Taro&#24320;&#21457;&#65292;React Native&#24320;&#21457;&#65292;&#36825;&#37117;&#19981;&#22815;&#65292;&#29616;&#22312;&#21448;&#26469;&#20010;&#40511;&#33945;&#24320;&#21457;<br />
             <br /></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-21T02:21:18+00:00</pubDate>
 </item>
-
 </channel>
 </rss>
