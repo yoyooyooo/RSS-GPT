@@ -4749,3 +4749,10 @@ Filter: [AI机器人现“井喷”，什么时候量产？](https://www.36kr.co
 Filter: [GPT-4成学术造假“神器”，伪造数据又快又合理，Nature请统计学专家“断案”](https://www.36kr.com/p/2530605178054405)
 append_entries: 0
 Finish: 2023-11-24 06:04:05.412611
+------------------------------------------------------
+Started: 2023-11-24 08:04:16.807727
+Existing_entries: 302
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
