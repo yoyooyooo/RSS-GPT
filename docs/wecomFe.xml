@@ -5,6 +5,100 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>Mastering React Development: Building Modern Web Apps with Ease</title>
+<link>https://blog.bitsrc.io/mastering-react-development-building-modern-web-apps-with-ease-c4a309a7eb88?source=rss----5c2fdf847f4a---4</link>
+<guid>https://blog.bitsrc.io/mastering-react-development-building-modern-web-apps-with-ease-c4a309a7eb88?source=rss----5c2fdf847f4a---4</guid>
+<content:encoded><![CDATA[
+<div> <p>Embracing Composability in Modern Software DevelopmentIn today&rsquo;s digital landscape, composable softw...</p> <div>
+<h4>Embracing Composability in Modern Software Development</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*jA9fin5ANxvWbvIzoSUlig.png" /></figure><p>In today&rsquo;s digital landscape, composable software stands as a cornerstone of efficient and flexible application development. Like assembling building blocks, this modular approach enables you to create, update, and maintain applications with smaller, reusable code pieces. It embodies the principles of independence and interoperability, where each component, functioning independently, seamlessly integrates with others. This streamlines development and enhances adaptability in dynamic environments, fostering collaboration and innovation.</p><h4>The Role of Bit in Evolving App Development</h4><p>Bit represents a paradigm shift in app development. More than just a tool, it revolutionizes creating and managing composable software, enabling you to craft independent, reusable components easily shared and collaborated upon. Bit stands out for its modularity, turning each component into a standalone entity with its logic, UI, and state. This approach democratizes the development process, allowing even small components to be shared and reused, thus accelerating development timelines and ensuring application consistency and&nbsp;quality.</p><h4>Building Blocks: The Anatomy of Bit Components</h4><p>Bit&rsquo;s architecture is centered around independent components, the fundamental building blocks for application development. Each component is a self-contained unit with its code, dependencies, configuration, and version history. This encapsulation ensures consistent behavior across different environments. Components might include functional code (like a UI element or service), dependencies (external libraries or other Bit components), configuration files, test cases, and documentation. By breaking down applications into manageable pieces, Bit simplifies the development process and enhances software&nbsp;quality.</p><h4>Advantages of Using Independent Components</h4><p>Bit components offer several advantages:</p><ul><li><strong>Reusability</strong>: They can be reused across projects, reducing the need to write new code for common functionalities.</li><li><strong>Scalability</strong>: Applications can scale efficiently as components can be scaled independently.</li><li><strong>Maintainability</strong>: It&rsquo;s easier and less risky to update a single component than to modify a large codebase.</li><li><strong>Collaboration</strong>: Teams can work on different components simultaneously, fostering a collaborative process.</li><li><strong>Consistency</strong>: Reusable components ensure a consistent look and feel across different parts of an application.</li><li><strong>Rapid Development</strong>: You can quickly assemble applications from existing components.</li><li><strong>Isolation of Issues</strong>: Issues are generally confined to a single component, simplifying diagnosis and&nbsp;fixing.</li></ul><h4>Creating a &lsquo;Hello World&rsquo; App with&nbsp;Bit</h4><p>This practical guide will demonstrate how to build a simple &lsquo;Hello World&rsquo; app using Bit, highlighting the benefits of composable software development.</p><ol><li>Install Bit: Start with the installation of Bit on your machine using npx @teambit/bvm install. This step is fundamental to accessing Bit's rich features and functionality.</li><li>Initialize Your Workspace: Create a new workspace for your project with bit new hello-world my-hello-world --env teambit.community/starters/hello-world. This workspace is the foundation for developing and managing components, emphasizing Bit's modular approach.</li><li>Run and Preview the App Component: Dive into the heart of your project by running bit run hello-world-app. Following this, use bit start to launch the Workspace UI, where you can preview your components. This step demonstrates Bit's emphasis on reusability and scalability, as each component can be developed and tested independently.</li><li>Check Component Status: Ensure everything is in order by running bit status. This command confirms that all components are functioning correctly and are independent of the workspace, showcasing Bit's robust maintainability features.</li><li>Create a Remote Scope: Establish a remote scope for collaboration by logging into your <a href="https://bit.cloud" rel="noopener noreferrer" target="_blank">bit.cloud</a> account and setting up a new scope. This action underlines Bit&rsquo;s collaborative and flexible nature, allowing you to share and manage components across&nbsp;teams.</li><li>Version and Release Components: Finally, version your changes with bit tag --message "initial tag" and export your components with bit export. This step exemplifies how Bit streamlines the rapid development and deployment of applications.</li></ol><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*4NoraVHbdkPspFZBcqHJ5g.png" /></figure><h4>Updating a Dependency: Key Features of Bit in&nbsp;Action</h4><p>Now, let&rsquo;s explore how Bit handles updates in dependencies and their propagation, a key feature that underpins the efficiency and flexibility of Bit in managing complex dependencies.</p><ol><li>Identify and Update a Component: Suppose we need to update the ui/hello-world component of our app. We save our modifications after making necessary changes, such as a UI enhancement or bug&nbsp;fix.</li><li>Local Testing: It&rsquo;s essential to test the updated component locally to ensure it works as expected. This is where Bit&rsquo;s isolation of issues comes into play, allowing us to verify changes without impacting the entire application.</li><li>Automated Dependency Updates: With the updated <a href="https://bit.cloud/learnbit/hello-world/ui/hello-world" rel="noopener noreferrer" target="_blank">ui/hello-world</a> component, run bit tag to tag all modified components. Bit automatically recognizes the updated <a href="https://bit.cloud/learnbit/hello-world/ui/hello-world" rel="noopener noreferrer" target="_blank">ui/hello-world</a> component and tags it along with any dependent components, like <a href="https://bit.cloud/learnbit/hello-world/hello-world-app" rel="noopener noreferrer" target="_blank">hello-world-app</a>, but not unrelated components such as <a href="https://bit.cloud/learnbit/hello-world/get-hello-world" rel="noopener noreferrer" target="_blank">get-hello-world</a>. This intelligent tagging demonstrates Bit's ability to handle dependencies incrementally.</li><li>Export and Propagate Changes: Run bit export to export the updated components to their remote scopes. This step shows how Bit facilitates the propagation of changes to dependents, ensuring that every part of your application is up-to-date with minimal&nbsp;effort.</li></ol><figure><img alt="" src="https://cdn-images-1.medium.com/max/404/1*RnWKQbo-xxgz7X2QBV3uNQ.png" /><figcaption>Only modified components and their dependants are&nbsp;tagged.</figcaption></figure><p>This practical guide aligns with the earlier discussed benefits of using Bit. It provides a clear, hands-on approach to building and updating a web app using Bit&rsquo;s composable software architecture. Through this process, you can appreciate the efficiency, modularity, and collaboration that Bit brings to modern web app development.</p><p>Bit&rsquo;s approach to application development is particularly evident in its handling of app components. While retaining the basic features of any Bit component, these components also offer additional capabilities, particularly in terms of deployment and runtime consumption.</p><ol><li><strong>Build-Time Consumption:</strong></li></ol><ul><li>As Dependencies in Other Bit Components: App components in Bit can be consumed as dependencies within other Bit components during the build phase, this allows for a flexible and modular development approach, where app components can be integrated into a larger system or other components, enhancing the application&rsquo;s functionality and structure.</li></ul><p>2.<strong> Runtime Deployment and Consumption:</strong></p><ul><li>Deployment as Full Applications: Unlike regular Bit components, app components can be deployed as full, standalone applications. Once deployed, these applications are directly consumed by end-users. Bit facilitates this deployment, ensuring the application is packaged correctly and ready for user interaction. This capability is crucial for developing complete applications that are not just part of a larger system but can also function independently.</li><li>Consumption by Other Applications at Runtime: Additionally, Bit app components can be consumed by other applications at runtime, not just as part of microfrontends but as entire applications. This aspect is particularly relevant when integrating a complete application into a larger ecosystem, allowing for seamless interaction and functionality sharing between different applications or&nbsp;systems.</li></ul><p>In handling Bit app components, the platform demonstrates its versatility in accommodating both the <a href="https://bit.dev/blog/bit-components-build-time-and-runtime-consumption-lgmaprww" rel="noopener noreferrer" target="_blank">build-time integration and the standalone deployment of these component</a>s. This dual nature facilitates a more dynamic and adaptable approach to web app development, catering to component-based architecture and full application deployment needs.</p><h4>Conclusion: The Transformative Power of&nbsp;Bit</h4><p>Bit&rsquo;s approach to composable software revolutionizes application development. It enhances efficiency, modularity, and collaboration, representing a paradigm shift in how software is built, managed, and evolved. By embracing Bit, anyone can unlock new levels of efficiency, innovation, and collaboration, paving the way for the next generation of software development practices. Additional resources and further reading are available for those interested in exploring Bit and composable software.</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li><li><a href="https://blog.bitsrc.io/component-driven-development-and-composable-applications-a-guide-7a0934e60936" rel="noopener noreferrer" target="_blank">Composable Applications and Component-Driven Development: a Guide</a></li><li><a href="https://blog.bitsrc.io/5-tools-for-building-react-component-libraries-in-2023-d8fb8e4c13b4" rel="noopener noreferrer" target="_blank">5 Tools for Building React Component Libraries in 2023</a></li><li><a href="https://blog.bitsrc.io/creating-a-developer-website-with-bit-components-3f4083a7f050" rel="noopener noreferrer" target="_blank">Creating a Developer Website with Bit components</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=c4a309a7eb88" /><hr /><p><a href="https://blog.bitsrc.io/mastering-react-development-building-modern-web-apps-with-ease-c4a309a7eb88" rel="noopener noreferrer" target="_blank">Mastering React Development: Building Modern Web Apps with Ease</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
+]]></content:encoded>
+
+<pubDate>2023-11-24T10:17:57+00:00</pubDate>
+</item>
+<item>
+<title>Nextjs14使用next-redux-wrapper报错解法</title>
+<link>https://juejin.cn/post/7304888432735420456</link>
+<guid>https://juejin.cn/post/7304888432735420456</guid>
+<content:encoded><![CDATA[
+<div> <p>&#21069;&#35328;
+&#38543;&#30528;Nextjs V14&#29256;&#26412;&#30340;&#21457;&#24067;&#65292;&#24212;&#35813;&#36234;&#26469;&#36234;&#22810;&#23567;&#20249;&#20276;&#24320;&#22987;&#20250;&#20351;&#29992;Nextjs V14&#36827;&#34892;&#24320;&#21457;&#65292;&#25110;&#32773;&#20043;&#21069;&#20351;&#29992;&#36739;&#26087;&#29256;&#26412;&#30340;&#39033;&#30446;&#20063;&#20250;&#23384;&#22312;&#21319;&#32423;&#30340;&#38656;&#27714;&#12290;&#37027;&#20040;&#22914;&#26524;&#20320;&#21644;&#25105;&#19968;&#26679;&#20351;&#29992;&#30340;&#26159;Nextjs V13.5&#20043;&#21069;...</p> <div>
+<h2>&#21069;&#35328;</h2>
+<p>&#38543;&#30528;Nextjs V14&#29256;&#26412;&#30340;&#21457;&#24067;&#65292;&#24212;&#35813;&#36234;&#26469;&#36234;&#22810;&#23567;&#20249;&#20276;&#24320;&#22987;&#20250;&#20351;&#29992;Nextjs V14&#36827;&#34892;&#24320;&#21457;&#65292;&#25110;&#32773;&#20043;&#21069;&#20351;&#29992;&#36739;&#26087;&#29256;&#26412;&#30340;&#39033;&#30446;&#20063;&#20250;&#23384;&#22312;&#21319;&#32423;&#30340;&#38656;&#27714;&#12290;&#37027;&#20040;&#22914;&#26524;&#20320;&#21644;&#25105;&#19968;&#26679;&#20351;&#29992;&#30340;&#26159;Nextjs V13.5&#20043;&#21069;&#30340;&#29256;&#26412;&#36827;&#34892;&#21319;&#32423;&#65292;&#24182;&#19988;&#20320;&#30340;Nextjs&#39033;&#30446;&#20351;&#29992;&#20102;<code>next-redux-wrapper</code>&#65292;&#37027;&#20040;&#24685;&#21916;&#20320;&#65292;&#24456;&#26377;&#21487;&#33021;&#20250;&#36393;&#22353;&#20102;&#12290;</p>
+<h2>&#20160;&#20040;&#26159;next-redux-wrapper&#65311;</h2>
+<p><code>next-redux-wrapper</code>&#26159;&#19968;&#20010;&#31532;&#19977;&#26041;&#24211;&#65292;&#20027;&#35201;&#20316;&#29992;&#26159;&#22312;&#25105;&#20204;&#20351;&#29992;Nextjs&#36827;&#34892;&#39033;&#30446;&#24320;&#21457;&#26102;&#65292;&#20381;&#36182;<code>Redux</code>&#36827;&#34892;&#25968;&#25454;&#31649;&#29702;&#65292;&#37027;&#20040;<code>&#26381;&#21153;&#31471;</code>&#21644;<code>&#23458;&#25143;&#31471;</code>&#30340;Store&#26159;&#19981;&#21516;&#27493;&#30340;&#12290;&#19968;&#33324;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#26159;&#38656;&#35201;&#33258;&#24049;&#25163;&#21160;&#21435;&#22788;&#29702;&#30340;&#12290;&#32780;&nbsp;<code>next-redux-wrapper</code>&#23601;&#26159;&#24110;&#25105;&#20204;&#22312;&#26381;&#21153;&#35302;&#21457;&#20102;<code>SSR</code>&#21644;<code>SSP</code>&#26102;&#65292;&#20027;&#21160;&#35302;&#21457;&#19968;&#20010;&#32422;&#23450;&#30340;<code>Action</code>&#26469;&#35302;&#21457;&nbsp;<code>Reducers</code>&#23454;&#29616;<code>&#26381;&#21153;&#31471;</code>&#21644;<code>&#23458;&#25143;&#31471;</code>&#30340;Store&#21516;&#27493;&#30340;&#12290;</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/kirill-konshin/next-redux-wrapper" rel="noopener noreferrer" target="_blank">next-redux-wrapper&#8203;github.com/kirill-konshin/next-redux-wrapper</a></p>
+<h2>&#36935;&#21040;&#20160;&#20040;&#22353;&#65311;</h2>
+<p>&#24403;&#20320;&#24320;&#24320;&#24515;&#24515;&#30340;&#21319;&#32423;&#20102;Nextjs&#21040;<code>V14</code>&#29256;&#26412;&#65292;&#21516;&#26102;&#20351;&#29992;&#20102;<code>next-redux-wrapper</code>&#65292;&#24182;&#19988;&#25104;&#21151;&#32534;&#35793;&#65292;&#20852;&#33268;&#21187;&#21187;&#30340;&#25171;&#24320;<code>localhost:3000</code>&#20934;&#22791;&#26597;&#30475;&#19968;&#30058;&#30340;&#26102;&#20505;&#65292; &#20320;&#24456;&#26377;&#21487;&#33021;&#20250;&#30475;&#21040;&#22914;&#19979;&#25253;&#38169;&#65306;</p>
+<pre><code> &#10799; Error: NextRouter was not mounted. https://nextjs.org/docs/messages/next-router-not-mounted
+    at useRouter (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/next-redux-wrapper/node_modules/next/dist/client/router.js:146:15)
+    at useHybridHydrate (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/next-redux-wrapper/lib/index.js:250:45)
+    at Object.useWrappedStore (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/next-redux-wrapper/lib/index.js:298:9)
+    at MyApp (webpack-internal:///./pages/_app.tsx:59:80)
+    at renderWithHooks (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5658:16)
+    at renderIndeterminateComponent (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5731:15)
+    at renderElement (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7)
+    at renderNodeDestructiveImpl (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderContextProvider (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5920:3)
+    at renderElement (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6017:11)
+    at renderNodeDestructiveImpl (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6104:11)
+    at renderNodeDestructive (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:6076:14)
+    at renderIndeterminateComponent (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5785:7)
+    at renderElement (/Users/lamho/Desktop/tencent/monorepo/frontend/node_modules/react-dom/cjs/react-dom-server.browser.development.js:5946:7) {
+  page: '/'
+}
+</code></pre>
+<p>&#30636;&#38388;&#19968;&#33080;&#25077;&#36924;&#26377;&#27809;&#26377;&#65281;&#65281;&#65281;</p>
+<h2>&#38382;&#39064;&#26159;&#20160;&#20040;&#65311;</h2>
+<p>&#36890;&#36807;<code>next-redux-wrapper</code>&#30340;&#25551;&#36848;&#65292;&#35828;&#26126;&#26159;&#25903;&#25345;9.5&#20197;&#19978;&#30340;&#29256;&#26412;&#30340;&#12290;</p>
+<p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2f8188fc404748cd950de5780cef697c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1440&amp;h=445&amp;s=35748&amp;e=webp&amp;b=0a0c10" /></p>
+<p>&#38590;&#36947;&#20316;&#32773;&#39575;&#25105;&#21527;&#65311;&#30475;&#20102;&#19968;&#19979;&#26368;&#21518;&#26356;&#26032;&#29256;&#26412;&#30340;&#35760;&#24405;&#65292;&#26368;&#26032;&#19968;&#20010;&#29256;&#26412;&#24050;&#32463;&#26159;&#25509;&#36817;1&#24180;&#21069;&#20102;&#12290;&#24515;&#37117;&#20937;&#20102;&#12290;</p>
+<p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b55f84396de4962a6fe3e957db188d7~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1440&amp;h=809&amp;s=48648&amp;e=webp&amp;b=fefefe" /></p>
+<p>&#21453;&#25163;&#24819;&#32473;&#20316;&#32773;&#25552;&#20010;issue&#35828;&#26126;&#19968;&#19979;&#38382;&#39064;&#65292;&#32467;&#26524;&#21457;&#29616;&#19968;&#20010;&#32769;&#21733;&#24050;&#32463;&#36935;&#21040;&#30340;&#38382;&#39064;<a href="https://juejin.cn/post/%5Bhttps://github.com/kirill-konshin/next-redux-wrapper/issues/564%5D(https://link.zhihu.com/?target=https%3A//github.com/kirill-konshin/next-redux-wrapper/issues/564)" rel="noopener noreferrer" target="_blank">#564</a> ,&#24456;&#36951;&#25022;&#30340;&#26159;&#65292;&#20316;&#32773;&#20063;&#27809;&#26377;&#29702;&#25105;&#20204;&#65292;&#37027;&#25105;&#21482;&#22909;&#25490;&#26597;&#19968;&#19979;&#30475;&#30475;&#21040;&#24213;&#26159;&#21738;&#37324;&#26377;&#38382;&#39064;&#20102;&#12290;</p>
+<p>&#36890;&#36807;&#38169;&#35823;&#20449;&#24687;&#21487;&#20197;&#30475;&#20986;&#65292;&#36825;&#37324;&#24847;&#24605;&#24212;&#35813;&#27809;&#26377;&#25214;&#21040;NextRouter&#30340;Provider&#65292;<a href="https://juejin.cn/post/%5Bhttps://nextjs.org/docs/messages/next-router-not-mounted%5D(https://link.zhihu.com/?target=https%3A//nextjs.org/docs/messages/next-router-not-mounted)" rel="noopener noreferrer" target="_blank">next-router-not-mounted</a>&#65292;</p>
+<p>&#32463;&#36807;&#25490;&#26597;&#20195;&#30721;&#26029;&#28857;&#26368;&#23450;&#23450;&#20301;&#21040;&#20102;&#38382;&#39064;&#25152;&#22312;&#65292;&#39318;&#20808;NextRouter&#27809;&#26377;&#25346;&#36733;&#38169;&#35823;&#30340;&#21407;&#22240;&#26159;next-redux-wrapper&#20351;&#29992;&#20102;next&#30340;v12&#29256;&#26412;&#20316;&#20026;&#20381;&#36182;&#65292;&#22312;&#20195;&#30721;&#20013;&#30340;<code>useHybridHydrate</code>&#20989;&#25968;&#20013;&#65292;router&#23545;&#35937;&#26159;&#36890;&#36807;next/router&#33719;&#24471;&#30340;&#65292;&#24403;&#36335;&#30001;&#21457;&#29983;&#21464;&#21270;&#26102;&#65292;routeChangeStart&#20107;&#20214;&#19968;&#23450;&#20250;&#35302;&#21457;Hydrate&#12290;</p>
+<p>&#36890;&#36807;&#23545;&#27604;next v12&#21644;v14&#30340;&#28304;&#20195;&#30721;&#65292;&#21457;&#29616;<code>routerContext</code>&#30340;&#25991;&#20214;&#36335;&#24452;&#20174;shared/lib/router-contextbiu&#21464;&#25104;&#20102;shared/lib/router-context.shared-runtime&#12290;&#23548;&#33268;&#36335;&#30001;&#22120;&#19978;&#19979;&#25991;&#19981;&#33021;&#27491;&#30830;&#33719;&#21462;&#65292;&#26368;&#32456;&#23548;&#33268;&#31243;&#24207;&#24322;&#24120;&#12290;</p>
+<blockquote>
+<p>&#30830;&#20999;&#22320;&#35828;&#65292;&#36825;&#20010;&#38382;&#39064;&#24212;&#35813;&#20174;v13.5.0&#24320;&#22987;&#23601;&#23384;&#22312;&#20102;</p>
+</blockquote>
+<p>router.ts(v13.4.19 and earlier)</p>
+<pre><code>/* global window */
+import React from 'react'
+import Router from '../shared/lib/router/router'
+import type { NextRouter } from '../shared/lib/router/router'
+import { RouterContext } from '../shared/lib/router-context'
+import isError from '../lib/is-error'
+
+// ...
+</code></pre>
+<p>router.ts(v14.0.2)</p>
+<pre><code>/* global window */
+import React from 'react'
+import Router from '../shared/lib/router/router'
+import type { NextRouter } from '../shared/lib/router/router'
+import { RouterContext } from '../shared/lib/router-context.shared-runtime'
+import isError from '../lib/is-error'
+
+// ...
+</code></pre>
+<p>&#20197;&#19979;&#26159;&#20960;&#20010;&#29256;&#26412;&#30340;router&#20989;&#25968;&#38142;&#25509;</p>
+<ul>
+<li>v13.4.19 and earlier <a href="https://juejin.cn/post/%5Bhttps://github.com/vercel/next.js/blob/v13.4.19/packages/next/src/client/router.ts#L5%5D(https://link.zhihu.com/?target=https%3A//github.com/vercel/next.js/blob/v13.4.19/packages/next/src/client/router.ts%23L5)" rel="noopener noreferrer" target="_blank">router.ts</a></li>
+<li>v13.5.0 <a href="https://juejin.cn/post/%5Bhttps://github.com/vercel/next.js/blob/v13.5.0/packages/next/src/client/router.ts#L5%5D(https://link.zhihu.com/?target=https%3A//github.com/vercel/next.js/blob/v13.5.0/packages/next/src/client/router.ts%23L5)" rel="noopener noreferrer" target="_blank">router.ts</a></li>
+<li>v14.0.2 <a href="https://juejin.cn/post/%5Bhttps://github.com/vercel/next.js/blob/v14.0.2/packages/next/src/client/router.ts#L5%5D(https://link.zhihu.com/?target=https%3A//github.com/vercel/next.js/blob/v14.0.2/packages/next/src/client/router.ts%23L5)" rel="noopener noreferrer" target="_blank">router.ts</a></li>
+</ul>
+<h2>&#22914;&#20309;&#35299;&#20915;</h2>
+<p>&#26412;&#26469;&#25105;&#23581;&#35797;&#36890;&#36807;Fork&#20195;&#30721;&#36827;&#34892;&#20462;&#25913;&#65292;&#28982;&#21518;&#25552;&#20132;&#32473;&#20316;&#32773;&#65292;&#20294;&#26159;&#25105;&#19968;&#30452;&#26080;&#27861;&#27491;&#24120;&#30340;&#23433;&#35013;&#25152;&#38656;&#20381;&#36182;&#65292;&#26080;&#22856;&#20043;&#19979;&#25105;&#26032;&#24314;&#20102;&#19968;&#20010;&#20179;&#24211;&#65292;&#23545;&#28304;&#20195;&#30721;&#36827;&#34892;&#20462;&#25913;&#65292;&#24182;&#37325;&#26032;&#25552;&#20132;&#19968;&#20010;&#26032;&#30340;NPM&#21253;&#12290;</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//github.com/LLLLLamHo/next-redux-wrapper-future%23next-redux-wrapper-future" rel="noopener noreferrer" target="_blank">next-redux-wrapper-future&#8203;github.com/LLLLLamHo/next-redux-wrapper-future#next-redux-wrapper-future</a></p>
+<p>&#22823;&#23478;&#21487;&#20197;&#36890;&#36807;<code>npm install next-redux-wrapper-future</code>&#25110;&#20351;&#29992;<code>yarn</code>&#36827;&#34892;&#23433;&#35013;&#12290;</p>
+<p>&#25105;&#20840;&#38754;&#21319;&#32423;&#20102;&#21253;&#20013;&#23545;react&#21644;next&#30340;&#29256;&#26412;&#20381;&#36182;&#65292;&#24182;&#19988;&#36890;&#36807;&#21407;&#26412;&#39033;&#30446;&#20013;&#25152;&#26377;&#30340;&#27979;&#35797;&#29992;&#20363;&#12290;&#30446;&#21069;&#22312;&#25105;&#30340;&#39033;&#30446;&#20013;&#36816;&#34892;&#19968;&#20999;&#27491;&#24120;&#65292;&#24182;&#27809;&#26377;&#21457;&#29616;&#20219;&#20309;&#24322;&#24120;&#65292;&#22823;&#23478;&#21487;&#20197;&#25918;&#24515;&#20351;&#29992;&#12290;</p>
+<p><img alt="" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b1c503e44624d28801a1209ef108805~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1440&amp;h=196&amp;s=16842&amp;e=webp&amp;b=0a0c10" /></p>
+]]></content:encoded>
+
+<pubDate>2023-11-24T10:23:02+00:00</pubDate>
+</item>
+
+<item>
 <title>React Hook设计，如何更轻松使用Interval</title>
 <link>https://juejin.cn/post/7304635710694588467</link>
 <guid>https://juejin.cn/post/7304635710694588467</guid>
@@ -108,7 +202,6 @@ export const useEffectInterval = ({ active, ...restProps }: UseExtensionInterval
 export default useEffectInterval;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T08:56:32+00:00</pubDate>
 </item>
 <item>
@@ -738,7 +831,6 @@ const lazyload = (path)=&gt;{
 </code></pre>
 <h5>useRoutes</h5>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T08:46:08+00:00</pubDate>
 </item>
 <item>
@@ -1193,7 +1285,6 @@ const useStore = create(allMiddleware((set, get, store) =&gt; {
 <p>&#21040;&#36825;&#37324;&#23601;&#32467;&#26463;&#20102;&#65292;&#36825;&#26159;&#25105;&#25509;&#35302; zustand &#30340;&#31532;&#19977;&#22825;&#65292;&#36935;&#21040;&#30340;&#24773;&#20917;&#24182;&#19981;&#22810;&#65292;&#24448;&#21518;&#26377;&#20160;&#20040;&#22353;&#25110;&#32773;&#26368;&#20339;&#23454;&#36341;&#65292;&#25105;&#20063;&#20250;&#20877;&#20998;&#20139;&#20986;&#26469;&#12290;</p>
 <p>&#20877;&#27425;&#24863;&#35874;&#20320;&#35835;&#21040;&#36825;&#37324;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T07:26:12+00:00</pubDate>
 </item>
 <item>
@@ -1278,7 +1369,6 @@ theme: qklhk-chocolate</h2>
 <p>Vue.js &#30340;&#21709;&#24212;&#24335;&#31995;&#32479;&#22312;&#21021;&#22987;&#21270;&#26102;&#20250;&#23545;&#25968;&#25454;&#23545;&#35937;&#36827;&#34892;&#36882;&#24402;&#36941;&#21382;&#24182;&#35774;&#32622; getter &#21644; setter&#65292;&#20197;&#20415;&#22312;&#23646;&#24615;&#34987;&#35775;&#38382;&#21644;&#20462;&#25913;&#26102;&#35302;&#21457;&#26356;&#26032;&#12290;&#20294;&#26159;&#65292;&#23545;&#20110;&#24050;&#32463;&#23384;&#22312;&#30340;&#23646;&#24615;&#21644;&#32034;&#24341;&#65292;Vue.js &#22312;&#21021;&#22987;&#21270;&#26102;&#24050;&#32463;&#35774;&#32622;&#20102; getter &#21644; setter&#65292;&#22240;&#27492;&#33021;&#22815;&#36861;&#36394;&#23427;&#20204;&#30340;&#21464;&#21270;&#12290;&#28982;&#32780;&#65292;&#23545;&#20110;&#26032;&#22686;&#30340;&#23646;&#24615;&#25110;&#32034;&#24341;&#65292;&#21021;&#22987;&#21270;&#26102;&#24182;&#27809;&#26377;&#35774;&#32622;&#30456;&#24212;&#30340; getter &#21644; setter&#65292;&#23548;&#33268; Vue.js &#26080;&#27861;&#33258;&#21160;&#36861;&#36394;&#36825;&#20123;&#21464;&#21270;&#12290;</p>
 </blockquote>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T06:20:44+00:00</pubDate>
 </item>
 <item>
@@ -1361,7 +1451,6 @@ wxml&#65306;
 <p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9681cf2f8951485cb32ede6184133c9a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=399&amp;h=794&amp;s=18382&amp;e=png&amp;b=7f7f7f" /></p>
 <p>&#29616;&#22312;&#23601;&#23454;&#29616;&#36974;&#32617;&#23618;&#30340;&#25928;&#26524;&#20102;&#65306;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T04:06:07+00:00</pubDate>
 </item>
 <item>
@@ -1716,7 +1805,6 @@ export default service;
 }
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T03:46:11+00:00</pubDate>
 </item>
 <item>
@@ -1896,7 +1984,6 @@ const VirtualList = ({ items }) =&gt; {
 <p>&#24403;&#28982;&#65292;&#36825;&#20010; VirtualList &#32452;&#20214;&#36824;&#26377;&#35768;&#22810;&#25913;&#36827;&#30340;&#31354;&#38388;&#12290;&#24744;&#21487;&#20197;&#32771;&#34385;&#28155;&#21152;&#21344;&#20301;&#31526;&#26469;&#20445;&#25345;&#28378;&#21160;&#23481;&#22120;&#30340;&#39640;&#24230;&#65292;&#20248;&#21270;&#28378;&#21160;&#26102;&#30340;&#28210;&#26579;&#24615;&#33021;&#65292;&#25110;&#32773;&#25903;&#25345;&#27700;&#24179;&#28378;&#21160;&#31561;&#12290;&#24076;&#26395;&#36825;&#20010;&#30001;&#27973;&#20837;&#28145;&#30340;&#32534;&#20889;&#36807;&#31243;&#33021;&#22815;&#24110;&#21161;&#24744;&#26356;&#22909;&#22320;&#29702;&#35299; VirtualList &#32452;&#20214;&#30340;&#24037;&#20316;&#21407;&#29702;&#21644;&#23454;&#29616;&#26041;&#24335;&#12290;</p>
 <p>&#24863;&#35874;&#38405;&#35835;&#26412;&#31687;&#21338;&#23458;&#65281;&#22914;&#26377;&#20219;&#20309;&#38382;&#39064;&#25110;&#24314;&#35758;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T03:26:14+00:00</pubDate>
 </item>
 <item>
@@ -2004,10 +2091,8 @@ const VirtualList = ({ items }) =&gt; {
 </blockquote>
 <p><img alt="&#25130;&#23631;2023-11-24 10.35.19.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/815ee92eb9d44cedbd2e42836b7de03b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2502&amp;h=1654&amp;s=404360&amp;e=png&amp;b=ffffff" /></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T02:46:27+00:00</pubDate>
 </item>
-
 <item>
 <title>Braille vs. Boston Line Type: How Design Can Truly Be Inclusive</title>
 <link>https://www.printmag.com/socially-responsible-design/how-design-can-be-inclusive/</link>

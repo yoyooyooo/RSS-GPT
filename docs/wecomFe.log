@@ -121,3 +121,11 @@ Append: [由浅入深：编写一个 VirtualList 组件](https://juejin.cn/post/
 Append: [一小时打造一个GPTs，准备好见你的AI面试官了吗？](https://juejin.cn/post/7304556956429500450)
 append_entries: 8
 Finish: 2023-11-24 10:03:36.132720
+------------------------------------------------------
+Started: 2023-11-24 12:04:22.100044
+Existing_entries: 87
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Mastering React Development: Building Modern Web Apps with Ease](https://blog.bitsrc.io/mastering-react-development-building-modern-web-apps-with-ease-c4a309a7eb88?source=rss----5c2fdf847f4a---4)
+Append: [Nextjs14使用next-redux-wrapper报错解法](https://juejin.cn/post/7304888432735420456)
+append_entries: 2
+Finish: 2023-11-24 12:04:24.842207
