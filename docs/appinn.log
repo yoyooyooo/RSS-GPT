@@ -8147,3 +8147,13 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 1
 Finish: 2023-11-23 08:03:41.036759
+------------------------------------------------------
+Started: 2023-11-24 05:27:00.112693
+Existing_entries: 154
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+Append: [【自荐】Wins Mac窗口管理器一周年 - 分享独立开发的收获](https://meta.appinn.net/t/topic/49615)
+Append: [【Toolset插件】JetBrains IDE各种常用工具集插件【黑五送码】](https://meta.appinn.net/t/topic/49611)
+append_entries: 2
+Finish: 2023-11-24 05:27:03.694158
