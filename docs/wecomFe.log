@@ -178,3 +178,11 @@ Append: [开源可视化引擎 Meta2d.js 实战 - 解析自定义格式数据1 -
 Append: [Daily Hacker News for 2023-11-24](https://www.daemonology.net/hn-daily/2023-11-24.html)
 append_entries: 5
 Finish: 2023-11-25 02:10:16.826048
+------------------------------------------------------
+Started: 2023-11-25 04:03:18.841341
+Existing_entries: 96
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [react18-electron-os：基于electron27+arcoDesign桌面os系统](https://juejin.cn/post/7304844128734658598)
+Append: [CSS技巧：用十行代码写一个跃动文字链的hover效果组件](https://juejin.cn/post/7304930607132885011)
+append_entries: 2
+Finish: 2023-11-25 04:03:22.357678

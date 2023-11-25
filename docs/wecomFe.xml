@@ -5,6 +5,686 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>react18-electron-os：基于electron27+arcoDesign桌面os系统</title>
+<link>https://juejin.cn/post/7304844128734658598</link>
+<guid>https://juejin.cn/post/7304844128734658598</guid>
+<content:encoded><![CDATA[
+<div> <p>&#26368;&#36817;&#19968;&#30452;&#22312;&#25443;&#40723;Electron27&#36328;&#24179;&#21488;&#26700;&#38754;os&#39033;&#30446;&#65292;&#20170;&#22825;&#26469;&#20998;&#20139;&#19968;&#20010;&#26368;&#26032;&#30740;&#21457;&#30340;react18&#25972;&#21512;electron&#24320;&#21457;&#20223;&#21046;mateOs&#26700;&#38754;os&#21518;&#21488;&#24212;&#29992;ElectronReactOS&#12290;
+
+
+electro...</p> <div>
+<p>&#26368;&#36817;&#19968;&#30452;&#22312;&#25443;&#40723;Electron27&#36328;&#24179;&#21488;&#26700;&#38754;os&#39033;&#30446;&#65292;&#20170;&#22825;&#26469;&#20998;&#20139;&#19968;&#20010;&#26368;&#26032;&#30740;&#21457;&#30340;react18&#25972;&#21512;electron&#24320;&#21457;&#20223;&#21046;mateOs&#26700;&#38754;os&#21518;&#21488;&#24212;&#29992;ElectronReactOS&#12290;</p>
+<p><img alt="360&#25130;&#22270;20231120232432848.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/26b91f5136004fe8b9a19205f96e937b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=617266&amp;e=png&amp;b=dabaed" /></p>
+<p><img alt="360&#25130;&#22270;20231120232257591.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/06e9fd7aeaef4222ab823ce538e62e3a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=984035&amp;e=png&amp;b=1b1b1b" /></p>
+<p>electron-react-macOs &#22522;&#20110;<code>electron27.x+vite4+react18+arcoDesign+axios</code>&#31561;&#25216;&#26415;&#26500;&#24314;&#26700;&#38754;&#29256;&#20223;MateOs&#31995;&#32479;&#31243;&#24207;&#12290;&#25903;&#25345;&#20013;&#33521;&#25991;&#22269;&#38469;&#21270;&#12289;dark/light&#20027;&#39064;&#12289;&#26700;&#38754;&#22810;&#23618;&#32423;&#36335;&#30001;&#12289;&#22810;&#31383;&#21475;&#36335;&#30001;&#39029;&#38754;&#12289;&#21160;&#24577;&#25442;&#32932;&#12289;Dock&#24748;&#28014;&#33756;&#21333;&#31561;&#21151;&#33021;&#12290;</p>
+<p><img alt="p1.gif" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/daadeea0adee4ef4adab6e13d37ea15b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=640&amp;s=1731664&amp;e=gif&amp;f=275&amp;b=175797" /></p>
+<p><img alt="p2.gif" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4409b9836fdc4d32bea83c249228c329~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=640&amp;s=2276548&amp;e=gif&amp;f=165&amp;b=1c93fc" /></p>
+<h2>&#20351;&#29992;&#25216;&#26415;</h2>
+<ul>
+<li>&#32534;&#36753;&#22120;&#65306;vscode</li>
+<li>&#26694;&#26550;&#25216;&#26415;&#65306;vite4+react18+zustand+react-router</li>
+<li>&#36328;&#31471;&#25216;&#26415;&#65306;electron^27.0.1</li>
+<li>&#25171;&#21253;&#24037;&#20855;&#65306;electron-builder^24.6.4</li>
+<li>UI&#32452;&#20214;&#24211;&#65306;arco-design (&#23383;&#33410;react&#36731;&#37327;&#32423;UI&#32452;&#20214;&#24211;)</li>
+<li>&#22270;&#34920;&#32452;&#20214;&#65306;bizcharts^4.1.23</li>
+<li>&#25302;&#25341;&#24211;&#65306;sortablejs</li>
+<li>&#27169;&#25311;&#35831;&#27714;&#65306;axios</li>
+</ul>
+<p><img alt="p4.gif" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7e7c1b95f2fc4336a77198c29489f09d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=640&amp;s=4245282&amp;e=gif&amp;f=170&amp;b=7ba3f2" /></p>
+<h2>&#39033;&#30446;&#30446;&#24405;&#32467;&#26500;</h2>
+<p><img alt="e79a6443efb3e6783fc3251e70d0ffc11289798-20231122230329754-1197904187.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/622021e7f26c4e698319fb9906322061~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=990&amp;h=645&amp;s=100148&amp;e=png&amp;b=181818" /></p>
+<p>&#20351;&#29992;vite.js&#26500;&#24314;&#24037;&#20855;&#21019;&#24314;react18&#39033;&#30446;&#65292;&#25972;&#21512;&#36328;&#31471;electron&#25216;&#26415;&#12290;</p>
+<p><img alt="360&#25130;&#22270;20231121081422427.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8b8c82ddcd0649c69167f4219ca39b3c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=156655&amp;e=png&amp;b=1a1a1a" /></p>
+<p><img alt="003360&#25130;&#22270;20231121081838909.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2d2071775e2b4639a0c626a90ea7838a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=1824494&amp;e=png&amp;b=195999" /></p>
+<p><img alt="004360&#25130;&#22270;20231121081927262.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/06c215cd48d943939b5017e64e957769~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=1270094&amp;e=png&amp;b=b7cbd3" /></p>
+<p><img alt="008360&#25130;&#22270;20231121083258788.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a970adb1ead4a948049cc544d2724c6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=463536&amp;e=png&amp;b=1b93fc" /></p>
+<p><img alt="360&#25130;&#22270;20231121081034476.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10df8d5ab1d74de8b91313ce634a962d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=269660&amp;e=png&amp;b=1a1a1a" /></p>
+<h2>electron&#26700;&#38754;&#24067;&#23616;&#27169;&#26495;</h2>
+<p>&#26700;&#38754;&#25972;&#20307;&#20998;&#20026;&#39030;&#37096;&#26639;+&#36335;&#30001;&#33756;&#21333;&#26639;+&#24213;&#37096;dock&#33756;&#21333;&#19977;&#22823;&#27169;&#22359;&#12290;</p>
+<p><img alt="16d67fd4c305a325eef181d540983a331289798-20231122232028096-1150191854.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2ae9ba954c0842289c06d4d002817505~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=640&amp;s=282805&amp;e=png&amp;b=248f9b" /></p>
+<pre><code>&lt;div className="radmin__layout flexbox flex-col"&gt;
+    {/* &#23548;&#33322;&#26639; */}
+    &lt;Header /&gt;
+
+    {/* &#26700;&#38754;&#21306;&#22495; */}
+    &lt;div className="ra__layout-desktop flex1 flexbox" onContextMenu={handleDeskCtxMenu} style={{marginBottom: 70}}&gt;
+        &lt;DeskMenu /&gt;
+    &lt;/div&gt;
+
+    {/* Dock&#33756;&#21333; */}
+    &lt;Dock /&gt;
+&lt;/div&gt;
+</code></pre>
+<h2>electron&#23454;&#29616;dock&#33756;&#21333;</h2>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4dd1200d5828491db90d8a55fe052a4f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=844&amp;h=536&amp;s=196001&amp;e=png&amp;b=1c93fb" /></p>
+<p><img alt="d26555f3fab7d77f490bc22517d433e21289798-20231122234716762-1796346691.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6949484111fd42c58b70cd99cf5dab28~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=638&amp;h=402&amp;s=137711&amp;e=png&amp;b=c8a8c3" /></p>
+<p><img alt="05c37aa269465cfa54704872aa9768251289798-20231122235403821-1178490726.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/84724bd31d80453bb5c241ea5233c392~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=638&amp;h=533&amp;s=348036&amp;e=png&amp;b=165b97" /></p>
+<p>dock&#33756;&#21333;&#37319;&#29992;&#27611;&#29627;&#29827;&#27169;&#31946;&#32972;&#26223;&#34394;&#21270;&#25928;&#26524;&#12290;&#25903;&#25345;&#33258;&#36866;&#24212;&#32553;&#25918;&#24067;&#23616;&#65292;&#21487;&#25302;&#25341;&#22270;&#26631;&#12290;</p>
+<pre><code>&lt;div class="ra__docktool"&gt;
+    &lt;div class="{clsx(&amp;#x27;ra__dock-wrap&amp;#x27;," !dock="" ?="" &amp;#x27;compact&amp;#x27;="" :="" &amp;#x27;split&amp;#x27;)}=""&gt;
+        {dockMenu.map((res, key) =&gt; {
+            return (
+                &lt;div key="{key}" class="ra__dock-group"&gt;
+                    { res?.children?.map((item, index) =&gt; {
+                        return (
+                            &lt;a key="{index}" class="{clsx(&amp;#x27;ra__dock-item&amp;#x27;," {&amp;#x27;active&amp;#x27;:="" item.active,="" &amp;#x27;filter&amp;#x27;:="" item.filter})}="" onclick="{()" &amp;#x3D;=""&gt; handleDockClick(item)}&gt;
+                                &lt;span class="tooltips"&gt;{item.label}&lt;/span&gt;
+                                &lt;div class="img"&gt;
+                                    { item.type != 'icon' ? &lt;img src="&#36716;&#23384;&#22833;&#36133;&#65292;&#24314;&#35758;&#30452;&#25509;&#19978;&#20256;&#22270;&#29255;&#25991;&#20214; {item.image}" alt="&#36716;&#23384;&#22833;&#36133;&#65292;&#24314;&#35758;&#30452;&#25509;&#19978;&#20256;&#22270;&#29255;&#25991;&#20214;"&gt; : &lt;icon name="{item.image}" size="{32}" style="{{color:" &amp;#x27;inherit&amp;#x27;}}=""&gt; }
+                                &lt;/icon&gt;&lt;/div&gt;
+                            &lt;/a&gt;
+                        )
+                    })}
+                &lt;/div&gt;
+            )
+        })}
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code>const dockMenu = [
+    {
+        // &#22270;&#29255;&#22270;&#26631;
+        children: [
+            {label: 'Safari', image: '/static/mac/safari.png', active: true},
+            {label: 'Launchpad', image: '/static/mac/launchpad.png'},
+            {label: 'Contacts', image: '/static/mac/contacts.png'},
+            {label: 'Messages', image: '/static/mac/messages.png', active: true}
+        ]
+    },
+    {
+        // &#33258;&#23450;&#20041;iconfont&#22270;&#26631;
+        children: [
+            {label: 'Home', image: &lt;IconDesktop /&gt;, type: 'icon'},
+            {label: 'About', image: 've-icon-about', type: 'icon'}
+        ]
+    },
+    {
+        children: [
+            {label: 'Appstore', image: '/static/mac/appstore.png'},
+            {label: 'Mail', image: '/static/mac/mail.png'},
+            {label: 'Maps', image: '/static/mac/maps.png', active: true},
+            {label: 'Photos', image: '/static/mac/photos.png'},
+            {label: 'Facetime', image: '/static/mac/facetime.png'},
+            {label: 'Calendar', image: '/static/mac/calendar.png'},
+            {label: 'Notes', image: '/static/mac/notes.png'},
+            {label: 'Calculator', image: '/static/mac/calculator.png'},
+            {label: 'Music', image: '/static/mac/music.png'}
+        ]
+    },
+    {
+        children: [
+            {label: 'System', image: '/static/mac/system.png', active: true, filter: true},
+            {label: 'Empty', image: '/static/mac/bin.png', filter: true}
+        ]
+    }
+]
+
+// &#28857;&#20987;dock&#33756;&#21333;
+const handleDockClick = (item) =&gt; {
+    const { label } = item
+    if(label == 'Home') {
+        createWin({
+            title: '&#39318;&#39029;',
+            route: '/home',
+            width: 900,
+            height: 600
+        })
+    }else if(label == 'About') {
+        setWinData({ type: 'CREATE_WIN_ABOUT' })
+    }else if(label == 'System') {
+        createWin({
+            title: '&#32593;&#31449;&#35774;&#32622;',
+            route: '/setting/system/website',
+            isNewWin: true,
+            width: 900,
+            height: 600
+        })
+    }
+}
+
+useEffect(() =&gt; {
+    const dockGroup = document.getElementsByClassName('ra__dock-group')
+    // &#32452;&#25302;&#25341;
+    for(let i = 0, len = dockGroup.length; i &lt; len; i++) {
+        Sortable.create(dockGroup[i], {
+            group: 'share',
+            handle: '.ra__dock-item',
+            filter: '.filter',
+            animation: 200,
+            delay: 0,
+            onEnd({ newIndex, oldIndex }) {
+                console.log('&#26032;&#32034;&#24341;&#65306;', newIndex)
+                console.log('&#26087;&#32034;&#24341;&#65306;', oldIndex)
+            }
+        })
+    }
+}, [])
+</code></pre>
+<p><img alt="013360&#25130;&#22270;20231121213203587.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f33a9c3734e495f86115f56089c86e5~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=315916&amp;e=png&amp;b=fffefe" /></p>
+<p><img alt="021360&#25130;&#22270;20231121213951361.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d9cf94808a3a4863993c9c4741e9d956~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=607695&amp;e=png&amp;b=75787e" /></p>
+<p><img alt="022360&#25130;&#22270;20231121214014452.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf87b4bae2a74d2a8cfe278ffd997752~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=206023&amp;e=png&amp;b=74777d" /></p>
+<p><img alt="024360&#25130;&#22270;20231121214208957.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1fc4336d55364db78da73ac469a7d072~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=159148&amp;e=png&amp;b=76797e" /></p>
+<p><img alt="028360&#25130;&#22270;20231121214655450.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/09dbe716732d4afc90c0f3ebae8f98b2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=259750&amp;e=png&amp;b=fffafa" /></p>
+<p><img alt="030360&#25130;&#22270;20231121214915389.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a99f970986674f258a5fea54a77f9159~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=529148&amp;e=png&amp;b=5c508f" /></p>
+<p><img alt="031360&#25130;&#22270;20231121214954812.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/07cca5e1b2da43d1bc93a6dafd7f94a6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1366&amp;h=738&amp;s=264903&amp;e=png&amp;b=293b5a" /></p>
+<p>&#22914;&#26524;&#23545;electron+react18&#21019;&#24314;&#22810;&#24320;&#31383;&#21475;&#24863;&#20852;&#36259;&#65292;&#21487;&#20197;&#21435;&#30475;&#30475;&#36825;&#31687;&#20998;&#20139;&#25991;&#31456;&#12290;
+https://www.cnblogs.com/xiaoyan2017/p/17788495.html</p>
+<h2>electron+react18&#23454;&#29616;&#26700;&#38754;&#22810;&#32423;&#36335;&#30001;</h2>
+<p><img alt="b20783f0a20ebb60086d505e6516514a_1289798-20231122235911234-2121798433.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5922da9badd4e09af3f0d2ad1dcd8a7~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=638&amp;h=533&amp;s=163054&amp;e=png&amp;b=759aef" /></p>
+<pre><code>import { lazy } from 'react'
+import {
+    IconDesktop, IconDashboard, IconLink, IconCommand, IconUserGroup, IconLock,
+    IconSafe, IconBug, IconUnorderedList, IconStop
+} from '@arco-design/web-react/icon'
+import Layout from '@/layouts'
+import Desk from '@/layouts/desk'
+import Blank from '@/layouts/blank'
+import lazyload from '../lazyload'
+
+export default [
+    /* &#26700;&#38754;&#27169;&#22359; */
+    {
+        path: '/desk',
+        key: '/desk',
+        element: &lt;Desk /&gt;,
+        meta: {
+            icon: &lt;IconDesktop /&gt;,
+            name: 'layout__main-menu__desk',
+            title: 'Appstore',
+            isWhite: true, // &#36335;&#30001;&#30333;&#21517;&#21333;
+            isAuth: true, // &#38656;&#35201;&#37492;&#26435;
+            isHidden: false, // &#26159;&#21542;&#38544;&#34255;&#33756;&#21333;
+        }
+    },
+
+    {
+        path: '/home',
+        key: '/home',
+        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/home')))}&lt;/Layout&gt;,
+        meta: {
+            icon: '/static/mac/appstore.png',
+            name: 'layout__main-menu__home-index',
+            title: '&#39318;&#39029;',
+            isAuth: true,
+            isNewWin: true
+        }
+    },
+    {
+        path: '/dashboard',
+        key: '/dashboard',
+        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/home/dashboard')))}&lt;/Layout&gt;,
+        meta: {
+            icon: &lt;IconDashboard /&gt;,
+            name: 'layout__main-menu__home-workplace',
+            title: '&#24037;&#20316;&#21488;',
+            isAuth: true
+        }
+    },
+    {
+        path: 'https://react.dev/',
+        key: 'https://react.dev/',
+        meta: {
+            icon: &lt;IconLink /&gt;,
+            name: 'layout__main-menu__home-apidocs',
+            title: 'react.js&#23448;&#26041;&#25991;&#26723;',
+            rootRoute: '/home'
+        }
+    },
+
+    /* &#32452;&#20214;&#27169;&#22359; */
+    {
+        path: '/components',
+        key: '/components',
+        redirect: '/components/table/allTable', // &#19968;&#32423;&#36335;&#30001;&#37325;&#23450;&#21521;
+        element: &lt;Blank /&gt;,
+        meta: {
+            icon: &lt;IconCommand /&gt;,
+            name: 'layout__main-menu__component',
+            title: '&#32452;&#20214;&#31034;&#20363;',
+            isAuth: true,
+            isHidden: false
+        },
+        children: [
+            {
+                path: 'table',
+                key: '/components/table',
+                element: &lt;Blank /&gt;,
+                meta: {
+                    icon: 've-icon-table',
+                    name: 'layout__main-menu__component-table',
+                    title: '&#34920;&#26684;',
+                    isAuth: true
+                },
+                children: [
+                    {
+                        path: 'allTable',
+                        key: '/components/table/allTable',
+                        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/table/all')))}&lt;/Layout&gt;,
+                        meta: {
+                            name: 'layout__main-menu__component-table_all',
+                            title: '&#25152;&#26377;&#34920;&#26684;'
+                        }
+                    },
+                    {
+                        path: 'customTable',
+                        key: '/components/table/customTable',
+                        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/table/custom')))}&lt;/Layout&gt;,
+                        meta: {
+                            name: 'layout__main-menu__component-table_custom',
+                            title: '&#33258;&#23450;&#20041;&#34920;&#26684;'
+                        }
+                    },
+                    {
+                        path: 'search',
+                        key: '/components/table/search',
+                        element: &lt;Blank /&gt;,
+                        meta: {
+                            name: 'layout__main-menu__component-table_search',
+                            title: '&#25628;&#32034;'
+                        },
+                        children: [
+                            {
+                                path: 'searchList',
+                                key: '/components/table/search/searchList',
+                                element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/table/search')))}&lt;/Layout&gt;,
+                                meta: {
+                                    name: 'layout__main-menu__component-table_search_list',
+                                    title: '&#25628;&#32034;&#21015;&#34920;'
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                path: 'list',
+                key: '/components/list',
+                element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/list')))}&lt;/Layout&gt;,
+                meta: {
+                    icon: 've-icon-order-o',
+                    name: 'layout__main-menu__component-list',
+                    title: '&#21015;&#34920;'
+                }
+            },
+            {
+                path: 'form',
+                key: '/components/form',
+                element: &lt;Blank /&gt;,
+                meta: {
+                    icon: 've-icon-exception',
+                    name: 'layout__main-menu__component-form',
+                    title: '&#34920;&#21333;',
+                    isAuth: true
+                },
+                children: [
+                    {
+                        path: 'allForm',
+                        key: '/components/form/allForm',
+                        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/form/all')))}&lt;/Layout&gt;,
+                        meta: {
+                            name: 'layout__main-menu__component-form_all',
+                            title: '&#25152;&#26377;&#34920;&#21333;'
+                        }
+                    },
+                    {
+                        path: 'customForm',
+                        key: '/components/form/customForm',
+                        element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/form/custom')))}&lt;/Layout&gt;,
+                        meta: {
+                            name: 'layout__main-menu__component-form_custom',
+                            title: '&#33258;&#23450;&#20041;&#34920;&#21333;'
+                        }
+                    }
+                ]
+            },
+            {
+                path: 'markdown',
+                key: '/components/markdown',
+                element: &lt;Layout&gt;{lazyload(lazy(() =&gt; import('@views/components/markdown')))}&lt;/Layout&gt;,
+                meta: {
+                    icon: &lt;IconUnorderedList /&gt;,
+                    name: 'layout__main-menu__component-markdown',
+                    title: 'markdown&#32534;&#36753;&#22120;'
+                }
+            },
+            {
+                path: 'qrcode',
+                key: '/components/qrcode',
+                meta: {
+                    icon: 've-icon-qrcode',
+                    name: 'layout__main-menu__component-qrcode',
+                    title: '&#20108;&#32500;&#30721;'
+                }
+            },
+            {
+                path: 'print',
+                key: '/components/print',
+                meta: {
+                    icon: 've-icon-printer',
+                    name: 'layout__main-menu__component-print',
+                    title: '&#25171;&#21360;'
+                }
+            },
+            {
+                path: 'pdf',
+                key: '/components/pdf',
+                meta: {
+                    icon: 've-icon-pdffile',
+                    name: 'layout__main-menu__component-pdf',
+                    title: 'pdf'
+                }
+            }
+        ]
+    },
+
+    /* &#29992;&#25143;&#31649;&#29702;&#27169;&#22359; */
+    {
+        path: '/user',
+        key: '/user',
+        redirect: '/user/userManage',
+        element: &lt;Blank /&gt;,
+        meta: {
+            // icon: 've-icon-team',
+            icon: &lt;IconUserGroup /&gt;,
+            name: 'layout__main-menu__user',
+            title: '&#29992;&#25143;&#31649;&#29702;',
+            isAuth: true,
+            isHidden: false
+        },
+        children: [
+            ...
+        ]
+    },
+
+    /* &#37197;&#32622;&#27169;&#22359; */
+    {
+        path: '/setting',
+        key: '/setting',
+        redirect: '/setting/system/website',
+        element: &lt;Blank /&gt;,
+        meta: {
+            icon: 've-icon-settings-o',
+            name: 'layout__main-menu__setting',
+            title: '&#35774;&#32622;',
+            isHidden: false
+        },
+        children: [
+            ...
+        ]
+    },
+
+    /* &#26435;&#38480;&#27169;&#22359; */
+    {
+        path: '/permission',
+        key: '/permission',
+        redirect: '/permission/admin',
+        element: &lt;Blank /&gt;,
+        meta: {
+            // icon: 've-icon-unlock',
+            icon: &lt;IconLock /&gt;,
+            name: 'layout__main-menu__permission',
+            title: '&#26435;&#38480;&#31649;&#29702;',
+            isAuth: true,
+            isHidden: false
+        },
+        children: [
+            ...
+        ]
+    }
+]
+</code></pre>
+<p>DeskMenus.jsx&#27169;&#26495;</p>
+<pre><code>/**
+ * Desk&#26700;&#38754;&#22810;&#23618;&#32423;&#36335;&#30001;&#33756;&#21333;
+ * Create by andy  Q&#65306;282310962
+*/
+
+export default function DeskMenu() {
+    const t = Locales()
+    const filterRoutes = routes.filter(item =&gt; !item?.meta?.isWhite)
+
+    // &#26700;&#38754;&#20108;&#32423;&#33756;&#21333;&#24377;&#26694;
+    const DeskPopup = (item) =&gt; {
+        const { key, meta, children } = item
+
+        return (
+            !meta?.isHidden &amp;&amp;
+            &lt;RScroll maxHeight={220}&gt;
+                &lt;div className="ra__deskmenu-popup__body"&gt;
+                    { children.map(item =&gt; {
+                        if(item?.children) {
+                            return DeskSubMenu(item)
+                        }
+                        return DeskMenu(item)
+                    })}
+                &lt;/div&gt;
+            &lt;/RScroll&gt;
+        )
+    }
+
+    // &#26700;&#38754;&#33756;&#21333;&#39033;
+    const DeskMenu = (item) =&gt; {
+        const { key, meta, children } = item
+
+        return (
+            !meta?.isHidden &amp;&amp;
+            &lt;div key={key} className="ra__deskmenu-block"&gt;
+                &lt;a className="ra__deskmenu-item" onClick={()=&gt;handleDeskClick(item)} onContextMenu={handleDeskCtxMenu}&gt;
+                    &lt;div className="img"&gt;
+                        {meta?.icon ?
+                            isImg(meta?.icon) ? &lt;img src={meta.icon} /&gt; : &lt;Icon name={meta.icon} size={40} /&gt;
+                            :
+                            &lt;Icon name="ve-icon-file" size={40} /&gt;
+                        }
+                    &lt;/div&gt;
+                    { meta?.name &amp;&amp; &lt;span className="title clamp2"&gt;{t[meta.name]}&lt;/span&gt; }
+                &lt;/a&gt;
+            &lt;/div&gt;
+        )
+    }
+    // &#26700;&#38754;&#20108;&#32423;&#33756;&#21333;&#39033;
+    const DeskSubMenu = (item) =&gt; {
+        const { key, meta, children } = item
+
+        return (
+            !meta?.isHidden &amp;&amp;
+            &lt;div key={key} className="ra__deskmenu-block"&gt;
+                &lt;a className="ra__deskmenu-item group" onContextMenu={e=&gt;e.stopPropagation()}&gt;
+                    &lt;Popover
+                        title={&lt;div className="ra__deskmenu-popup__title"&gt;{meta?.name &amp;&amp; t[meta.name]}&lt;/div&gt;}
+                        content={() =&gt; DeskPopup(item)}
+                        trigger="hover"
+                        position="right"
+                        triggerProps={{
+                            popupStyle: {padding: 5},
+                            popupAlign: {
+                                right: [10, 45]
+                            },
+                            mouseEnterDelay: 300,
+                            // showArrow: false
+                        }}
+                        style={{zIndex: 100}}
+                    &gt;
+                        &lt;div className="img"&gt;
+                            {children.map((child, index) =&gt; {
+                                if(child?.meta?.isHidden) return
+                                return child?.meta?.icon ?
+                                    isImg(child?.meta?.icon) ? &lt;img key={index} src={child.meta.icon} /&gt; : &lt;Icon key={index} name={child.meta.icon} size={10} /&gt;
+                                    :
+                                    &lt;Icon key={index} name="ve-icon-file" size={10} /&gt;
+                            })}
+                        &lt;/div&gt;
+                    &lt;/Popover&gt;
+                    { meta?.name &amp;&amp; &lt;span className="title clamp2"&gt;{t[meta.name]}&lt;/span&gt; }
+                &lt;/a&gt;
+            &lt;/div&gt;
+        )
+    }
+
+    // &#28857;&#20987;dock&#33756;&#21333;
+    const handleDeskClick = (item) =&gt; {
+        const { key, meta, element } = item
+
+        const reg = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/
+        if(reg.test(key)) {
+            window.open(key)
+        }else {
+            if(meta?.isNewWin) {
+                // &#26032;&#31383;&#21475;&#25171;&#24320;
+                createWin({
+                    title: t[meta?.name] || meta?.title,
+                    route: key,
+                    width: 900,
+                    height: 600
+                })
+            }else {
+                // &#24377;&#31383;&#25171;&#24320;
+                rdialog({
+                    title: t[meta?.name] || meta?.title,
+                    content: &lt;BrowserRouter&gt;{element}&lt;/BrowserRouter&gt;,
+                    maxmin: true,
+                    showConfirm: false,
+                    area: ['900px', '550px'],
+                    className: 'rc__dialogOS',
+                    customStyle: {padding: 0},
+                    zIndex: 100
+                })
+            }
+        }
+    }
+
+    // &#21491;&#38190;&#33756;&#21333;
+    const handleDeskCtxMenu = (e) =&gt; {
+        e.stopPropagation()
+        let pos = [e.clientX, e.clientY]
+        rdialog({
+            type: 'contextmenu',
+            follow: pos,
+            opacity: .1,
+            dialogStyle: {borderRadius: 3, overflow: 'hidden'},
+            btns: [
+                {text: '&#25171;&#24320;'},
+                {text: '&#37325;&#21629;&#21517;/&#37197;&#32622;'},
+                {
+                    text: '&#21024;&#38500;',
+                    click: () =&gt; {
+                        rdialog.close()
+                    }
+                }
+            ]
+        })
+    }
+
+    useEffect(() =&gt; {
+        const deskEl = document.getElementById('deskSortable')
+        Sortable.create(deskEl, {
+            handle: '.ra__deskmenu-block',
+            animation: 200,
+            delay: 0,
+            onEnd({ newIndex, oldIndex }) {
+                console.log('&#26032;&#32034;&#24341;&#65306;', newIndex)
+                console.log('&#26087;&#32034;&#24341;&#65306;', oldIndex)
+            }
+        })
+    }, [])
+
+    return (
+        &lt;div className="ra__deskmenu" id="deskSortable"&gt;
+            { filterRoutes.map(item =&gt; {
+                if(item?.children) {
+                    return DeskSubMenu(item)
+                }
+                return DeskMenu(item)
+            })}
+        &lt;/div&gt;
+    )
+}
+</code></pre>
+<p><img alt="p6.gif" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1444947bd3b74ae38b22a8c25209afda~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1000&amp;h=640&amp;s=3395831&amp;e=gif&amp;f=239&amp;b=6249a8" /></p>
+<p>OK, &#20197;&#19978;&#23601;&#26159;electron+react18&#24320;&#21457;&#26700;&#38754;os&#30340;&#19968;&#20123;&#30693;&#35782;&#20998;&#20139;&#12290;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-25T00:13:43+00:00</pubDate>
+</item>
+<item>
+<title>CSS技巧：用十行代码写一个跃动文字链的hover效果组件</title>
+<link>https://juejin.cn/post/7304930607132885011</link>
+<guid>https://juejin.cn/post/7304930607132885011</guid>
+<content:encoded><![CDATA[
+<div> <p>theme: nico
+&#25105;&#19981;&#30693;&#36947;&#36825;&#31181;&#25928;&#26524;&#35813;&#21483;&#20160;&#20040;&#21517;&#31216;&#65292;&#22993;&#19988;&#21483;&#20570;&#12300;&#36291;&#21160;&#25991;&#23383;&#38142;&#12301;&#21543;&#12290;&#23427;&#30340;&#25928;&#26524;&#23601;&#26159;&#65306;&#22312;&#19968;&#20018;&#25991;&#23383;&#20013;&#65292;&#40736;&#26631;&#28369;&#21040;&#21738;&#20010;&#25991;&#23383;&#65292;&#36825;&#20010;&#25991;&#23383;&#23601;&#36215;&#31435;&#12290;&#23601;&#20687;&#36825;&#20010;&#21160;&#22270;&#19968;&#26679;&#65306;
+
+&#36825;&#20010;&#25928;&#26524;&#21487;&#33021;&#27809;&#26377;&#20160;&#20040;&#19994;&#21153;&#20215;&#20540;&#65292;&#20027;&#25171;...</p> <div>
+<hr />
+<h2>theme: nico</h2>
+<p>&#25105;&#19981;&#30693;&#36947;&#36825;&#31181;&#25928;&#26524;&#35813;&#21483;&#20160;&#20040;&#21517;&#31216;&#65292;&#22993;&#19988;&#21483;&#20570;&#12300;&#36291;&#21160;&#25991;&#23383;&#38142;&#12301;&#21543;&#12290;&#23427;&#30340;&#25928;&#26524;&#23601;&#26159;&#65306;&#22312;&#19968;&#20018;&#25991;&#23383;&#20013;&#65292;&#40736;&#26631;&#28369;&#21040;&#21738;&#20010;&#25991;&#23383;&#65292;&#36825;&#20010;&#25991;&#23383;&#23601;&#36215;&#31435;&#12290;&#23601;&#20687;&#36825;&#20010;&#21160;&#22270;&#19968;&#26679;&#65306;</p>
+<p><img alt="&#24405;&#23631;&#21160;&#22270;.gif" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2c29870a2ecf448bbcb6b836a660e02b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=800&amp;h=586&amp;s=3987821&amp;e=gif&amp;f=75&amp;b=f5f5f5" /></p>
+<p>&#36825;&#20010;&#25928;&#26524;&#21487;&#33021;&#27809;&#26377;&#20160;&#20040;&#19994;&#21153;&#20215;&#20540;&#65292;&#20027;&#25171;&#19968;&#20010;&#20114;&#21160;&#24615;&#21644;&#35270;&#35273;&#36259;&#21619;&#24615;&#12290;&#35797;&#38382;&#21738;&#20010;&#20154;&#30475;&#21040;&#21487;&#20114;&#21160;&#30340;&#21160;&#25928;&#20250;&#33293;&#24471;&#31163;&#24320;&#21602;&#65311;</p>
+<h1>&#20195;&#30721;&#23454;&#29616;</h1>
+<p>&#12300;&#36291;&#21160;&#25991;&#23383;&#38142;&#12301;&#25928;&#26524;&#23454;&#29616;&#38750;&#24120;&#31616;&#21333;&#65292;&#23427;&#19981;&#22312;&#20046;&#20320;&#20351;&#29992;HTML&#12289;Vue&#36824;&#26159;React&#65292;&#23427;&#21482;&#38656;&#35201;&#20320;&#20889;CSS&#12290;</p>
+<p>&#25105;&#29992;TailwindCSS&#23454;&#29616;&#30340;&#20195;&#30721;&#22914;&#19979;&#65292;&#19968;&#20849;&#21482;&#35201;12&#34892;&#65292;&#25488;&#22836;&#21435;&#23614;&#23601;&#24403;&#20316;&#21482;&#26377;10&#34892;&#21543;&#65306;</p>
+<pre><code>export default function Caterpillar({ text, className, bgColor }) {
+  const chars = text.split('');
+  return (
+    &lt;div className={`flex ${className}`}&gt;
+      {chars.map((c, i) =&gt; (
+        &lt;div key={i} className={`flex ${bgColor || 'bg-[#4472c4]'} ${i === 0 ? 'rounded-s-lg' : ''} ${i === chars.length - 1 ? 'rounded-e-lg' : ''} border-top border-bottom border-2 border-brand bg-primary text-background -ml-[2px] pb-[0.1rem] px-2 transition duration-300 ease-in-out hover:-translate-y-1`}&gt;
+          &lt;span&gt;{c}&lt;/span&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<p><code>${i === 0 ? 'rounded-s-lg' : ''} ${i === chars.length - 1 ? 'rounded-e-lg' : ''}</code> &#26159;&#32473;&#31532;&#19968;&#20010;&#21644;&#26368;&#21518;&#19968;&#20010;&#22359;&#35774;&#32622;&#22278;&#35282;&#36793;&#26694;&#65307;<br />
+<code>transition duration-300 ease-in-out hover:-translate-y-1</code> &#26159;&#28155;&#21152;&#36807;&#28193;&#21160;&#30011;&#65292;&#35753;&#25991;&#23383;&#36291;&#21160;&#22312;&#20999;&#25442;&#30340;&#26102;&#20505;&#24179;&#32531;&#36807;&#28193;&#65307;</p>
+<p>&#35843;&#29992;&#32452;&#20214;&#65306;</p>
+<pre><code>&lt;Caterpillar text={BLOG.BIO} className="justify-center text-white -ml-px p-1" bgColor="bg-[#4472c4]" /&gt;
+</code></pre>
+<p>&#22914;&#26524;&#20320;&#20351;&#29992;&#30340;&#26159;React + TailwindCSS&#65292;&#20320;&#21487;&#20197;&#30452;&#25509;&#22797;&#21046;&#25105;&#30340;&#20195;&#30721;&#65292;&#22914;&#26524;&#20351;&#29992;Vue&#65292;&#21482;&#38656;&#35201;&#25913;&#20889;&#26631;&#31614;&#36941;&#21382;&#65292;&#36825;&#26679;&#20320;&#23601;&#25317;&#26377;&#20102;&#33258;&#24049;&#30340;&#12300;&#25991;&#23383;&#36291;&#21160;&#20018;&#12301;&#32452;&#20214;&#21862;&#12290;</p>
+<h1>TailwindCSS&#20171;&#32461;</h1>
+<p>&#22914;&#26524;&#20320;&#36824;&#19981;&#20102;&#35299;TailwindCSS&#65292;&#21487;&#20197;&#36890;&#36807;&#36825;&#19968;&#33410;&#20869;&#23481;&#20837;&#38376;&#12290;</p>
+<p>TailwindCSS&#26159;&#19968;&#31181;CSS&#26694;&#26550;&#65292;&#23427;&#20960;&#20046;&#25226;&#27599;&#20010;CSS&#23646;&#24615;&#37117;&#20889;&#25104;&#19968;&#20010;&#26679;&#24335;&#31867;&#65292;&#20320;&#21487;&#20197;&#36890;&#36807;&#33258;&#30001;&#32452;&#21512;&#36825;&#20123;&#26679;&#24335;&#31867;&#26469;&#21019;&#24314;&#22797;&#26434;&#30340;&#35774;&#35745;&#21644;&#24067;&#23616;&#12290;&#36825;&#31181;&#24605;&#24819;&#20063;&#34987;&#31216;&#20316;&ldquo;&#21407;&#23376;&#21270;&rdquo;&#35774;&#35745;&#12290;</p>
+<p>TailwindCSS&#30456;&#27604;&#20256;&#32479;&#30340;CSS&#20889;&#27861;&#26377;&#20960;&#20010;&#20248;&#21183;&#65306;</p>
+<ul>
+<li>&#39640;&#25928;&#24615;&#65306;&#36890;&#36807;&#20351;&#29992;&#26679;&#24335;&#31867;&#65292;&#24320;&#21487;&#20197;&#24555;&#36895;&#22320;&#26500;&#24314;&#30028;&#38754;&#32780;&#19981;&#24517;&#20889;&#24456;&#22810;&#33258;&#23450;&#20041;CSS</li>
+<li>&#21709;&#24212;&#24335;&#35774;&#35745;&#65306;Tailwind&#20869;&#32622;&#20102;&#21709;&#24212;&#24335;&#35774;&#35745;&#30340;&#26679;&#24335;&#31867;&#65292;&#20351;&#24471;&#21019;&#24314;&#21709;&#24212;&#24335;&#35774;&#35745;&#38750;&#24120;&#39640;&#25928;</li>
+<li>&#39640;&#24230;&#21487;&#23450;&#21046;&#65306;&#21487;&#20197;&#36890;&#36807;Tailwind&#30340;&#37197;&#32622;&#25991;&#20214;&#36731;&#26494;&#25193;&#23637;&#26679;&#24335;&#35774;&#35745;</li>
+</ul>
+<h2>TailwindCSS&#29992;&#27861;</h2>
+<p>&#26080;&#35770;&#26159;&#22312;Vue&#12289;React&#36824;&#26159;Next.js&#39033;&#30446;&#20013;&#65292;&#20351;&#29992;TailwindCSS&#30340;&#27493;&#39588;&#31867;&#20284;&#12290;&#20197;&#19979;&#26159;&#20351;&#29992;&#27493;&#39588;&#65306;</p>
+<ol>
+<li>
+<p>&#23433;&#35013;&#20381;&#36182;</p>
+<pre><code>npm install tailwindcss postcss autoprefixer
+npx tailwindcss init
+</code></pre>
+<p>&#36825;&#20250;&#23433;&#35013;TailwindCSS&#21450;&#20854;&#20381;&#36182;&#65292;&#24182;&#21019;&#24314;&#19968;&#20010; <strong><code>tailwind.config.js</code></strong> &#37197;&#32622;&#25991;&#20214;&#12290;</p>
+</li>
+<li>
+<p>&#22312;CSS&#37324;&#24341;&#20837;Tailwind&#30340;&#23618;</p>
+<p>&#22312;&#20027;CSS&#25991;&#20214;&#37324;&#24341;&#20837;&#20197;&#19979;&#20195;&#30721;&#65306;</p>
+<pre><code>@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre>
+</li>
+<li>
+<p>&#25193;&#23637;&#37197;&#32622;</p>
+<p>&#22312; <strong><code>tailwind.config.js</code></strong> &#37324;&#65292;&#20320;&#21487;&#20197;&#25193;&#23637;&#33258;&#24049;&#30340;&#35774;&#35745;&#12290;&#22914;&#26524;&#27809;&#26377;&#29305;&#27530;&#30340;UI&#38656;&#27714;&#65292;&#20351;&#29992;&#40664;&#35748;&#37197;&#32622;&#23601;&#36275;&#22815;&#20102;&#12290;</p>
+</li>
+</ol>
+<h1>&#32467;&#35821;</h1>
+<p>&#25366;&#25496;CSS&#25216;&#24039;&#30340;&#36807;&#31243;&#20063;&#26159;&#23398;&#20064;&#35774;&#35745;&#30340;&#36807;&#31243;&#65292;&#20851;&#27880;&#25105;&#30340;&#25496;&#37329;&#19987;&#26639;&#65292;&#19968;&#36215;&#23398;&#20064;CSS&#26032;&#29305;&#24615;&#21644;&#22909;&#30475;&#30340;&#26679;&#24335;&#35774;&#35745;&#12290;</p>
+<h1>&#19987;&#26639;&#36164;&#28304;</h1>
+<p>&#19987;&#26639;&#20171;&#32461;&#65306;&#20998;&#20139;CSS&#26032;&#29305;&#24615;&#21644;&#22909;&#30475;&#30340;&#26679;&#24335;&#35774;&#35745;<br />
+&#19987;&#26639;&#22320;&#22336;&#65306;&#128073;<a href="https://juejin.cn/column/7303816445040721983" rel="noopener noreferrer" target="_blank"># &#31616;&#26126;&#23454;&#29992;CSS&#25216;&#24039;</a></p>
+]]></content:encoded>
+
+<pubDate>2023-11-25T02:17:27+00:00</pubDate>
+</item>
+
+<item>
 <title>React组件 -- 双DatePicker</title>
 <link>https://juejin.cn/post/7304900969418948618</link>
 <guid>https://juejin.cn/post/7304900969418948618</guid>
@@ -189,7 +869,6 @@ function disabledDate(current) {
 
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-25T01:12:36+00:00</pubDate>
 </item>
 <item>
@@ -284,7 +963,6 @@ const ListSelect = (props: IProps) =&gt; {
 export { ListSelect };
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-25T01:11:11+00:00</pubDate>
 </item>
 <item>
@@ -747,7 +1425,6 @@ return total
 <p>&ldquo;So keep looking until you find it. Don't settle.&rdquo;</p>
 <p>&#25152;&#20197;&#32487;&#32493;&#25214;&#65292;&#30452;&#21040;&#20320;&#25214;&#21040;&#23427;&#65292;&#19981;&#35201;&#20572;&#19979;&#26469;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T15:00:00+00:00</pubDate>
 </item>
 <item>
@@ -892,7 +1569,6 @@ function formatCode() {
 </code></pre>
 <p>&#33267;&#27492;&#65292;&#23601;&#23436;&#25104;&#20102;monaco&#30340;&#38598;&#25104;&#21644;&#20351;&#29992;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-24T13:06:52+00:00</pubDate>
 </item>
 <item>
@@ -951,10 +1627,8 @@ are:</p>
 </li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-25T00:00:00+00:00</pubDate>
 </item>
-
 <item>
 <title>Vite 5 官宣！（译）</title>
 <link>https://juejin.cn/post/7304563142956810259</link>
