@@ -4972,3 +4972,10 @@ Filter: [金山办公挥不动AI的巨锤](https://www.36kr.com/p/25317419883002
 Filter: [百度股价折戟马东敏减持，文心一言要自证商业价值](https://www.36kr.com/p/2531713083319816)
 append_entries: 0
 Finish: 2023-11-25 08:06:15.500585
+------------------------------------------------------
+Started: 2023-11-25 10:03:38.742334
+Existing_entries: 309
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
