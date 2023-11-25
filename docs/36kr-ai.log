@@ -4890,3 +4890,10 @@ Filter: [疯狂，我被GPTs包围了](https://www.36kr.com/p/2531556961494785)
 Filter: [自研视频生成模型实现升级，「CreativeFitting」即将面向海外市场发布AI短剧APP | 早期项目](https://www.36kr.com/p/2530913534060296)
 append_entries: 0
 Finish: 2023-11-24 22:05:28.982465
+------------------------------------------------------
+Started: 2023-11-25 00:13:47.221880
+Existing_entries: 308
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
