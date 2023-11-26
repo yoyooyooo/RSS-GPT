@@ -4,6 +4,65 @@
 <title>推送企业微信群文章</title>
 <link>http://121.5.102.156:181</link>
 
+<item>
+<title>Daily Hacker News for 2023-11-25</title>
+<link>https://www.daemonology.net/hn-daily/2023-11-25.html</link>
+<guid>https://www.daemonology.net/hn-daily/2023-11-25.html</guid>
+<content:encoded><![CDATA[
+<div> <p>The 10 highest-rated articles on
+Hacker News
+on November 25, 2023 which have not appeared on any pr...</p> <div>
+<p>The 10 highest-rated articles on
+<a href="https://news.ycombinator.com/" rel="noopener noreferrer" target="_blank">Hacker News</a>
+on November 25, 2023 which have not appeared on any previous
+<a href="https://www.daemonology.net/hn-daily/" rel="noopener noreferrer" target="_blank">Hacker News Daily</a>
+are:</p>
+<ul>
+<li>
+<span><a href="https://www.rowsncolumns.app/" rel="noopener noreferrer" target="_blank">Show HN: React Spreadsheet 2</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38390714" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://cssanimotion.pages.dev/" rel="noopener noreferrer" target="_blank">Animotion &ndash; a visual CSS animation app</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38402776" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://threedots.tech/post/making-games-in-go/" rel="noopener noreferrer" target="_blank">Making games in Go for absolute beginners</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38403111" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://news.ycombinator.com/item?id=38406156" rel="noopener noreferrer" target="_blank">Ask HN: How should I setup a phone for a newly blind relative?</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38406156" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="http://johnsalvatier.org/blog/2017/reality-has-a-surprising-amount-of-detail" rel="noopener noreferrer" target="_blank">Reality has a surprising amount of detail (2017)</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38407851" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://ethz.ch/en/news-and-events/eth-news/news/2023/11/autonomous-excavator-constructs-a-six-metre-high-dry-stone-wall.html" rel="noopener noreferrer" target="_blank">Autonomous excavator constructs a six-metre-high dry-stone wall</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38408920" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://ip.guide" rel="noopener noreferrer" target="_blank">Show HN: IP Guide &ndash; Info on IP addresses, Networks, and ASNs</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38409164" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.bitsaboutmoney.com/archive/bond-villain-compliance-strategy/" rel="noopener noreferrer" target="_blank">The Bond villain compliance strategy</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38411005" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.tesla.com/ownersmanual/model3/en_us/GUID-AA58ED67-9C93-4EE6-8B19-9FDABE018787.html" rel="noopener noreferrer" target="_blank">Normal Operating Sounds</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38411105" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://sqids.org/" rel="noopener noreferrer" target="_blank">Sqids &ndash; Generate Short Unique IDs from Numbers</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38414914" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2023-11-26T00:00:00+00:00</pubDate>
+</item>
 
 <item>
 <title>年终盘点: 复盘20+基于React的开源管理后台&amp;插件</title>
