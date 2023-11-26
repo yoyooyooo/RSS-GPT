@@ -260,3 +260,15 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-11-25](https://www.daemonology.net/hn-daily/2023-11-25.html)
 append_entries: 1
 Finish: 2023-11-26 00:11:48.867340
+------------------------------------------------------
+Started: 2023-11-26 02:14:45.511702
+Existing_entries: 112
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [使用canvas实现一个锚点抠图功能](https://juejin.cn/post/7305013302416588838)
+Append: [TypeScript 5.3 官宣！（译）](https://juejin.cn/post/7305232817766842387)
+Append: [Canvas基本使用和简易事件基本介绍(一)](https://juejin.cn/post/7305013302416457766)
+Append: [我是如何通过学习源码去解决react的一个小小的安全问题](https://juejin.cn/post/7304932252827828276)
+Append: [按钮防连点终极解决方案（内附非侵入源码）](https://juejin.cn/post/7304946949941608475)
+Append: [程序员使用openai处理办公问题](https://juejin.cn/post/7305230279811792906)
+append_entries: 6
+Finish: 2023-11-26 02:14:49.654421
