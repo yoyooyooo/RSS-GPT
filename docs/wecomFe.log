@@ -306,3 +306,11 @@ Append: [如何实现可视化图层合并渲染](https://juejin.cn/post/7305308
 Append: [使用nodejs stream实现文件和文件夹的上传部署](https://juejin.cn/post/7305182777438584858)
 append_entries: 6
 Finish: 2023-11-26 10:03:20.608013
+------------------------------------------------------
+Started: 2023-11-26 12:04:06.185396
+Existing_entries: 128
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [利用canvas修改二维码的颜色](https://juejin.cn/post/7305232817767874579)
+Append: [源码学习——pcm-player](https://juejin.cn/post/7305235970285912075)
+append_entries: 2
+Finish: 2023-11-26 12:04:14.426290
