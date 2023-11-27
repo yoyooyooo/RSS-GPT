@@ -367,3 +367,16 @@ Append: [Daily Hacker News for 2023-11-26](https://www.daemonology.net/hn-daily/
 Append: [浏览器跨标签星球火了，简单探究一下实现原理](https://juejin.cn/post/7304598711992598566)
 append_entries: 9
 Finish: 2023-11-27 02:13:41.548945
+------------------------------------------------------
+Started: 2023-11-27 04:03:22.599112
+Existing_entries: 141
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [实现一款当下Ai工具还不能实现的图形应用](https://juejin.cn/post/7305694682772242483)
+Append: [elment-ui组件源码分析学习（1）](https://juejin.cn/post/7305606652199501851)
+Append: [FE News Weekly 第 001 期：字节 Rsbuild 0.1、清华大学未来十大变革科技榜单、ISUX 设计趋势速递、TypeScript 5.3](https://juejin.cn/post/7305694682771439667)
+Append: [【React.js】ReactRedux - 使用 & 基本实现](https://juejin.cn/post/7305582809811632128)
+Append: [第 0115 期：TypeScript 5.3、RSC、React TypeScript、30 条建议、0.6 + 0.3、CI 时间](https://mdhweekly.com/weekly/issue-0115)
+Append: [Async/Await 原理](https://juejin.cn/post/7305331479041835059)
+Append: [gpt带我学图片知识](https://juejin.cn/post/7304270299980529718)
+append_entries: 7
+Finish: 2023-11-27 04:03:25.869680
