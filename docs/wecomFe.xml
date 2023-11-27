@@ -5,6 +5,163 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>解决create-react-app 中less不生效</title>
+<link>https://juejin.cn/post/7306018455463165987</link>
+<guid>https://juejin.cn/post/7306018455463165987</guid>
+<content:encoded><![CDATA[
+<div> <p>theme: channing-cyan
+
+&#22914;&#26524;&#22312;&#30001;create-react-app&#21019;&#24314;&#30340;&#39033;&#30446;&#20013;less&#26679;&#24335;&#19981;&#29983;&#25928;&#65292;&#36890;&#24120;&#36825;&#26159;&#22240;&#20026;create-react-app&#40664;&#35748;&#19981;&#25903;&#25345;less&#65292;&#20320;&#38656;&#35201;&#36827;&#34892;&#19968;&#20123;&#37197;&#32622;...</p> <div>
+<hr />
+<h2>theme: channing-cyan</h2>
+<blockquote>
+<p>&#22914;&#26524;&#22312;&#30001;<code>create-react-app</code>&#21019;&#24314;&#30340;&#39033;&#30446;&#20013;<code>less</code>&#26679;&#24335;&#19981;&#29983;&#25928;&#65292;&#36890;&#24120;&#36825;&#26159;&#22240;&#20026;<code>create-react-app</code>&#40664;&#35748;&#19981;&#25903;&#25345;<code>less</code>&#65292;&#20320;&#38656;&#35201;&#36827;&#34892;&#19968;&#20123;&#37197;&#32622;&#26469;&#21551;&#29992;&#23545;<code>less</code>&#30340;&#25903;&#25345;&#12290;</p>
+<p>&#21457;&#29616;&#36890;&#36807;<code>create-react-app</code>&#26500;&#24314;&#30340;<code>react</code>&#24212;&#29992;&#19981;&#25903;&#25345;<code>less</code>&#26679;&#24335;&#65292;&#25152;&#20197;&#36825;&#37324;&#25552;&#20379;&#20102;&#19977;&#31181;&#26041;&#27861;&#20197;&#20316;&#22823;&#23478;&#21442;&#32771;&#12290;<strong>&#26041;&#27861;&#19968;</strong>&#25512;&#33616;&#22312;&#21018;&#26500;&#24314;&#30340;&#26102;&#20505;&#20351;&#29992;&#65292;&#22914;&#26524;&#20320;&#24050;&#32463;&#20889;&#20102;&#24456;&#22810;&#20195;&#30721;&#65292;&#20320;&#20250;&#21457;&#29616;&#38656;&#35201;&#21024;&#38500;&#24456;&#22810;&#25991;&#20214;&#25165;&#33021;&#25104;&#21151;&#65281;&#21478;&#22806;&#20004;&#31181;&#26041;&#27861;&#31867;&#20284;&#65292;&#20010;&#20154;&#25512;&#33616;<strong>&#31532;&#19977;&#31181;</strong>&#26041;&#26696;&#65281;</p>
+</blockquote>
+<h2>1.&#26041;&#26696;</h2>
+<h3>&#26041;&#27861;&#19968;:&#26292;&#38706;webpack.config.js&#37197;&#32622;</h3>
+<p>1.&#23433;&#35013;less&#21644;less-loader</p>
+<pre><code>npm install less less-loader
+</code></pre>
+<p>&#25110;&#32773;&#22914;&#26524;&#20351;&#29992;<code>yarn</code>&#65306;</p>
+<pre><code> yarn add less less-loader
+</code></pre>
+<p>2.&#36890;&#36807; <code>npm run eject</code>&#26292;&#38706;&#37197;&#32622;</p>
+<pre><code>npm run eject
+</code></pre>
+<p>2.&#25214;&#21040;<code>webpack.config.js</code>&#65292;&#28155;&#21152;&#22914;&#19979;&#20869;&#23481;&#65306;</p>
+<pre><code>//&#24341;&#20837; less &#25991;&#20214;&#30340;&#37197;&#32622;
+const lessRegex = /.less$/;
+const lessModuleRegex = /.module.less$/;   
+</code></pre>
+<p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d967d978affc45549a4673bd635f30af~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=658&amp;h=228&amp;s=40077&amp;e=png&amp;b=1f2023" />
+3.&#28982;&#21518;&#25214;&#21040;&nbsp;<code>webpack.config.js</code>&nbsp;&#25991;&#20214;&#20013;&#30340; return --&gt; module.rules.oneOf &#37096;&#20998;&#65292;&#28155;&#21152;&#20197;&#19979;&#20195;&#30721;&#65306;</p>
+<pre><code>{
+  test: lessRegex,
+  exclude: lessModuleRegex,
+  use: getStyleLoaders(
+      {
+        importLoaders: 4, // &#29992;&#20110;&#20915;&#23450;css&#25991;&#20214;&#20013;&#35835;&#21462;&#21040;@import&#26102;&#34987;&#22806;&#23618;&#25968;&#32452;&#20013;&#21738;&#20010;&#22788;&#29702;
+        sourceMap:  isEnvProduction
+            ? shouldUseSourceMap
+            : isEnvDevelopment,
+        modules: {
+          mode: 'icss',
+        },
+      },
+      'less-loader'
+  ),
+  sideEffects: true, // &#20801;&#35768;&#36890;&#36807;&#37197;&#32622;&#65292;&#26631;&#35782;&#20195;&#30721;&#26159;&#21542;&#26377;&#21103;&#20316;&#29992;
+},
+{
+  test: lessModuleRegex,
+  use: getStyleLoaders(
+      {
+        importLoaders: 4,
+        sourceMap:  isEnvProduction
+            ? shouldUseSourceMap
+            : isEnvDevelopment,
+        modules: {
+          mode: 'local',
+          getLocalIdent: getCSSModuleLocalIdent,
+        }
+      },
+      'less-loader'
+  ),
+},
+</code></pre>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5515fabefa249c8a1707376c74b6dff~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1920&amp;h=1040&amp;s=263474&amp;e=png&amp;b=242629" /></p>
+<h3>&#26041;&#27861;&#20108;&#65306;&#20351;&#29992;<code>craco</code>&#65288;<code>create-react-app</code>&#37197;&#32622;&#37325;&#20889;&#22120;&#65289;</h3>
+<ol>
+<li>
+<p>&#23433;&#35013;<code>craco</code>&#21644;<code>less</code>&#20197;&#21450;<code>craco-less</code>&#25554;&#20214;&#65306;</p>
+<pre><code>npm install @craco/craco craco-less less
+</code></pre>
+<p>&#25110;&#32773;&#22914;&#26524;&#20351;&#29992;<code>yarn</code>&#65306;</p>
+<pre><code>yarn add @craco/craco craco-less less
+</code></pre>
+</li>
+<li>
+<p>&#22312;&#39033;&#30446;&#26681;&#30446;&#24405;&#20013;&#21019;&#24314;&#19968;&#20010;<code>craco.config.js</code>&#25991;&#20214;&#65292;&#28155;&#21152;&#20197;&#19979;&#20869;&#23481;&#65306;</p>
+<pre><code>const CracoLessPlugin = require('craco-less');
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            modifyVars: { '@primary-color': '#1DA57A' }, // &#21487;&#20197;&#22312;&#27492;&#20462;&#25913;&#40664;&#35748;&#30340;&#20027;&#39064;&#21464;&#37327;
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
+};
+</code></pre>
+</li>
+<li>
+<p>&#20462;&#25913;<code>package.json</code>&#20013;&#30340;&#33050;&#26412;&#21629;&#20196;&#65292;&#20351;&#29992;<code>craco</code>&#26367;&#20195;<code>react-scripts</code>&#65306;</p>
+<pre><code>"scripts": {
+  "start": "craco start",
+  "build": "craco build",
+  "test": "craco test",
+  "eject": "react-scripts eject"
+}
+</code></pre>
+</li>
+<li>
+<p>&#29616;&#22312;&#65292;&#20320;&#21487;&#20197;&#22312;&#39033;&#30446;&#20013;&#20351;&#29992;<code>.less</code>&#25991;&#20214;&#65292;&#24182;&#20687;&#20351;&#29992;<code>.css</code>&#25991;&#20214;&#19968;&#26679;&#23548;&#20837;&#23427;&#20204;&#12290;</p>
+</li>
+</ol>
+<h3>&#26041;&#27861;&#19977;&#65306;&#20351;&#29992;<code>customize-cra</code>&#21644;<code>react-app-rewired</code></h3>
+<ol>
+<li>
+<p>&#23433;&#35013;<code>react-app-rewired</code>&#21644;<code>customize-cra</code>&#20197;&#21450;<code>less-loader</code>&#65306;</p>
+<pre><code>npm install react-app-rewired customize-cra less-loader less
+</code></pre>
+<p>&#25110;&#32773;&#22914;&#26524;&#20351;&#29992;<code>yarn</code>&#65306;</p>
+<pre><code>yarn add react-app-rewired customize-cra less-loader less
+</code></pre>
+</li>
+<li>
+<p>&#22312;&#39033;&#30446;&#26681;&#30446;&#24405;&#20013;&#21019;&#24314;&#19968;&#20010;<code>config-overrides.js</code>&#25991;&#20214;&#65292;&#28155;&#21152;&#20197;&#19979;&#20869;&#23481;&#65306;</p>
+<pre><code>const { override, addLessLoader } = require('customize-cra');
+
+module.exports = override(
+  addLessLoader({
+    lessOptions: {
+      javascriptEnabled: true,
+    },
+  })
+);
+</code></pre>
+</li>
+<li>
+<p>&#20462;&#25913;<code>package.json</code>&#20013;&#30340;&#33050;&#26412;&#21629;&#20196;&#65292;&#20351;&#29992;<code>react-app-rewired</code>&#26367;&#20195;<code>react-scripts</code>&#65306;</p>
+<pre><code>"scripts": {
+  "start": "react-app-rewired start",
+  "build": "react-app-rewired build",
+  "test": "react-app-rewired test",
+  "eject": "react-scripts eject"
+}
+</code></pre>
+</li>
+<li>
+<p>&#20320;&#29616;&#22312;&#24212;&#35813;&#21487;&#20197;&#22312;&#39033;&#30446;&#20013;&#20351;&#29992;<code>.less</code>&#25991;&#20214;&#20102;&#12290;</p>
+</li>
+</ol>
+<p><strong>&#27880;&#24847;&#65306;</strong> &#22312;&#20351;&#29992;&#36825;&#20123;&#24037;&#20855;&#26102;&#65292;&#35831;&#30830;&#20445;&#26816;&#26597;&#23427;&#20204;&#19982;<code>create-react-app</code>&#30340;&#24403;&#21069;&#29256;&#26412;&#20860;&#23481;&#24615;&#65292;&#22240;&#20026;&#38543;&#30528;&#26032;&#29256;&#26412;&#30340;&#21457;&#24067;&#65292;&#21487;&#33021;&#20250;&#26377;&#25152;&#21464;&#21270;&#12290;</p>
+<h2>2.&#24635;&#32467;</h2>
+<p>&#20351;&#29992;&#19978;&#36848;&#20219;&#19968;&#26041;&#27861;&#21518;&#65292;&#24744;&#30340;&#39033;&#30446;&#24212;&#35813;&#33021;&#22815;&#25903;&#25345;<code>less</code>&#12290;&#35760;&#20303;&#65292;&#22312;&#20320;&#30340;&#32452;&#20214;&#20013;&#23548;&#20837;<code>.less</code>&#25991;&#20214;&#26102;&#65292;&#35201;&#30830;&#20445;&#20351;&#29992;&#27491;&#30830;&#30340;&#36335;&#24452;&#12290;&#22914;&#26524;&#20173;&#28982;&#26080;&#27861;&#29983;&#25928;&#65292;&#37027;&#20320;&#21487;&#20197;&#22312;&#19979;&#26041;&#30041;&#35328;&#65292;&#25105;&#20204;&#19968;&#36215;&#25506;&#35752;&#25506;&#35752;&#65281;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-27T08:57:47+00:00</pubDate>
+</item>
+
+<item>
 <title>vite+react编写自己的绚丽组件库(二)---库文件打包</title>
 <link>https://juejin.cn/post/7306018455462527011</link>
 <guid>https://juejin.cn/post/7306018455462527011</guid>
@@ -128,7 +285,6 @@ function App() {
 <li><a href="https://juejin.cn/book/7117582869358182403" rel="noopener noreferrer" target="_blank">&#22522;&#20110; Vite &#30340;&#32452;&#20214;&#24211;&#24037;&#31243;&#21270;&#23454;&#25112;</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T07:39:02+00:00</pubDate>
 </item>
 <item>
@@ -245,7 +401,6 @@ dist
 </code></pre>
 <p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/48c06978e3a549e193f4936b5e29a724~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1714&amp;h=671&amp;s=73739&amp;e=png&amp;b=ffffff" /></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T07:34:09+00:00</pubDate>
 </item>
 <item>
@@ -569,7 +724,6 @@ function Barrage(obj,context){//context == this
 <p>&#30475;&#21040;&#36825;&#37324;&#20102;&#65281;--&#28857;&#20010;&#36190;&#20877;&#36208;&#21591;&#65281;&#129402;&#129402;&#129402;</p>
 <p>&#20010;&#20154;gitee&#24211;&#65306;<a href="https://gitee.com/wangzhihaoworkspace/mycode-space" rel="noopener noreferrer" target="_blank">MycodeSpace: &#20027;&#35201;&#24212;&#29992;&#30340;&#20179;&#24211;&#65292;&#35760;&#24405;&#23398;&#20064;coding&#20013;&#30340;&#28857;&#28857;&#28404;&#28404; (gitee.com)</a></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T07:33:14+00:00</pubDate>
 </item>
 <item>
@@ -1214,7 +1368,6 @@ SDA.startAudio(localeFilePath, false);
 <li>...</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T06:10:50+00:00</pubDate>
 </item>
 <item>
@@ -1545,7 +1698,6 @@ export default {
 &lt;/script&gt;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T05:55:52+00:00</pubDate>
 </item>
 <item>
@@ -1709,10 +1861,8 @@ const ButtonTagDemo = function(){
 }
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-27T05:39:49+00:00</pubDate>
 </item>
-
 <item>
 <title>关于微信小程序中如何实现数据可视化-echarts动态渲染</title>
 <link>https://juejin.cn/post/7305938219694850067</link>
