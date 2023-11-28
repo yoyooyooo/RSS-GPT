@@ -3938,3 +3938,9 @@ Fetching from https://rknight.me/feed.xml
 Append: [DoubleShift](https://rknight.me/doubleshift/)
 append_entries: 1
 Finish: 2023-11-28 00:10:59.070694
+------------------------------------------------------
+Started: 2023-11-28 02:14:30.719528
+Existing_entries: 120
+Fetching from https://rknight.me/feed.xml
+append_entries: 0
+Finish: 2023-11-28 02:14:32.140125

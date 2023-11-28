@@ -458,3 +458,16 @@ Existing_entries: 166
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-11-28 00:10:50.856076
+------------------------------------------------------
+Started: 2023-11-28 02:14:22.018583
+Existing_entries: 166
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React -- useSize Hook 封装](https://juejin.cn/post/7306036684923600935)
+Append: [React项目中监听组件样式变化](https://juejin.cn/post/7306033185935081483)
+Append: [派早报：国家广播电视总局发布三项广播电视和网络视听行业标准等](https://sspai.com/post/84677)
+Append: [【Qt学习】借助示例代码实现简易日历项目（一）环境部署+源码bug修复](https://juejin.cn/post/7305986100099743785)
+Append: [基于antd3的级联TreeSelect组件实现](https://juejin.cn/post/7305983860251492388)
+Append: [Vite4.4+Typescript+React18+Zustand 最新搭建企业级前端项目](https://juejin.cn/post/7306033185934802955)
+Append: [Daily Hacker News for 2023-11-27](https://www.daemonology.net/hn-daily/2023-11-27.html)
+append_entries: 7
+Finish: 2023-11-28 02:14:25.100335
