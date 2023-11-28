@@ -1506,3 +1506,10 @@ Existing_entries: 30
 Fetching from https://rsshub.app/paulgraham/articles
 append_entries: 0
 Finish: 2023-11-28 02:15:08.265906
+------------------------------------------------------
+Started: 2023-11-28 04:03:38.315241
+Existing_entries: 30
+Fetching from https://rsshub.app/paulgraham/articles
+Feed error: 403
+append_entries: 0
+error when rendering xml, skip docs/paul-graham

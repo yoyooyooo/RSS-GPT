@@ -5641,3 +5641,10 @@ Filter: [神秘的Q-Star项目，人工智能再次突破引发恐慌？](https:
 Filter: [留给谷歌的时间不多了：18年老员工辞职炮轰领导层](https://www.36kr.com/p/2533161257805316)
 append_entries: 1
 Finish: 2023-11-28 02:15:07.830075
+------------------------------------------------------
+Started: 2023-11-28 04:03:38.118525
+Existing_entries: 312
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 403
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai

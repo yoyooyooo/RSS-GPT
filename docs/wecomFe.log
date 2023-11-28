@@ -471,3 +471,10 @@ Append: [Vite4.4+Typescript+React18+Zustand 最新搭建企业级前端项目](h
 Append: [Daily Hacker News for 2023-11-27](https://www.daemonology.net/hn-daily/2023-11-27.html)
 append_entries: 7
 Finish: 2023-11-28 02:14:25.100335
+------------------------------------------------------
+Started: 2023-11-28 04:03:27.051239
+Existing_entries: 173
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [TypeScript中遍历对象键的方法](https://juejin.cn/post/7306033185935441931)
+append_entries: 1
+Finish: 2023-11-28 04:03:29.792598

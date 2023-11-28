@@ -8657,3 +8657,10 @@ Existing_entries: 273
 Fetching from https://rsshub.app/sspai/index
 append_entries: 0
 Finish: 2023-11-28 02:14:30.296228
+------------------------------------------------------
+Started: 2023-11-28 04:03:32.037782
+Existing_entries: 273
+Fetching from https://rsshub.app/sspai/index
+Feed error: 403
+append_entries: 0
+error when rendering xml, skip docs/sspai
