@@ -5827,3 +5827,10 @@ Filter: [AIGC大佬创业版图，9家红利公司大盘点｜职升机头等舱
 Filter: [我们会和AI组成家庭吗？韩松之问不只是“科幻”话题](https://www.36kr.com/p/2536072061363718)
 append_entries: 0
 Finish: 2023-11-28 20:04:17.129415
+------------------------------------------------------
+Started: 2023-11-28 22:05:33.308037
+Existing_entries: 315
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
