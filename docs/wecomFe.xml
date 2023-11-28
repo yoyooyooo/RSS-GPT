@@ -5,6 +5,1077 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>3 Surprising Async/Await Pitfalls Every Web Developer Must Avoid!</title>
+<link>https://blog.bitsrc.io/pitfalls-of-async-await-in-javascript-7c0678fbc282?source=rss----5c2fdf847f4a---4</link>
+<guid>https://blog.bitsrc.io/pitfalls-of-async-await-in-javascript-7c0678fbc282?source=rss----5c2fdf847f4a---4</guid>
+<content:encoded><![CDATA[
+<div> <p>Let&rsquo;s look at 3 practical limitations of async/await in JavaScriptIf you&rsquo;re working with Node.js, ch...</p> <div>
+<h4>Let&rsquo;s look at 3 practical limitations of async/await in JavaScript</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*WR82BXiA6AfHHfKI8t-nYA.jpeg" /></figure><p>If you&rsquo;re working with Node.js, chances are you&rsquo;ve worked with asynchronous operations in JavaScript. But if you&rsquo;re unfamiliar with it, an asynchronous task is an operation executed independently of the main thread in the JavaScript engine. Essentially, this is what lets the application function without a blocking&nbsp;UI.</p><blockquote>This is extremely important due to the single-threaded nature of&nbsp;Node.js.</blockquote><p>Behind the scenes, Node.js utilizes the event loop to handle all asynchronous operations, keeping the primary thread available for compute functions. This is illustrated below:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/721/0*G1WI0g4rqS7xMIsI.png" /></figure><p><strong>Figure: The Node.js Event&nbsp;Loop</strong></p><p>Suppose you have a fair knowledge of the event loop. In that case, you&rsquo;d understand that when Node.js discovers an async operation in the call stack, it will offshore it onto the thread pool, which will execute it asynchronously via the Libuv library. Hereafter, the libuv will execute the operation and push it into the &ldquo;Event Queue.&rdquo; The Event Queue will be continuously monitored, and an event from the event queue will be taken and executed on the callback (A.K.A&#8202;&mdash;&#8202;The Callback Function), which handles the response of the asynchronous operation. That&rsquo;s essentially how Node.js processes asynchronous operations.</p><blockquote>But, how does this look on&nbsp;code?</blockquote><p>Well, you&rsquo;d build asynchronous operations in JavaScript using <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises" rel="noopener noreferrer" target="_blank">Promises</a>. A Promise is an object returned by an asynchronous operation representing its progress. For example, consider the snippet&nbsp;below:</p><pre>// Function that returns a Promise<br />function fetchData() {<br />    return new Promise((resolve, reject) =&gt; {<br />        // Simulating asynchronous operation using setTimeout<br />        setTimeout(() =&gt; {<br />            const data = 'Sample Data';<br />            // Simulating a condition for success or failure<br />            const success = true; <br /><br />            if (success) {<br />                resolve(data); // Resolving the promise with data<br />            } else {<br />                reject('Error: Unable to fetch data'); // Rejecting the promise with an error message<br />            }<br />        }, 2000); // Simulated delay of 2 seconds<br />    });<br />}<br /><br />// Using the Promise<br />const fetchDataPromise = fetchData();<br />fetchDataPromise.then(data =&gt; {<br />    console.log('Data received:', data);<br />})<br />.catch(error =&gt; {<br />    console.error(error);<br />});</pre><p>As you can see, the function fetchData returns a Promise - fetchDataPromise that contains two methods - then and catch that lets its consumers listen to an eventual response that's going to be returned by the fetchData function.</p><p>This makes JavaScript a lot more powerful and enables you to build apps like real-time chat apps and APIs; however, using asynchronous operations in JavaScript has some common pitfalls that you must consider when designing your app so that you can implement ways to mitigate such&nbsp;issues.</p><blockquote>Note: these pitfalls apply to any framework in which you work with JavaScript. For example, you could work with Node.js, React, Angular, Vue.js, and you&rsquo;d be at risk of these pitfalls.</blockquote><h3>Pitfall 01: Callback&nbsp;Hell</h3><p>One of the key issues in using Promise-based asynchronous operations is the callback hell. The callback is hell is a situation that you run into in which your callbacks keep invoking Promises that result in a chain of callbacks. For example, <a href="https://bit.cloud/lakinduhewa/js-limitations/callbacks/~code/callbacks.ts" rel="noopener noreferrer" target="_blank">consider the snippet&nbsp;below</a>:</p><pre>function performAsyncOperation(delay: number, message: string): Promise&lt;string&gt; {<br />  return new Promise((resolve) =&gt; {<br />    setTimeout(() =&gt; {<br />      console.log(message);<br />      resolve(message);<br />    }, delay);<br />  });<br />}<br /><br /><br />export async function callbacks() {<br />  const delay = 1000;<br />  const message = 'Hello World';<br />  return performAsyncOperation(delay, message).then((value) =&gt; {<br />    performAsyncOperation(delay, value).then((secondValue) =&gt; {<br />      performAsyncOperation(delay, secondValue).then((thirdValue) =&gt; {<br />        performAsyncOperation(delay, thirdValue).then(() =&gt; {<br />          console.log('End The Callback');<br />        }).catch(() =&gt; {<br />          console.log('Error');<br />        });;<br />      }).catch(() =&gt; {<br />        console.log('Error');<br />      });;<br />    }).catch(() =&gt; {<br />      console.log('Error');<br />    });<br />  });<br />}</pre><p>As you can see in the callbacks() function, it uses a function performAsyncOperation and keeps on adding more asynchronous operations to it. Now, this will work perfectly fine in production. But, it will be a mess when you consider the aspect of maintainability. For instance, it's hard to see what callback applies at what&nbsp;level.</p><blockquote>So, how do we avoid&nbsp;this?</blockquote><p>To fix the callback hell issue, you can convert this to an async/await approach. So, <a href="https://bit.cloud/lakinduhewa/js-limitations/async-await/~code/async-await.ts" rel="noopener noreferrer" target="_blank">let's see the updated code for&nbsp;this</a>:</p><pre>function performAsyncOperation(delay: number, message: string): Promise&lt;string&gt; {<br />  return new Promise((resolve) =&gt; {<br />    setTimeout(() =&gt; {<br />      console.log(message);<br />      resolve(message);<br />    }, delay);<br />  });<br />}<br /><br />export async function asyncAwait() {<br />  try {<br />    const delay = 1000;<br />    let message = 'Hello World';<br /><br />    message = await performAsyncOperation(delay, message);<br />    message = await performAsyncOperation(delay, message);<br />    message = await performAsyncOperation(delay, message);<br /><br />    await performAsyncOperation(delay, message);<br /><br />    console.log('End The Callback');<br />  } catch (error) {<br />    console.log('Error:', error);<br />  }<br />}</pre><p>As you can see, we&rsquo;ve successfully refactored our callback hell onto a cleaner approach, which does the same thing using async/await. This lets you execute the same asynchronous code that you executed earlier but with a cleaner approach. The term await means that each line of code will <strong>wait</strong> until it receives a response. If it returns a successful response, it will proceed to the next, but if it runs into an error, it will jump to the common catch block. By doing so, you avoid the need to maintain multiple error handlers and use a single error&nbsp;handler.</p><h3>Pitfall 02: Synchronous Function&nbsp;Chaining</h3><p>Okay, we&rsquo;ve refactored our code to use async/await blocks to handle the multiple asynchronous invocations, right? Now, you might notice a new issue over here. <a href="https://bit.cloud/lakinduhewa/js-limitations/issue-async-await/~code/issue-async-await.ts" rel="noopener noreferrer" target="_blank">For instance, consider the snippet&nbsp;below:</a></p><pre>function performAsyncOperation(delay: number, message: string): Promise&lt;string&gt; {<br />  return new Promise((resolve) =&gt; {<br />    setTimeout(() =&gt; {<br />      console.log(message);<br />      resolve(message);<br />    }, delay);<br />  });<br />}<br /><br />export async function issueAsyncAwait() {<br />  try {<br />    const delay = 1000;<br />    let message = 'Hello World';<br /><br />    await performAsyncOperation(delay, message);<br />    console.log('Phase 01');<br />    await performAsyncOperation(delay, message);<br /><br />    console.log('End The Callback');<br />  } catch (error) {<br />    console.log('Error:', error);<br />  }<br />}</pre><p>In this case, we want to print console.log('Phase 1'). Since performAsyncOperation is executed in a separate process, our log message should ideally be printed even before performAsyncOperation should finish right? <a href="https://bit.cloud/lakinduhewa/js-limitations/issue-async-await/~compositions" rel="noopener noreferrer" target="_blank">Let's investigate this further and see the&nbsp;output</a>:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/787/0*wcYFKECBV3SUMru6.png" /></figure><p><strong>Figure: Console&nbsp;Output</strong></p><blockquote>Upon inspection, we can see that this isn&rsquo;t what we expected. So what&rsquo;s happening here?</blockquote><p>As the name implies, it &ldquo;waits&rdquo; the entire code block until the asynchronous operation returns a response. So this makes your code &ldquo;synchronous&rdquo; and creates a waterfall invocation pattern, where your code invokes one after the&nbsp;other.</p><p>So, if you have events that are not dependent on each other, and if your event is not dependent on the output of the async operation, you don&rsquo;t have to necessarily wait until the async operation completes, right?</p><p><a href="https://bit.cloud/lakinduhewa/js-limitations/async-await-fix" rel="noopener noreferrer" target="_blank">So, in these cases <strong>only,</strong> consider using callbacks</a>:</p><pre>function performAsyncOperation(delay: number, message: string): Promise&lt;string&gt; {<br />  return new Promise((resolve) =&gt; {<br />    setTimeout(() =&gt; {<br />      console.log(message);<br />      resolve(message);<br />    }, delay);<br />  });<br />}<br /><br />export async function asyncAwaitFix() {<br />  try {<br />    const delay = 1000;<br />    let message = 'Hello World';<br /><br />    performAsyncOperation(delay, message).then((resp) =&gt; console.log(`Process the resp: ${resp}.`));<br />    console.log('Phase 01');<br />    await performAsyncOperation(delay, message);<br /><br />    console.log('End The Callback');<br />  } catch (error) {<br />    console.log('Error:', error);<br />  }<br />}</pre><p>Okay, as you can see, we&rsquo;ve refactored the first invocation of performAsyncOperation to use the&nbsp;.then() callback. Doing so lets the callback be executed as a true callback and will not create any "waiting" in the code. To test our theory out, let's examine the&nbsp;output:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/793/0*BWKStM6Av4JtUO60.png" /></figure><p><strong>Figure: Console&nbsp;Output</strong></p><p>As you can see, Phase 01 has been printed first, showing that the code no longer waits till the async operation has finished its execution.</p><blockquote>But use this cautiously, as you might create callback&nbsp;hells!</blockquote><h3>Pitfall 03: Performance Issues in&nbsp;Loops</h3><p>Next, let&rsquo;s talk about loops. We&rsquo;ve all written loops in JavaScript, right:</p><pre>for (let i = 0; i &lt; 5; i++) {<br />    console.log('Iteration number:', i);<br />}</pre><p>You loop through a set of elements, and you do some compute on it. But what if we had to perform something asynchronous here? Let&rsquo;s say that we&rsquo;re given a bunch of user IDs and asked to fetch information of all IDs (Note: Our API doesn&rsquo;t support batch reads.). <a href="https://bit.cloud/lakinduhewa/js-limitations/async-for-loop-issue/~code/async-for-loop-issue.ts" rel="noopener noreferrer" target="_blank">You&rsquo;d likely do something like this&nbsp;right</a>:</p><pre>function getUserInfo(id: number) {<br />  return new Promise((resolve) =&gt; {<br />    // Simulate asynchronous operation, like fetching data from an API<br />    setTimeout(() =&gt; {<br />      resolve({ userId: id, name: `User_${id}`, email: `user${id}@example.com` });<br />    }, 1000);<br />  });<br />}<br /><br />export async function asyncForLoopIssue(userIds: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {<br />  const usersInfo: any[] = [];<br /><br />  for (let i = 0; i &lt; userIds.length; i++) {<br />    const userInfo = await getUserInfo(userIds[i]);<br />    usersInfo.push(userInfo);<br />  }<br /><br />  console.log({ usersInfo });<br /><br />  return usersInfo;<br />}</pre><p>Now, once again, this code has no issue. It will work as expected in production. But, you&rsquo;re bounded to a synchronous loop over here. This means that the next iteration of your loop will begin once a single user information as been collected. So, based on this method, this function will take 10 seconds to execute, and <a href="https://bit.cloud/lakinduhewa/js-limitations/async-for-loop-issue/~compositions" rel="noopener noreferrer" target="_blank">you'd get a synchronous output like&nbsp;this</a>:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*D3SBi_N621KEUtBu.png" /></figure><p>As you can see, this happens sequentially, one by one. Now, one way to avoid creating such issues in your code is to use tools like Bit, like I have, to build your components. When you build your code with Bit, it automatically uses linting services like ESLint to lint your code. I did the same thing when I first built this component and ran into this&nbsp;error:</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*ugdIXzXfHPSXPIoY.png" /></figure><p><strong>Figure: A Linting Error with&nbsp;Bit</strong></p><p>As you can see, Bit automatically noticed an error in this code (the user of synchronous loops), and it did not let me build the component.</p><blockquote>But how do we fix&nbsp;this?</blockquote><p>Well, you can perform this loop using an async map function as shown&nbsp;below:</p><pre>function getUserInfo(id: number) {<br />  return new Promise((resolve) =&gt; {<br />    // Simulate asynchronous operation, like fetching data from an API<br />    setTimeout(() =&gt; {<br />      resolve({ userId: id, name: `User_${id}`, email: `user${id}@example.com` });<br />    }, 1000);<br />  });<br />}<br /><br />export async function loopAsyncFix(userIds: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {<br />  const promises = userIds.map(async (id) =&gt; {<br />    const userInfo = await getUserInfo(id);<br />    return userInfo;<br />  })<br /><br />  const usersInfo = await Promise.all(promises);<br /><br />  console.log({ usersInfo });<br /><br />  return usersInfo;<br />}</pre><p>Now, this approach will create the same response. However, it does this a bit differently.</p><ul><li>In approach 01, each iteration began once the current async operation finished its execution.</li></ul><p>The term asynchronous means that it should execute without interfering with the main&nbsp;thread.</p><ul><li>The second approach adheres to the true asynchronous approach as it returns promise objects that will eventually be executed. So, rather than running it sequentially, it will return random invocations where each is independent and execute at its own pace with no relevant&nbsp;order.</li></ul><h3>Wrapping Up</h3><p>Well, there we have it. You know three pitfalls you should be aware of when working with JavaScript. It&rsquo;s important to understand that these issues exist so that you can take the proper measures when you&rsquo;re designing your application.</p><p>If you&rsquo;d like to explore the code we&rsquo;ve played around with, <a href="https://bit.cloud/lakinduhewa/js-limitations/" rel="noopener noreferrer" target="_blank">check out my Bit&nbsp;Scope</a>.</p><p>I hope you found this article helpful. Let me know if you&rsquo;ve seen any other pitfalls I&rsquo;ve not covered&nbsp;here!</p><p>Thank you for&nbsp;reading.</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/react-testing-with-cypess-73bcce5cdcdb" rel="noopener noreferrer" target="_blank">Should You Test React Components Using Cypress?</a></li><li><a href="https://blog.bitsrc.io/understanding-test-driven-development-6154e3c13fa7" rel="noopener noreferrer" target="_blank">5 Myths in Test-Driven Development</a></li><li><a href="https://blog.bitsrc.io/proxy-design-pattern-with-react-c0b465980fbf?source=collection_home---4------2-----------------------" rel="noopener noreferrer" target="_blank">Using Proxy Design Pattern with React in Practice</a></li><li><a href="https://blog.bitsrc.io/sharing-code-in-aws-lambda-functions-cb932b9b782e" rel="noopener noreferrer" target="_blank">How To Effectively Share Code Between AWS Lambda Functions?</a></li><li><a href="https://blog.bitsrc.io/mastering-react-development-building-modern-web-apps-with-ease-c4a309a7eb88" rel="noopener noreferrer" target="_blank">Mastering React Development: Building Modern Web Apps with Ease</a></li><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=7c0678fbc282" /><hr /><p><a href="https://blog.bitsrc.io/pitfalls-of-async-await-in-javascript-7c0678fbc282" rel="noopener noreferrer" target="_blank">3 Surprising Async/Await Pitfalls Every Web Developer Must Avoid!</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T11:09:58+00:00</pubDate>
+</item>
+<item>
+<title>Should You Test React Components Using Cypress?</title>
+<link>https://blog.bitsrc.io/react-testing-with-cypess-73bcce5cdcdb?source=rss----5c2fdf847f4a---4</link>
+<guid>https://blog.bitsrc.io/react-testing-with-cypess-73bcce5cdcdb?source=rss----5c2fdf847f4a---4</guid>
+<content:encoded><![CDATA[
+<div> <p>Is Cypress the way to go with React component testing?IntroductionBefore you ask, &ldquo;Should You Test C...</p> <div>
+<h4>Is Cypress the way to go with React component testing?</h4><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*ANUfu5njJ_oBTTQrT7d3Nw.jpeg" /></figure><h3>Introduction</h3><p>Before you ask, &ldquo;Should You Test Components Using Cypress?&rdquo; you should know about React components, Cypress, how to create a React Component, and how to write tests using&nbsp;Cypress.</p><p>So, let&rsquo;s dive straight into the basics before exploring the do&rsquo;s and&nbsp;don&rsquo;ts.</p><h3><strong>What is a React component?</strong></h3><p>React component is a JavaScript function that returns HTML code that can work in isolation.</p><p>Let&rsquo;s take a look at this basic React Component.</p><pre>function User() {<br /><br />  return (<br />   &lt;div&gt;<br />    &lt;h1&gt;User Details&lt;/h1&gt;<br />   &lt;/div&gt;<br />  );<br /> };<br /> <br /> export default User;</pre><p>Based on the above code snippet, function User()defines the JavaScript function and export default User; is used to export the component so that other components can use this component.</p><p>To test these components, we can use different tools and frameworks. One of them is&nbsp;Cypress.</p><p>So, let&rsquo;s explore what Cypress&nbsp;is.</p><h3><strong>What is&nbsp;Cypress?</strong></h3><p>Cypress is a testing tool that acts like a web automation tool. It runs in a browser and is very easy to use. Using Cypress, developers can conduct end-to-end testing, component testing, integration testing, and unit&nbsp;testing.</p><p>Let&rsquo;s consider why we should use Cypress instead of the usual testing frameworks.</p><h3>What are the benefits of using Cypress for testing React Components?</h3><h4><strong>1. Ensuring UI functionality and</strong> <strong>end-to-end testing</strong></h4><p>Popular frontend testing frameworks like <strong>Jest</strong> and <strong>React Testing Library</strong> don&rsquo;t support UI functionality; however, since Cypress runs in a browser, it provides a UI where users can see the execution of the test happening in real-time.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*OW0Gzw02Ngf1Hwot.PNG" /></figure><p>Furthermore, end-to-end testing can be conducted using Cypress, whereas other testing frameworks like Jest only focus on unit testing, integration testing, and snapshot testing. To perform end-to-end testing using Jest, you must combine it with other&nbsp;tools.</p><h4><strong>2. Simplicity and ease of&nbsp;use</strong></h4><p>Setting up Cypress is very easy compared to other testing frameworks. It provides a step-by-step installation guide. Therefore, developers can easily install&nbsp;Cypress.</p><p>By default, Cypress will generate a default test component upon selecting the &ldquo;Create New Spec&rdquo;&nbsp;option.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*f4hRler8wLVJmP5T.PNG" /></figure><p>Furthermore, developers can modify the created tests easily. Once you click the test you have made, the test file will be opened in your&nbsp;editor.</p><p>Execution of the tests is also easy with&nbsp;Cypress.</p><p>Using other frameworks, developers have to execute commands like npm run test to execute the tests. If we want to execute a specific test file, we must declare it in the test execution command and run&nbsp;it.</p><p>By using Cypress, we can see all the tests we have created, and upon clicking that test file, we can execute&nbsp;it.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*PNNz1Ftmt6cVlbFg.PNG" /></figure><h4><strong>3. Seamless integration with React components</strong></h4><p>Integrating cypress with react components is quite easy. In the test file you have created, include the below code line to integrate the specific react component we are&nbsp;testing.</p><pre>cy.mount(&lt;App/&gt;);</pre><p>Let&rsquo;s look at a simple example to understand the benefits we explained.</p><h3><strong>Setting up the React&nbsp;Project</strong></h3><p>This example will create a simple react application with two react components.</p><ol><li><strong>App Component</strong></li><li><strong>ContactData Component</strong></li></ol><h4><strong>Step 01&#8202;&mdash;&#8202;Application Creation</strong></h4><p>Use the below command to create the react application.</p><pre>npx create-react-app cypress-react-demo</pre><h4><strong>Step 02&#8202;&mdash;&#8202;Component Creation &amp; UI&nbsp;Creation</strong></h4><ol><li><strong>App Component</strong></li></ol><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*tyPzYTHMqCLwzZ43.PNG" /></figure><pre>function App() {<br /><br /> const [displayData, setDisplayData] = useState(false);<br /> const [comment, setComment] = useState('');<br /> const [email, setEmail] = useState('');<br /><br /> const handleSubmit = (event) =&gt; {<br />  event.preventDefault();<br />  setComment(document.getElementById('comment').value);<br />  setEmail(document.getElementById('email').value);<br />  setDisplayData(true);<br /> };<br /><br /> return (<br />   &lt;div className="form-container"&gt;<br />    {!displayData ? (<br />    &lt;form onSubmit={handleSubmit}&gt;<br />     &lt;h3&gt;Want to learn more on React and Cypress? &lt;/h3&gt;<br />     &lt;h2&gt;Contact Us&lt;/h2&gt;<br />     &lt;label htmlFor="comment"&gt;Your question or comment&lt;/label&gt;<br />     &lt;textarea name="comment" id="comment"&gt;&lt;/textarea&gt;<br /><br />     &lt;label htmlFor="email"&gt;Email (optional)&lt;/label&gt;<br />     &lt;input type="email" name="email" id="email"/&gt;<br /><br />     &lt;button type="submit" id="submitBtn"&gt;Submit&lt;/button&gt;<br />    &lt;/form&gt;<br />    ) : (<br />     &lt;ContactData comment={comment} email={email}/&gt;<br />    )}<br />   &lt;/div&gt;<br /> );<br />}<br /><br />export default App;</pre><p>Based on the above code snippet, this component consists of two text fields and a submit button. Once the user enters the details, data will be sent to the ContactData component as&nbsp;props.</p><p>We will be creating tests in Cypress for the above component. To create tests, we need to configure Cypress&nbsp;first.</p><h3>Installation and setup of&nbsp;Cypress</h3><h4><strong>Step 01&#8202;&mdash;&#8202;Install&nbsp;Cypress</strong></h4><p>Use the below command to install&nbsp;Cypress.</p><pre>npm install cypress --save-dev</pre><h4><strong>Step 02&#8202;&mdash;&#8202;Configure Cypress</strong></h4><p>To configure Cypress, you have to open Cypress. To do so, run the&nbsp;command:</p><pre>npx cypress open</pre><p>You will get a step-by-step installation/configuration setup upon executing this&nbsp;command.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*LKwFPefB548Y5Fw2.PNG" /></figure><p>Based on the given example, we will be proceeding with Component Testing. Upon clicking Component Testing, you will get the next step, framework selection.</p><p><strong>2. Framework Selection</strong></p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*AsDzcjmuneH8Tkm_.PNG" /></figure><p>Since we created a basic React app without any frontend framework, we will proceed with the &ldquo;Create React App&rdquo;&nbsp;option.</p><p><strong>3. Verify Dependencies</strong></p><p>Next, you will be asked to verify the dev dependencies required for&nbsp;Cypress.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*3gtF0a_ptoVY0DtJ.PNG" /></figure><p><strong>4. Verify Configuration Files</strong></p><p>Based on the below image, you have to verify the configuration files&nbsp;next.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*mNTbl9WR1_i73NIp.PNG" /></figure><p><strong>5. Browser Selection</strong></p><p>As the final step, you must select the browser to execute tests. I&rsquo;ll use &ldquo;Chrome&rdquo; as the browser that will be used for component testing.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*ws2JQIqEGJfeP90o.PNG" /></figure><p>Congratulations! You have successfully installed and configured Cypress. Now, let&rsquo;s create some tests for the created react component.</p><h3>Writing Cypress tests for React components</h3><p>After successfully configuring Cypress, you can see the dashboard below. Select &ldquo;New spec&rdquo; to create a new&nbsp;test.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*aM6RNtbCk2aOsnLM.PNG" /></figure><p>Once created, you can modify the test file. In this example, the test file we have created is <strong>App.cy.js.</strong></p><pre>import React from 'react'<br />import App from './App'<br /><br />describe('&lt;App /&gt;', () =&gt; {<br /><br /> it('renders', () =&gt; {<br />  cy.mount(&lt;App/&gt;);<br />  cy.wait(2000); // Wait for 2 seconds<br />  cy.get('#comment').should('be.visible');<br />  cy.get('#comment').type("Should you test react components using cypress");<br />  cy.get('#email').should('be.visible');<br />  cy.get('#email').type("thamodi.wickramasinghe@gmail.com");<br />  cy.get('#submitBtn').click();<br /> })<br />})</pre><p>Based on the above code snippet, we are mounting the App Component <strong>cy.mount();</strong></p><p>We have used <strong>cy.get()</strong> to get the element in the DOM tree. In the react component, we have declared the id of the textarea as &ldquo;comment&rdquo;.</p><pre>&lt;textarea name="comment" id="comment"&gt;&lt;/textarea&gt;</pre><p>We must ensure the element is visible before we type something in the text area. For that below code can be&nbsp;used.</p><pre>cy.get('#id of the element').should('be.visible');</pre><p>Then, we can write the code below to type something on the text&nbsp;area.</p><pre>cy.get('#id of the element').type()</pre><p>Finally, we can click the submit button, and the <strong>ContactData</strong> component will be visible with the entered&nbsp;details.</p><figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/0*M6F1YsXu8_bwcBgv.PNG" /></figure><blockquote>Good Job! Now you know how to write tests using&nbsp;Cypress.</blockquote><p>As explained earlier, we can verify that Cypress is easy to use and configure.</p><p>Let&rsquo;s also look at some advanced test scenarios and the drawbacks of using&nbsp;Cypress.</p><h3>Advanced Test Scenarios</h3><h4><strong>API Testing</strong></h4><p>Let&rsquo;s modify the created React component <strong>(App Component)</strong> to call an API in the submit button click&nbsp;event.</p><pre>try {<br />   const response = await fetch('http://localhost:3001/saveContactDetails', {<br />    method: 'POST',<br />    headers: {<br />     'Content-Type': 'application/json',<br />    },<br />    body: JSON.stringify({ comment: comment, email: email }),<br />   });<br /><br />   if (response.ok) {<br />    setDisplayData(true);<br />   } else {<br />    console.error('Failed to submit data');<br />   }<br />  } catch (error) {<br />   console.error('Error:', error.message);<br />  }</pre><p>Now, let&rsquo;s try to mock the API call with Cypress. To do so, modify the <strong>App.cy.js</strong> file with below&nbsp;code.</p><pre>cy.mount(&lt;App/&gt;);<br />cy.intercept('POST', 'http://localhost:3001/saveContactDetails', (req) =&gt; {<br />   req.reply({<br />    statusCode: 200,<br />    body: {<br />     success: true,<br />     message: 'Mock API response for testing',<br />    },<br />    delay: 1000, <br />   });<br />  });<br />cy.wait(2000);<br />cy.get('#comment').should('be.visible');<br />cy.get('#comment').type("Should you test react components using cypress");</pre><p>In the snippet above, we have mocked the API to get a successful response. To simulate the API response, we use <strong>cy.intercept().</strong></p><p>Similarly, we can mock the error response and test the error scenario.</p><h4>Testing Redux with&nbsp;Cypress</h4><p>Redux is the easiest way to store and display data among multiple components. We will modify the created react component (<strong>AppComponent)</strong> to store data in redux and display data in <strong>ContactDataComponent</strong> by retrieving from the redux&nbsp;store.</p><p><strong>App.js</strong></p><pre>const handleSubmit = async (event) =&gt; {<br />  event.preventDefault();<br />  const comment = document.getElementById('comment').value;<br />  const email = document.getElementById('email').value;<br />  dispatch(submitContactDetails({ comment, email }));<br /> };</pre><p><strong>ContactData.js</strong></p><pre>const ContactData = () =&gt; {<br /><br />const contactDetails = useSelector(state =&gt; state.submitContactDetailsReducer.contactDetails);<br /><br /> return (<br />  &lt;div&gt;<br />   &lt;h1&gt;Questions &amp; Concerns&lt;/h1&gt;<br />   &lt;div&gt;<br />    &lt;h2&gt;Comment:&lt;/h2&gt;<br />    &lt;p&gt;{contactDetails.comment}&lt;/p&gt;<br />   &lt;/div&gt;<br />   &lt;div&gt;<br />    &lt;h2&gt;Email:&lt;/h2&gt;<br />    &lt;p&gt;{contactDetails.email}&lt;/p&gt;<br />   &lt;/div&gt;<br />  &lt;/div&gt;<br /> );<br />};</pre><p>Upon integrating redux, conducting component testing using Cypress is very complex. It can considered as one of the significant drawbacks. So, let&rsquo;s explore more on the drawbacks of using&nbsp;Cypress.</p><h3>What are the Drawbacks of Using&nbsp;Cypress?</h3><h4><strong>1. Complex Setup for Unit&nbsp;Testing</strong></h4><p>Even though Cypress is easy to use and configure, when it comes to conducting unit tests, it is very complex. Jest or other testing frameworks might be more suitable than Cypress for conducting unit&nbsp;tests.</p><h4><strong>2. Speed and Performance</strong></h4><p>While conducting end-to-end tests, Cypress can be more time-consuming than usual testing frameworks.</p><h3>Wrapping Up</h3><p>Cypress is a user-friendly tool for conducting end-to-end testing and UI-driven scenarios.</p><p>However, when it comes to testing React components in isolation or focusing on unit-level testing, it might be better to go for dedicated unit-testing libraries focusing on component testing. Furthermore, different scenarios require different testing frameworks. Using an appropriate testing framework based on the application you will be developing is&nbsp;better.</p><p>If you wish to explore the app we built in this article, feel free to check out the <a href="https://github.com/Thamodi/cypress-react-demo" rel="noopener noreferrer" target="_blank">code</a> in my GitHub repository.</p><p>I hope that you have found this&nbsp;helpful.</p><p>Thank you for&nbsp;reading.</p><h3>Learn More</h3><ul><li><a href="https://blog.bitsrc.io/component-driven-development-and-composable-applications-a-guide-7a0934e60936" rel="noopener noreferrer" target="_blank">Composable Applications and Component-Driven Development: a Guide</a></li><li><a href="https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc" rel="noopener noreferrer" target="_blank">How We Build Micro Frontends</a></li><li><a href="https://blog.bitsrc.io/how-we-build-our-design-system-15713a1f1833" rel="noopener noreferrer" target="_blank">How we Build a Component Design System</a></li><li><a href="https://blog.bitsrc.io/creating-a-developer-website-with-bit-components-3f4083a7f050" rel="noopener noreferrer" target="_blank">Creating a Developer Website with Bit components</a></li><li><a href="https://blog.bitsrc.io/5-tools-for-building-react-component-libraries-in-2023-d8fb8e4c13b4" rel="noopener noreferrer" target="_blank">5 Tools for Building React Component Libraries in 2023</a></li></ul><img alt="" src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=73bcce5cdcdb" /><hr /><p><a href="https://blog.bitsrc.io/react-testing-with-cypess-73bcce5cdcdb" rel="noopener noreferrer" target="_blank">Should You Test React Components Using Cypress?</a> was originally published in <a href="https://blog.bitsrc.io" rel="noopener noreferrer" target="_blank">Bits and Pieces</a> on Medium, where people are continuing the conversation by highlighting and responding to this story.</p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T11:04:12+00:00</pubDate>
+</item>
+<item>
+<title>CSS技巧：用CSS + SVG foreignObject实现一个动画组件</title>
+<link>https://juejin.cn/post/7306356212601602102</link>
+<guid>https://juejin.cn/post/7306356212601602102</guid>
+<content:encoded><![CDATA[
+<div> <p>theme: nico
+
+&#24403;&#25105;&#25910;&#21040;&#19968;&#20010;&#38656;&#27714;&#65292;&#35201;&#27714;&#20570;&#20986;&#22914;&#19978;&#22270;&#19968;&#26679;&#30340;&#25991;&#23383;&#25671;&#26355;&#30340;SVG&#65292;&#25105;&#30340;&#33041;&#23376;&#37324;&#38378;&#36807;svg&#12289;path&#12289;group&#12289;text&hellip;&hellip;&#31561;&#31561;SVG&#30340;&#26631;&#31614;&#65292;&#36825;&#22826;&#35753;&#20154;&#23849;&#28291;&#20102;&#12290;
+SVG&#22810;&#40635;&#28902;&#65292;&#38590;&#36947;&#19981;&#33021;&#29992;...</p> <div>
+<hr />
+<h2>theme: nico</h2>
+<p><img alt="demo&#28436;&#31034;.gif" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/40f745a83e7d4e76ab6a9c0dd9c89d22~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=600&amp;h=338&amp;s=1768158&amp;e=gif&amp;f=58&amp;b=fbf9fe" /></p>
+<p>&#24403;&#25105;&#25910;&#21040;&#19968;&#20010;&#38656;&#27714;&#65292;&#35201;&#27714;&#20570;&#20986;&#22914;&#19978;&#22270;&#19968;&#26679;&#30340;&#25991;&#23383;&#25671;&#26355;&#30340;SVG&#65292;&#25105;&#30340;&#33041;&#23376;&#37324;&#38378;&#36807;svg&#12289;path&#12289;group&#12289;text&hellip;&hellip;&#31561;&#31561;SVG&#30340;&#26631;&#31614;&#65292;&#36825;&#22826;&#35753;&#20154;&#23849;&#28291;&#20102;&#12290;</p>
+<p>SVG&#22810;&#40635;&#28902;&#65292;&#38590;&#36947;&#19981;&#33021;&#29992;div+css&#21160;&#30011;&#26469;&#20570;&#21527;&#65311;SVG&#26377;&#27809;&#26377;&#20860;&#23481;&#21069;&#31471;&#24320;&#21457;&#20064;&#24815;&#30340;&#20889;&#27861;&#21602;&#65311;</p>
+<p>&#35830;&#65292;&#36824;&#30495;&#26377;&#65292;SVG&#30340; <strong><code>&lt;foreignObject&gt;</code></strong> &#20803;&#32032;&#23601;&#25903;&#25345;&#22312;&#37324;&#38754;&#20889;HTML&#21644;CSS&#12290;</p>
+<h1>SVG&#19982;foreignObject</h1>
+<p>&#22914;&#26524;&#20320;&#30475;&#36807;SVG&#30340;&#20195;&#30721;&#65292;&#19968;&#23450;&#27880;&#24847;&#21040;&#20102;&#65292;&#27599;&#20010;SVG&#37117;&#26377;&#19968;&#20010; <strong><code>xmlns="&lt;http://www.w3.org/2000/svg</code></strong>&gt; &#36825;&#26679;&#30340;&#23646;&#24615;&#65292;&#36825;&#23601;&#26159;&#21629;&#21517;&#31354;&#38388;&#65288;namespace&#65289;&#12290;&#22914;&#26524;&#19981;&#32473;svg&#26631;&#31614;&#28155;&#21152;&#21629;&#21517;&#31354;&#38388;&#65292;&#37027;&#20040;&#27983;&#35272;&#22120;&#20250;&#24403;&#20316;&#25991;&#26412;&#26469;&#35782;&#21035;&#65292;&#19981;&#20449;&#35797;&#35797;&#36825;&#20004;&#20010;SVG&#65306;</p>
+<ul>
+<li>&#128073;<a href="https://weijunext.com/avatar.svg" rel="noopener noreferrer" target="_blank">&#24102;xmlns&#30340;&#22270;&#29255;.svg</a></li>
+<li>&#128073;<a href="https://weijunext.com/avatar-no-ns.svg" rel="noopener noreferrer" target="_blank">&#19981;&#24102;xmlns&#30340;&#22270;&#29255;.svg</a></li>
+</ul>
+<p>&#21629;&#21517;&#26631;&#31614;&#30340;&#20316;&#29992;&#26159;&#21578;&#35785;&#27983;&#35272;&#22120;&#24212;&#24403;&#20197;&#20309;&#31181;&#26631;&#20934;&#36827;&#34892;&#35299;&#26512;&#65292;SVG&#26631;&#31614;&#32570;&#23569;&#21629;&#21517;&#31354;&#38388;&#30340;&#24773;&#20917;&#19979;&#40664;&#35748;&#19981;&#23646;&#20110;&#20219;&#20309;&#29305;&#23450;&#30340;&#35821;&#35328;&#25110;&#26684;&#24335;&#65292;&#25152;&#20197;&#27983;&#35272;&#19981;&#20250;&#25226;&#23427;&#20316;&#20026;&#22270;&#24418;&#28210;&#26579;&#65292;&#32780;&#26159;&#34987;&#35270;&#20026;&#26222;&#36890;&#30340;&#25991;&#26412;&#12290;</p>
+<p>&#37027;&#20040;&#65292; <strong><code>&lt;foreignObject&gt;</code></strong> &#21448;&#26159;&#20174;&#20309;&#32780;&#26469;&#65292;&#24590;&#20040;&#20351;&#29992;&#65311;</p>
+<p><strong><code>&lt;foreignObject&gt;</code></strong> &#26159;SVG 1.1&#35268;&#33539;&#20013;&#24341;&#20837;&#30340;&#19968;&#20010;&#20803;&#32032;&#65292;&#23427;&#20801;&#35768;&#22312;SVG&#25991;&#26723;&#20013;&#23884;&#20837;&#20854;&#20182;XML&#21629;&#21517;&#31354;&#38388;&#30340;&#20803;&#32032;&#65292;&#22914;&#65306;XHTML&#12290;&#36825;&#24847;&#21619;&#30528;&#24320;&#21457;&#32773;&#21487;&#20197;&#22312;SVG&#20013;&#20351;&#29992;HTML&#21644;CSS&#20102;&#12290;</p>
+<p>&#23427;&#30340;&#29992;&#27861;&#26159;&#36825;&#26679;&#65306;</p>
+<pre><code>    &lt;svg viewBox="0 0 200 200" xmlns="&lt;http://www.w3.org/2000/svg&gt;"&gt;
+    &lt;foreignObject x="20" y="20" width="160" height="160"&gt;
+    &lt;div xmlns="&lt;http://www.w3.org/1999/xhtml&gt;"&gt;
+    &lt;!-- HTML &#21644; CSS &#20195;&#30721; --&gt;
+    &lt;/div&gt;
+    &lt;/foreignObject&gt;
+    &lt;/svg&gt;
+</code></pre>
+<p><strong><code>&lt;div&gt;</code></strong> &#37324;&#25351;&#23450;&#21629;&#21517;&#31354;&#38388;&#22312;HTML5&#26631;&#20934;&#19979;&#19981;&#26159;&#24517;&#39035;&#30340;&#65292;&#20294;&#20026;&#20102;&#20195;&#30721;&#35268;&#33539;&#65292;&#20173;&#28982;&#24314;&#35758;&#21152;&#19978;&#12290;</p>
+<h1>&#21160;&#30011;&#23454;&#29616;</h1>
+<p>&#30693;&#36947;&#20102; <strong><code>&lt;foreignObject&gt;</code></strong> &#30340;&#29992;&#27861;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#24320;&#22987;&#29992; <strong><code>CSS + &lt;foreignObject&gt;</code></strong> &#30340;&#26041;&#24335;&#26469;&#23454;&#29616;&#25105;&#20204;&#24819;&#35201;&#30340;&#21160;&#30011;&#20102;&#12290;</p>
+<p>&#20027;&#35201;&#26377;&#20197;&#19979;&#19977;&#39033;&#20219;&#21153;&#65306;</p>
+<ul>
+<li>&#32972;&#26223;&#21160;&#24577;&#28176;&#21464;</li>
+<li>&#25991;&#23383;&#25671;&#26355;&#21644;&#28129;&#20837;</li>
+<li>&#20869;&#23481;&#21487;&#37197;&#32622;</li>
+</ul>
+<h2>&#32972;&#26223;&#21160;&#24577;&#28176;&#21464;</h2>
+<p>&#32972;&#26223;&#21160;&#24577;&#28176;&#21464;&#30340;&#21160;&#30011;&#21487;&#20197;&#36890;&#36807;CSS&#20851;&#38190;&#24103;&#65288; <strong><code>@keyframes</code></strong>&#65289;&#26469;&#23454;&#29616;&#12290;</p>
+<pre><code>@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradientBackground 10s ease infinite;
+  background: 'linear-gradient(-45deg, #fc5c7d, #6a82fb, #05dfd7)';
+  background-size: 600% 400%;
+  width: 100%;
+  height: 100%;
+}
+</code></pre>
+<ul>
+<li>&#22312; <strong><code>animate-gradient</code></strong> &#37324;&#38754;&#65292;<strong><code>animation</code></strong> &#23450;&#20041;&#20102; <strong><code>gradientBackground</code></strong> &#30340;&#21160;&#30011;&#26041;&#24335;&#65292;<strong><code>infinite</code></strong> &#34920;&#31034;&#26080;&#38480;&#37325;&#22797;</li>
+<li><strong><code>linear-gradient</code></strong> &#23450;&#20041;&#20102;&#28176;&#21464;&#39068;&#33394;</li>
+<li>&#25226; <strong><code>background-size</code></strong> &#25918;&#22823;&#65292;&#35753;&#21487;&#35270;&#21306;&#22495;&#30340;&#39068;&#33394;&#26356;&#23569;&#65292;&#22312;&#21160;&#30011;&#25512;&#36827;&#30340;&#26102;&#20505;&#25165;&#20250;&#26377;&#26356;&#24179;&#28369;&#21364;&#21448;&#24378;&#28872;&#30340;&#35270;&#35273;&#25928;&#26524;</li>
+<li>&#36890;&#36807; <strong><code>@keyframes</code></strong> &#23450;&#20041;&#19968;&#20010;&#21160;&#30011; <strong><code>gradientBackground</code></strong> &#65292;&#24182;&#32473;&#20102;&#21608;&#26399;&#20301;&#32622;&#21464;&#21270;</li>
+</ul>
+<p>&#23454;&#29616;&#30340;&#25928;&#26524;&#22914;&#19979;&#65306;</p>
+<p><img alt="&#31532;1&#27493;&#65306;&#32972;&#26223;.gif" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b286ca92ee4f4f60a41735d5d9731b54~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=600&amp;h=338&amp;s=3085758&amp;e=gif&amp;f=99&amp;b=45a6e6" /></p>
+<h2>&#25991;&#23383;&#25671;&#26355;&#21644;&#28129;&#20837;</h2>
+<p>&#25991;&#23383;&#25671;&#26355;&#20063;&#36890;&#36807;CSS&#20851;&#38190;&#24103;&#65288;&nbsp; <strong><code>@keyframes</code></strong>&#65289;&#26469;&#23454;&#29616;&#12290;</p>
+<pre><code>    @keyframes rotate {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3deg); }
+    }
+    .animate-rotate {
+      animation: rotate ease-in-out 1s infinite alternate;
+    }
+</code></pre>
+<ul>
+<li>&#36890;&#36807; <strong><code>@keyframes</code></strong> &#23450;&#20041;&#25671;&#26355;&#30340;&#35282;&#24230;</li>
+<li>&#36890;&#36807; <strong><code>animation</code></strong> &#23450;&#20041;&#25991;&#23383;&#25671;&#26355;&#21160;&#30011;&#25928;&#26524;&#65292;<strong><code>alternate</code></strong> &#25351;&#31034;&#21160;&#30011;&#24212;&#35813;&#22312;&#27599;&#27425;&#36845;&#20195;&#21518;&#25913;&#21464;&#26041;&#21521;</li>
+</ul>
+<p>&#23454;&#29616;&#30340;&#25928;&#26524;&#22914;&#19979;&#65306;</p>
+<p><img alt="&#31532;2&#27493;&#65306;&#25991;&#23383;&#25671;&#26355;.gif" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/31965b5c24b34e0ab18ffbe3bf2c9cf7~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=600&amp;h=338&amp;s=1116367&amp;e=gif&amp;f=30&amp;b=7c6ddf" /></p>
+<p>&#30041;&#20010;&#20316;&#19994;&#65306;&#35831;&#23436;&#25104;&#24213;&#37096;&#23567;&#23383;&#30340;&#28129;&#20837;&#25928;&#26524;&#12290;</p>
+<h2>&#20869;&#23481;&#21487;&#37197;&#32622;</h2>
+<p>&#25105;&#35273;&#24471;&#36825;&#20010;&#21160;&#30011;&#21345;&#29255;&#36824;&#26159;&#25402;&#36890;&#29992;&#30340;&#65292;&#25152;&#20197;&#25105;&#20915;&#23450;&#20570;&#25104;&#21487;&#37197;&#32622;&#30340;&#32452;&#20214;&#12290;</p>
+<p>&#25105;&#24076;&#26395;&#21345;&#29255;&#22823;&#23567;&#12289;&#25991;&#23383;&#20869;&#23481;&#21644;&#19968;&#20123;&#37325;&#35201;&#30340;&#26679;&#24335;&#22343;&#21487;&#37197;&#32622;&#65292;TypeScript&#23450;&#20041;&#23601;&#20986;&#26469;&#20102;&#65306;</p>
+<pre><code>    interface AnimatedSvgComponentProps {
+      width?: number;
+      height?: number;
+      titleSize?: string; // Tailwind CSS &#25991;&#26412;&#22823;&#23567;&#31867;
+      titleText?: string;
+      paragraphSize?: string;
+      paragraphText?: string;
+      paragraphLink?: string; //&#38142;&#25509;&#23646;&#24615;
+      enableAnimation?: boolean;
+      backgroundColors?: string[];
+      textColor?: string;
+    }
+</code></pre>
+<p>&#22240;&#20026;&#25105;&#20010;&#20154;&#39033;&#30446;&#20351;&#29992;&#30340;&#26159;Next.js&#21644;TailwindCSS&#65292;&#25152;&#20197;&#23601;&#23548;&#20986;&#20010;React&#32452;&#20214;&#12290;&#35843;&#25972;&#21518;&#30340;&#32452;&#20214;&#20195;&#30721;&#26159;&#36825;&#26679;&#65306;</p>
+<pre><code>    import React from "react";
+
+    const AnimatedSvgComponent: React.FC&lt;AnimatedSvgComponentProps&gt; = ({
+      width = 800,
+      height = 400,
+      titleSize = "text-5xl", // &#40664;&#35748; Tailwind &#25991;&#26412;&#22823;&#23567;
+      titleText = "Animated SVG&lt;br/&gt;with React &amp; Tailwind", // &#40664;&#35748;&#26631;&#39064;
+      paragraphSize = "text-xl", // &#40664;&#35748; Tailwind &#25991;&#26412;&#22823;&#23567;
+      paragraphText = "Click to see the source", // &#40664;&#35748;&#27573;&#33853;&#25991;&#26412;
+      paragraphLink, // &#38142;&#25509;&#65292;&#40664;&#35748;&#20026;&#31354;
+      enableAnimation = true,
+      backgroundColors = ["#fc5c7d", "#6a82fb", "#05dfd7"],
+      textColor = "text-white",
+    }) =&gt; {
+      const backgroundGradient = `linear-gradient(-45deg, ${backgroundColors.join(
+        ", "
+      )})`;
+
+      // &#21019;&#24314;&#24102;&#26377;&#27491;&#30830;&#25442;&#34892;&#30340;&#26631;&#39064;
+      const renderedTitle = titleText.split("&lt;br/&gt;").map((line, index) =&gt; (
+        &lt;React.Fragment key={index}&gt;
+          {line}
+          &lt;br /&gt;
+        &lt;/React.Fragment&gt;
+      ));
+
+      // &#29983;&#25104;&#27573;&#33853;&#25991;&#26412;&#25110;&#38142;&#25509;
+      const renderedParagraph =
+        paragraphLink &amp;&amp; paragraphText ? (
+          &lt;a
+            href={paragraphLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={paragraphSize}
+          &gt;
+            {paragraphText}
+          &lt;/a&gt;
+        ) : (
+          &lt;p className={paragraphSize}&gt;{paragraphText}&lt;/p&gt;
+        );
+
+      return (
+        &lt;svg
+          fill="none"
+          viewBox={`0 0 ${width} ${height}`}
+          height={height}
+          width={width}
+          xmlns="&lt;http://www.w3.org/2000/svg&gt;"
+        &gt;
+          &lt;foreignObject height={height} width={width}&gt;
+            &lt;div&gt;
+              &lt;style&gt;
+                {`
+                  @keyframes rotate {
+                    0% { transform: rotate(3deg); }
+                    100% { transform: rotate(-3deg); }
+                  }
+
+                  @keyframes gradientBackground {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                  }
+
+                  @keyframes fadeIn {
+                    0% { opacity: 0; }
+                    66% { opacity: 0; }
+                    100% { opacity: 1; }
+                  }
+
+                  .animate-gradient {
+                    animation: gradientBackground 10s ease infinite;
+                    background-size: 600% 400%;
+                  }
+
+                  .animate-rotate {
+                    animation: rotate ease-in-out 1s infinite alternate;
+                  }
+
+                  .animate-fadeIn {
+                    animation: fadeIn 3s ease 0s normal forwards;
+                  }
+
+                  .animated-svg-card {
+                    height: ${height}px;
+                    width: ${width}px;
+                    background: ${backgroundGradient};
+                    background-size: 600% 400%;
+                    animation: gradientBackground 10s ease infinite;
+                  }
+                `}
+              &lt;/style&gt;
+              &lt;div
+                className={`animated-svg-card w-full h-full flex flex-col items-center justify-center m-0 rounded-md ${
+                  enableAnimation ? "animate-gradient" : ""
+                } ${textColor}`}
+              &gt;
+                &lt;h1
+                  className={`${titleSize} uppercase text-shadow ${
+                    enableAnimation ? "animate-rotate" : ""
+                  }`}
+                &gt;
+                  {renderedTitle}
+                &lt;/h1&gt;
+                {renderedParagraph}
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/foreignObject&gt;
+        &lt;/svg&gt;
+      );
+    };
+
+    export default AnimatedSvgComponent;
+</code></pre>
+<p>&#37197;&#32622;&#36824;&#26377;&#21487;&#20248;&#21270;&#30340;&#22320;&#26041;&#65292;&#20320;&#21487;&#20197;&#22797;&#21046;&#20195;&#30721;&#25353;&#33258;&#24049;&#30340;&#38656;&#27714;&#36827;&#34892;&#25913;&#36896;&#12290;</p>
+<p>&#22914;&#26524;&#20320;&#19981;&#29992;TailwindCSS&#65292;&#21487;&#20197;&#21040;&#25105;&#30340;&#28304;&#30721;&#20179;&#24211;&#33719;&#21462;<a href="https://github.com/weijunext/nextjs-learn-demos/blob/AnimatedSvg/components/AnimatedSvgComponent-no-tw.tsx" rel="noopener noreferrer" target="_blank">&#20869;&#32852;CSS&#29256;&#30340;&#32452;&#20214;</a>&#12290;</p>
+<h1>&#32467;&#35821;</h1>
+<p>&#23398;&#20250;&#20102; <strong><code>&lt;foreignObject&gt;</code></strong> &#30693;&#35782;&#65292;&#20320;&#36824;&#19981;&#36214;&#32039;&#28843;&#19968;&#19979;&#33258;&#24049;&#30340;&#21019;&#24847;&#65311;</p>
+<p>&#26412;&#25991;&#28304;&#30721;&#65306;&#128073;<a href="https://github.com/weijunext/nextjs-learn-demos/tree/AnimatedSvg" rel="noopener noreferrer" target="_blank">AnimatedSvg</a><br />
+&#26412;&#25991;&#20307;&#39564;&#22320;&#22336;&#65306;&#128073;<a href="https://nextjs.weijunext.com/" rel="noopener noreferrer" target="_blank">&#22312;&#32447;&#28436;&#31034;</a><br />
+&#21629;&#21517;&#31354;&#38388;&#65288;namespace&#65289;&#22522;&#30784;&#65306;&#128073;<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course" rel="noopener noreferrer" target="_blank">&#24555;&#36895;&#20102;&#35299;namespace</a></p>
+<h1>&#19987;&#26639;&#36164;&#28304;</h1>
+<p>&#19987;&#26639;&#20171;&#32461;&#65306;&#20998;&#20139;CSS&#26032;&#29305;&#24615;&#21644;&#22909;&#30475;&#30340;&#26679;&#24335;&#35774;&#35745;<br />
+&#19987;&#26639;&#22320;&#22336;&#65306;&#128073;<a href="https://juejin.cn/column/7303816445040721983" rel="noopener noreferrer" target="_blank"># &#31616;&#26126;&#23454;&#29992;CSS&#25216;&#24039;</a></p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T09:57:24+00:00</pubDate>
+</item>
+<item>
+<title>这个React响应式Tag列表,不点进来批评批评吗</title>
+<link>https://juejin.cn/post/7306334713991938074</link>
+<guid>https://juejin.cn/post/7306334713991938074</guid>
+<content:encoded><![CDATA[
+<div> <p>&#21069;&#35328;
+&#20043;&#21069;&#20889;&#36807;&#19968;&#31687;&#30456;&#20851;&#30340;&#25991;&#31456;,&#20294;&#26159;&#27809;&#21861;&#27969;&#37327;(&#27809;&#21150;&#27861;,&#19981;&#24403;&#26631;&#39064;&#20826;&#37117;&#27809;&#20154;&#28857;&#36827;&#26469;&#30475;&#128514;),&#26368;&#36817;&#22240;&#20026;&#26377;&#20102;&#26032;&#38656;&#27714;&#20110;&#26159;&#22312;&#21151;&#33021;&#21644;&#20889;&#27861;&#19978;&#37117;&#36827;&#34892;&#20102;&#20248;&#21270;,&#38656;&#35201;&#23545;&#27604;&#30340;&#21516;&#23398;&#21487;&#20197;&#30475;&#19968;&#19979;&#19978;&#31687;&#25991;&#31456;,&#19978;&#31687;&#25991;&#31456;&#22312;&#36825;&#37324;.
+&#22823;&#33268;&#38656;&#27714;&#21602;&#23601;&#26159;&#26377;...</p> <div>
+<h1>&#21069;&#35328;</h1>
+<p>&#20043;&#21069;&#20889;&#36807;&#19968;&#31687;&#30456;&#20851;&#30340;&#25991;&#31456;,&#20294;&#26159;&#27809;&#21861;&#27969;&#37327;(&#27809;&#21150;&#27861;,&#19981;&#24403;&#26631;&#39064;&#20826;&#37117;&#27809;&#20154;&#28857;&#36827;&#26469;&#30475;&#128514;),&#26368;&#36817;&#22240;&#20026;&#26377;&#20102;&#26032;&#38656;&#27714;&#20110;&#26159;&#22312;&#21151;&#33021;&#21644;&#20889;&#27861;&#19978;&#37117;&#36827;&#34892;&#20102;&#20248;&#21270;,&#38656;&#35201;&#23545;&#27604;&#30340;&#21516;&#23398;&#21487;&#20197;&#30475;&#19968;&#19979;&#19978;&#31687;&#25991;&#31456;,<a href="https://juejin.cn/post/7267091509953232951" rel="noopener noreferrer" target="_blank">&#19978;&#31687;&#25991;&#31456;&#22312;&#36825;&#37324;</a>.</p>
+<p>&#22823;&#33268;&#38656;&#27714;&#21602;&#23601;&#26159;&#26377;&#19968;&#20010;tag&#21015;&#34920;,&#21482;&#38656;&#35201;&#23637;&#31034;2&#34892;,&#24403;tag&#25968;&#37327;&#36229;&#20986;&#35268;&#23450;&#34892;&#25968;&#20043;&#21518;&#36827;&#34892;&#30465;&#30053;,&#40736;&#26631;&#31227;&#19978;&#21435;&#23637;&#31034;&#30465;&#30053;&#30340;&#20869;&#23481;
+&#36824;&#26159;&#32769;&#35268;&#30697;,&#20808;&#30475;&#19968;&#19979;&#26368;&#32456;&#30340;&#23454;&#29616;&#25928;&#26524;:</p>
+<p><img alt="iShot_2023-11-28_15.55.30.gif" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3fdd78fbd9fe4a148bf324953b5d974d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1918&amp;h=476&amp;s=11823085&amp;e=gif&amp;f=278&amp;b=f2f1f5" /></p>
+<h1>&#23454;&#29616;&#36807;&#31243;</h1>
+<h2>&#31532;&#19968;&#27493;</h2>
+<p>&#31532;&#19968;&#27493;&#20063;&#26159;&#26368;&#26680;&#24515;&#30340;&#38382;&#39064;,&#23601;&#26159;&#38656;&#35201;&#35745;&#31639;&#20986;&#22312;&#31532;&#20960;&#20010;tag&#22788;&#36827;&#34892;&#38544;&#34255;,&#26680;&#24515;&#20195;&#30721;&#23601;&#26159;&#19979;&#38754;&#36825;&#27573;,&#21407;&#29702;&#23601;&#26159;&#36890;&#36807;useLayoutEffect&#25343;&#21040;dom&#21015;&#34920;&#36827;&#34892;&#36941;&#21382;,&#22914;&#26524;&#26576;&#20010;tag&#30340;offsetTop&#22823;&#20110; <strong>&#34892;&#25968;*tag&#39640;&#24230;</strong> &#20102;&#23601;&#34920;&#31034;&#36229;&#20986;&#20102;&#35268;&#23450;&#34892;&#25968;</p>
+<pre><code>useLayoutEffect(() =&gt; {
+    if (!ref.current) return;
+    const { childNodes, offsetWidth } = ref.current! as HTMLDivElement;
+    const nodeArr = Array.from(childNodes) as HTMLSpanElement[];
+    let index = nodeArr?.findIndex((item) =&gt; {
+      return item.offsetTop &gt; item.offsetHeight * row;
+    });
+    if (
+      index &gt; 0 &amp;&amp;
+      offsetWidth -
+        nodeArr[index - 1].offsetLeft -
+        nodeArr[index - 1].offsetWidth &lt;
+        50
+    ) {
+      index--;
+    }
+    setIndex(index);
+}, []); 
+</code></pre>
+<p>&#24403;&#28982;&#20809;&#35745;&#31639;&#20986;&#20301;&#32622;&#26159;&#19981;&#22815;&#30340;,&#22240;&#20026;&#26377;&#21487;&#33021;&#20986;&#29616;&#19979;&#38754;&#36825;&#31181;&#24773;&#20917;,&#34429;&#28982;&#25105;&#20204;&#31639;&#20986;&#26159;&#22312;&#31532;3&#20010;tag&#25442;&#34892;&#20102;,&#20294;&#23454;&#38469;&#19978;&#31532;&#19968;&#34892;&#21097;&#19979;&#30340;&#23485;&#24230;&#19981;&#36275;&#20197;&#25918;&#19979;&#30465;&#30053;&#25353;&#38062;,&#25152;&#20197;&#25105;&#20204;&#36824;&#38656;&#35201;&#35745;&#31639;&#19979;&#24403;&#21069;&#34892;&#30340;&#21097;&#20313;&#23485;&#24230;,&#22914;&#26524;&#19981;&#22815;&#38656;&#35201;index-1</p>
+<p>&#35745;&#31639;&#21097;&#20313;&#23485;&#24230;&#21069;:
+<img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f037841d6ecf46a2b39cb34e0c6286a2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1039&amp;h=531&amp;s=51369&amp;e=png&amp;b=fefefe" /></p>
+<p>&#35745;&#31639;&#21097;&#20313;&#23485;&#24230;&#21518;:
+<img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1571d559d7794528ae2a8ab9828b9048~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=894&amp;h=774&amp;s=72835&amp;e=png&amp;b=fffefe" /></p>
+<p>&#33267;&#20110;&#30465;&#30053;&#25353;&#38062;&#20043;&#21069;&#30340;&#37027;&#19968;&#29256;&#25105;&#26159;&#36890;&#36807;&#35745;&#31639;&#20301;&#32622;,&#28982;&#21518;&#32477;&#23545;&#23450;&#20301;&#26469;&#23454;&#29616;&#30340;,&#36825;&#31181;&#26041;&#24335;&#19981;&#22826;&#22909;,&#22240;&#20026;&#38656;&#35201;&#22312;&#22806;&#37096;&#30340;box&#19978;&#39044;&#30041;&#20986;50&#30340;padding-right(&#38450;&#27490;&#23450;&#20301;&#37325;&#21472;&#20102;),&#25152;&#20197;&#36825;&#27425;&#20248;&#21270;&#20102;&#19968;&#19979;,&#36890;&#36807;&#35745;&#31639;&#20986;&#30340;index&#26469;&#25130;&#21462;tag&#25968;&#32452;,&#22312;&#21518;&#38754;&#36861;&#21152;&#19968;&#20010;tag</p>
+<p>&#32769;&#29256;&#30340;&#23454;&#29616;:
+<img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f2bf2306a2c843adad660465e0d1d681~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1664&amp;h=1068&amp;s=207375&amp;e=png&amp;b=222222" /></p>
+<h2>&#21709;&#24212;&#24335;</h2>
+<p>&#21709;&#24212;&#24335;&#30340;&#23454;&#29616;&#21407;&#29702;&#21644;&#20043;&#21069;&#37027;&#31687;&#24046;&#19981;&#22810;,&#37117;&#26159;&#36890;&#36807;&lsquo;resize-observer-polyfill&rsquo;&#36825;&#20010;&#24211;&#26469;&#30417;&#21548;&#20803;&#32032;&#25913;&#21464;,&#37325;&#26032;&#35745;&#31639;&#20301;&#32622;,&#21482;&#19981;&#36807;&#36825;&#19968;&#27425;&#20248;&#21270;&#20102;&#19968;&#19979;&#20889;&#27861;</p>
+<p>&#32769;&#29256;&#26412;&#30340;&#35805;&#30465;&#30053;&#30340;dom&#37117;&#26159;&#23454;&#38469;&#23384;&#22312;&#30340;,&#22240;&#20026;&#27599;&#27425;&#28210;&#26579;&#37117;&#38656;&#35201;&#36941;&#21382;dom&#20803;&#32032;&#26469;&#35745;&#31639;&#20301;&#32622;,&#22914;&#26524;&#25130;&#21462;&#30340;&#35805;,&#23601;&#20250;&#23548;&#33268;&#32452;&#20214;&#21047;&#26032;&#26102;&#33719;&#21462;&#30340;dom&#20803;&#32032;&#25968;&#37327;&#19981;&#23545;</p>
+<p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/97959882c8e64aa38a8a32f2bd8d0741~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=813&amp;h=905&amp;s=267956&amp;e=png&amp;b=fefefe" /></p>
+<p>&#22312;&#36825;&#27425;&#30340;&#29256;&#26412;&#20013;&#20026;&#20102;&#35299;&#20915;&#36825;&#20010;&#38382;&#39064;,&#25105;&#22312;&#21407;&#26412;&#30340;&#32452;&#20214;&#22806;&#21253;&#35065;&#20102;&#19968;&#23618;,&#36890;&#36807;&#29238;&#32452;&#20214;&#25913;&#21464;key&#26469;&#37325;&#26032;&#25346;&#36733;&#23376;&#32452;&#20214;,&#22312;&#23376;&#32452;&#20214;&#20013;&#30417;&#21548;&#32452;&#20214;&#31532;&#19968;&#27425;&#25346;&#36733;&#23601;&#21487;&#20197;&#35745;&#31639;&#20986;&#20301;&#32622;&#20102;,&#27599;&#27425;&#38656;&#35201;&#37325;&#26032;&#35745;&#31639;index&#26102;&#37117;&#37325;&#26032;&#25346;&#36733;&#19968;&#27425;</p>
+<pre><code>&#29238;&#32452;&#20214;:
+const ref = useRef&lt;HTMLDivElement&gt;(null);
+const [renderKey, setRenderKey] = useState(Date.now());
+useLayoutEffect(() =&gt; {
+if (!ref.current) return;
+const observe = new ResizeObserver(
+  throttle(() =&gt; {
+    setRenderKey(Date.now());
+  }, 300),
+);
+observe.observe(ref.current);
+return () =&gt; {
+  observe.disconnect();
+};
+}, []);
+useEffect(() =&gt; {
+setRenderKey(Date.now());
+}, [data, row, className]); // &#25511;&#21046;tagList&#24378;&#21046;&#21047;&#26032;,&#20197;&#20415;&#20110;&#37325;&#26032;&#35745;&#31639;&#20301;&#32622;
+return (
+&lt;StyledWrap ref={ref}&gt;
+  &lt;TagContent {...{ data, row, className, onClick }} key={renderKey} /&gt;
+&lt;/StyledWrap&gt;
+);
+
+&#23376;&#32452;&#20214;:
+useLayoutEffect(() =&gt; {
+if (!ref.current) return;
+const { childNodes, offsetWidth } = ref.current! as HTMLDivElement;
+const nodeArr = Array.from(childNodes) as HTMLSpanElement[];
+let index = nodeArr?.findIndex((item) =&gt; {
+  return item.offsetTop &gt; item.offsetHeight * row;
+});
+console.log('&#27809;&#26377;&#35745;&#31639;&#21097;&#20313;&#23485;&#24230;&#30340;index:', index);
+if (
+  index &gt; 0 &amp;&amp;
+  offsetWidth -
+    nodeArr[index - 1].offsetLeft -
+    nodeArr[index - 1].offsetWidth &lt;
+    50
+) {
+  index--;
+}
+console.log('&#35745;&#31639;&#20102;&#21097;&#20313;&#23485;&#24230;&#30340;index:', index);
+setIndex(index);
+}, []); // &#22240;&#20026;&#29238;&#32452;&#20214;&#25511;&#21046;&#20102;&#24378;&#21046;&#28210;&#26579;,&#25152;&#20197;&#21482;&#38656;&#35201;&#22312;&#31532;&#19968;&#27425;&#28210;&#26579;&#21518;&#35745;&#31639;&#20301;&#32622;&#23601;&#21487;&#20197;&#20102;
+</code></pre>
+<p>&#36825;&#26679;&#20570;&#30340;&#30446;&#30340;&#23601;&#26159;&#20026;&#20102;&#25105;&#20204;&#21482;&#38656;&#35201;&#22312;&#32452;&#20214;&#21021;&#22987;&#21270;&#30340;&#26102;&#20505;&#35745;&#31639;&#20301;&#32622;,&#27599;&#27425;&#26356;&#26032;&#20301;&#32622;&#26102;&#37117;&#37325;&#26032;&#25346;&#36733;&#32452;&#20214;,&#28982;&#21518;&#25130;&#21462;tag&#25968;&#32452;,&#21487;&#20197;&#30475;&#21040;&#26032;&#20889;&#27861;&#37324;&#38754;&#24050;&#32463;&#26681;&#25454;index&#20570;&#20102;&#25130;&#21462;</p>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/80c32d3fa4434d8c9d11ff6890599194~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=818&amp;h=838&amp;s=168101&amp;e=png&amp;b=fefdfd" /></p>
+<h1>&#23436;&#25972;&#20195;&#30721;&#22312;&#36825;&#37324;</h1>
+<p>&#25105;&#30446;&#21069;&#24819;&#21040;&#30340;&#23454;&#29616;&#26041;&#27861;&#23601;&#26159;&#36825;&#26679;,&#22914;&#26524;&#21508;&#20301;&#22823;&#20332;&#26377;&#26356;&#22909;&#30340;&#23454;&#29616;&#26041;&#24335;,&#27426;&#36814;&#35752;&#35770;&#128077;!</p>
+<p><img alt="85da473b4c5e9a4839d04f374229bf4b.jpeg" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8bff82be23e44e679238881444f19e83~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=285&amp;h=244&amp;s=8630&amp;e=jpg&amp;b=fcfcfc" /></p>
+<p>&#23436;&#25972;&#20195;&#30721;&#22312;&#19979;&#38754;</p>
+<pre><code>import { Popover } from 'antd';
+import { throttle } from 'lodash-es';
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+interface IOption {
+  label: string;
+  value: string | number;
+}
+
+interface IProps {
+  row?: number;
+  data: IOption[];
+  className?: string;
+  onClick?: (item: IOption) =&gt; void;
+}
+
+const TagContent = ({ row = 1, data, className, onClick }: IProps) =&gt; {
+  const ref = useRef&lt;HTMLDivElement&gt;(null);
+  const [index, setIndex] = useState(-1);
+  useLayoutEffect(() =&gt; {
+    if (!ref.current) return;
+    const { childNodes, offsetWidth } = ref.current! as HTMLDivElement;
+    const nodeArr = Array.from(childNodes) as HTMLSpanElement[];
+    let index = nodeArr?.findIndex((item) =&gt; {
+      return item.offsetTop &gt; item.offsetHeight * row;
+    });
+    if (
+      index &gt; 0 &amp;&amp;
+      offsetWidth -
+        nodeArr[index - 1].offsetLeft -
+        nodeArr[index - 1].offsetWidth &lt;
+        50
+    ) {
+      index--;
+    }
+    setIndex(index);
+  }, []); // &#22240;&#20026;&#29238;&#32452;&#20214;&#25511;&#21046;&#20102;&#24378;&#21046;&#28210;&#26579;,&#25152;&#20197;&#21482;&#38656;&#35201;&#22312;&#31532;&#19968;&#27425;&#28210;&#26579;&#21518;&#35745;&#31639;&#20301;&#32622;&#23601;&#21487;&#20197;&#20102;
+  const onItemClick = (item: IOption) =&gt; {
+    if (!onClick) return undefined;
+    return () =&gt; {
+      onClick(item);
+    };
+  };
+  const { showList, rest } = useMemo(() =&gt; {
+    if (index &gt; -1) {
+      return {
+        showList: data.slice(0, index),
+        rest: data.slice(index, data.length),
+      };
+    }
+    return {
+      showList: data,
+      rest: [],
+    };
+  }, [index, data]);
+  return (
+    &lt;StyledTagList className={className} ref={ref}&gt;
+      {showList.map((item) =&gt; (
+        &lt;StyledTag
+          key={item.value}
+          onClick={onItemClick(item)}
+          title={item.label}
+        &gt;
+          {item.label}
+        &lt;/StyledTag&gt;
+      ))}
+      {index &gt; -1 &amp;&amp; (
+        &lt;Popover
+          overlayClassName="toggle-tag-list"
+          content={
+            &lt;&gt;
+              {rest.map((item) =&gt; (
+                &lt;StyledTag
+                  key={item.value}
+                  onClick={onItemClick(item)}
+                  title={item.label}
+                &gt;
+                  {item.label}
+                &lt;/StyledTag&gt;
+              ))}
+            &lt;/&gt;
+          }
+        &gt;
+          &lt;StyledTag style={{ cursor: 'pointer' }}&gt;
+            +{data.length - index}
+          &lt;/StyledTag&gt;
+        &lt;/Popover&gt;
+      )}
+    &lt;/StyledTagList&gt;
+  );
+};
+
+export const TagList = ({ data, row, className, onClick }: IProps) =&gt; {
+  const ref = useRef&lt;HTMLDivElement&gt;(null);
+  const [renderKey, setRenderKey] = useState(Date.now());
+  useLayoutEffect(() =&gt; {
+    if (!ref.current) return;
+    const observe = new ResizeObserver(
+      throttle(() =&gt; {
+        setRenderKey(Date.now());
+      }, 300),
+    );
+    observe.observe(ref.current);
+    return () =&gt; {
+      observe.disconnect();
+    };
+  }, []);
+  useEffect(() =&gt; {
+    setRenderKey(Date.now());
+  }, [data, row, className]); // &#25511;&#21046;tagList&#24378;&#21046;&#21047;&#26032;,&#20197;&#20415;&#20110;&#37325;&#26032;&#35745;&#31639;&#20301;&#32622;
+  return (
+    &lt;StyledWrap ref={ref}&gt;
+      &lt;TagContent {...{ data, row, className, onClick }} key={renderKey} /&gt;
+    &lt;/StyledWrap&gt;
+  );
+};
+const StyledWrap = styled.div`
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+`;
+
+const StyledTagList = styled.div`
+  position: absolute;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+`;
+const StyledTag = styled.span&lt;{ onClick?: () =&gt; void }&gt;`
+  min-width: 20px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  padding: 0px 6px;
+  border-radius: 2px;
+  background: rgba(63, 81, 181, 0.08);
+  color: #1f2878;
+  line-height: 20px;
+  white-space: nowrap;
+  ${({ onClick }) =&gt;
+    !onClick
+      ? ''
+      : css`
+          cursor: pointer;
+        `}
+`;
+
+</code></pre>
+]]></content:encoded>
+
+<pubDate>2023-11-28T09:29:23+00:00</pubDate>
+</item>
+<item>
+<title>万字长文，TypeScript实战，封装一个axios - 基础封装篇</title>
+<link>https://juejin.cn/post/7306312554346610751</link>
+<guid>https://juejin.cn/post/7306312554346610751</guid>
+<content:encoded><![CDATA[
+<div> <p>theme: scrolls-light
+highlight: atom-one-dark
+&#21069;&#35328;
+axios &#26159;&#19968;&#20010;&#27969;&#34892;&#30340;&#32593;&#32476;&#35831;&#27714;&#24211;&#65292;&#31616;&#21333;&#26131;&#29992;&#12290;&#20294;&#23454;&#38469;&#19978;&#65292;&#25105;&#20204;&#24320;&#21457;&#26102;&#20505;&#32463;&#24120;&#20250;&#20986;&#20110;&#19981;&#21516;&#30340;&#38656;&#27714;&#23545;&#23427;&#36827;&#34892;&#21508;&#31181;...</p> <div>
+<hr />
+<h2>theme: scrolls-light
+highlight: atom-one-dark</h2>
+<h1>&#21069;&#35328;</h1>
+<p><code>axios</code> &#26159;&#19968;&#20010;&#27969;&#34892;&#30340;&#32593;&#32476;&#35831;&#27714;&#24211;&#65292;&#31616;&#21333;&#26131;&#29992;&#12290;&#20294;&#23454;&#38469;&#19978;&#65292;&#25105;&#20204;&#24320;&#21457;&#26102;&#20505;&#32463;&#24120;&#20250;&#20986;&#20110;&#19981;&#21516;&#30340;&#38656;&#27714;&#23545;&#23427;&#36827;&#34892;&#21508;&#31181;&#31243;&#24230;&#30340;&#23553;&#35013;&#12290;</p>
+<p>&#26368;&#36817;&#22312;&#21046;&#20316;&#33258;&#24049;&#30340;&#33050;&#25163;&#26550;&#26102;&#65292;&#20889;&#20102;&#19968;&#20010;<strong>Vue3+ts+Vite</strong>&#39033;&#30446;&#27169;&#26495;&#65292;&#20854;&#20013;&#20351;&#29992;TypeScript&#23545;axios&#30340;&#22522;&#30784;&#35831;&#27714;&#21151;&#33021;&#36827;&#34892;&#20102;&#31616;&#21333;&#30340;&#23553;&#35013;&#65292;&#22312;&#36825;&#37324;&#26803;&#29702;&#19968;&#19979;&#24605;&#36335;&#65292;&#20063;&#30041;&#20316;&#19968;&#20010;&#35760;&#24405;&#65292;&#20026;&#21518;&#32493;&#20854;&#20182;&#21151;&#33021;&#23553;&#35013;&#20570;&#20934;&#22791;&#12290;</p>
+<p><strong>&#24076;&#26395;&#36825;&#31687;&#25991;&#31456;&#33021;&#22815;&#24110;&#21161;&#21040;&#21018;&#23398;&#20064;axios&#21644;ts&#30340;&#23567;&#20249;&#20276;&#20204;&#12290;&#21516;&#26102;&#65292;&#33509;&#25991;&#20013;&#23384;&#22312;&#19968;&#20123;&#38169;&#35823;&#25110;&#32773;&#35774;&#35745;&#19981;&#21512;&#29702;&#30340;&#22320;&#26041;&#65292;&#20063;&#27426;&#36814;&#22823;&#23478;&#25351;&#27491;&#12290;</strong></p>
+<h1>&#29256;&#26412;</h1>
+<ul>
+<li><strong><code>axios</code> &#65306; <code>1.6.2</code></strong></li>
+<li><code>TypeScript</code> &#65306; <code>5.3.2</code></li>
+</ul>
+<h1>&#29615;&#22659;&#21464;&#37327;&#37197;&#32622;</h1>
+<p>&#19968;&#33324;&#25105;&#20204;&#20250;&#20351;&#29992;&#29615;&#22659;&#21464;&#37327;&#26469;&#32479;&#19968;&#31649;&#29702;&#19968;&#20123;&#25968;&#25454;&#65292;&#27604;&#22914;&#32593;&#32476;&#35831;&#27714;&#30340; <code>baseURL</code> &#12290;&#36825;&#20010;&#39033;&#30446;&#27169;&#26495;&#20013;&#65292;&#25105;&#23558;&#25991;&#20214;&#19978;&#20256;&#30340;&#25509;&#21475;&#22320;&#22336;&#12289;token&#30340;key&#20063;&#37197;&#32622;&#22312;&#20102;&#29615;&#22659;&#21464;&#37327;&#37324;&#12290;</p>
+<p><code>.env.development</code></p>
+<pre><code># .env.production &#21644;&#36825;&#20010;&#19968;&#26679;
+# the APP baseURL
+VITE_APP_BASE_URL = 'your_base_url'
+
+# the token key
+VITE_APP_TOKEN_KEY = 'your_token_key'
+
+# the upload url
+VITE_UPLOAD_URL = 'your_upload_url'
+
+# app title
+VITE_APP_TITLE = 'liushi_template'
+</code></pre>
+<p>&#29615;&#22659;&#21464;&#37327;&#31867;&#22411;&#22768;&#26126;&#25991;&#20214; <code>env.d.ts</code>&#65306;</p>
+<pre><code>/// &lt;reference types="vite/client" /&gt;
+
+export interface ImportMetaEnv {
+    readonly VITE_APP_TITLE: string
+    readonly VITE_APP_BASE_URL: string
+    readonly VITE_APP_TOKEN_KEY?: string
+    readonly VITE_UPLOAD_URL?: string
+}
+
+interface ImportMeta {
+    readonly env: ImportMetaEnv
+}
+</code></pre>
+<p>&#28982;&#21518;&#65292;&#25105;&#20204;&#20351;&#29992; <code>&#31867;</code> &#26469;&#23553;&#35013; <code>axios</code></p>
+<p>&#20808;&#24341;&#20837; <code>axios</code>&#65292; &#20197;&#21450;&#24517;&#35201;&#30340;&#31867;&#22411;</p>
+<pre><code>import axios, 
+    { AxiosInstance,
+      InternalAxiosRequestConfig, 
+      AxiosRequestConfig, 
+      AxiosError, 
+      AxiosResponse,
+    } from 'axios';
+</code></pre>
+<p>&#22312;&#36825;&#37324;&#65292;&#25105;&#20204;&#24341;&#20837;&#20102; <code>axios</code>&#65292;&#20197;&#21450;&#19968;&#20123;&#26412;&#27425;&#23553;&#35013;&#20013;&#20250;&#20351;&#29992;&#21040;&#30340;&#31867;&#22411;&#65292;</p>
+<blockquote>
+<p>&#20351;&#29992;ts&#36827;&#34892;&#20108;&#27425;&#23553;&#35013;&#26102;&#65292;<strong>&#26368;&#22909; <code>ctrl+&#24038;&#38190;</code> &#30475;&#19968;&#19979;&#28304;&#30721;&#20013;&#23545;&#24212;&#30340;&#31867;&#22411;&#22768;&#26126;</strong>&#65292;&#36825;&#23545;&#25105;&#20204;&#26377;&#24456;&#22823;&#30340;&#24110;&#21161;&#21644;&#25351;&#23548;&#20316;&#29992;&#12290;</p>
+</blockquote>
+<h2>&#24341;&#20837;&#30340;&#31867;&#22411;</h2>
+<h3>1&#12289;AxiosIntance: axios&#23454;&#20363;&#31867;&#22411;</h3>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f27f2dbaaa844c8beff93eeec4d78b7~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=780&amp;h=202&amp;s=19508&amp;e=png&amp;b=1f1f1f" /></p>
+<h3>2&#12289;InternalAxiosRequestConfig: &#39640;&#29256;&#26412;&#19979;AxiosRequestConfig&#30340;&#25299;&#23637;&#31867;&#22411;</h3>
+<p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55da98e0531848d680ddb5a1f6bfaecc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=672&amp;h=74&amp;s=6649&amp;e=png&amp;b=1f1f1f" /></p>
+<p>&#27880;&#24847;: &#20197;&#21069;&#30340;&#29256;&#26412;&#19979;&#65292;&#35831;&#27714;&#25318;&#25130;&#22120;&#30340; <code>use&#26041;&#27861;</code> &#31532;&#19968;&#20010;&#21442;&#25968;&#31867;&#22411;&#26159; <code>AxiosRequestConfig</code>&#65292;&#20294;&#22312;&#39640;&#29256;&#26412;&#19979;&#65292;&#26356;&#25913;&#20026;&#20102; <code>InternalAxiosRequestConfig</code>&#65292;&#22914;&#26524;&#21457;&#29616;&#20351;&#29992; <code>AxiosRequestConfig</code>&#26102;&#25253;&#38169;, &#35831;&#30475;&#19968;&#19979;&#33258;&#24049;&#29256;&#26412;&#19979;&#30340;&#30456;&#20851;&#31867;&#22411;&#22768;&#26126;&#12290;&#36825;&#37324;&#25552;&#20379;&#25105;&#30340;:</p>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/630b32da04d3454bbefdbaefd4c190a9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=966&amp;h=393&amp;s=72120&amp;e=png&amp;b=1f1f1f" /></p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e824685aa1c84250961ee63acb244b12~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1182&amp;h=113&amp;s=14286&amp;e=png&amp;b=1f1f1f" /></p>
+<h3>3&#12289;AxiosRequestConfig: &#35831;&#27714;&#20307;&#37197;&#32622;&#21442;&#25968;&#31867;&#22411;</h3>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1af13eaf9039474db6527cb7167fe1bd~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1235&amp;h=890&amp;s=114451&amp;e=png&amp;b=1f1f1f" /></p>
+<h3>4&#12289;AxiosError: &#38169;&#35823;&#23545;&#35937;&#31867;&#22411;</h3>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d1958bdb06b47d3aa3ad5449fba5749~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=571&amp;h=745&amp;s=66184&amp;e=png&amp;b=1f1f1f" /></p>
+<h3>5&#12289;AxiosResponse: &#23436;&#25972;&#21407;&#22987;&#21709;&#24212;&#20307;&#31867;&#22411;</h3>
+<p><img alt="image.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d73f76c7a41346c5a92132596187a2b4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=527&amp;h=169&amp;s=11657&amp;e=png&amp;b=1f1f1f" /></p>
+<p>&#20174;&#28304;&#30721;&#25552;&#20379;&#30340;&#31867;&#22411;&#21487;&#20197;&#24456;&#28165;&#26224;&#22320;&#30475;&#21040;&#21508;&#21442;&#25968;&#25110;&#32773;&#31867;&#12289;&#26041;&#27861;&#20013;&#23545;&#24212;&#30340;&#21442;&#25968;&#12289;&#26041;&#27861;&#31867;&#22411;&#23450;&#20041;&#65292;&#36825;&#21487;&#20197;&#38750;&#24120;&#30452;&#35266;&#22320;&#20026;&#25105;&#20204;&#25351;&#26126;&#36335;&#32447;</p>
+<h1>&#30446;&#26631;&#25928;&#26524;</h1>
+<p>&#36890;&#36807;&#36825;&#27425;&#22522;&#30784;&#23553;&#35013;&#65292;&#25105;&#20204;&#24819;&#35201;&#30340;&#23454;&#29616;&#30340;&#25928;&#26524;&#26159;&#65306;</p>
+<ul>
+<li>API&#30340;&#21442;&#25968;&#21482;&#22635;&#20889;&#25509;&#21475;&#21644;&#20854;&#20182;&#37197;&#32622;&#39033;&#12289;&#21487;&#20197;&#35268;&#23450;&#21518;&#31471;&#36820;&#22238;&#25968;&#25454;&#20013; <code>data</code> &#30340;&#31867;&#22411;</li>
+<li>API&#30452;&#25509;&#36820;&#22238;&#21518;&#31471;&#36820;&#22238;&#30340;&#25968;&#25454;</li>
+<li>&#38169;&#35823;&#30721;&#30001;&#21709;&#24212;&#25318;&#25130;&#22120;&#32479;&#19968;&#22788;&#29702;</li>
+<li>&#39044;&#30041; &#25193;&#23637;&#20854;&#20182;&#36827;&#38454;&#21151;&#33021;&#30340;&#31354;&#38388;</li>
+<li>nice&#30340;&#20195;&#30721;&#25552;&#31034;</li>
+</ul>
+<h1>&#24320;&#22987;&#23553;&#35013;</h1>
+<h2>&#39592;&#26550;</h2>
+<p><strong><code>axios</code> &#21644;&#20854;&#20013;&#30340;&#31867;&#22411;&#22312;&#21069;&#38754;&#24050;&#32463;&#24341;&#20837;</strong>, &#36825;&#37324;&#23601;&#20808;&#20889;&#19968;&#20010;&#39592;&#26550;</p>
+<pre><code>class HttpRequest {
+    service: AxiosInstance
+    constructor(){
+        // &#35774;&#32622;&#19968;&#20123;&#40664;&#35748;&#37197;&#32622;&#39033;
+        this.service = axios.create({
+            baseURL: import.meta.env.VITE_APP_BASE_URL,
+            timeout: 5 * 1000
+        });
+    }
+}
+
+const httpRequest = new HttpRequest()
+export default httpRequest;
+</code></pre>
+<h2>&#22312;&#25318;&#25130;&#22120;&#23553;&#35013;&#20043;&#21069;</h2>
+<p>&#20026;&#20102;&#23553;&#35013;&#20986;&#26356;&#21152;&#21512;&#29702;&#30340;&#25318;&#25130;&#22120;&#65292;&#20026;&#20197;&#21450;&#36827;&#38454;&#23553;&#35013;&#26102;&#20026; <code>axios</code> &#37197;&#32622;&#26356;&#21152;&#24378;&#22823;&#30340;&#21151;&#33021;&#65292;&#20320;&#38656;&#35201;&#39318;&#20808;&#20102;&#35299;&#19968;&#19979; <code>axios</code> &#20174;&#21457;&#36865;&#19968;&#20010;&#35831;&#27714;&#21040;&#25509;&#25910;&#21709;&#24212;&#24182;&#22788;&#29702;&#65292;&#26368;&#21518;&#21576;&#29616;&#32473;&#29992;&#25143;&#30340;&#27969;&#31243;&#12290;&#36825;&#26679;&#65292;&#23545;&#21508;&#37096;&#20998;&#30340;&#23553;&#35013;&#20250;&#26377;&#19968;&#20010;&#26356;&#21152;&#21512;&#29702;&#30340;&#35774;&#35745;&#12290;</p>
+<p><img alt="image.png" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0664b886ef1e4132869d0fbb1307bae3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=276&amp;h=484&amp;s=25548&amp;e=png&amp;b=fefefe" /></p>
+<p align="center"><strong>axios&#35831;&#27714;&#27969;&#31243; - chatGPT&#32472;&#21046;</strong></p>
+<h2>&#20840;&#23616;&#35831;&#27714;&#25318;&#25130;&#22120;</h2>
+<pre><code>class HttpRequest {
+    // ...
+    constructor() {
+        // ...
+        this.service.interceptors.request.use(
+            // ...
+        );
+    }
+}
+</code></pre>
+<p>&#22312; <code>axios v1.6.2</code> &#20013;&#65292;&#26681;&#25454;&#19978;&#38754;&#30340;&#25509;&#21475;&#35831;&#27714;&#25318;&#25130;&#22120;&#30340; <code>use&#26041;&#27861;</code> &#25509;&#21463;&#19977;&#20010;&#21442;&#25968;, &#22343;&#26159;&#21487;&#20256;&#39033;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/245c14e1780d473b9fcb340ee9ce807d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1193&amp;h=122&amp;s=14099&amp;e=png&amp;b=1f1f1f" /></p>
+<ul>
+<li>
+<p><code>onFulfilled</code>: &#22312;&#35831;&#27714;&#21457;&#36865;&#21069;&#25191;&#34892;, &#25509;&#21463;&#19968;&#20010; <code>config</code> &#23545;&#35937;&#24182;&#36820;&#22238;&#22788;&#29702;&#21518;&#30340;&#26032; <code>config</code>&#23545;&#35937;&#65292;&#19968;&#33324;&#22312;&#37324;&#38754;&#37197;&#32622;token&#31561;</p>
+<p>&#36825;&#37324;&#35201;&#27880;&#24847;&#19968;&#28857;, &#39640;&#29256;&#26412; <code>axios</code> &#23558;&#23427;&#30340;&#21442;&#25968;&#31867;&#22411;&#20462;&#25913;&#20026;&#20102; <code>InternalAxiosRequestConfig</code></p>
+</li>
+<li>
+<p><code>onRejected</code>: <code>onFulfilled</code> &#25191;&#34892;&#21457;&#29983;&#38169;&#35823;&#21518;&#25191;&#34892;&#65292;&#25509;&#25910;&#38169;&#35823;&#23545;&#35937;&#65292;&#19968;&#33324;&#25105;&#20204;&#35831;&#27714;&#27809;&#21457;&#36865;&#20986;&#21435;&#20986;&#29616;&#25253;&#38169;&#26102;&#65292;&#25191;&#34892;&#30340;&#23601;&#26159;&#36825;&#19968;&#27493;</p>
+</li>
+<li>
+<p><code>options</code>&#65306;&#20854;&#20182;&#37197;&#32622;&#21442;&#25968;&#65292;&#25509;&#25910;&#20004;&#20010;&#21442;&#25968;, &#22343;&#26159;&#21487;&#20256;&#39033;&#65292;<strong>&#20197;&#21518;&#30340;&#36827;&#38454;&#21151;&#33021;&#23553;&#35013;&#37324;&#21487;&#33021;&#20250;&#20351;&#29992;&#21040;</strong></p>
+</li>
+<li>
+<ul>
+<li><code>synchronous</code>: &#26159;&#21542;&#21516;&#27493;</li>
+</ul>
+</li>
+<li>
+<ul>
+<li><strong><code>runWhen</code></strong>: &#25509;&#25910;&#19968;&#20010;&#31867;&#22411;&#20026;<code>InternalAxiosRequestConfig</code>&#30340; <code>config</code> &#21442;&#25968;&#65292;&#36820;&#22238;&#19968;&#20010; <code>boolean</code>&#12290;&#35302;&#21457;&#26102;&#26426;&#20026;&#27599;&#27425;&#35831;&#27714;&#35302;&#21457;&#25318;&#25130;&#22120;&#20043;&#21069;&#65292;<strong>&#24403; <code>runWhen</code>&#36820;&#22238; <code>true</code>, &#21017;&#25191;&#34892;&#20316;&#29992;&#22312;&#26412;&#27425;&#35831;&#27714;&#19978;&#30340;&#25318;&#25130;&#22120;&#26041;&#27861;, &#21542;&#21017;&#19981;&#25191;&#34892;</strong></li>
+</ul>
+</li>
+</ul>
+<p>&#20102;&#35299;&#20102;&#19977;&#20010;&#21442;&#25968;&#20043;&#21518;&#65292;&#24605;&#36335;&#23601;&#28165;&#26224;&#20102;&#65292;&#28982;&#21518;&#25105;&#20204;&#21487;&#20197;&#26681;&#25454;&#38656;&#27714;&#36827;&#34892;&#20840;&#23616;&#35831;&#27714;&#25318;&#25130;&#22120;&#30340;&#23553;&#35013;</p>
+<pre><code>class HttpRequest {
+    // ...
+    constructor() {
+        // ...
+        this.service.interceptors.request.use(
+            (config: InternalAxiosRequestConfig) =&gt; {
+                /**
+                 * set your config
+                 */
+                if (import.meta.env.VITE_APP_TOKEN_KEY &amp;&amp; getToken()) {
+                    // carry token
+                    config.headers[import.meta.env.VITE_APP_TOKEN_KEY] = getToken()
+                }
+                return config
+            },
+            (error: AxiosError) =&gt; {
+                console.log('requestError: ', error)
+                return Promise.reject(error);
+            },
+            {
+                synchronous: false,
+                runWhen: ((config: InternalAxiosRequestConfig) =&gt; {
+                    // do something
+
+                    // if return true, axios will execution interceptor method
+                    return true
+                })
+            }
+        );
+    }
+}
+</code></pre>
+<h2>&#20840;&#23616;&#21709;&#24212;&#25318;&#25130;&#22120;</h2>
+<p>&#21516;&#26679;&#26159;&#19977;&#20010;&#21442;&#25968;&#65292;&#21518;&#20004;&#20010;&#21644;&#35831;&#27714;&#25318;&#25130;&#22120;&#24046;&#19981;&#22810;&#65292;&#35828;&#31532;&#19968;&#20010;&#23601;&#34892;&#12290;</p>
+<p>&#31867;&#22411;&#23450;&#20041;&#22914;&#19979;:</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9216d464e6004b47bfb7aa86af0b3910~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=788&amp;h=199&amp;s=25175&amp;e=png&amp;b=202020" /></p>
+<p>&#31532;&#19968;&#20010;&#21442;&#25968;&#21516;&#26679;&#26159; <code>onFulfilled</code>&#65292;&#22312;&#36820;&#22238;&#21709;&#24212;&#32467;&#26524;&#20043;&#21069;&#25191;&#34892;&#65292;&#25105;&#20204;&#38656;&#35201;&#22312;&#36825;&#37324;&#38754;&#21462;&#20986;&#21518;&#31471;&#36820;&#22238;&#30340;&#25968;&#25454;&#65292;&#21516;&#26102;&#36824;&#35201;&#36827;&#34892;&#29366;&#24577;&#30721;&#22788;&#29702;&#12290;</p>
+<p>&#20174;&#31867;&#22411;&#23450;&#20041;&#19978;&#21487;&#20197;&#30475;&#21040;&#65292;&#21442;&#25968;&#31867;&#22411;&#26159;&#19968;&#20010;&#27867;&#22411;&#25509;&#21475;&#65292; &#31532;&#19968;&#20010;&#27867;&#22411; <code>T</code> &#29992;&#26469;&#23450;&#20041;&#21518;&#31471;&#36820;&#22238;&#25968;&#25454;&#30340;&#31867;&#22411;</p>
+<p>&#20808;&#23450;&#20041;&#19968;&#19979;&#21644;&#21518;&#31471;&#32422;&#23450;&#22909;&#30340;&#36820;&#22238;&#25968;&#25454;&#26684;&#24335;:</p>
+<p>&#25105;&#19968;&#33324;&#20570;&#39033;&#30446;&#26102;&#20505;&#32422;&#23450;&#30340;&#26159;&#36825;&#31181;&#65292;&#21487;&#20197;&#26681;&#25454;&#23454;&#38469;&#24773;&#20917;&#36827;&#34892;&#20462;&#25913;</p>
+<p><code>./types/index.ts</code></p>
+<pre><code>export interface ResponseModel&lt;T = any&gt; {
+    success: boolean;
+    message: string | null;
+    code: number | string;
+    data: T;
+}
+</code></pre>
+<p>&#22240;&#20026;&#37324;&#38754;&#23450;&#20041;&#20102; <code>code</code>&#65292;&#25152;&#20197;&#36824;&#38656;&#35201;&#37197;&#32622;&#19968;&#20221;&#21644;&#21518;&#31471;&#32422;&#23450;&#22909;&#30340; <code>code</code> &#34920;&#65292;&#26469;&#23545;&#36820;&#22238;&#30340; <code>code</code> &#36827;&#34892;&#20998;&#31867;&#22788;&#29702;</p>
+<p><code>./codeConfig.ts</code></p>
+<pre><code>// set code cofig
+export enum CodeConfig {
+    success = 200,
+    notFound = 404,
+    noPermission = 403
+}
+</code></pre>
+<p>&#20854;&#23454;axios&#26412;&#36523;&#20063;&#25552;&#20379;&#20102;&#19968;&#20221; <code>HttpStatusCode</code></p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5aa4839c1dc842a1adedc64e3fdde33b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=318&amp;h=342&amp;s=17652&amp;e=png&amp;b=1f1f1f" />
+&#20294;&#26368;&#22909;&#26681;&#25454;&#39033;&#30446;&#32452;&#23454;&#38469;&#24773;&#20917;&#32500;&#25252;&#19968;&#20221;&#21644;&#21518;&#31471;&#32422;&#23450;&#22909;&#30340; <code>code</code></p>
+<p>&#28982;&#21518;&#23601;&#21487;&#20197;&#24320;&#22987;&#23553;&#35013;&#21709;&#24212;&#25318;&#25130;&#22120;&#20102;&#12290;&#35201;&#27880;&#24847;&#36820;&#22238;&#30340;&#31867;&#22411;</p>
+<pre><code>import { CodeConfig } from './codeConfig.ts'
+import { ResponseModel } from './types/index.ts'
+class HttpRequest {
+    // ...
+    constructor() {
+        // ...
+        this.service.interceptors.response.use(
+            (response: AxiosResponse&lt;ResponseModel&gt;): AxiosResponse['data'] =&gt; {
+                const { data } = response
+                const { code } = data
+                if (code) {
+                    if (code != HttpCodeConfig.success) {
+                        switch (code) {
+                            case HttpCodeConfig.notFound:
+                                // the method to handle this code
+                                break;
+                            case HttpCodeConfig.noPermission:
+                                // the method to handle this code
+                                break;
+                            default:
+                                break;
+                        }
+                        return Promise.reject(data.message)
+                    } else {
+                        return data
+                    }
+                } else {
+                    return Promise.reject('Error! code missing!')
+                }
+            },
+            (error: AxiosError) =&gt; {
+                return Promise.reject(error);
+            }
+        );
+    }
+}
+</code></pre>
+<p>&#22312;&#36825;&#20010;&#21709;&#24212;&#25318;&#25130;&#22120;&#37324;&#65292;&#25105;&#20204;&#20808;&#36890;&#36807;&#35299;&#26500;&#36171;&#20540;&#25343;&#20986;&#20102;&#21518;&#31471;&#36820;&#22238;&#30340;&#21709;&#24212;&#25968;&#25454; <code>data</code>, &#28982;&#21518;&#25552;&#21462;&#20986;&#20102;&#37324;&#38754;&#32422;&#23450;&#22909;&#30340; <code>code</code>&#65292;&#22914;&#26524; <code>code</code> &#26159;&#32422;&#23450;&#30340;&#34920;&#31034;&#19968;&#20999;&#25104;&#21151;&#30340;&#20540;&#65292;&#37027;&#20040;&#25226;&#21709;&#24212;&#25968;&#25454;&#36820;&#22238;, &#21542;&#21017;&#26681;&#25454; <code>code</code> &#30340;&#19981;&#21516;&#20540;&#36827;&#34892;&#30456;&#24212;&#30340;&#22788;&#29702;&#12290;&#27604;&#22914; &#25226;message&#37324;&#20449;&#24687;&#29992; <code>MessageBox</code> &#26174;&#31034;&#12289;&#30331;&#24405;&#36807;&#26399;&#28165;&#31354;token&#24378;&#21046;&#30331;&#20986;&#12289;&#26080;&#26435;&#38480;&#35686;&#21578;&#12289;&#37325;&#26032;&#35831;&#27714;&#31561;&#31561;</p>
+<h2>requst&#23553;&#35013;</h2>
+<p>&#37325;&#26032;&#23553;&#35013; <code>axios.request()</code> &#26041;&#27861;&#65292;&#20256;&#20837;&#19968;&#20010;config, &#20197;&#21518;&#30340;&#36827;&#38454;&#29256;&#26412;&#20013;&#65292;&#21487;&#33021;&#20250;&#20462;&#25913;&#20256;&#21442;&#65292;&#24182;&#22312;&#36825;&#20010;&#23553;&#35013;&#30340; <code>request()</code> &#20013;&#28155;&#21152;&#26356;&#22810;&#39640;&#32423;&#21151;&#33021;&#12290;&#20294;&#26159;&#22312;&#22522;&#30784;&#29256;&#26412;&#37324;&#65292;&#36825;&#19968;&#27493;&#30475;&#19978;&#21435;&#20284;&#20046;&#26377;&#20123;&#20887;&#20313;&#12290;</p>
+<pre><code>import { ResponseModel } from './types/index.ts'
+class HttpRequest {
+    // ...
+    constructor(){/**/}
+    request&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        /**
+         * TODO: execute other methods according to config
+         */
+        return new Promise((resolve, reject) =&gt; {
+            try {
+                this.service.request&lt;ResponseModel&lt;T&gt;&gt;(config)
+                    .then((res: AxiosResponse['data']) =&gt; {
+                        resolve(res as ResponseModel&lt;T&gt;);
+                    })
+                    .catch((err) =&gt; {
+                        reject(err)
+                    })
+            } catch (err) {
+                return Promise.reject(err)
+            }
+        })
+    }
+}
+</code></pre>
+<h2>CRUD</h2>
+<p>&#35843;&#29992;&#25105;&#20204;&#24050;&#32463;&#23553;&#35013;&#22909;&#30340; <code>request()</code> &#26469;&#23553;&#35013; <code>crud</code> &#35831;&#27714;&#65292;&#32780;&#19981;&#26159;&#30452;&#25509;&#35843;&#29992; <code>axios</code> &#33258;&#24102;&#30340;, &#21407;&#22240;&#19978;&#38754;&#24050;&#32463;&#35828;&#20102;</p>
+<pre><code>import { ResponseModel } from './types/index.ts'
+class HttpRequest {
+    // ...
+   
+    get&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'GET', ...config })
+    }
+    post&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'POST', ...config })
+    }
+    put&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'PUT', ...config })
+    }
+    delete&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'DELETE', ...config })
+    }
+}
+</code></pre>
+<h2>upload</h2>
+<p>&#25991;&#20214;&#19978;&#20256;&#23553;&#35013;&#65292;&#19968;&#33324;&#26159;&#34920;&#21333;&#24418;&#24335;&#19978;&#20256;&#65292;&#23427;&#26377;&#29305;&#23450;&#30340; <code>Content-Type</code> &#21644;&#25968;&#25454;&#26684;&#24335;&#65292;&#38656;&#35201;&#21333;&#29420;&#25343;&#20986;&#26469;&#23553;&#35013;</p>
+<p>&#20808;&#23450;&#20041;&#38656;&#35201;&#20256;&#20837;&#30340;&#25968;&#25454;&#31867;&#22411; &mdash;&mdash; &#21644;&#21518;&#31471;&#32422;&#23450;&#22909;&#30340; <code>name</code>, &#20197;&#21450;&#19978;&#20256;&#30340;&#25991;&#20214;&#25968;&#25454; &mdash;&mdash; &#26412;&#22320;&#20020;&#26102;&#36335;&#24452;&#25110;&#32773;Blob&#12290;&#22312;&#36825;&#37324;&#25105;&#26159;&#35774;&#32622;&#30340;&#19978;&#20256;&#25991;&#20214;&#30340;&#25509;&#21475;&#21807;&#19968;&#65292;&#25152;&#20197;&#24076;&#26395;&#25226;&#25509;&#21475;url&#37197;&#32622;&#22312;&#29615;&#22659;&#21464;&#37327;&#37324;&#65292;&#22312;&#25991;&#20214;&#19978;&#20256;&#25509;&#21475;&#20013;&#19981;&#20801;&#35768;&#29992;&#25143;&#22312;&#25509;&#21475;&#30340;&#37197;&#32622;&#39033;&#21442;&#25968;&#37324;&#20462;&#25913;url&#65292;&#20110;&#26159;&#26032;&#23450;&#20041;&#20102;&#19968;&#20010; <code>UploadFileItemModel</code> &#31867;&#22411;, &#19981;&#20801;&#35768;&#29992;&#25143;&#22312; <code>options</code> &#37324;&#20877;&#20256;&#20837; <code>url</code> &#21644; <code>data</code></p>
+<p>&#33509;&#26377;&#22810;&#20010;&#25991;&#20214;&#19978;&#20256;&#25509;&#21475;url, &#21487;&#20197;&#26681;&#25454;&#23454;&#38469;&#24773;&#20917;&#36827;&#34892;&#20462;&#25913;</p>
+<p><code>./types/index.ts</code></p>
+<pre><code>export interface UploadFileItemModel {
+    name: string,
+    value: string | Blob
+}
+
+export type UploadRequestConfig = Omit&lt;AxiosRequestConfig, 'url' | 'data'&gt; 
+</code></pre>
+<p>&#19968;&#33324;&#26469;&#35828;&#65292;&#25991;&#20214;&#19978;&#20256;&#23436;&#25104;&#21518;&#65292;&#21518;&#31471;&#36820;&#22238;&#30340;&#21709;&#24212;&#25968;&#25454;&#20013;&#30340;data&#26159;&#34987;&#19978;&#20256;&#25991;&#20214;&#30340;&#35775;&#38382;url&#65292;&#25152;&#20197;&#36825;&#37324;&#27867;&#22411; <code>T</code> &#35774;&#32622;&#30340;&#40664;&#35748;&#20540;&#26159; <code>string</code></p>
+<pre><code>import { UploadFileItemModel } from './types/index.ts'
+class HttpRequest {
+    // ...
+    upload&lt;T = string&gt;(fileItem: UploadFileItemModel, config?: UploadRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; | null {
+        if (!import.meta.env.VITE_UPLOAD_URL) return null
+
+        let fd = new FormData()
+        fd.append(fileItem.name, fileItem.value)
+        let configCopy: UploadRequestConfig
+        if (!config) {
+            configCopy = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        } else {
+            config.headers!['Content-Type'] = 'multipart/form-data'
+            configCopy = config
+        }
+        return this.request({ url: import.meta.env.VITE_UPLOAD_URL, data: fd, ...configCopy })
+    }
+</code></pre>
+<h1>&#23436;&#25972;&#20195;&#30721;:</h1>
+<h2>&#31867;&#22411;&#25991;&#20214;</h2>
+<p><code>./types/index.ts</code></p>
+<pre><code>import { AxiosRequestConfig } from 'axios'
+export interface ResponseModel&lt;T = any&gt; {
+    success: boolean;
+    message: string | null;
+    code: number | string;
+    data: T;
+}
+
+export interface UploadFileItemModel {
+    name: string,
+    value: string | Blob
+}
+
+
+/**
+ * customize your uploadRequestConfig
+ */
+export type UploadRequestConfig = Omit&lt;AxiosRequestConfig, 'url' | 'data'&gt; 
+</code></pre>
+<h2>code&#37197;&#32622;</h2>
+<p><code>./codeConfig.ts</code></p>
+<pre><code>// set code cofig
+export enum CodeConfig {
+    success = 200,
+    notFound = 404,
+    noPermission = 403
+}
+</code></pre>
+<h2>&#23553;&#35013;&#30340;axios</h2>
+<p><code>./axios.ts</code></p>
+<pre><code>import axios, 
+    { AxiosInstance,
+      InternalAxiosRequestConfig, 
+      AxiosRequestConfig, 
+      AxiosError, 
+      AxiosResponse,
+    } from 'axios';
+import { CodeConfig } from './CodeConfig';
+import { ResponseModel, UploadFileItemModel, UploadRequestConfig } from './types/index'
+import { getToken } from '../token/index'
+
+class HttpRequest {
+    service: AxiosInstance
+
+    constructor() {
+        this.service = axios.create({
+            baseURL: import.meta.env.VITE_APP_BASE_URL,
+            timeout: 5 * 1000
+        });
+
+        this.service.interceptors.request.use(
+            (config: InternalAxiosRequestConfig) =&gt; {
+                /**
+                 * set your config
+                 */
+                if (import.meta.env.VITE_APP_TOKEN_KEY &amp;&amp; getToken()) {
+                    config.headers[import.meta.env.VITE_APP_TOKEN_KEY] = getToken()
+                }
+                return config
+            },
+            (error: AxiosError) =&gt; {
+                console.log('requestError: ', error)
+                return Promise.reject(error);
+            },
+            {
+                synchronous: false
+                runWhen: ((config: InternalAxiosRequestConfig) =&gt; {
+                    // do something
+
+                    // if return true, axios will execution interceptor method
+                    return true
+                })
+            }
+        );
+
+        this.service.interceptors.response.use(
+            (response: AxiosResponse&lt;ResponseModel&gt;): AxiosResponse['data'] =&gt; {
+                const { data } = response
+                const { code } = data
+                if (code) {
+                    if (code != HttpCodeConfig.success) {
+                        switch (code) {
+                            case HttpCodeConfig.notFound:
+                                // the method to handle this code
+                                break;
+                            case HttpCodeConfig.noPermission:
+                                // the method to handle this code
+                                break;
+                            default:
+                                break;
+                        }
+                        return Promise.reject(data.message)
+                    } else {
+                        return data
+                    }
+                } else {
+                    return Promise.reject('Error! code missing!')
+                }
+            },
+            (error: any) =&gt; {
+                return Promise.reject(error);
+            }
+        );
+    }
+
+    request&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        /**
+         * TODO: execute other methods according to config
+         */
+        return new Promise((resolve, reject) =&gt; {
+            try {
+                this.service.request&lt;ResponseModel&lt;T&gt;&gt;(config)
+                    .then((res: AxiosResponse['data']) =&gt; {
+                        resolve(res as ResponseModel&lt;T&gt;);
+                    })
+                    .catch((err) =&gt; {
+                        reject(err)
+                    })
+            } catch (err) {
+                return Promise.reject(err)
+            }
+        })
+    }
+
+    get&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'GET', ...config })
+    }
+    post&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'POST', ...config })
+    }
+    put&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'PUT', ...config })
+    }
+    delete&lt;T = any&gt;(config: AxiosRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; {
+        return this.request({ method: 'DELETE', ...config })
+    }
+    upload&lt;T = string&gt;(fileItem: UploadFileItemModel, config?: UploadRequestConfig): Promise&lt;ResponseModel&lt;T&gt;&gt; | null {
+        if (!import.meta.env.VITE_UPLOAD_URL) return null
+
+        let fd = new FormData()
+        fd.append(fileItem.name, fileItem.value)
+        let configCopy: UploadRequestConfig
+        if (!config) {
+            configCopy = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        } else {
+            config.headers!['Content-Type'] = 'multipart/form-data'
+            configCopy = config
+        }
+        return this.request({ url: import.meta.env.VITE_UPLOAD_URL, data: fd, ...configCopy })
+    }
+}
+
+const httpRequest = new HttpRequest()
+export default httpRequest;
+</code></pre>
+<h1>&#20351;&#29992;</h1>
+<p>&#25343;<strong>&#21382;&#21490;&#19978;&#30340;&#20170;&#22825;&#24320;&#25918;API</strong>&#20570;&#20010;&#27979;&#35797;: <code>https://api.vvhan.com/api/hotlist?type=history</code></p>
+<p>&#25286;&#20998;&#19968;&#19979;:</p>
+<ul>
+<li>baseURL: 'https://api.vvhan.com/api'</li>
+<li>&#25509;&#21475;url: '/hotlist?type=history'</li>
+</ul>
+<p>&#25226;baseURL&#37197;&#32622;&#21040;&#29615;&#22659;&#21464;&#37327;&#37324;:</p>
+<pre><code>VITE_APP_BASE_URL = 'https://api.vvhan.com/api'
+</code></pre>
+<p>&#26681;&#25454;&#25509;&#21475;&#25991;&#26723;&#20462;&#25913; ResponseModel, &#22240;&#20026;&#36825;&#20010;&#25509;&#21475;&#30340;&#21709;&#24212;&#25968;&#25454;&#37324;&#27809;&#26377;code&#37027;&#20123;, &#25152;&#20197;&#23553;&#35013;&#37324;&#30340;code&#30456;&#20851;&#36923;&#36753;&#23601;&#20808;&#27880;&#37322;&#20102;, &#30452;&#25509;&#36820;&#22238;&#21407;&#22987;&#21709;&#24212;&#20307;&#20013;&#30340; <code>data</code></p>
+<pre><code>export interface ResponseModel&lt;T&gt; {
+    data: T
+    subtitle: string
+    success: boolean
+    title: string
+    update_time: string
+}
+</code></pre>
+<p><code>/src/api/types/hello.ts</code>&#65306;&#23450;&#20041;&#21518;&#31471;&#36820;&#22238;&#32473;&#36825;&#20010;&#25509;&#21475;&#30340;&#25968;&#25454;&#20013;, <code>data</code> &#30340;&#31867;&#22411;</p>
+<pre><code>export interface exampleModel {
+    index: number
+    title: string
+    desc: string
+    url: string
+    mobilUrl: string
+}
+</code></pre>
+<p><code>/src/api/example/index.ts</code>&#65306;&#23553;&#35013;&#35831;&#27714;&#25509;&#21475;&#65292;&#20351;&#29992; <code>enum</code> &#26522;&#20030;&#31867;&#22411;&#32479;&#19968;&#31649;&#29702;&#25509;&#21475;&#22320;&#22336;</p>
+<pre><code>import request from '@/utils/axios/axios'
+import { exampleModel } from '../types/hello'
+
+enum API {
+    example = '/hotlist?type=history'
+}
+
+export const exampleAPI = () =&gt; {
+    return request.get&lt;exampleModel[]&gt;({ url: API.example })
+}
+</code></pre>
+<p>&#35797;&#19968;&#35797;:</p>
+<pre><code>&lt;script setup lang="ts"&gt;
+import HelloWorld from "../../components/HelloWorld.vue";
+import { exampleAPI } from "@/api/hello";
+exampleAPI().then((res) =&gt; {
+    console.log('getData: ', res)
+    const title = res.title
+    const { data } = res
+    console.log('list: ', data)
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;HelloWorld msg="Vite + Vue + Tailwindcss + TypeScript" /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>&#25552;&#31034;&#24456;&#33298;&#26381;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bee3ebf0c12b4e7f95a0b229461ee169~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=633&amp;h=273&amp;s=26331&amp;e=png&amp;b=202020" /></p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8911fcf4df64543baccab56638a22b2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=547&amp;h=199&amp;s=16361&amp;e=png&amp;b=202020" /></p>
+<p>&#25511;&#21046;&#21488;&#25171;&#21360;&#30340;&#25968;&#25454;:</p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd5973c1f7cb46559f9d8a332e92f02c~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1037&amp;h=533&amp;s=107062&amp;e=png&amp;b=ffffff" /></p>
+<h1>&#28304;&#30721;&#22320;&#22336;</h1>
+<p><a href="https://github.com/liushi-cli/v3-ts-tailwind-template/blob/master/src/utils/axios/axios.ts" rel="noopener noreferrer" target="_blank">v3-ts-tailwind-template&#20013;&#30340;axios&#23553;&#35013;&#25991;&#20214;</a></p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T09:08:00+00:00</pubDate>
+</item>
+
+<item>
 <title>使用Iframe 内嵌Dataiku 报表跨域的配置</title>
 <link>https://juejin.cn/post/7306337248621920283</link>
 <guid>https://juejin.cn/post/7306337248621920283</guid>
@@ -86,7 +1157,6 @@ server {
 &lt;/div&gt;
 </code></pre>
 ]]></content:encoded>
-
 <pubDate>2023-11-28T08:07:59+00:00</pubDate>
 </item>
 <item>
@@ -398,7 +1468,6 @@ function App() {
 <p>&#19977;.&#24635;&#32467;</p>
 <p>&#24076;&#26395;&#35753;&#36935;&#21040;&#21516;&#26679;&#38382;&#39064;&#30340;&#20154;&#33021;&#22815;&#23569;&#36208;&#19968;&#20123;&#24367;&#36335;&#65281;&#23601;&#26159;&#25105;&#20998;&#20139;&#30340;&#21160;&#21147;=w=</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-28T08:01:54+00:00</pubDate>
 </item>
 <item>
@@ -595,10 +1664,8 @@ Typecho_Db::set($db);
 </blockquote>
 <p><strong>&#20197;&#19978;&#20869;&#23481;&#35814;&#32454;&#20171;&#32461;&#20102;&#22914;&#20309;&#21033;&#29992;Vercel&#21644;Railway&#20004;&#20010;&#20113;&#24179;&#21488;&#26469;&#37096;&#32626;Typecho&#21160;&#24577;&#21338;&#23458;&#65292;&#35753;&#24744;&#30340;&#21338;&#23458;&#26356;&#21152;&#39640;&#25928;&#21644;&#31283;&#23450;&#12290;&#36890;&#36807;&#20351;&#29992;Vercel&#30340;&#33258;&#21160;&#37096;&#32626;&#21151;&#33021;&#65292;&#24744;&#21487;&#20197;&#36731;&#26494;&#22320;&#23558;&#21338;&#23458;&#20195;&#30721;&#19978;&#20256;&#21040;Vercel&#30340;&#26381;&#21153;&#22120;&#19978;&#65292;&#23454;&#29616;&#33258;&#21160;&#26356;&#26032;&#21644;&#24555;&#36895;&#37096;&#32626;&#12290;&#32780;Railway&#21017;&#25552;&#20379;&#20102;&#24378;&#22823;&#30340;&#25968;&#25454;&#23384;&#20648;&#21644;&#31649;&#29702;&#21151;&#33021;&#65292;&#35753;&#24744;&#30340;&#21338;&#23458;&#25968;&#25454;&#26356;&#21152;&#23433;&#20840;&#21487;&#38752;&#12290;&#36890;&#36807;&#36825;&#31181;&#26041;&#24335;&#65292;&#24744;&#21487;&#20197;&#24555;&#36895;&#26500;&#24314;&#19968;&#20010;&#20855;&#26377;&#39640;&#24615;&#33021;&#21644;&#21487;&#38752;&#24615;&#30340;&#21338;&#23458;&#24179;&#21488;&#65292;&#20026;&#35835;&#32773;&#25552;&#20379;&#26356;&#22909;&#30340;&#38405;&#35835;&#20307;&#39564;&#12290;</strong></p>
 ]]></content:encoded>
-
 <pubDate>2023-11-28T06:06:03+00:00</pubDate>
 </item>
-
 <item>
 <title>Tailwind css 的原子化实践</title>
 <link>https://juejin.cn/post/7306164607810256933</link>

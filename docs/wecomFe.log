@@ -505,3 +505,14 @@ Append: [ReactNative调用jni的so技术分享](https://juejin.cn/post/730633130
 Append: [Vercel+Railway部署Typecho动态博客](https://juejin.cn/post/7306146705971281958)
 append_entries: 3
 Finish: 2023-11-28 10:03:39.747032
+------------------------------------------------------
+Started: 2023-11-28 12:04:25.544632
+Existing_entries: 183
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [3 Surprising Async/Await Pitfalls Every Web Developer Must Avoid!](https://blog.bitsrc.io/pitfalls-of-async-await-in-javascript-7c0678fbc282?source=rss----5c2fdf847f4a---4)
+Append: [Should You Test React Components Using Cypress?](https://blog.bitsrc.io/react-testing-with-cypess-73bcce5cdcdb?source=rss----5c2fdf847f4a---4)
+Append: [CSS技巧：用CSS + SVG foreignObject实现一个动画组件](https://juejin.cn/post/7306356212601602102)
+Append: [这个React响应式Tag列表,不点进来批评批评吗](https://juejin.cn/post/7306334713991938074)
+Append: [万字长文，TypeScript实战，封装一个axios - 基础封装篇](https://juejin.cn/post/7306312554346610751)
+append_entries: 5
+Finish: 2023-11-28 12:04:28.690456
