@@ -485,3 +485,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Prompt Structure in Conversations with Generative AI](https://www.nngroup.com/articles/ai-prompt-structure/)
 append_entries: 1
 Finish: 2023-11-28 06:04:14.034891
+------------------------------------------------------
+Started: 2023-11-28 08:04:01.409353
+Existing_entries: 175
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Tailwind css 的原子化实践](https://juejin.cn/post/7306164607810256933)
+Append: [Module Federation落地实践（React与Angular）](https://juejin.cn/post/7306062725213224998)
+Append: [优化 React 组件性能：深入理解 useEffect 第二个参数的使用](https://juejin.cn/post/7306023362132148234)
+Append: [（26）Redux 进阶——② Redux 中发送异步请求获取数据 | React 基础理论实操](https://juejin.cn/post/7306038092207554598)
+Append: [使用aj实现 chatgpt自动回复wx群聊消息](https://juejin.cn/post/7306019253014200320)
+append_entries: 5
+Finish: 2023-11-28 08:04:04.491289

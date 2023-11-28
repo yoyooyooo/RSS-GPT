@@ -5,6 +5,1230 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>Tailwind css 的原子化实践</title>
+<link>https://juejin.cn/post/7306164607810256933</link>
+<guid>https://juejin.cn/post/7306164607810256933</guid>
+<content:encoded><![CDATA[
+<div> <p>theme: fancy
+Tailwind CSS &#22312;&#21069;&#31471;&#24320;&#21457;&#20013;&#36880;&#28176;&#25104;&#20026;&#20102;&#22823;&#23478;&#30340;&#39318;&#36873;&#26679;&#24335;&#22788;&#29702;&#26041;&#26696;&#65292;&#23427;&#30340;&#31616;&#21333;&#30340;&#38598;&#25104;&#24615;&#20197;&#21450;&#28789;&#27963;&#30340;&#21487;&#37197;&#32622;&#24615;&#35753;&#23427;&#22312;&#21069;&#31471;&#24320;&#21457;&#20013;&#36880;&#28176;&#21344;&#25454;&#36739;&#39640;&#30340;&#22320;&#20301;&#65292;&#20294;&#26159;&#38543;&#30528; Tailwind C...</p> <div>
+<hr />
+<h2>theme: fancy</h2>
+<p>Tailwind CSS &#22312;&#21069;&#31471;&#24320;&#21457;&#20013;&#36880;&#28176;&#25104;&#20026;&#20102;&#22823;&#23478;&#30340;&#39318;&#36873;&#26679;&#24335;&#22788;&#29702;&#26041;&#26696;&#65292;&#23427;&#30340;&#31616;&#21333;&#30340;&#38598;&#25104;&#24615;&#20197;&#21450;&#28789;&#27963;&#30340;&#21487;&#37197;&#32622;&#24615;&#35753;&#23427;&#22312;&#21069;&#31471;&#24320;&#21457;&#20013;&#36880;&#28176;&#21344;&#25454;&#36739;&#39640;&#30340;&#22320;&#20301;&#65292;&#20294;&#26159;&#38543;&#30528; Tailwind CSS &#30340;&#20351;&#29992;&#65292;&#24456;&#22810;&#21069;&#31471;&#24320;&#21457;&#20154;&#21592;&#20063;&#20986;&#29616;&#20102;&#19981;&#36866;&#65292;<code>classname</code> &#22826;&#22810;&#65292;&#23548;&#33268;&#20195;&#30721;&#30475;&#36215;&#26469;&#19981;&#25972;&#27905;&#65292;&#26679;&#24335;&#22797;&#26434;&#30340;&#24773;&#20917;&#19979;&#65292;&#20070;&#20889; Tailwind CSS &#24456;&#20887;&#26434;&#65292;&#19981;&#21033;&#20110;&#32500;&#25252;&#31561;&#65292;&#37027;&#20040;&#22312;&#20351;&#29992;Tailwind CSS &#30340;&#26102;&#20505;&#36981;&#24490;&#21407;&#23376;&#32452;&#20214;&#30340;&#29702;&#35770;&#33021;&#19981;&#33021;&#35299;&#20915;&#20197;&#19978;&#38382;&#39064;&#21602;&#65311;</p>
+<hr />
+<h2>Atomic Component</h2>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30488d850a7d4ebd9d85409b90ea1cef~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1024&amp;h=768&amp;s=918107&amp;e=png&amp;b=f4f2da" /></p>
+<p>&#22312;&#35752;&#35770;&#22914;&#20309;&#32467;&#21512;&#21407;&#23376;&#21270;&#32452;&#20214;&#21644;Tailwind CSS&#20043;&#21069;&#65292;&#25105;&#20204;&#20808;&#20102;&#35299;&#19968;&#19979;&#21407;&#23376;&#20803;&#32452;&#20214;&#26041;&#27861;&#35770;&#65292;&#23601;&#26159;&#23558;&#39029;&#38754;&#20998;&#20026;&#20197;&#19979;5&#20010;&#23618;&#32423;</p>
+<ol>
+<li>Atoms</li>
+<li>Molecules</li>
+<li>Organisms</li>
+<li>Templates</li>
+<li>Pages</li>
+</ol>
+<p>&#27599;&#20010;&#23618;&#32423;&#37117;&#26159;&#30001;&#21069;&#38754;&#30340;&#23618;&#32423;&#25340;&#20945;&#32780;&#25104;&#65292;&#26368;&#32456;&#24418;&#25104;&#39029;&#38754;&#65292;&#22312;&#36825;&#20010;&#26041;&#27861;&#35770;&#20013;&#65292;&#26368;&#20027;&#35201;&#30340;&#23601;&#26159;&#23547;&#25214;&#21040;&#21407;&#23376;&#32452;&#20214;&#65292;&#19979;&#22270;&#24110;&#21161;&#25105;&#20204;&#24456;&#22909;&#30340;&#26631;&#27880;&#20986;&#20102;&#21407;&#23376;&#32452;&#20214;&#26377;&#21738;&#20123;&#65288;&#21407;&#29983;&#30340; Html Element&#65289;&#12290;</p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/62bc001a019048ed8cc528e299ac3ef2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1024&amp;h=768&amp;s=580160&amp;e=png&amp;b=25252e" /></p>
+<p><em><strong>&#27880;&#65306;&#22270;&#29255;&#26469;&#28304; &#65288;https://atomicdesign.bradfrost.com/chapter-2/&#65289;</strong></em></p>
+<h2>Atomic Component &#19982; Tailwind CSS &#30340;&#22865;&#21512;</h2>
+<p>&#39029;&#38754;&#26159;&#30001;&#22522;&#30784;&#32452;&#20214;&#25340;&#20945;&#32780;&#25104;&#30340;&#65292;&#21407;&#23376;&#21270;&#32452;&#20214;&#26041;&#27861;&#35770;&#24182;&#19981;&#26159;&#23558;&#39029;&#38754;&#32452;&#20214;&#23613;&#21487;&#33021;&#25286;&#20998;&#30340;&#24456;&#23567;&#65292;&#32780;&#26159;&#36890;&#36807;&#21407;&#23376;&#32452;&#20214;&#32452;&#25104;&#20998;&#23376;&#32452;&#20214;&#65292;&#32452;&#32455;&#32452;&#20214;&#65292;&#20877;&#21040;&#39029;&#38754;&#27169;&#26495;&#65292;&#36827;&#32780;&#36827;&#34892;&#39029;&#38754;&#30340;&#25645;&#24314;&#65292;&#26159;&#19968;&#20010;&#20174;&#23567;&#21040;&#22823;&#30340;&#36807;&#31243;&#12290;</p>
+<p>&#22312;&#21033;&#29992;&#21407;&#23376;&#21270;&#32452;&#20214;&#24320;&#21457;&#26041;&#27861;&#35770;&#20013;&#65292;&#25105;&#20204;&#38656;&#35201;&#35782;&#21035;&#28165;&#26970;&#35782;&#21035;&#21040;&#21738;&#20123;&#26159;&#21407;&#23376;&#32452;&#20214;&#65292;&#28982;&#21518;&#23545;&#21407;&#23376;&#32452;&#20214;&#36827;&#34892;&#20462;&#39280;&#65292;Tailwind CSS &#27491;&#22909;&#23601;&#26159;&#21033;&#29992;&#30340; Atomic CSS &#30340;&#26041;&#27861;&#35770;&#65292;&#23558;&#20887;&#26434;&#30340; css &#26679;&#24335;&#21464;&#25104;&#21333;&#20010;&#30340; css &#23646;&#24615;&#65292;&#36825;&#23601;&#27491;&#22909;&#33021;&#22815;&#35299;&#20915;&#22312;&#20195;&#30721;&#20013;&#20986;&#29616;&#38590;&#20197;&#38405;&#35835;&#30340;&#26377;&#24456;&#22810; classname &#30340; html &#20195;&#30721;&#65292;&#37027;&#23601;&#26159;&#23545;&#21407;&#23376;&#32452;&#20214;&#36827;&#34892;&#23553;&#35013;&#65292;&#28982;&#21518;&#20351;&#29992;&#21407;&#23376;&#32452;&#20214;&#36827;&#34892;&#20998;&#23376;&#32452;&#20214;&#30340;&#32452;&#21512;&#12290;</p>
+<p>&#20363;&#22914;&#65306;</p>
+<pre><code>function ShoppingCard() {
+    return &lt;div className="flex font-sans"&gt;
+        &lt;div className="flex-none w-48 relative"&gt;
+            &lt;img src="/classNameic-utility-jacket.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" /&gt;
+        &lt;/div&gt;
+        &lt;form className="flex-auto p-6"&gt;
+            &lt;div className="flex flex-wrap"&gt;
+                &lt;h1 className="flex-auto text-lg font-semibold text-slate-900"&gt;
+                    Utility Jacket
+                &lt;/h1&gt;
+                &lt;div className="text-lg font-semibold text-slate-500"&gt;
+                    $110.00
+                &lt;/div&gt;
+                &lt;div className="w-full flex-none text-sm font-medium text-slate-700 mt-2"&gt;
+                    In stock
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"&gt;
+                &lt;div className="space-x-2 flex text-sm"&gt;
+                    &lt;label&gt;
+                        &lt;input className="sr-only peer" name="size" type="radio" value="xs" checked /&gt;
+                        &lt;div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white"&gt;
+                            XS
+                        &lt;/div&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input className="sr-only peer" name="size" type="radio" value="s" /&gt;
+                        &lt;div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white"&gt;
+                            S
+                        &lt;/div&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input className="sr-only peer" name="size" type="radio" value="m" /&gt;
+                        &lt;div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white"&gt;
+                            M
+                        &lt;/div&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input className="sr-only peer" name="size" type="radio" value="l" /&gt;
+                        &lt;div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white"&gt;
+                            L
+                        &lt;/div&gt;
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input className="sr-only peer" name="size" type="radio" value="xl" /&gt;
+                        &lt;div className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white"&gt;
+                            XL
+                        &lt;/div&gt;
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div className="flex space-x-4 mb-6 text-sm font-medium"&gt;
+                &lt;div className="flex-auto flex space-x-4"&gt;
+                    &lt;button className="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit"&gt;
+                        Buy now
+                    &lt;/button&gt;
+                    &lt;button className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button"&gt;
+                        Add to bag
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;button className="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Like"&gt;
+                    &lt;svg width="20" height="20" fill="currentColor" aria-hidden="true"&gt;
+                        &lt;path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p className="text-sm text-slate-700"&gt;
+                Free shipping on all continental US orders.
+            &lt;/p&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+}
+</code></pre>
+<p>&#36825;&#27573;&#20195;&#30721;&#26159;&#23448;&#32593;&#30340;&#19968;&#20010;&#20363;&#23376;&#65292;&#25105;&#20204;&#23601;&#36825;&#20010;&#20363;&#23376;&#26469;&#36827;&#34892;&#37325;&#26500;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc06f77e5f1348b7b7969dee89a448e4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=633&amp;h=351&amp;s=129603&amp;e=png&amp;a=1&amp;b=f3f0ef" /></p>
+<h3>Button &#32452;&#20214;&#25277;&#31163;</h3>
+<p>&#39318;&#20808;&#25105;&#20204;&#21487;&#20197;&#25552;&#21462;&#30340;&#21407;&#23376;&#32452;&#20214;&#26159;&#22823;&#23478;&#26368;&#24120;&#35265;&#30340; <code>&lt;Button&gt;</code></p>
+<p>&#25105;&#20204;&#26399;&#26395;&#30340;<code>Button</code>&#30340;&#20351;&#29992;&#26041;&#24335;&#20026;</p>
+<pre><code>    &lt;Button variant="filled"&gt;Buy now&lt;/Button&gt;
+</code></pre>
+<p>&#25152;&#20197;&#25105;&#20204;&#21487;&#20197;&#23558;&#25353;&#38062;&#20570;&#19968;&#20010;&#31616;&#21333;&#30340;&#23553;&#35013;</p>
+<pre><code>import { ButtonHTMLAttributes } from "react"
+
+type ButtonVariant =
+    | 'filled'
+    | 'outlined'
+interface ButtonProps extends ButtonHTMLAttributes&lt;HTMLButtonElement&gt; {
+    variant: ButtonVariant;
+}
+
+export default function Button(props: ButtonProps) {
+    const {
+        type,
+        variant,
+        className,
+        children
+    } = props;
+    const variantClassNames: {[key: string]: string} = {
+        filled: 'bg-black text-white',
+        outlined: 'border border-slate-200 text-slate-900'
+    }
+    return &lt;button
+        className={`h-10 px-6 font-semibold rounded-md ${variantClassNames[variant]} ${className}`}
+        type={type}&gt;
+        {children}
+    &lt;/button&gt;
+}
+</code></pre>
+<p>&#28982;&#21518;&#25105;&#20204;&#23601;&#33021;&#22815;&#23558;&#36825;&#27573;&#20195;&#30721;</p>
+<p><img alt="code1.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7d8447537e4e47138f37f4d9678339e1~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2826&amp;h=832&amp;s=278227&amp;e=png&amp;b=1f1f1f" /></p>
+<p>&#26367;&#25442;&#20026;</p>
+<p><img alt="code1.png" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/695ec9d9fb1f47518c9e2dc562326708~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1120&amp;h=616&amp;s=141336&amp;e=png&amp;b=1f1f1f" /></p>
+<h3>Icon &#32452;&#20214;&#25277;&#31163;</h3>
+<p>&#24403;&#28982;&#36825;&#37324;&#30340; svg &#20063;&#34987;&#25277;&#31163;&#25104;&#20026;&#20102;&#19968;&#20010;&#21407;&#23376;&#32452;&#20214;</p>
+<pre><code>interface IconProps {
+    size?: number
+}
+
+export default function HeartIcon (props: IconProps) {
+    const { size = 20 } = props;
+    const rate = size / 20;
+    return &lt;svg style={{ transform: `scale(${rate})` }} width='20' height='20' fill="currentColor" aria-hidden="true"&gt;
+        &lt;path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+        /&gt;
+    &lt;/svg&gt;
+}
+</code></pre>
+<h3>Radio &#32452;&#20214;&#25277;&#31163;</h3>
+<p>&#22312;&#20195;&#30721;&#30340;&#20013;&#38388;&#25105;&#20204;&#33021;&#22815;&#35782;&#21035;&#21040;&#26377; <code>Radio</code> &#21333;&#36873;&#32452;&#20214;&#65292;&#37027;&#20040;&#20316;&#20026;&#21407;&#23376;&#32452;&#20214;&#21015;&#34920;&#20013;&#30340; <code>&lt;input type="radio" /&gt;</code> &#33258;&#28982;&#20063;&#26159;&#38656;&#35201;&#23545;&#20854;&#36827;&#34892;&#20462;&#39280;&#30340;&#12290;</p>
+<pre><code>import { InputHTMLAttributes } from "react";
+
+interface RadioProps extends InputHTMLAttributes&lt;HTMLInputElement&gt; {
+    label: string;
+}
+
+export default function Radio(props: RadioProps) {
+    const { label, name, value, checked, className, onChange } = props;
+    return &lt;label className="relative cursor-pointer" htmlFor={label}&gt;
+        &lt;input
+            className="sr-only peer"
+            type="radio"
+            id={label}
+            value={value}
+            name={name}
+            checked={checked}
+            onChange={onChange}
+        /&gt;
+        &lt;div
+            className={`min-w-[36px] min-h-[36px] p-2 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white ${className}`}
+        &gt;
+            {label}
+        &lt;/div&gt;
+    &lt;/label&gt;
+}
+</code></pre>
+<p>&#23558;&#21407;&#26412;&#21333;&#20010;&#30340;&#21333;&#36873;&#32452;&#20214;&#30340;html&#30452;&#25509;&#25386;&#36827;&#25105;&#20204;&#30340;&#32452;&#20214;&#25991;&#20214;&#20013;&#65292;&#28982;&#21518;&#23545;&#20854;&#36827;&#34892;&#23553;&#35013;&#65292;&#26368;&#21518;&#30340;&#20351;&#29992;&#25928;&#26524;&#20026;</p>
+<pre><code>function ShopingCard() {
+  const sizeList = [
+    'XS', 'S', 'M', 'L', 'XL'
+  ];
+  const onSizeChange = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setCurrentSize(event.target.value);
+  }
+  const [currentSize, setCurrentSize] = useState(sizeList[0])
+  return (
+    ...
+            &lt;div className="space-x-2 flex text-sm"&gt;
+              {
+                sizeList.map(size =&gt; &lt;Radio
+                  key={size}
+                  name="size"
+                  value={size}
+                  label={size}
+                  checked={currentSize === size}
+                  onChange={onSizeChange}
+                /&gt;)
+              }
+            &lt;/div&gt;
+     ...
+  )
+}
+
+</code></pre>
+<p>&#22312;&#19978;&#38754;&#25105;&#20204;&#23436;&#25104;&#20102; <code>Forms</code> &#21407;&#23376;&#32452;&#20214;&#30340;&#23553;&#35013;&#20462;&#39280;&#65292;&#25509;&#19979;&#26469;&#38656;&#35201;&#35782;&#21035;&#21040;&#21035;&#30340;&#31867;&#22411;&#30340;&#21407;&#23376;&#32452;&#20214;&#65292;&#21363; <code>document sections</code> &#21644; <code>group content</code> &#36825;&#31867;&#20869;&#23481;&#22411;&#30340;&#21407;&#23376;&#32452;&#20214;&#30340;&#23553;&#35013;&#20462;&#39280;&#12290;</p>
+<h3>Typography &#32452;&#20214;&#25277;&#31163;</h3>
+<p>&#31616;&#21333;&#30340;&#25991;&#26412;&#32452;&#20214;&#25277;&#31163;</p>
+<pre><code>import { PropsWithChildren } from "react";
+
+interface TypographyProps extends PropsWithChildren {
+    className?: string;
+    variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'lead' | 'paragraph'
+}
+
+interface TextProps extends PropsWithChildren {
+    className?: string;
+}
+
+export default function Typography(props: TypographyProps) {
+    const { variant, children, className } = props;
+    const baseClassNames = 'block antialiased tracking-normal font-sans font-semibold';
+    const typographies = {
+        h1: (p: TextProps) =&gt; &lt;h1 className={`${baseClassNames} text-5xl leading-tight ${p.className}`}&gt;{p.children}&lt;/h1&gt;,
+        h2: (p: TextProps) =&gt; &lt;h2 className={`${baseClassNames} text-4xl leading-[1.3]  ${p.className}`}&gt;{p.children}&lt;/h2&gt;,
+        h3: (p: TextProps) =&gt; &lt;h3 className={`${baseClassNames} text-3xl leading-snug ${p.className}`}&gt;{p.children}&lt;/h3&gt;,
+        h4: (p: TextProps) =&gt; &lt;h4 className={`${baseClassNames} text-2xl leading-snug ${p.className}`}&gt;{p.children}&lt;/h4&gt;,
+        h5: (p: TextProps) =&gt; &lt;h5 className={`${baseClassNames} text-xl leading-snug ${p.className}`}&gt;{p.children}&lt;/h5&gt;,
+        h6: (p: TextProps) =&gt; &lt;h6 className={`${baseClassNames} text-lg leading-relaxed ${p.className}`}&gt;{p.children}&lt;/h6&gt;,
+        lead: (p: TextProps) =&gt; &lt;p className={`${baseClassNames} text-base font-normal leading-relaxed ${p.className}`}&gt;{p.children}&lt;/p&gt;,
+        paragraph: (p: TextProps) =&gt; &lt;p className={`${baseClassNames} text-sm font-normal leading-relaxed ${p.className}`}&gt;{p.children}&lt;/p&gt;,
+    }
+    return typographies[variant]({
+        className,
+        children
+    });
+}
+</code></pre>
+<p>&#22914;&#26524;&#24819;&#35201;&#26356;&#21152;&#34920;&#24847;&#30340;&#20889;&#27861;&#65292;&#21363;&#19981;&#20351;&#29992; Tailwind CSS &#30340;&#26041;&#24335;&#20070;&#20889;&#65292;&#25105;&#20204;&#20381;&#28982;&#26159;&#21487;&#20197;&#20351;&#29992;&#26679;&#24335;&#25991;&#20214;&#23545;&#25105;&#20204;&#30340;&#26679;&#24335;&#36827;&#34892;&#36827;&#19968;&#27493;&#30340;&#23553;&#35013;&#65292;Tailwind CSS &#25552;&#20379;&#20102; <code>@apply</code> &#35013;&#39280;&#22120;&#65292;&#21487;&#20197;&#20351;&#30340;&#25105;&#20204;&#30340; classname &#26356;&#21152;&#34920;&#24847;&#12290;</p>
+<ul>
+<li>style.css</li>
+</ul>
+<pre><code>.base-font {
+    @apply block antialiased tracking-normal font-sans font-semibold;
+}
+
+.heading1 {
+    @apply text-5xl leading-tight;
+}
+
+.heading2 {
+    @apply text-4xl leading-[1.3];
+}
+
+.heading3 {
+    @apply text-3xl leading-snug;
+}
+
+.heading4 {
+    @apply text-2xl leading-snug;
+}
+
+.heading5 {
+    @apply text-xl leading-snug;
+}
+
+.heading6 {
+    @apply text-lg leading-relaxed;
+}
+
+.lead {
+    @apply text-base font-normal leading-relaxed;
+}
+
+.paragraph {
+    @apply text-sm font-normal leading-relaxed;
+}
+</code></pre>
+<ul>
+<li>typography.tsx</li>
+</ul>
+<pre><code>import { PropsWithChildren, createElement } from "react";
+import './style.css'; // &#24341;&#20837;&#26679;&#24335;
+
+interface TypographyProps extends PropsWithChildren {
+    className?: string;
+    variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'lead' | 'paragraph';
+}
+
+export default function Typography(props: TypographyProps) {
+    const { variant, children, className } = props;
+    const headingElements = ['h1' , 'h2' , 'h3' , 'h4' , 'h5' , 'h6'];
+    const typographiesClassName = {
+        h1: 'heading1',
+        h2: 'heading2',
+        h3: 'heading3',
+        h4: 'heading4',
+        h5: 'heading5',
+        h6: 'heading6',
+        lead: 'lead',
+        paragraph: 'paragraph'
+    }
+    // &#26681;&#25454;&#19981;&#21516;&#26631;&#31614;&#21019;&#24314;&#19981;&#21516;&#26679;&#24335;&#30340;&#20803;&#32032;
+    return createElement(
+        headingElements.includes(variant) ? variant : 'p',
+        { className: `base-font ${typographiesClassName[variant]} ${className}` },
+        children
+    );
+}
+</code></pre>
+<h3>Card &#32452;&#20214;</h3>
+<p>&#31616;&#21333;&#30340;&#38754;&#26495;&#32452;&#20214;</p>
+<pre><code>import { HTMLAttributes } from "react";
+
+interface CardProps extends HTMLAttributes&lt;HTMLDivElement&gt; { }
+
+export default function Card(props: CardProps) {
+    const { children, className } = props;
+    return &lt;div className={`flex font-sans shadow-md p-2 rounded-xl overflow-hidden ${className}`}&gt;
+        {children}
+    &lt;/div&gt;
+}
+</code></pre>
+<h3>&#26368;&#32456;&#30340;&#26679;&#23376;</h3>
+<p>&#26368;&#21518;&#25105;&#20204;&#30340;&#36825;&#20010;&#36141;&#29289;&#21345;&#29255;&#30340;&#20195;&#30721;&#21464;&#24471;&#27604;&#20043;&#21069;&#23481;&#26131;&#32500;&#25252;&#24182;&#19988;&#26131;&#35835;&#65292;&#36825;&#37324;&#38754;&#20854;&#23454;&#36824;&#26377;&#19968;&#20123;&#23567;&#32452;&#20214;&#33021;&#22815;&#36827;&#34892;&#25277;&#31163;&#65292;&#27604;&#22914;&#20998;&#21106;&#32447;&#65292;&#22270;&#29255;&#12290;</p>
+<pre><code>function ShoppingCard() {
+  const sizeList = [
+    'XS', 'S', 'M', 'L', 'XL'
+  ];
+  const onSizeChange = (event: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
+    setCurrentSize(event.target.value);
+  }
+  const [currentSize, setCurrentSize] = useState(sizeList[0]);
+  
+  return (
+    &lt;div className="flex items-center justify-center h-screen"&gt;
+      &lt;Card&gt;
+        &lt;div className="flex-none w-48 relative"&gt;
+          &lt;img
+            src="https://www.tailwindcss.cn/_next/static/media/classic-utility-jacket.82031370.jpg"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          /&gt;
+        &lt;/div&gt;
+        &lt;form className="flex-auto p-6"&gt;
+          &lt;div className="flex flex-wrap"&gt;
+            &lt;Typography variant="h6" className="flex-auto text-slate-900" &gt;Utility Jacket&lt;/Typography&gt;
+            &lt;Typography variant="h6" className="text-slate-500" &gt;$110.00&lt;/Typography&gt;
+            &lt;Typography variant="lead" className="text-slate-700 mt-2 w-full" &gt;In stock&lt;/Typography&gt;
+          &lt;/div&gt;
+          &lt;div className="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200"&gt;
+            &lt;div className="space-x-2 flex text-sm"&gt;
+              {
+                sizeList.map(size =&gt; &lt;Radio
+                  key={size}
+                  name="size"
+                  value={size}
+                  label={size}
+                  checked={currentSize === size}
+                  onChange={onSizeChange}
+                /&gt;)
+              }
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div className="flex space-x-4 mb-6 text-sm font-medium"&gt;
+            &lt;div className="flex-auto flex space-x-4"&gt;
+              &lt;Button variant="filled"&gt;Buy now&lt;/Button&gt;
+              &lt;Button variant="outlined"&gt; Add to bag&lt;/Button&gt;
+            &lt;/div&gt;
+            &lt;Button variant="outlined" className="px-2.5"&gt;
+              &lt;HeartIcon size={24} /&gt;
+            &lt;/Button&gt;
+          &lt;/div&gt;
+
+          &lt;Typography variant="paragraph" className="text-slate-700" &gt;
+            Free shipping on all continental US orders.
+          &lt;/Typography&gt;
+        &lt;/form&gt;
+      &lt;/Card&gt;
+    &lt;/div&gt;
+  )
+}
+</code></pre>
+<p>&#22312;&#23448;&#32593;&#20013;&#20063;&#26377;&#23545;&#24212;&#30340;&#25351;&#23548;&#65292;&#24590;&#20040;&#26679;&#21435;&#20570;&#32452;&#20214;&#30340;&#25286;&#20998;</p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eeb03dd3b1a04897b33804c142330650~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1336&amp;h=940&amp;s=254610&amp;e=png&amp;a=1&amp;b=fefefe" /></p>
+<hr />
+<p>&#38543;&#30528;&#21407;&#23376;&#32452;&#20214;&#30340;&#25277;&#31163;&#65292;&#25340;&#20945;&#30340;&#39029;&#38754;&#23558;&#20250;&#21464;&#24471;&#30452;&#35266;&#26126;&#20102;&#65292;&#36825;&#26159; Atomic Component &#21644; Atomic CSS &#30340;&#32467;&#21512;&#65292;&#19968;&#20010;&#26159;&#36923;&#36753;&#23618;&#38754;&#30340;&#21407;&#23376;&#21270;&#65292;&#19968;&#20010;&#26159;&#26679;&#24335;&#23618;&#38754;&#30340;&#21407;&#23376;&#21270;&#65292;&#36825;&#26679;&#23376;&#25165;&#33021;&#30495;&#27491;&#30340;&#36798;&#21040; Atomic methodology&#12290;</p>
+<p><strong>&#21442;&#32771;</strong></p>
+<ol>
+<li><a href="https://atomicdesign.bradfrost.com/chapter-2/" rel="noopener noreferrer" target="_blank">&#12304;Atomic Design Methodology&#12305;</a></li>
+<li><a href="https://tailwindcss.com/" rel="noopener noreferrer" target="_blank">&#12304;Tallwind CSS&#12305;</a></li>
+<li><a href="https://github.com/creativetimofficial/material-tailwind/tree/main/packages/material-tailwind-react" rel="noopener noreferrer" target="_blank">&#12304;material-tailwind-react&#28304;&#30721;&#12305;</a></li>
+<li><a href="https://github.com/zhangzewei/tailwind-practice" rel="noopener noreferrer" target="_blank">&#12304;&#26412;&#25991;&#26679;&#20363;&#20195;&#30721;&#20179;&#24211;&#12305;</a></li>
+</ol>
+]]></content:encoded>
+
+<pubDate>2023-11-28T06:39:10+00:00</pubDate>
+</item>
+<item>
+<title>Module Federation落地实践（React与Angular）</title>
+<link>https://juejin.cn/post/7306062725213224998</link>
+<guid>https://juejin.cn/post/7306062725213224998</guid>
+<content:encoded><![CDATA[
+<div> <p>React
+&#39033;&#30446;&#30340;&#25216;&#26415;&#26632;&#26159;React+Vite&#65292;&#27169;&#22359;&#32852;&#37030;&#34429;&#28982;&#26159;webpack5&#29305;&#24615;&#65292;&#20294;&#26159;vite&#26377;&#23545;&#24212;&#30340;&#25554;&#20214;&#25903;&#25345;&#65306;@originjs/vite-plugin-federaion&nbsp;,&#21487;&#20197;&#22312;&#20813;&#20110;...</p> <div>
+<h2>React</h2>
+<p>&#39033;&#30446;&#30340;&#25216;&#26415;&#26632;&#26159;React+Vite&#65292;&#27169;&#22359;&#32852;&#37030;&#34429;&#28982;&#26159;webpack5&#29305;&#24615;&#65292;&#20294;&#26159;vite&#26377;&#23545;&#24212;&#30340;&#25554;&#20214;&#25903;&#25345;&#65306;<a href="https://github.com/originjs/vite-plugin-federation" rel="noopener noreferrer" target="_blank">@originjs/vite-plugin-federaion</a>&nbsp;,&#21487;&#20197;&#22312;&#20813;&#20110;webpack&#37197;&#32622;&#30340;&#24773;&#20917;&#19979;&#23454;&#29616;&#27169;&#22359;&#32852;&#37030;&#12290;</p>
+<h3>host&#37197;&#32622;</h3>
+<pre><code>export default defineConfig({
+  plugins: [
+    react(),
+    federation({
+      name: 'app',
+      remotes: {
+        remoteApp: 'http://localhost:5001/assets/remoteEntry.js',
+      },
+      shared: ['react','react-dom']
+    })
+  ],
+  build: {
+    modulePreload: false,
+    target: 'esnext',
+    minify: false,
+    cssCodeSplit: false  
+}})
+</code></pre>
+<h3>remote&#37197;&#32622;</h3>
+<pre><code>export default defineConfig({
+  plugins: [
+    react(),
+    federation({
+      name: "remote_app",
+      filename: "remoteEntry.js",
+      exposes: {
+        './Button': './src/components/Button',
+        './Bootstrap': './src/components/Bootstrap'
+      },
+      shared: ['react','react-dom']
+    })
+  ],
+  build: {
+    modulePreload: false,
+    target: 'esnext',
+    minify: false,
+    cssCodeSplit: false
+  }})
+</code></pre>
+<p>&#36825;&#37324;&#20854;&#23454;&#24050;&#32463;&#23601;&#26159;vite-plugin-federaion&#25552;&#20379;&#30340;&#31034;&#20363;&#29992;&#27861;&#20102;&#65292;&#38450;&#27490;&#31034;&#20363;&#21518;&#32493;&#34987;&#21024;&#38500;&#65292;&#36825;&#37324;&#20570;&#20010;&#35760;&#24405;&#12290;&#36890;&#24120;&#26469;&#35828;&#36825;&#20040;&#37197;&#32622;&#26159;&#24050;&#32463;&#36275;&#22815;&#23454;&#29616;&#27169;&#22359;&#32852;&#37030;&#20102;&#65292;&#21482;&#35201;&#35760;&#20303;&#20849;&#20139;&#27169;&#22359;&#30340;&#29256;&#26412;&#21495;&#24517;&#39035;&#19968;&#33268;&#65292;&#19968;&#33324;&#37117;&#19981;&#20250;&#26377;&#38382;&#39064;&#65292;&#20854;&#23454;monorepo&#36824;&#26159;&#27604;&#36739;&#36866;&#21512;&#30340;&#65292;&#27605;&#31455;&#20849;&#29992;&#23601;&#19981;&#29992;&#25805;&#24515;&#19968;&#33268;&#30340;&#38382;&#39064;&#20102;&#12290;</p>
+<h3>&#31034;&#20363;1&#65288;&#38745;&#24577;&#23548;&#20837;&#65289;</h3>
+<pre><code>import reactLogo from './assets/react.svg'
+import './App.css'
+import Button from 'remoteApp/Button';
+
+function App() {
+  return (
+    &lt;div className="App"&gt;
+      &lt;div&gt;
+        &lt;a href="https://vitejs.dev" target="_blank"&gt;
+          &lt;img src="/vite.svg" className="logo" alt="Vite logo" /&gt;
+        &lt;/a&gt;
+        &lt;a href="https://reactjs.org" target="_blank"&gt;
+          &lt;img src={reactLogo} className="logo react" alt="React logo" /&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;h1&gt;Vite + React&lt;/h1&gt;
+      &lt;div className="card"&gt;
+        &lt;Button /&gt;
+        &lt;p&gt;
+          Edit &lt;code&gt;src/App.jsx&lt;/code&gt; and save to test HMR
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p className="read-the-docs"&gt;
+        Click on the Vite and React logos to learn more
+      &lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+
+export default App
+</code></pre>
+<p>&#20294;&#26159;&#19981;&#36890;&#24120;&#30340;&#24773;&#20917;&#20986;&#29616;&#20102;&#65292;&#21487;&#20197;&#30475;&#21040;&#19978;&#38754;&#36148;&#30340;&#20195;&#30721;&#37117;&#26159;&#38745;&#24577;&#23548;&#20837;&#65292;&#20294;&#26159;&#23454;&#38469;&#19978;&#65292;&#25105;&#24076;&#26395;&#23454;&#29616;&#30340;&#26159;&#21160;&#24577;&#23548;&#20837;&#65306;&#21363;&#23487;&#20027;&#31243;&#24207;&#26159;&#36816;&#34892;&#26102;&#25165;&#30693;&#36947;&#35201;&#23548;&#20837;&#21738;&#20123;&#12289;&#21738;&#37324;&#12289;&#21738;&#20960;&#20010;&#36828;&#31243;&#31243;&#24207;&#30340;&#27169;&#22359;&#12290;&#24403;&#25105;&#25226;&#20195;&#30721;&#25913;&#25104;&#36825;&#26679;&#26102;&#65292;&#31532;&#19968;&#20010;&#24754;&#21095;&#20986;&#29616;&#20102;</p>
+<p>&#24754;&#21095;&#20195;&#30721;</p>
+<pre><code>function App() {  const url = 'http://localhost:5001/assets/remoteEntry.js'  const loadRemoteComponents =async ()=&gt;{    try {      const module = await import(/* @vite-ignore */ url);      const bootstrap = await module.get('./Bootstrap');      const exportedModule = bootstrap();      exportedModule()          } catch (error) {      console.error('Error loading remote module:', error);    }  }
+</code></pre>
+<p>&#19982;&#24754;&#21095;&nbsp;<code>Cannot read properties of null (reading 'useState')</code></p>
+<p><img alt="" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f8d8760cbe03420fad0a2bb7c0bd6aef~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=949&amp;h=374&amp;s=152931&amp;e=jpg&amp;b=fcf0ef" /></p>
+<p>&#26399;&#38388;&#23581;&#35797;&#20102;&#26080;&#25968;&#27425;&#30171;&#39554;gpt&#12289;&#23545;&#27604;&#20381;&#36182;&#29256;&#26412;&#21495;&#12289;&#30452;&#25509;&#22797;&#21046;node_modules&#12289;debug&#28304;&#30721;&#65292;&#32456;&#20110;&#30830;&#35748;&#20102;&#26681;&#28304;&#26159;&#23487;&#20027;&#31243;&#24207;&#19982;&#36828;&#31243;&#31243;&#24207;&#27809;&#26377;&#20849;&#29992;&#21516;&#19968;&#20010;React&#23454;&#20363;&#65292;&#20294;&#26159;&#38382;&#39064;&#24182;&#19981;&#20986;&#22312;&#37197;&#32622;&#19982;&#20381;&#36182;&#29256;&#26412;&#19978;&#65292;&#32780;&#26159;&#22240;&#20026;&#21160;&#24577;&#23548;&#20837;&#12290;&#22914;&#26524;&#30452;&#25509;&#20351;&#29992;&#38745;&#24577;&#23548;&#20837;&#30340;import&#65292;&#21017;&#20004;&#20010;&#31243;&#24207;&#26159;&#20849;&#29992;&#19968;&#20010;&#23454;&#20363;&#65292;&#20294;&#36208;&#21160;&#24577;&#30340;import&#26102;&#65292;&#23601;&#20250;&#37325;&#26032;&#21019;&#24314;&#19968;&#20010;react&#23454;&#20363;&#12290;&#22312;&#23454;&#38469;&#24320;&#21457;&#36807;&#31243;&#20013;&#65292;&#25105;&#26159;&#20808;&#20889;angular&#20877;&#20889;react&#65292;angular&#29256;&#26412;&#30340;mf&#26377;&#25552;&#20379;&#19968;&#20010;loadRemoteModule&#65292;&#21487;&#20197;&#19997;&#28369;&#21160;&#24577;&#36733;&#20837;&#36828;&#31243;&#39033;&#30446;&#65292;&#20294;&#26159;&#25105;&#22312;vite-plugin-federation&#27809;&#26377;&#25214;&#21040;&#31867;&#20284;&#30340;&#23548;&#20986;&#26041;&#27861;&#12290;</p>
+<p>&#26597;&#30475;&#20102;github&#19978;&#30340;issue&#65292;&#26377;&#20960;&#20010;&#24320;&#21551;&#20102;&#24456;&#20037;&#37117;&#27809;&#26377;close&#30340;&#30456;&#20284;issue&#65292;&#30452;&#21040;&#30475;&#21040;&#20102;&#21478;&#19968;&#31181;&#30475;&#30528;&#23601;&#24456;&#28856;&#35010;&#30340;&#20889;&#27861;&#65292;&#26368;&#21518;&#25443;&#40723;&#20986;&#26469;&#20102;&#21487;&#29992;&#29256;&#26412;</p>
+<h3>&#31034;&#20363;2&#65288;&#36816;&#34892;&#26102;&#21160;&#24577;&#23548;&#20837;&#65289;</h3>
+<pre><code>import {__federation_method_setRemote, __federation_method_getRemote, __federation_method_unwrapDefault} from 'virtual:__federation__'
+function App() {
+  const loadRemoteComponents =async ()=&gt;{
+    try {      // &#35774;&#32622;&#36828;&#31243;&#27169;&#22359;&#30340;&#37197;&#32622;
+      __federation_method_setRemote("remoteModule", {
+        url: () =&gt; Promise.resolve("http://localhost:5001/assets/remoteEntry.js"),
+        format: "esm",
+        from: "vite",
+      });
+        // &#33719;&#21462;&#36828;&#31243;&#27169;&#22359;
+      const moduleWrapped = await __federation_method_getRemote("remoteModule", "./Bootstrap");
+        // &#35299;&#21253;&#40664;&#35748;&#23548;&#20986;&#30340;&#27169;&#22359;
+      const bootstrap = await __federation_method_unwrapDefault(moduleWrapped);
+      bootstrap();
+          } catch (error) {
+      console.error('Error loading remote module:', error);
+    }
+  };
+  }
+</code></pre>
+<p>&#33267;&#27492;&#65292;&#23436;&#25104;Vite+React&#19978;&#39033;&#30446;&#30340;MF&#33853;&#22320;</p>
+<h2>Angular</h2>
+<p>&#25105;&#29992;&#30340;angular-cli&#25645;&#24314;&#30340;angular&#39033;&#30446;&#65292;&#37197;&#32622;webpack&#26102;&#20063;&#30456;&#24403;&#39034;&#28369;</p>
+<h3>&#20934;&#22791;&#24037;&#20316;</h3>
+<p>&#23433;&#35013;&#25554;&#20214;<code>npm i&nbsp;@angular-architects/module-federation@15&nbsp;-D</code></p>
+<p>&#23548;&#20837;webpack&#33258;&#23450;&#20041;&#37197;&#32622;&#25554;&#20214;<code>@angular-builders/custom-webpack</code></p>
+<p>&#20462;&#25913;angular.json&#65292;&#20351;webpack&#33258;&#23450;&#20041;&#37197;&#32622;&#33021;&#29983;&#25928;&#65292;&#27604;&#22914;<code>"builder": "@angular-builders/custom-webpack:dev-server"</code></p>
+<p>&#36828;&#31243;&#39033;&#30446;&#38656;&#35201;&#22312;angular.json&#30340;serve&#20013;&#21152;&#20837;</p>
+<p><code>"options": { "port": 5555, "publicHost": "http://localhost:5555" }</code></p>
+<h3>&#23487;&#20027;&#37197;&#32622;</h3>
+<pre><code>//webpack.config.ts
+const mf = require('@angular-architects/module-federation/webpack')
+const path = require('path')
+const sharedMappings = new mf.SharedMappings()
+sharedMappings.register(path.join(__dirname, '../../tsconfig.json'),
+ [  /* mapped paths to share */])
+module.exports = mf.withModuleFederationPlugin({
+  name: 'main',
+  filename: 'main.js',
+  shared: {
+    ...mf.shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' })
+  }})
+</code></pre>
+<h3>&#36828;&#31243;&#37197;&#32622;</h3>
+<pre><code>import { environment } from "projects/core/src/environments/environment";
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const mf = require("@angular-architects/module-federation/webpack");
+const path = require("path");
+const share = mf.share;
+const { dependencies, devDependencies } = require('./package.json')
+const sharedMappings = new mf.SharedMappings();
+sharedMappings.register(
+  path.join(__dirname, './tsconfig.json'),
+  [/* mapped paths to share */]);
+module.exports = {
+  output: {
+    uniqueName: environment.pluginName,
+    publicPath: `/plugin/user/`,
+  },
+  optimization: {
+    runtimeChunk: false
+  },
+     resolve: {
+    alias: {
+      ...sharedMappings.getAliases(),
+    }
+  },
+  experiments: {
+    outputModule: true
+  },
+  plugins: [
+    new ModuleFederationPlugin({
+        library: { type: "module" },
+        name: environment.pluginName,
+        filename: "EntryRemote.js",
+        exposes: {
+            './AppModule': './projects/core/src/app/app.module.ts',
+            './LoginModule': './projects/core/src/app/layout/login/login.module.ts', 
+           './Bootstrap':'./projects/core/src/app/layout/bootstrap/bootstrap.ts'
+          },
+           shared: share({
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/animations": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          "@angular/platform-browser/animations": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          ...sharedMappings.getDescriptors()
+        })
+    }),
+    sharedMappings.getPlugin()
+  ],};
+</code></pre>
+<h3>&#23487;&#20027;&#21152;&#36733;&#36828;&#31243;&#27169;&#22359;</h3>
+<p>&#27880;&#24847;&#36825;&#37324;&#20351;&#29992;&#20102;nginx&#20195;&#29702;&#65292;&#23454;&#38469;&#24320;&#21457;&#36807;&#31243;&#20013;&#20063;&#35201;&#27880;&#24847;&#36328;&#22495;&#38382;&#39064;</p>
+<pre><code>import { loadRemoteModule } from '@angular-architects/module-federation'
+...
+loadModule =async () =&gt; {
+       const Module = await loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:3000/plugin/user/entryRemote.js',
+        exposedModule: `./Bootstrap`,
+        remoteName: pluginName
+      })
+       return Module[exposedModule]
+   }
+</code></pre>
+<h3>&#36393;&#22353;</h3>
+<p><strong>&#20851;&#20110;&#36335;&#30001;&#20999;&#25442;&#21518;&#39029;&#38754;&#33410;&#28857;&#27809;&#26377;&#28165;&#31354;</strong></p>
+<p>&#24494;&#24212;&#29992;&#24341;&#29992;NoopAnimationsModule/BrowserAnimationModule&#23548;&#33268;&#24494;&#24212;&#29992;&#33410;&#28857;&#26080;&#27861;&#34987;&#28165;&#31354;&#65288;&#36335;&#30001;&#20999;&#25442;&#26102;) &#65292;&#38656;&#35201;&#21024;&#38500;&#24494;&#24212;&#29992;&#20869;&#30340;BrowserAnimationModule&#65288;&#21487;&#33021;&#20250;&#24433;&#21709;&#24494;&#24212;&#29992;&#29420;&#31435;&#36816;&#34892;&#65289;&#65306;https://stackoverflow.com/questions/67386392/angular-module-federation-browsermodule</p>
+<p><strong><a href="https://levelup.gitconnected.com/tailwind-css-module-federation-9cbb25d70004" rel="noopener noreferrer" target="_blank">tailwind&#26080;&#27861;&#20849;&#20139;</a></strong></p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T02:30:06+00:00</pubDate>
+</item>
+<item>
+<title>优化 React 组件性能：深入理解 useEffect 第二个参数的使用</title>
+<link>https://juejin.cn/post/7306023362132148234</link>
+<guid>https://juejin.cn/post/7306023362132148234</guid>
+<content:encoded><![CDATA[
+<div> <p>&#22312;&#19978;&#19968;&#31687;&#25991;&#31456;&#12298;&#28145;&#20837;&#35299;&#26512;React&#20013;useEffect&#30340;&#21407;&#29702;&#19982;&#23454;&#38469;&#24212;&#29992;&#12299;&#20013;&#65292;&#25105;&#20204;&#20102;&#35299;&#21040;React &#30340; useEffect &#26159;&#22788;&#29702;&#21103;&#20316;&#29992;&#30340;&#37325;&#35201;&#24037;&#20855;&#12290;
+React &#32452;&#20214;&#30340;&#24615;&#33021;&#20248;&#21270;&#19968;&#30452;&#26159;&#21069;&#31471;&#24320;&#21457;&#20013;&#30340;&#37325;&#35201;&#35758;&#39064;&#12290;...</p> <div>
+<p>&#22312;&#19978;&#19968;&#31687;&#25991;&#31456;&#12298;&#28145;&#20837;&#35299;&#26512;React&#20013;useEffect&#30340;&#21407;&#29702;&#19982;&#23454;&#38469;&#24212;&#29992;&#12299;&#20013;&#65292;&#25105;&#20204;&#20102;&#35299;&#21040;React &#30340; useEffect &#26159;&#22788;&#29702;&#21103;&#20316;&#29992;&#30340;&#37325;&#35201;&#24037;&#20855;&#12290;</p>
+<p>React &#32452;&#20214;&#30340;&#24615;&#33021;&#20248;&#21270;&#19968;&#30452;&#26159;&#21069;&#31471;&#24320;&#21457;&#20013;&#30340;&#37325;&#35201;&#35758;&#39064;&#12290;useEffect &#26159; React Hooks &#25552;&#20379;&#30340;&#19968;&#20010;&#24378;&#22823;&#24037;&#20855;&#65292;&#23427;&#20801;&#35768;&#25105;&#20204;&#22788;&#29702;&#19968;&#20123;&#19982;&#28210;&#26579;&#26080;&#20851;&#30340;&#25805;&#20316;&#65292;&#27604;&#22914;&#25968;&#25454;&#33719;&#21462;&#12289;&#35746;&#38405;&#21644;&#25163;&#21160;&#25805;&#20316; DOM&#12290;&#28982;&#32780;&#65292;&#22312;&#20351;&#29992; useEffect &#26102;&#65292;&#25105;&#20204;&#24517;&#39035;&#35880;&#24910;&#36873;&#25321;&#31532;&#20108;&#20010;&#21442;&#25968;&#65292;&#20197;&#20415;&#22312;&#30830;&#20445;&#21151;&#33021;&#27491;&#30830;&#30340;&#21516;&#26102;&#65292;&#26368;&#22823;&#38480;&#24230;&#22320;&#25552;&#39640;&#24615;&#33021;&#12290;</p>
+<h2>&#22522;&#26412;&#29992;&#27861;</h2>
+<p>&#39318;&#20808;&#65292;&#25105;&#20204;&#26469;&#22238;&#39038;&#19968;&#19979; useEffect &#30340;&#22522;&#26412;&#29992;&#27861;&#65306;</p>
+<pre><code>useEffect(() =&gt; {
+  // &#21103;&#20316;&#29992;&#20195;&#30721;
+}, []);
+
+</code></pre>
+<p>&#22312;&#36825;&#20010;&#20363;&#23376;&#20013;&#65292;useEffect &#19981;&#20381;&#36182;&#20110;&#20219;&#20309;&#29366;&#24577;&#65292;&#22240;&#27492;&#23427;&#21482;&#22312;&#32452;&#20214;&#25346;&#36733;&#26102;&#25191;&#34892;&#19968;&#27425;&#12290;&#36825;&#26159;&#19968;&#20010;&#24456;&#22909;&#30340;&#20248;&#21270;&#23454;&#36341;&#65292;&#29305;&#21035;&#26159;&#24403;&#25105;&#20204;&#38656;&#35201;&#22312;&#32452;&#20214;&#21152;&#36733;&#26102;&#25191;&#34892;&#19968;&#20123;&#21021;&#22987;&#21270;&#25805;&#20316;&#26102;&#12290;</p>
+<h2>&#20381;&#36182;&#20110;&#29305;&#23450;&#29366;&#24577;&#30340;&#21103;&#20316;&#29992;</h2>
+<p>useEffect &#30340;&#31532;&#20108;&#20010;&#21442;&#25968;&#26159; <code>[count]</code>&#65292;&#34920;&#31034;&#21482;&#26377;&#24403; count &#21457;&#29983;&#21464;&#21270;&#26102;&#65292;&#21103;&#20316;&#29992;&#25165;&#20250;&#34987;&#35302;&#21457;&#12290;&#36825;&#26159;&#19968;&#20010;&#24120;&#35265;&#30340;&#29992;&#27861;&#65292;&#29992;&#20110;&#22788;&#29702;&#19982;&#29305;&#23450;&#29366;&#24577;&#30456;&#20851;&#30340;&#21103;&#20316;&#29992;&#65292;&#27604;&#22914;&#26681;&#25454;&#29366;&#24577;&#21457;&#36215;&#25968;&#25454;&#35831;&#27714;&#25110;&#26356;&#26032; DOM&#12290;</p>
+<pre><code>const [count, setCount] = useState(0);
+
+useEffect(() =&gt; {
+  // &#24403; count &#21457;&#29983;&#21464;&#21270;&#26102;&#25191;&#34892;
+  console.log('Count has changed:', count);
+}, [count]);
+
+</code></pre>
+<h2>&#20381;&#36182;&#20110;&#22810;&#20010;&#29366;&#24577;&#30340;&#21103;&#20316;&#29992;</h2>
+<pre><code>const [count, setCount] = useState(0);
+const [name, setName] = useState('');
+
+useEffect(() =&gt; {
+  // &#24403; count &#25110; name &#21457;&#29983;&#21464;&#21270;&#26102;&#25191;&#34892;
+  console.log('Count or Name has changed:', count, name);
+}, [count, name]);
+
+</code></pre>
+<p>&#22312;&#36825;&#20010;&#20363;&#23376;&#20013;&#65292;useEffect &#30340;&#31532;&#20108;&#20010;&#21442;&#25968;&#26159; <code>[count, name]</code>&#65292;&#34920;&#31034;&#21482;&#26377;&#24403; count &#25110; name &#20013;&#20219;&#24847;&#19968;&#20010;&#21457;&#29983;&#21464;&#21270;&#26102;&#65292;&#21103;&#20316;&#29992;&#25165;&#20250;&#34987;&#35302;&#21457;&#12290;&#36825;&#31181;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#21487;&#20197;&#31934;&#30830;&#22320;&#25511;&#21046;&#21103;&#20316;&#29992;&#30340;&#25191;&#34892;&#26102;&#26426;&#65292;&#36991;&#20813;&#19981;&#24517;&#35201;&#30340;&#37325;&#22797;&#25191;&#34892;&#12290;</p>
+<h2>&#19981;&#20256;&#36882;&#31532;&#20108;&#20010;&#21442;&#25968; vs. &#20256;&#36882;&#31354;&#25968;&#32452;</h2>
+<p>&#24403;&#25105;&#20204;&#19981;&#20256;&#36882;&#31532;&#20108;&#20010;&#21442;&#25968;&#26102;&#65292;&#21103;&#20316;&#29992;&#23558;&#22312;&#27599;&#27425;&#32452;&#20214;&#28210;&#26579;&#26102;&#37117;&#25191;&#34892;&#12290;&#36825;&#21487;&#33021;&#23548;&#33268;&#24615;&#33021;&#38382;&#39064;&#65292;&#22240;&#27492;&#24314;&#35758;&#20165;&#22312;&#30830;&#23454;&#38656;&#35201;&#22312;&#27599;&#27425;&#28210;&#26579;&#26102;&#25191;&#34892;&#21103;&#20316;&#29992;&#26102;&#20351;&#29992;&#36825;&#31181;&#24418;&#24335;&#65292;&#24182;&#27880;&#24847;&#21103;&#20316;&#29992;&#30340;&#24615;&#33021;&#24433;&#21709;&#12290;</p>
+<pre><code>
+useEffect(() =&gt; {
+  // &#27599;&#27425;&#32452;&#20214;&#28210;&#26579;&#26102;&#37117;&#25191;&#34892;
+  console.log('Component rendered');
+});
+
+</code></pre>
+<p>&#30456;&#27604;&#20043;&#19979;&#65292;&#24403;&#20256;&#36882;&#31354;&#25968;&#32452; [] &#20316;&#20026;&#31532;&#20108;&#20010;&#21442;&#25968;&#26102;&#65292;&#21103;&#20316;&#29992;&#23558;&#20165;&#22312;&#32452;&#20214;&#25346;&#36733;&#21644;&#21368;&#36733;&#26102;&#25191;&#34892;&#65292;&#31867;&#20284;&#20110;&#20256;&#32479;&#31867;&#32452;&#20214;&#30340; <code>componentDidMount</code> &#21644; <code>componentWillUnmount</code> &#29983;&#21629;&#21608;&#26399;&#12290;&#36825;&#26159;&#19968;&#31181;&#26377;&#25928;&#30340;&#24615;&#33021;&#20248;&#21270;&#26041;&#24335;&#65292;&#23588;&#20854;&#26159;&#22312;&#22788;&#29702;&#19968;&#20123;&#20165;&#38656;&#35201;&#22312;&#32452;&#20214;&#29983;&#21629;&#21608;&#26399;&#29305;&#23450;&#38454;&#27573;&#25191;&#34892;&#30340;&#25805;&#20316;&#26102;&#12290;</p>
+<pre><code>useEffect(() =&gt; {
+  // &#21482;&#22312;&#32452;&#20214;&#25346;&#36733;&#26102;&#25191;&#34892;
+  console.log('Component mounted');
+}, []);
+
+</code></pre>
+<h2>&#19981;&#20256;&#36882;&#31532;&#20108;&#20010;&#21442;&#25968;&#30340;&#27880;&#24847;&#20107;&#39033;</h2>
+<p>&#22312;&#30465;&#30053;&#31532;&#20108;&#20010;&#21442;&#25968;&#26102;&#65292;&#21103;&#20316;&#29992;&#23558;&#22312;&#27599;&#27425;&#28210;&#26579;&#26102;&#37117;&#25191;&#34892;&#12290;&#36825;&#21487;&#33021;&#26159;&#24517;&#35201;&#30340;&#65292;&#20294;&#35201;&#35880;&#24910;&#20351;&#29992;&#65292;&#20197;&#20813;&#23548;&#33268;&#19981;&#24517;&#35201;&#30340;&#24615;&#33021;&#25439;&#32791;&#12290;&#21482;&#26377;&#22312;&#30830;&#23454;&#38656;&#35201;&#22312;&#27599;&#27425;&#28210;&#26579;&#26102;&#25191;&#34892;&#21103;&#20316;&#29992;&#26102;&#25165;&#20351;&#29992;&#36825;&#31181;&#24418;&#24335;&#65292;&#24182;&#26102;&#21051;&#27880;&#24847;&#21103;&#20316;&#29992;&#30340;&#24615;&#33021;&#24433;&#21709;&#12290;</p>
+<h2>&#24635;&#32467;</h2>
+<p>&#36890;&#36807;&#28145;&#20837;&#29702;&#35299; useEffect &#31532;&#20108;&#20010;&#21442;&#25968;&#30340;&#19981;&#21516;&#24773;&#20917;&#65292;&#25105;&#20204;&#21487;&#20197;&#26356;&#31934;&#30830;&#22320;&#25511;&#21046;&#21103;&#20316;&#29992;&#30340;&#35302;&#21457;&#26102;&#26426;&#65292;&#20174;&#32780;&#20248;&#21270;&#24615;&#33021;&#24182;&#30830;&#20445;&#27491;&#30830;&#30340;&#34892;&#20026;&#12290;&#22312;&#23454;&#38469;&#39033;&#30446;&#20013;&#65292;&#36873;&#25321;&#21512;&#36866;&#30340; useEffect &#31532;&#20108;&#20010;&#21442;&#25968;&#26159;&#19968;&#39033;&#37325;&#35201;&#30340;&#20248;&#21270;&#31574;&#30053;&#65292;&#23427;&#21487;&#20197;&#26377;&#25928;&#20943;&#23569;&#19981;&#24517;&#35201;&#30340;&#35745;&#31639;&#21644;&#35831;&#27714;&#65292;&#25552;&#39640;&#24212;&#29992;&#30340;&#21709;&#24212;&#24615;&#33021;&#12290;</p>
+<p>&#24076;&#26395;&#26412;&#25991;&#33021;&#22815;&#24110;&#21161;&#20320;&#26356;&#22909;&#22320;&#29702;&#35299;&#21644;&#20351;&#29992; useEffect&#65292;&#20174;&#32780;&#22312; React &#39033;&#30446;&#20013;&#23454;&#29616;&#26356;&#39640;&#25928;&#30340;&#32452;&#20214;&#12290;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T01:36:41+00:00</pubDate>
+</item>
+<item>
+<title>（26）Redux 进阶——② Redux 中发送异步请求获取数据 | React 基础理论实操</title>
+<link>https://juejin.cn/post/7306038092207554598</link>
+<guid>https://juejin.cn/post/7306038092207554598</guid>
+<content:encoded><![CDATA[
+<div> <p>&#36716;&#36733;&#35831;&#27880;&#26126;&#20986;&#22788;&#65292;&#26410;&#32463;&#21516;&#24847;&#65292;&#19981;&#21487;&#20462;&#25913;&#25991;&#31456;&#20869;&#23481;&#12290;
+
+&#128293;&#128293;&#128293;&ldquo;&#21069;&#31471;&#19968;&#19975;&#23567;&#26102;&rdquo;&#20004;&#22823;&#26126;&#26143;&#19987;&#26639;&mdash;&mdash;&ldquo;&#20174;&#38646;&#22522;&#30784;&#21040;&#36731;&#26494;&#23601;&#19994;&rdquo;&#12289;&ldquo;&#21069;&#31471;&#38754;&#35797;&#21047;&#39064;&rdquo;&#65292;&#24050;&#20110;&#26412;&#26376;&#22823;&#25913;&#29256;&#65292;&#21512;&#20108;&#20026;&#19968;&#65292;&#24178;&#36135;&#28385;&#28385;&#65292;&#27426;&#36814;&#28857;&#20987;&#20844;&#20247;&#21495;&#33756;&#21333;&#26639;&#21508;&#27169;&#22359;&#20102;&#35299;&#12290;
+&#28041;...</p> <div>
+<pre><code>&#36716;&#36733;&#35831;&#27880;&#26126;&#20986;&#22788;&#65292;&#26410;&#32463;&#21516;&#24847;&#65292;&#19981;&#21487;&#20462;&#25913;&#25991;&#31456;&#20869;&#23481;&#12290;
+</code></pre>
+<p><strong>&#128293;&#128293;&#128293;&ldquo;&#21069;&#31471;&#19968;&#19975;&#23567;&#26102;&rdquo;&#20004;&#22823;&#26126;&#26143;&#19987;&#26639;&mdash;&mdash;&ldquo;<a href="https://mp.weixin.qq.com/s/nGmZqQzEtEqUgcVz6j3q1w" rel="noopener noreferrer" target="_blank">&#20174;&#38646;&#22522;&#30784;&#21040;&#36731;&#26494;&#23601;&#19994;</a>&rdquo;&#12289;&ldquo;<a href="https://mp.weixin.qq.com/s/u8_t1-2co1l8tMdoHgMu3g" rel="noopener noreferrer" target="_blank">&#21069;&#31471;&#38754;&#35797;&#21047;&#39064;</a>&rdquo;&#65292;&#24050;&#20110;&#26412;&#26376;&#22823;&#25913;&#29256;&#65292;&#21512;&#20108;&#20026;&#19968;&#65292;&#24178;&#36135;&#28385;&#28385;&#65292;&#27426;&#36814;&#28857;&#20987;&#20844;&#20247;&#21495;&#33756;&#21333;&#26639;&#21508;&#27169;&#22359;&#20102;&#35299;&#12290;</strong></p>
+<pre><code>&#28041;&#21450;&#38754;&#35797;&#39064;&#65306;
+&#22914;&#20309;&#21457;&#36215; AJAX &#35843;&#29992;&#20197;&#21450;&#24212;&#35813;&#22312;&#21738;&#20123;&#32452;&#20214;&#29983;&#21629;&#21608;&#26399;&#26041;&#27861;&#20013;&#36827;&#34892; AJAX &#35843;&#29992;&#65311;
+
+&#32534;&#21495;&#65306;[react_26]
+</code></pre>
+<br />
+<h2>1 &#33719;&#21462;&#25509;&#21475;&#30340;&#25968;&#25454;</h2>
+<p>&#32039;&#25509;&#19978;&#31687;&#20195;&#30721;&#65292;&#25105;&#24076;&#26395;&#21457;&#36865;&#19968;&#20010; AJAX &#35831;&#27714;&#65292;&#24182;&#23558;&#33719;&#21462;&#21040;&#30340;&#25968;&#25454;&#25918;&#21040; TodoList &#21015;&#34920;&#39033;&#37324;&#12290;<br />
+&#128279;&#21069;&#32622;&#30693;&#35782;&#65306;&#12298;React &#36827;&#38454;&mdash;&mdash;&#9319; React &#29983;&#21629;&#21608;&#26399;&#20989;&#25968;&#65288;&#19979;&#65289;&#65306;&#24039;&#29992; componentDidMount &#36827;&#34892; AJAX &#25968;&#25454;&#35831;&#27714;&#12299;</p>
+<p>&#25171;&#24320; <code>TodoList.js</code> &#25991;&#20214;&#65288;&#9888;&#65039;&#27880;&#24847;&#65306;&#25105;&#20204;&#20381;&#28982;&#29992;&#19978;&#36793;&ldquo;&#21069;&#32622;&#30693;&#35782;&rdquo;&#37324; RAP2 &#27169;&#25311;&#22909;&#30340;&#25509;&#21475;&#65281;&#65289;</p>
+<pre><code>import React, {Component} from "react";
+import 'antd/dist/antd.css';
+import store from "./store";
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction} from "./store/actionCreators"; 
+import TodoListUI from "./TodoListUI"; 
+
+import axios from "axios"; // 1&#65039;&#8419;&#39318;&#20808;&#65292;&#24341;&#20837; axios &#27169;&#22359;&#65307;
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = store.getState();
+    
+    this.handleInputChange = this.handleInputChange.bind(this);  
+    
+    this.handleStoreChange = this.handleStoreChange.bind(this);  
+    
+    this.handleButtonClick = this.handleButtonClick.bind(this); 
+
+    this.handleItemDelete = this.handleItemDelete.bind(this);
+    
+    store.subscribe(this.handleStoreChange);  
+    
+  }
+  
+  render() {
+    return(
+      &lt;TodoListUI
+        inputValue={this.state.inputValue}
+        list={this.state.list}  
+        handleInputChange={this.handleInputChange}
+        handleButtonClick={this.handleButtonClick}
+        handleItemDelete={this.handleItemDelete}
+      /&gt;
+    )
+  }
+  
+  componentDidMount() { /*
+      2&#65039;&#8419;&#28982;&#21518;&#22312; componentDidMount &#20989;&#25968;&#37324;&#65292;
+                        &#21435;&#35843;&#29992; axios &#30340;&#30456;&#20851;&#26041;&#27861;&#33719;&#21462;&#25968;&#25454;&#65307;
+                         */
+    
+    // 3&#65039;&#8419;&#35843;&#29992; axios &#30340; get &#26041;&#27861;&#65292;&#21435;&#33719;&#21462;&#27169;&#25311;&#25509;&#21475;&#37324;&#30340;&#25968;&#25454;&#65307;
+    axios.get("http://rap2api.taobao.org/app/mock/232799/api/todolist")  
+    
+    .then((res) =&gt; {  
+    const data = res.data.data; // 4&#65039;&#8419;&#19968;&#26086;&#35831;&#27714;&#25104;&#21151;&#65292;&#23601;&#23558; res.data.data &#36825;&#20010;&ldquo;&#25968;&#32452;&rdquo;&#36171;&#20540;&#32473; data&#65307;
+    })
+    
+    .catch(() =&gt; {alert("error")})
+  } 
+  
+  handleInputChange(e) { 
+
+    const action = getInputChangeAction(e.target.value)
+    
+    store.dispatch(action);  
+  }
+
+  handleStoreChange() { 
+    
+    this.setState(store.getState()); 
+  }
+
+
+  handleButtonClick() { 
+    
+    const action = getAddItemAction();  
+    
+    store.dispatch(action); 
+  }
+
+  handleItemDelete(index) { 
+
+    const action = getDeleteItemAction(index);
+    
+    store.dispatch(action); 
+  } 
+
+}
+
+export default TodoList;
+</code></pre>
+<br />
+<h2>2 &#36890;&#36807; Redux &#30340;&#24037;&#20316;&#27969;&#31243;&#65292;&#36816;&#29992;&#25509;&#21475;&#36820;&#22238;&#30340;&#25968;&#25454;</h2>
+<p>5&#65039;&#8419;&#26082;&#28982;&#33719;&#21462;&#21040;&#20102;&#25509;&#21475;&#30340;&#25968;&#25454;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#25353;&#29031; Redux &#30340;&#24037;&#20316;&#27969;&#31243;&#36827;&#34892;&#19968;&#27493;&#27493;&#25805;&#20316;&#65307;</p>
+<p>&#20877;&#27425;&#25171;&#24320; <code>TodoList.js</code> &#25991;&#20214;&#65307;</p>
+<pre><code>import React, {Component} from "react";
+import 'antd/dist/antd.css';
+import store from "./store";
+
+// 5&#65039;&#8419;-&#9314;&#65306;&#24341;&#20837; initListAction&#65307;
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction} from "./store/actionCreators"; 
+
+import TodoListUI from "./TodoListUI"; 
+
+import axios from "axios";
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = store.getState();
+    
+    this.handleInputChange = this.handleInputChange.bind(this);  
+    
+    this.handleStoreChange = this.handleStoreChange.bind(this);  
+    
+    this.handleButtonClick = this.handleButtonClick.bind(this); 
+
+    this.handleItemDelete = this.handleItemDelete.bind(this);
+    
+    store.subscribe(this.handleStoreChange);  
+    
+  }
+  
+  render() {
+    return(
+      &lt;TodoListUI
+        inputValue={this.state.inputValue}
+        list={this.state.list}  
+        handleInputChange={this.handleInputChange}
+        handleButtonClick={this.handleButtonClick}
+        handleItemDelete={this.handleItemDelete}
+      /&gt;
+    )
+  }
+  
+  componentDidMount() { 
+    axios.get("http://rap2api.taobao.org/app/mock/232799/api/todolist")  
+    
+    .then((res) =&gt; {  
+    const data = res.data.data;  
+      
+      // 5&#65039;&#8419;-&#9312;&#65306;&#21019;&#24314;&#19968;&#20010; action&#65292;&#35753;&#23427;&#34920;&#31034;&#25105;&#35201;&#20570;&#30340;&#20107;&#65307;
+      const action = initListAction(data); /*
+       5&#65039;&#8419;-&#9313;&#65306;&#30001;&#20110;&#25105;&#20204;&#37319;&#29992;&#20102; actionCreator 
+       &#32479;&#19968;&#21019;&#24314; action &#30340;&#26041;&#24335;&#32534;&#20889;&#20195;&#30721;&#65292;
+                                           &#25925;&#36825;&#37324;&#30452;&#25509;&#35843;&#29992; initListAction &#20989;&#25968;&#65292;
+                                           &#24182;&#23558;&#33719;&#24471;&#30340;&ldquo;&#25968;&#25454;&rdquo;&#20316;&#20026;&ldquo;&#23454;&#21442;&rdquo;&#20256;&#20837;&#65307;
+                                           &#10071;&#65039;&#35831;&#19968;&#23450;&#35760;&#24471;&#22312;&#19978;&#36793;&#23545; initListAction &#24341;&#20837;&#65281;
+                                            */
+      
+    })
+    
+    .catch(() =&gt; {alert("error")})
+  } 
+  
+  handleInputChange(e) { 
+
+    const action = getInputChangeAction(e.target.value)
+    
+    store.dispatch(action);  
+  }
+
+  handleStoreChange() { 
+    
+    this.setState(store.getState()); 
+  }
+
+
+  handleButtonClick() { 
+    
+    const action = getAddItemAction();  
+    
+    store.dispatch(action); 
+  }
+
+  handleItemDelete(index) { 
+
+    const action = getDeleteItemAction(index);
+    
+    store.dispatch(action); 
+  } 
+
+}
+
+export default TodoList;
+</code></pre>
+<p>5&#65039;&#8419;-&#9315;&#65306;&#30001;&#20110;&#25105;&#20204;&#37319;&#29992;&#20102; actionTypes &#30340;&#25286;&#20998;&#65292; &#25925;&#38656;&#35201;&#22312; <code>actionTypes.js</code> &#20013;&#23450;&#20041;&#24120;&#37327; <code>INIT_LIST_ACTION</code> &#65307;</p>
+<pre><code>export const CHANGE_INPUT_VALUE = "change_input_value";
+export const ADD_TODO_ITEM = "add_todo_item";
+export const DELETE_TODO_ITEM = "delete_todo_item";
+
+// &#10071;&#65039;&#23450;&#20041;&#24120;&#37327; INIT_LIST_ACTION&#65307;
+export const INIT_LIST_ACTION = "init_list_action";
+</code></pre>
+<p>&#25171;&#24320; <code>actionCreators.js</code> &#25991;&#20214;&#65306;</p>
+<pre><code>// 5&#65039;&#8419;-&#9316;&#65306;&#24341;&#20837;&ldquo;&#24120;&#37327;&rdquo;INIT_LIST_ACTION&#65307;
+import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from "./actionTypes";  
+
+export const getInputChangeAction = (value) =&gt; ({ 
+  type: CHANGE_INPUT_VALUE, 
+  value  
+});
+
+export const getAddItem = () =&gt; ({
+  type: ADD_TODO_ITEM
+});
+
+export const getAddItemAction = () =&gt; ({
+  type: ADD_TODO_ITEM
+});
+
+export const getDeleteItemAction = (index) =&gt; ({
+  type: DELETE_TODO_ITEM,
+  index
+})
+
+export const initListAction = (data) =&gt; ({ /*
+ 5&#65039;&#8419;-&#9317;&#65306;&#22312; actionCreators.js 
+                                           &#37324;&#21019;&#24314;&#19968;&#20010; initListAction &#20989;&#25968;&#65292;
+                                           &#36825;&#20010;&#20989;&#25968;&#25509;&#25910;&#19968;&#20010; data&#65307;
+                                            */
+  
+  type: INIT_LIST_ACTION, /*
+  5&#65039;&#8419;-&#9318;&#65306;&#10071;&#65039;&#10071;&#65039;&#10071;&#65039;&#22312; React &#37324;&#65292;action &#38656;&#35201;&#29992;&ldquo;&#23545;&#35937;&rdquo;&#30340;&#24418;&#24335;&#26469;&#34920;&#31034;&#12290;
+                          &#37324;&#36793;&#26377;&#19968;&#20010; type &#23646;&#24615;&#65292;&#29992;&#23427;&#26469;&#21578;&#35785; store&ldquo;&#20320;&#35201;&#24110;&#25105;&#20570;&#30340;&#20107;&#24773;&#26159;&#20160;&#20040;&#65311;&rdquo;&#65307;
+                           */
+                          
+  data // 5&#65039;&#8419;-&#9319;&#65306;&#23558;&#25509;&#25910;&#21040;&#30340; data &#36820;&#22238;&#65307;
+})
+</code></pre>
+<p>5&#65039;&#8419;-&#9320;&#65306;&#22312; <code>TodoList.js</code> &#25991;&#20214;&#20013;&#65292;&#35843;&#29992; store &#30340; <code>dispatch</code> &#26041;&#27861;&#65292;&#23558; <code>action</code> &#21457;&#36865;&#32473; store&#65307;</p>
+<pre><code>import React, {Component} from "react";
+import 'antd/dist/antd.css';
+import store from "./store";
+
+import {getInputChangeAction, getAddItemAction, getDeleteItemAction, initListAction} from "./store/actionCreators"; 
+
+import TodoListUI from "./TodoListUI"; 
+
+import axios from "axios";
+
+class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = store.getState();
+    
+    this.handleInputChange = this.handleInputChange.bind(this);  
+    
+    this.handleStoreChange = this.handleStoreChange.bind(this);  
+    
+    this.handleButtonClick = this.handleButtonClick.bind(this); 
+
+    this.handleItemDelete = this.handleItemDelete.bind(this);
+    
+    store.subscribe(this.handleStoreChange);  
+    
+  }
+  
+  render() {
+    return(
+      &lt;TodoListUI
+        inputValue={this.state.inputValue}
+        list={this.state.list}  
+        handleInputChange={this.handleInputChange}
+        handleButtonClick={this.handleButtonClick}
+        handleItemDelete={this.handleItemDelete}
+      /&gt;
+    )
+  }
+  
+  componentDidMount() { 
+    axios.get("http://rap2api.taobao.org/app/mock/232799/api/todolist")  
+    
+    .then((res) =&gt; {  
+      const data = res.data.data;  
+      const action = initListAction(data);  
+      
+      store.dispatch(action); /*
+      &#10071;&#65039;&#10071;&#65039;&#10071;&#65039;&#35843;&#29992; store &#30340; dispatch &#26041;&#27861;&#65292;
+                              &#23558; action &#21457;&#36865;&#32473; store&#65307;
+                               */
+    })
+    
+    .catch(() =&gt; {alert("error")})  
+  } 
+  
+  handleInputChange(e) { 
+
+    const action = getInputChangeAction(e.target.value)
+    
+    store.dispatch(action);  
+  }
+
+  handleStoreChange() { 
+    
+    this.setState(store.getState()); 
+  }
+
+
+  handleButtonClick() { 
+    
+    const action = getAddItemAction();  
+    
+    store.dispatch(action); 
+  }
+
+  handleItemDelete(index) { 
+
+    const action = getDeleteItemAction(index);
+    
+    store.dispatch(action); 
+  } 
+
+}
+
+export default TodoList;
+</code></pre>
+<p>5&#65039;&#8419;-&#9321;&#65306;store &#20250;<strong>&#33258;&#21160;</strong>&#22320;&#24110;&#25105;&#20204;&#25226; <strong>&ldquo;&#24403;&#21069; store &#37324;&#30340;&#25968;&#25454; <code>previousState</code>&nbsp;&rdquo;&#21644;&ldquo;&#25509;&#25910;&#21040;&#30340;&nbsp;<code>action</code>&nbsp;&rdquo;</strong> &#36716;&#21457;&#32473; reducer&#65307;</p>
+<p>5&#65039;&#8419;-&#9322;&#65306;&#26082;&#28982; reducer &#25343;&#21040;&#20102; <code>previousValue</code> &#21644; <code>action</code> &#65292;&#25509;&#19979;&#26469; reducer &#23601;&#38656;&#35201;&#21578;&#35785; store&#65292;&#29616;&#22312;&#20320;&ldquo;&#26032;&#30340;&#25968;&#25454;&rdquo;&#24212;&#35813;&#21464;&#25104;&#20160;&#20040;&#26679;&#23376;&#65307;</p>
+<p>&#25171;&#24320; <code>reducer.js</code> &#25991;&#20214;&#65306;</p>
+<pre><code>// 5&#65039;&#8419;-&#9323;&#65306;&#24341;&#20837;&#24120;&#37327; INIT_LIST_ACTION&#65307;
+import {CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from "./actionTypes"; 
+
+const defaultState = { 
+  inputValue: "", 
+  list: []
+};
+
+export default (state = defaultState, action) =&gt; { 
+  
+  if(action.type === CHANGE_INPUT_VALUE) {  
+    
+    const newState = JSON.parse(JSON.stringify(state)); 
+  
+    newState.inputValue = action.value;  
+    
+    return newState;  
+  }
+  
+  if(action.type === INIT_LIST_ACTION) { /*
+   5&#65039;&#8419;-&#9324;&#65306;&#22914;&#26524; action &#30340;&#31867;&#22411;&#26159; 
+   INIT_LIST_ACTION&#65292;&#23601;&#25191;&#34892;&#19979;&#36793;&#30340;&#20195;&#30721;&#65307;
+                                          */
+    
+    const newState = JSON.parse(JSON.stringify(state)); // 5&#65039;&#8419;-&#9325;&#65306;&#21516;&#29702;&#65292;&#25335;&#36125;&#19968;&#20221;&#25968;&#25454;&#65307;
+  
+    newState.list = action.data; // 5&#65039;&#8419;-&#9326;&#65306;&#20351;&#26032;&#25968;&#25454;&#37324;&#30340; list &#31561;&#20110; action &#30340; data&#65307;
+    
+    return newState; // 5&#65039;&#8419;-&#9327;&#65306;&#21516;&#29702;&#65292;&#36820;&#22238;&#36825;&#20010;&#26032;&#25968;&#25454;&#12290;
+  }  
+  
+  if(action.type === ADD_TODO_ITEM) { 
+    
+    const newState = JSON.parse(JSON.stringify(state)); 
+    newState.list.push(newState.inputValue); 
+    newState.inputValue = ""; 
+    
+    return newState; 
+  }
+  
+  if(action.type === DELETE_TODO_ITEM) {  
+    
+    const newState = JSON.parse(JSON.stringify(state)); 
+    
+    newState.list.splice(action.index, 1);  
+
+    return newState; 
+  }
+  
+  return state;
+}
+</code></pre>
+<p>&#36820;&#22238;&#39029;&#38754;&#26597;&#30475;&#65288;&#19968;&#20999;&#27491;&#24120;&#65289;&#65306;
+<img alt="react_26-01.gif" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcc6b1012c9f41e5a9eb4cd547baf239~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=806&amp;h=334&amp;s=579972&amp;e=gif&amp;f=195&amp;b=fcfcfc" /></p>
+<p>&#19979;&#19968;&#31687;&#65292;&#25105;&#20204;&#20250;&#22312;&#26412;&#31687;&#30340;&#22522;&#30784;&#19978;&#65292;&#36890;&#36807;&#20351;&#29992; Redux &#20013;&#30340;&ldquo;&#20013;&#38388;&#20214;&rdquo;&#26469;&#23454;&#29616; AJAX &#25968;&#25454;&#35831;&#27714;&#65281;</p>
+<p>&#31069;&#22909;&#65292;qdywxs &hearts; you&#65281;</p>
+]]></content:encoded>
+
+<pubDate>2023-11-28T01:21:36+00:00</pubDate>
+</item>
+<item>
+<title>使用aj实现 chatgpt自动回复wx群聊消息</title>
+<link>https://juejin.cn/post/7306019253014200320</link>
+<guid>https://juejin.cn/post/7306019253014200320</guid>
+<content:encoded><![CDATA[
+<div> <p>&#22823;&#23478;&#22909;&#65292;&#20170;&#22825;&#25105;&#24819;&#32473;&#22823;&#23478;&#20171;&#32461;&#19968;&#19979;&#22914;&#20309;&#20351;&#29992;aj+chatgpt&#23454;&#29616;&#23454;&#26102;&#33258;&#21160;&#22238;&#22797;wx&#32676;&#32842;&#28040;&#24687;(&#24182;&#38750;api&#25509;&#21475;&#26041;&#24335;&#65292;&#32780;&#26159;&#32431;&#27169;&#25311;&#25163;&#21160;&#30340;&#26041;&#24335;&#65292;99%&#19981;&#20250;&#24322;&#24120;)&#12290;
+&#39318;&#20808;&#25105;&#20808;&#32473;&#23637;&#31034;&#19968;&#19979;&#25105;&#23553;&#35013;&#30340;&#19977;&#20010;&#24120;&#29992;&#30340;&#26041;&#27861;
+&#30011;&#19968;&#20010;&#24377;...</p> <div>
+<p>&#22823;&#23478;&#22909;&#65292;&#20170;&#22825;&#25105;&#24819;&#32473;&#22823;&#23478;&#20171;&#32461;&#19968;&#19979;&#22914;&#20309;&#20351;&#29992;aj+chatgpt&#23454;&#29616;&#23454;&#26102;&#33258;&#21160;&#22238;&#22797;wx&#32676;&#32842;&#28040;&#24687;(&#24182;&#38750;api&#25509;&#21475;&#26041;&#24335;&#65292;&#32780;&#26159;&#32431;&#27169;&#25311;&#25163;&#21160;&#30340;&#26041;&#24335;&#65292;99%&#19981;&#20250;&#24322;&#24120;)&#12290;
+&#39318;&#20808;&#25105;&#20808;&#32473;&#23637;&#31034;&#19968;&#19979;&#25105;&#23553;&#35013;&#30340;&#19977;&#20010;&#24120;&#29992;&#30340;&#26041;&#27861;
+<strong>&#30011;&#19968;&#20010;&#24377;&#31383;&#25171;&#21360;console&#36755;&#20986;</strong></p>
+<pre><code>var showUi = function (){
+    Device.keepScreenOn() //&#20445;&#25345;&#24120;&#20142;
+    ##&#30011;&#19968;&#20010;&#24377;&#31383;
+    Console.setBg('#ecf4fa')
+    Console.setMode(3)
+    Console.show()
+    Console.log("&#27492;&#21161;&#25163;&#20026;&#24494;&#20449;&#23567;&#21161;&#25163;&#65292;&#25509;&#20837;chatgpt4.0.&#20165;&#20379;&#23089;&#20048;&#12290;")
+
+    SetInterval(()=&gt;{
+        try{
+            getMessage() //&#23450;&#26102;&#20219;&#21153;
+        }catch(e){
+            Console.log(e)
+        }
+    },12000)
+}
+
+var rest = Console.requestFloating()
+rest.onResolve((v)=&gt;{
+Thread(()=&gt;{
+showUi()
+}) //&#24320;&#21551;&#19968;&#20010;&#32447;&#31243;&#24182;&#25191;&#34892;
+}).onReject((v)=&gt;{
+Toast.show('&#25298;&#32477;&#25480;&#26435;')
+})
+</code></pre>
+<p><strong>1.&#33258;&#21160;&#28857;&#20987;&#25351;&#23450;&#25991;&#26412;&#30340;&#33410;&#28857;</strong></p>
+<pre><code>var click = function (text) {
+    var find = false;
+    var hd = Node().textReg(text).find()
+    if (hd.size() &gt; 0) {
+    find = true;
+    hd[0].click()
+    }
+    var hd2 = Node().desc(text).find()
+    if (hd2.size() &gt; 0) {
+    find = true;
+    hd2[0].click()
+    }
+    var hd3 = Node().className(text).find()
+    if (hd3.size() &gt; 0) {
+    find = true;
+    hd3[0].click()
+    }
+    if (find) {
+    Console.log("&#25214;&#21040;&#33410;&#28857;&#24182;&#19988;&#28857;&#20987;=" + text)
+    } else {
+    Console.log("&#27809;&#25214;&#21040;&#33410;&#28857;=" + text)
+    }
+    return find
+}
+</code></pre>
+<p><strong>2.&#36755;&#20837;&#25991;&#26412;<br />
+&#25214;&#21040;text&#27169;&#31946;&#21305;&#37197; or &#23436;&#20840;&#21305;&#37197; or classname &#20026;text&#30340;&#36755;&#20837;&#26694;&#65292;&#22914;&#26524;&#25214;&#21040;&#21017;&#36755;&#20837;text2&#25991;&#26412;</strong></p>
+<pre><code>var inputFunction = function (text, text2) {
+    var find = false;
+    var hd = Node().textReg(text).find()
+    if (hd.size() &gt; 0) {
+    find = true;
+    hd[0].input(text2)
+    }
+    var hd2 = Node().desc(text).find()
+    if (hd2.size() &gt; 0) {
+    find = true;
+    hd2[0].input(text2)
+    }
+    var hd3 = Node().className(text).find()
+    if (hd3.size() &gt; 0) {
+    find = true;
+    hd3[0].input(text2)
+    }
+    if (find) {
+    Console.log("&#25214;&#21040;&#33410;&#28857;&#24182;&#19988;&#36755;&#20837;=" + text2)
+    } else {
+    Console.log("&#27809;&#25214;&#21040;&#36755;&#20837;&#33410;&#28857;=" + text)
+    }
+    return find
+}
+</code></pre>
+<p><strong>3.&#36755;&#20837;&#25991;&#26412;</strong></p>
+<p><strong>&#25214;&#21040;&#33410;&#28857;&#20026;text&#30340;&#33410;&#28857;&#22914;&#26524;&#25214;&#21040;&#30340;&#35805;&#21017;&#36820;&#22238;node</strong></p>
+<pre><code>var nodeIsExit = function (text) {
+    var find = false;
+    var hd = Node().textReg(text).find()
+    if (hd.size() &gt; 0) {
+    find = true;
+    }
+    var hd2 = Node().desc(text).find()
+    if (hd2.size() &gt; 0) {
+    find = true;
+    }
+    var hd3 = Node().className(text).find()
+    if (hd3.size() &gt; 0) {
+    find = true;
+    }
+    if (find) {
+    Console.log("&#25214;&#21040;&#33410;&#28857;=" + text)
+    } else {
+    Console.log("&#27809;&#25214;&#21040;&#33410;&#28857;=" + text)
+    }
+    return find
+}
+</code></pre>
+<p>&#39318;&#20808;&#35201;&#21457;&#36865;&#28040;&#24687;&#23601;&#35201;&#25214;&#21040;&#21457;&#36865;&#28040;&#24687;&#30340;&#27599;&#19968;&#20010;&#27169;&#22359;&#30340; &#21457;&#36865;&#32773;&#20449;&#24687;&#21644;&#21457;&#36865;&#20154;&#30340;&#21517;&#31216;&#21644;&#21457;&#36865;&#20869;&#23481;</p>
+<p><img alt="image.png" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1fcd9433fc842e685a29b49d6d77ab1~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1566&amp;h=942&amp;s=420967&amp;e=png&amp;b=ffffff" />
+&#32463;&#36807;&#35268;&#24459;&#35299;&#26512;&#21457;&#29616;
+&#27599;&#19968;&#20010;RelativeLayout&#20026;&#19968;&#20010;&#27169;&#22359;
+&#25105;&#20204;&#21487;&#20197;&#35268;&#23450; &#26426;&#22120;&#20154;&#21482;&#35782;&#21035; @ + &lsquo;&#24819;&#35201;&#21457;&#36865;&#30340;&#20869;&#23481;&rsquo;
+&#21017;&#36923;&#36753;&#23601;&#20026;</p>
+<p><img alt="image.png" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93095a90984a4b20ab3f0e58359fdcfa~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1718&amp;h=1076&amp;s=409995&amp;e=png&amp;b=fefefd" /></p>
+<p>&#33719;&#21462;&#21040;gpt&#22238;&#22797;&#21518;&#25509;&#19979;&#26469;&#26159;&#21457;&#36865;&#25991;&#26412;&#28040;&#24687; &#22823;&#27010;&#36923;&#36753;&#23601;&#26159;&#25214;&#21040;&#36755;&#20837;&#26694;&#65292;&#28982;&#21518;&#36755;&#20837;&#25991;&#26412;&#65292;&#28982;&#21518;&#28857;&#20987;&#21457;&#36865;&#65292;&#24403;&#28982;&#20063;&#20250;&#26816;&#27979;&#25935;&#24863;&#35789;&#35821;</p>
+<pre><code>var sendMessage = function (message,name) {
+    if (nodeIsExit('android.widget.EditText')) {
+    click('android.widget.EditText')
+    Sleep(1000)
+    var result = getGptText(message)
+    if (result == '11'){
+    Node().className('android.widget.EditText').find().input("&#21710;&#21568;&#25265;&#27465;"+name+"&#12290;&#24744;&#30340;&#38382;&#39064;&#28041;&#21450;&#25935;&#24863;&#35789;&#35821;&#65292;&#35831;&#25442;&#20010;&#38382;&#39064;&#20877;&#35797;&#35797;")
+    }
+    else if (result) {
+    Node().className('android.widget.EditText').find().input("@"+name+" "+result)
+    }else{
+    Node().className('android.widget.EditText').find().input("&#21710;&#21568;&#25265;&#27465;"+name+"&#12290;"+machineName+"&#20986;&#38169;&#21862;&#65281;&#35831;&#25442;&#20010;&#38382;"+machineName+"&#19968;&#19979;")
+    }
+    Sleep(1000)
+    if (nodeIsExit('&#21457;&#36865;')) {
+    click('&#21457;&#36865;')
+    }
+    }
+}
+</code></pre>
+<p>&#20197;&#19978;&#23601;&#26159;&#26680;&#24515;&#20195;&#30721;&#65292;&#21478;&#22806;&#38656;&#35201;&#20840;&#37096;&#28304;&#30721;&#21644;&#23545;&#25509;gpt&#25509;&#21475;&#21487;&#20197;&#32852;&#31995;&#23567;&#32534;</p>
+<p>aj&#25945;&#31243;&#23448;&#32593;:https://www.ajfz.mobi/</p>
+<p>aj&#20132;&#27969;&#32676;: 934451569</p>
+]]></content:encoded>
+
+<pubDate>2023-11-27T16:12:46+00:00</pubDate>
+</item>
+
+<item>
 <title>Prompt Structure in Conversations with Generative AI</title>
 <link>https://www.nngroup.com/articles/ai-prompt-structure/</link>
 <guid>https://www.nngroup.com/articles/ai-prompt-structure/</guid>
@@ -13,10 +1237,8 @@
 <p>Most prompts contain a combination of the following components: request, framing context, format specification.</p>
 <br /><br />
 ]]></content:encoded>
-
 <pubDate>2023-11-28T04:28:10+00:00</pubDate>
 </item>
-
 <item>
 <title>TypeScript中遍历对象键的方法</title>
 <link>https://juejin.cn/post/7306033185935441931</link>
