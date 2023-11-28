@@ -8551,3 +8551,12 @@ Fetching from https://meta.appinn.net/tag/macos.rss
 Feed error: 403
 append_entries: 0
 error when rendering xml, skip docs/appinn
+------------------------------------------------------
+Started: 2023-11-28 06:04:14.424185
+Existing_entries: 163
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+Append: [11-20~11-26.老胡的周刊（第117期）](https://meta.appinn.net/t/topic/49734)
+append_entries: 1
+Finish: 2023-11-28 06:04:18.123349

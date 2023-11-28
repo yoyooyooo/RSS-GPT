@@ -478,3 +478,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [TypeScript中遍历对象键的方法](https://juejin.cn/post/7306033185935441931)
 append_entries: 1
 Finish: 2023-11-28 04:03:29.792598
+------------------------------------------------------
+Started: 2023-11-28 06:04:10.813681
+Existing_entries: 174
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Prompt Structure in Conversations with Generative AI](https://www.nngroup.com/articles/ai-prompt-structure/)
+append_entries: 1
+Finish: 2023-11-28 06:04:14.034891

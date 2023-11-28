@@ -5,6 +5,19 @@
 <link>http://121.5.102.156:181</link>
 
 <item>
+<title>Prompt Structure in Conversations with Generative AI</title>
+<link>https://www.nngroup.com/articles/ai-prompt-structure/</link>
+<guid>https://www.nngroup.com/articles/ai-prompt-structure/</guid>
+<content:encoded><![CDATA[
+<div> <p>Most prompts contain a combination of the following components: request, framing context, format spe...</p> <div>
+<p>Most prompts contain a combination of the following components: request, framing context, format specification.</p>
+<br /><br />
+]]></content:encoded>
+
+<pubDate>2023-11-28T04:28:10+00:00</pubDate>
+</item>
+
+<item>
 <title>TypeScript中遍历对象键的方法</title>
 <link>https://juejin.cn/post/7306033185935441931</link>
 <guid>https://juejin.cn/post/7306033185935441931</guid>
@@ -167,10 +180,8 @@ console.log(keys);
 <h2>&#32467;&#35770;</h2>
 <p>&#26412;&#25991;&#20171;&#32461;&#20102;&#19968;&#20123;&#35299;&#20915;&#26041;&#26696;&#65292;&#20174;&#31616;&#21333;&#30340;&#31867;&#22411;&#36716;&#25442;&#21040;&#26356;&#26234;&#33021;&#30340;&#31867;&#22411;&#35859;&#35789;&#65292;&#24110;&#21161;&#25105;&#20204;&#26356;&#23433;&#20840;&#12289;&#26356;&#21487;&#38752;&#22320;&#36827;&#34892;&#23545;&#35937;&#38190;&#30340;&#36941;&#21382;&#12290;&#36873;&#25321;&#21738;&#31181;&#26041;&#27861;&#21462;&#20915;&#20110;&#39033;&#30446;&#30340;&#38656;&#27714;&#21644;&#20010;&#20154;&#20559;&#22909;&#65292;&#20294;&#24635;&#20307;&#32780;&#35328;&#65292;&#36890;&#36807;&#20102;&#35299;&#36825;&#20123;&#25216;&#26415;&#65292;&#25105;&#20204;&#21487;&#20197;&#26356;&#22909;&#22320;&#21033;&#29992;<code>TypeScript</code>&#30340;&#31867;&#22411;&#31995;&#32479;&#65292;&#25552;&#39640;&#20195;&#30721;&#30340;&#21487;&#32500;&#25252;&#24615;&#21644;&#23433;&#20840;&#24615;&#12290;</p>
 ]]></content:encoded>
-
 <pubDate>2023-11-28T02:08:05+00:00</pubDate>
 </item>
-
 <item>
 <title>React -- useSize Hook 封装</title>
 <link>https://juejin.cn/post/7306036684923600935</link>

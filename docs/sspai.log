@@ -8664,3 +8664,10 @@ Fetching from https://rsshub.app/sspai/index
 Feed error: 403
 append_entries: 0
 error when rendering xml, skip docs/sspai
+------------------------------------------------------
+Started: 2023-11-28 06:04:19.805128
+Existing_entries: 273
+Fetching from https://rsshub.app/sspai/index
+Append: [派早报：国家广播电视总局发布三项广播电视和网络视听行业标准等](https://sspai.com/post/84677)
+append_entries: 1
+Finish: 2023-11-28 06:04:19.981954
