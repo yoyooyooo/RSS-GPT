@@ -567,3 +567,17 @@ Append: [派早报：华为发布智界 S7 等多款新品、Apple 公布 2023 �
 Append: [三星注册「AI Phone」商标；查理·芒格去世，巴菲特悼念；《辐射》真人剧曝光剧照，明年 4 月首播](http://www.geekpark.net/news/328270)
 append_entries: 4
 Finish: 2023-11-29 02:13:45.884039
+------------------------------------------------------
+Started: 2023-11-29 04:03:21.666100
+Existing_entries: 197
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [你的工作有哪些AI替代不了的地方？](https://juejin.cn/pin/7306483885101383706)
+Append: [LLM 的幻觉到底是什么，有什么办法解决？、Flutter封装-让Canvas绘制变得更灵活 | 掘金一周11.29](https://juejin.cn/post/7306485968135520306)
+Append: [React Hooks 之 useRef](https://juejin.cn/post/7306485968135471154)
+Append: [亚马逊云科技基于 Polygon 推出首款 Amazon Managed Blockchain Access，助 Web3 开发人员降低区块链节点运行成本](https://juejin.cn/post/7306443667305414707)
+Append: [JS中的this指针在普通函数跟箭头函数中的表现以及react native项目中的应用](https://juejin.cn/post/7306416802838806528)
+Append: [深入探讨React中的useMemo：原理解析与最佳实践](https://juejin.cn/post/7306459858127749170)
+Append: [React组件重新渲染监听](https://juejin.cn/post/7306380268377210880)
+Append: [Koa+Typescript超简单的Restful API](https://juejin.cn/post/7306421946895679488)
+append_entries: 8
+Finish: 2023-11-29 04:03:24.987670
