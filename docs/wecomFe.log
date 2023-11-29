@@ -557,3 +557,13 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-11-28](https://www.daemonology.net/hn-daily/2023-11-28.html)
 append_entries: 1
 Finish: 2023-11-29 00:11:16.040993
+------------------------------------------------------
+Started: 2023-11-29 02:13:41.195214
+Existing_entries: 193
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [万字总结：现代 AIGC 全栈工程师的 10 个面试题](https://juejin.cn/post/7306447915991105548)
+Append: [Typescript 知识点](https://juejin.cn/post/7306375760330670092)
+Append: [派早报：华为发布智界 S7 等多款新品、Apple 公布 2023 年热门播客等](https://sspai.com/post/84706)
+Append: [三星注册「AI Phone」商标；查理·芒格去世，巴菲特悼念；《辐射》真人剧曝光剧照，明年 4 月首播](http://www.geekpark.net/news/328270)
+append_entries: 4
+Finish: 2023-11-29 02:13:45.884039
