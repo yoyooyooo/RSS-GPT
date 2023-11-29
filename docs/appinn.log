@@ -8656,3 +8656,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2023-11-29 06:04:05.678290
+------------------------------------------------------
+Started: 2023-11-29 08:03:51.808529
+Existing_entries: 164
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Append: [TrollStore更新系统支持版本](https://meta.appinn.net/t/topic/49774)
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2023-11-29 08:03:55.705509
