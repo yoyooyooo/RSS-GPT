@@ -4,6 +4,65 @@
 <title>推送企业微信群文章</title>
 <link>http://121.5.102.156:181</link>
 
+<item>
+<title>Daily Hacker News for 2023-11-28</title>
+<link>https://www.daemonology.net/hn-daily/2023-11-28.html</link>
+<guid>https://www.daemonology.net/hn-daily/2023-11-28.html</guid>
+<content:encoded><![CDATA[
+<div> <p>The 10 highest-rated articles on
+Hacker News
+on November 28, 2023 which have not appeared on any pr...</p> <div>
+<p>The 10 highest-rated articles on
+<a href="https://news.ycombinator.com/" rel="noopener noreferrer" target="_blank">Hacker News</a>
+on November 28, 2023 which have not appeared on any previous
+<a href="https://www.daemonology.net/hn-daily/" rel="noopener noreferrer" target="_blank">Hacker News Daily</a>
+are:</p>
+<ul>
+<li>
+<span><a href="https://dalle.party/" rel="noopener noreferrer" target="_blank">Show HN: A Dalle-3 and GPT4-Vision feedback loop</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38432486" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://trains.fyi/" rel="noopener noreferrer" target="_blank">Show HN: Trains.fyi &ndash; a live map of passenger trains in the US and Canada</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38434574" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.astralcodexten.com/p/god-help-us-lets-try-to-understand" rel="noopener noreferrer" target="_blank">Let's try to understand AI monosemanticity</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38438261" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://mcyoung.xyz/2023/11/27/simd-base64/" rel="noopener noreferrer" target="_blank">Designing a SIMD Algorithm from Scratch</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38443253" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://framablog.org/2023/11/28/peertube-v6-is-out-and-powered-by-your-ideas/" rel="noopener noreferrer" target="_blank">PeerTube v6</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38443855" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.youtube.com/watch?v=TbZ3HzvFEto" rel="noopener noreferrer" target="_blank">Half Life:25th Anniversary Documentary</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38444719" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://github.com/federico-busato/Modern-CPP-Programming" rel="noopener noreferrer" target="_blank">Modern C++ Programming Course</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38444834" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.theverge.com/2023/11/28/23977693/ikea-sensors-door-window-water-motion-price-date-specs" rel="noopener noreferrer" target="_blank">IKEA sensors for doors and windows, motion, water leaks</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38445745" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://nihalsid.github.io/mesh-gpt/" rel="noopener noreferrer" target="_blank">MeshGPT: Generating triangle meshes with decoder-only transformers</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38448653" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+<li>
+<span><a href="https://www.berkshirehathaway.com/news/nov2823.pdf" rel="noopener noreferrer" target="_blank">Charlie Munger has died</a></span><br />
+<span><a href="https://news.ycombinator.com/item?id=38451278" rel="noopener noreferrer" target="_blank">(comments)</a></span>
+</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2023-11-29T00:00:00+00:00</pubDate>
+</item>
 
 <item>
 <title>本地MP3封面图、时长等信息的JS读取</title>
