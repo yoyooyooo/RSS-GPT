@@ -656,3 +656,13 @@ Existing_entries: 220
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-11-30 00:10:47.428026
+------------------------------------------------------
+Started: 2023-11-30 02:13:42.481212
+Existing_entries: 220
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [elment-ui组件源码分析学习（2）](https://juejin.cn/post/7306786497713618994)
+Append: [派早报：红米发布 K70 系列、Google 公布 2023 年 Play Store 最佳榜单](https://sspai.com/post/84727)
+Append: [【100个Cocos实例】用ChatGPT帮我改写Shader靠谱吗？](https://juejin.cn/post/7306710731247861779)
+Append: [Daily Hacker News for 2023-11-29](https://www.daemonology.net/hn-daily/2023-11-29.html)
+append_entries: 4
+Finish: 2023-11-30 02:13:46.841748
