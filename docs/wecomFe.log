@@ -708,3 +708,10 @@ Append: [React 服务器组件 - 新范式](https://juejin.cn/post/7307033741904
 Append: [Nextjs全栈实战（二）：熟悉supabase 的 auth 体系](https://juejin.cn/post/7307061788145713171)
 append_entries: 7
 Finish: 2023-11-30 10:03:46.981228
+------------------------------------------------------
+Started: 2023-11-30 12:04:20.168870
+Existing_entries: 242
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [GitHub-style Alerts](https://antfu.me/posts/github-alerts)
+append_entries: 1
+Finish: 2023-11-30 12:04:26.858593
