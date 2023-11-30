@@ -678,3 +678,12 @@ Append: [埋点数据可视化的探索与实践](https://juejin.cn/post/7306876
 Append: [Vite Rollup 打包多页应用](https://juejin.cn/post/7306716962138259508)
 append_entries: 6
 Finish: 2023-11-30 04:03:33.312215
+------------------------------------------------------
+Started: 2023-11-30 06:03:35.557731
+Existing_entries: 230
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [【已解决】Vite 部署后报错：Failed to fetch dynamically imported module](https://juejin.cn/post/7306832876380848167)
+Append: [React类组件 React基础 Day04](https://juejin.cn/post/7306800304250290188)
+Append: [React类组件 React基础 Day03](https://juejin.cn/post/7306800304250273804)
+append_entries: 3
+Finish: 2023-11-30 06:03:42.348887
