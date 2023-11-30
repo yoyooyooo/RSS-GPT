@@ -666,3 +666,15 @@ Append: [【100个Cocos实例】用ChatGPT帮我改写Shader靠谱吗？](https:
 Append: [Daily Hacker News for 2023-11-29](https://www.daemonology.net/hn-daily/2023-11-29.html)
 append_entries: 4
 Finish: 2023-11-30 02:13:46.841748
+------------------------------------------------------
+Started: 2023-11-30 04:03:26.973849
+Existing_entries: 224
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React基础源码解析](https://juejin.cn/post/7307038636809125897)
+Append: [写 SVG 动画必看！SVG系列文章2-常见标签](https://juejin.cn/post/7306736066362654754)
+Append: [pm2 源码浅析](https://juejin.cn/post/7306710731248304147)
+Append: [开源可视化引擎 Meta2d.js 实战 - 实时数据通信逻辑分析与实现](https://juejin.cn/post/7306736066362359842)
+Append: [埋点数据可视化的探索与实践](https://juejin.cn/post/7306876649896083506)
+Append: [Vite Rollup 打包多页应用](https://juejin.cn/post/7306716962138259508)
+append_entries: 6
+Finish: 2023-11-30 04:03:33.312215
