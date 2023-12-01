@@ -4149,3 +4149,9 @@ Fetching from https://rknight.me/feed.xml
 Append: [Crossover](https://rknight.me/crossover/)
 append_entries: 1
 Finish: 2023-11-30 22:03:34.228125
+------------------------------------------------------
+Started: 2023-12-01 00:12:28.838510
+Existing_entries: 121
+Fetching from https://rknight.me/feed.xml
+append_entries: 0
+Finish: 2023-12-01 00:12:30.135940
