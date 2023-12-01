@@ -778,3 +778,10 @@ Append: [如何封装更简单易用的命令式组件？](https://juejin.cn/pos
 Append: [React Hook学习](https://juejin.cn/post/7307066283711315994)
 append_entries: 9
 Finish: 2023-12-01 04:03:40.286358
+------------------------------------------------------
+Started: 2023-12-01 06:04:05.510479
+Existing_entries: 258
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [How To Share States Between React Micro-Frontends using Module-Federation?](https://blog.bitsrc.io/how-to-share-state-between-react-micro-frontends-using-module-federation-f3762996c208?source=rss----5c2fdf847f4a---4)
+append_entries: 1
+Finish: 2023-12-01 06:04:10.814976
