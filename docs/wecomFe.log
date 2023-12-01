@@ -829,3 +829,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [eggjs学习之路，基于egg+sequelize+mysql打造nodeJs后台服务（三）](https://juejin.cn/post/7307471267481796619)
 append_entries: 1
 Finish: 2023-12-01 14:03:16.133160
+------------------------------------------------------
+Started: 2023-12-01 16:03:31.078730
+Existing_entries: 279
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [在react项目中使用web worker的方法](https://juejin.cn/post/7307495021057376291)
+Append: [React项目中使用module css](https://juejin.cn/post/7307507612722151459)
+append_entries: 2
+Finish: 2023-12-01 16:03:33.957482
