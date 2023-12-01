@@ -802,3 +802,13 @@ Append: [Redux持久化全局状态管理最佳实践](https://juejin.cn/post/73
 Append: [React Native安卓项目初始化](https://juejin.cn/post/7307183009605173263)
 append_entries: 11
 Finish: 2023-12-01 08:03:45.189410
+------------------------------------------------------
+Started: 2023-12-01 10:03:16.266686
+Existing_entries: 270
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [用 @icestack/ui 构建适配微信小程序的 daisyui](https://juejin.cn/post/7307471540715651083)
+Append: [One year of ChatGPT](https://stackdiary.com/one-year-of-chatgpt/)
+Append: [面向 2024 年，什么是李彦宏心中的 AI 原生时代「行动指南」](http://www.geekpark.net/news/328485)
+Append: [[译][官方文档] Flutter/Dart 状态管理库 Riverpod （九）- 概要 - WebSocket 和同步执行](https://juejin.cn/post/7307502467825532955)
+append_entries: 4
+Finish: 2023-12-01 10:03:19.433694
