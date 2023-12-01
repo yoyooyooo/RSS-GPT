@@ -4191,3 +4191,10 @@ Existing_entries: 121
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2023-12-01 12:04:33.017857
+------------------------------------------------------
+Started: 2023-12-01 14:03:22.457479
+Existing_entries: 121
+Fetching from https://rknight.me/feed.xml
+Append: [Advent of Code 2023: Day One](https://rknight.me/advent-of-code-2023-day-one/)
+append_entries: 1
+Finish: 2023-12-01 14:03:23.937311

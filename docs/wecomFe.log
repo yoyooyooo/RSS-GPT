@@ -822,3 +822,10 @@ Append: [完美兼容react的请求神器，入门看这篇就够了](https://ju
 Append: [The Lack of Compensation in Open Source Software is Unsustainable](https://trstringer.com/oss-compensation-broken/)
 append_entries: 4
 Finish: 2023-12-01 12:04:23.494252
+------------------------------------------------------
+Started: 2023-12-01 14:03:13.166275
+Existing_entries: 278
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [eggjs学习之路，基于egg+sequelize+mysql打造nodeJs后台服务（三）](https://juejin.cn/post/7307471267481796619)
+append_entries: 1
+Finish: 2023-12-01 14:03:16.133160
