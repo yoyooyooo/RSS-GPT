@@ -869,3 +869,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-12-01](https://www.daemonology.net/hn-daily/2023-12-01.html)
 append_entries: 1
 Finish: 2023-12-02 02:10:28.652190
+------------------------------------------------------
+Started: 2023-12-02 04:03:22.581071
+Existing_entries: 283
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React+ts手写轮播图组件(1/2)](https://juejin.cn/post/7307472360532410404)
+Append: [nodejs实现网站截图接口](https://juejin.cn/post/7307494782279417897)
+append_entries: 2
+Finish: 2023-12-02 04:03:25.930008
