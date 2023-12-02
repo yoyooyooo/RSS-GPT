@@ -908,3 +908,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [canvas 凸包效果](https://juejin.cn/post/7307856698975158298)
 append_entries: 1
 Finish: 2023-12-02 12:04:06.411164
+------------------------------------------------------
+Started: 2023-12-02 14:03:02.034047
+Existing_entries: 292
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2023-12-02 14:03:05.143735
