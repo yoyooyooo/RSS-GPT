@@ -968,3 +968,10 @@ Existing_entries: 298
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-03 06:03:17.477632
+------------------------------------------------------
+Started: 2023-12-03 08:03:22.845608
+Existing_entries: 298
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [前端人 精学ahooks源码](https://juejin.cn/post/7308219624138440742)
+append_entries: 1
+Finish: 2023-12-03 08:03:25.942737
