@@ -953,3 +953,12 @@ Append: [AIGC 耗电报告：一次生成消耗 16% 手机电量；OpenAI GPT �
 Append: [Daily Hacker News for 2023-12-02](https://www.daemonology.net/hn-daily/2023-12-02.html)
 append_entries: 2
 Finish: 2023-12-03 02:14:43.062631
+------------------------------------------------------
+Started: 2023-12-03 04:03:22.983374
+Existing_entries: 295
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [彻底理解SVG图片缩放与位移的原理 1](https://juejin.cn/post/7307891898012925986)
+Append: [从0到1认识React Fiber](https://juejin.cn/post/7307857937699274790)
+Append: [关于React的执行时机&小优化](https://juejin.cn/post/7307857937698209830)
+append_entries: 3
+Finish: 2023-12-03 04:03:25.244987
