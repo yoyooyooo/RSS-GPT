@@ -975,3 +975,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [前端人 精学ahooks源码](https://juejin.cn/post/7308219624138440742)
 append_entries: 1
 Finish: 2023-12-03 08:03:25.942737
+------------------------------------------------------
+Started: 2023-12-03 10:03:16.772991
+Existing_entries: 299
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [说说对React高阶组件（HOC）的理解](https://juejin.cn/post/7308219624138670118)
+Append: [【鸿蒙应用开发基础】常用组件Text](https://juejin.cn/post/7307811441665769526)
+Append: [[译][官方文档] Flutter/Dart 状态管理库 Riverpod （十三）- 概要 - 测试 provider](https://juejin.cn/post/7307648485922684982)
+Append: [[译][官方文档] Flutter/Dart 状态管理库 Riverpod （十二）- 概要 - 饿汉式 provider](https://juejin.cn/post/7307658030896201767)
+Append: [【20231203】用React实现一个简单的虚拟列表](https://juejin.cn/post/7308219781056233510)
+append_entries: 5
+Finish: 2023-12-03 10:03:19.748998
