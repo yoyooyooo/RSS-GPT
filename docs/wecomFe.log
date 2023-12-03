@@ -945,3 +945,11 @@ Existing_entries: 293
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-03 00:11:46.941825
+------------------------------------------------------
+Started: 2023-12-03 02:14:40.013719
+Existing_entries: 293
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [AIGC 耗电报告：一次生成消耗 16% 手机电量；OpenAI GPT 商城推迟发布；NASA：哈勃望远镜出现故障](http://www.geekpark.net/news/328496)
+Append: [Daily Hacker News for 2023-12-02](https://www.daemonology.net/hn-daily/2023-12-02.html)
+append_entries: 2
+Finish: 2023-12-03 02:14:43.062631
