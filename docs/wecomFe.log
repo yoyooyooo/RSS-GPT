@@ -1043,3 +1043,17 @@ Append: [react-router-dom](https://juejin.cn/post/7308434288827514889)
 Append: [栗子前端技术周刊第7期 - Deno Cron、Astro 4.0 Beta、滴滴 App 奔溃...](https://juejin.cn/post/7307963529873080354)
 append_entries: 5
 Finish: 2023-12-04 02:14:28.841948
+------------------------------------------------------
+Started: 2023-12-04 04:03:27.239052
+Existing_entries: 313
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Server-Sent Events：轻量级服务端推送协议，实现GPT交互效果](https://juejin.cn/post/7308277343243927604)
+Append: [《vite技术揭秘、还原与实战》阅读指南](https://juejin.cn/post/7308536984028381210)
+Append: [给 Web 前端工程师看的用 Rust 开发 wasm 组件实战 | 京东云技术团队](https://juejin.cn/post/7308434321764794378)
+Append: [亲测React Native（v0.72）之macOS环境搭建](https://juejin.cn/post/7308219712491896883)
+Append: [JavaScript 异步处理：从回调地狱到 Promise 和 async/await](https://juejin.cn/post/7307963529872719906)
+Append: [React Router V6项目中的路由鉴权封装实践（Hooks）](https://juejin.cn/post/7308230350373699610)
+Append: [MacBook M2 搭建React Native开发环境](https://juejin.cn/post/7308219712491225139)
+Append: [彻底理解SVG图片缩放与位移的原理 2](https://juejin.cn/post/7307963529871917090)
+append_entries: 8
+Finish: 2023-12-04 04:03:30.029482
