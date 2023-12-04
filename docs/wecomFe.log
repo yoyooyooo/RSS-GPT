@@ -1064,3 +1064,13 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [大量 SVG 图标在 React 中的极速集成与应用](https://juejin.cn/post/7308240524963545100)
 append_entries: 1
 Finish: 2023-12-04 06:04:04.626890
+------------------------------------------------------
+Started: 2023-12-04 08:04:01.010749
+Existing_entries: 322
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React+ts手写轮播图组件(2/2)](https://juejin.cn/post/7308187262755749899)
+Append: [[译][官方文档] Flutter/Dart 状态管理库 Riverpod （十四）- 概要 - 日志和错误报告](https://juejin.cn/post/7308434215813513266)
+Append: [Retool State of AI Report 2023](https://retool.com/reports/state-of-ai-2023)
+Append: [大屏可视化适配](https://juejin.cn/post/7308434215811924018)
+append_entries: 4
+Finish: 2023-12-04 08:04:04.111341
