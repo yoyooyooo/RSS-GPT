@@ -1032,3 +1032,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-12-03](https://www.daemonology.net/hn-daily/2023-12-03.html)
 append_entries: 1
 Finish: 2023-12-04 00:11:13.231858
+------------------------------------------------------
+Started: 2023-12-04 02:14:26.496999
+Existing_entries: 308
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [第 0116 期：Astro 4 Beta、XState 5、Fresh 1.6、Prettier 性能、Biome、VSCode 调试](https://mdhweekly.com/weekly/issue-0116)
+Append: [比亚迪悬赏 500 万打击恶意抹黑；谷歌推迟 Gemini 发布时间；腾讯视频崩了，官方紧急回应](http://www.geekpark.net/news/328499)
+Append: [比尔盖茨谈AI](https://juejin.cn/post/7308434314777378826)
+Append: [react-router-dom](https://juejin.cn/post/7308434288827514889)
+Append: [栗子前端技术周刊第7期 - Deno Cron、Astro 4.0 Beta、滴滴 App 奔溃...](https://juejin.cn/post/7307963529873080354)
+append_entries: 5
+Finish: 2023-12-04 02:14:28.841948
