@@ -1074,3 +1074,11 @@ Append: [Retool State of AI Report 2023](https://retool.com/reports/state-of-ai-
 Append: [大屏可视化适配](https://juejin.cn/post/7308434215811924018)
 append_entries: 4
 Finish: 2023-12-04 08:04:04.111341
+------------------------------------------------------
+Started: 2023-12-04 10:05:32.412519
+Existing_entries: 326
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [NaiveUi 嵌套表单校验](https://juejin.cn/post/7308519016976236579)
+Append: [前端离线地图 - React项目实践🔨](https://juejin.cn/post/7306797278139613222)
+append_entries: 2
+Finish: 2023-12-04 10:05:35.562041
