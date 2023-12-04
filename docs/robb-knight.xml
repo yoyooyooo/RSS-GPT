@@ -4,6 +4,7 @@
 <title>Robb Knight</title>
 <link>https://rknight.me</link>
 
+
 <item>
 <title>Advent of Code 2023: Day Four</title>
 <link>https://rknight.me/advent-of-code-2023-day-four/</link>
@@ -58,10 +59,8 @@
 <p>All in all this took me about 30 minutes for part one, and about 15 minutes for part two - although I did think about part two for a few hours while I was working.</p>
 <p>My solution is <a href="https://github.com/rknightuk/adventofcode/tree/main/2023/04">on GitHub</a>.</p>
 ]]></content:encoded>
-
 <pubDate>2023-12-04T13:07:52.766+00:00</pubDate>
 </item>
-
 <item>
 <title>Advent of Code 2023: Day Three</title>
 <link>https://rknight.me/advent-of-code-2023-day-three/</link>
