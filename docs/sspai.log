@@ -9138,3 +9138,9 @@ Fetching from https://rsshub.app/sspai/index
 Append: [写给 TESTV 铁丝的一封信：我们为什么要办铁丝俱乐部？](https://sspai.com/post/84823)
 append_entries: 1
 Finish: 2023-12-04 10:05:41.743251
+------------------------------------------------------
+Started: 2023-12-04 12:04:34.551668
+Existing_entries: 297
+Fetching from https://rsshub.app/sspai/index
+append_entries: 0
+Finish: 2023-12-04 12:04:34.717986
