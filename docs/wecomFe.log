@@ -1174,3 +1174,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [React 源码：hooks——useEffect、useState、useMemo 等源码实现](https://juejin.cn/post/7308909489154785295)
 append_entries: 1
 Finish: 2023-12-05 12:04:25.682174
+------------------------------------------------------
+Started: 2023-12-05 14:03:17.780308
+Existing_entries: 348
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [不是Typescript用不起，而是JSDoc更有性价比？](https://juejin.cn/post/7308923428149395491)
+Append: [Lysterfield Lake — An AI Experiment](https://lysterfieldlake.com/)
+append_entries: 2
+Finish: 2023-12-05 14:03:20.995538
