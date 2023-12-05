@@ -1120,3 +1120,14 @@ Existing_entries: 330
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-05 00:11:10.449082
+------------------------------------------------------
+Started: 2023-12-05 02:14:30.854526
+Existing_entries: 330
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [【Canvas系列】通过贝塞尔曲线解决 Canvas 书写的圆滑问题](https://juejin.cn/post/7308575144925610036)
+Append: [【Canvas系列】如何实现一个自由绘制的 Canvas 画板](https://juejin.cn/post/7308371444371914752)
+Append: [【Canvas系列】Canvas 尺寸与分辨率矫正](https://juejin.cn/post/7308575144925560884)
+Append: [比特币重回 4 万美元；蔚来汽车拿下独立生产资质；GPT-3.5 在图灵测试中败给六十年前的AI ｜极客早知道](http://www.geekpark.net/news/328558)
+Append: [Daily Hacker News for 2023-12-04](https://www.daemonology.net/hn-daily/2023-12-04.html)
+append_entries: 5
+Finish: 2023-12-05 02:14:33.513270
