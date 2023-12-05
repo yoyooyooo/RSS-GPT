@@ -1182,3 +1182,12 @@ Append: [不是Typescript用不起，而是JSDoc更有性价比？](https://juej
 Append: [Lysterfield Lake — An AI Experiment](https://lysterfieldlake.com/)
 append_entries: 2
 Finish: 2023-12-05 14:03:20.995538
+------------------------------------------------------
+Started: 2023-12-05 16:03:33.157378
+Existing_entries: 350
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [封装一个工作日历组件，顺便复习一下Date常用方法](https://juejin.cn/post/7308948738659155983)
+Append: [生成式 AI 应用落地小结：高估的模型能力，低估的工程实施](https://zhuanlan.zhihu.com/p/670598821)
+Append: [用第三方拖拽库快速撸一个可视化搭建平台](https://juejin.cn/post/7308948738659057679)
+append_entries: 3
+Finish: 2023-12-05 16:03:36.205775
