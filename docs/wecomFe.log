@@ -1131,3 +1131,13 @@ Append: [比特币重回 4 万美元；蔚来汽车拿下独立生产资质；GP
 Append: [Daily Hacker News for 2023-12-04](https://www.daemonology.net/hn-daily/2023-12-04.html)
 append_entries: 5
 Finish: 2023-12-05 02:14:33.513270
+------------------------------------------------------
+Started: 2023-12-05 04:03:33.492439
+Existing_entries: 335
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [来试试实现一个自己的下拉组件吧！](https://juejin.cn/post/7308620787329515571)
+Append: [写 SVG 动画必看！SVG系列文章3-动画标签](https://juejin.cn/post/7308651060155809842)
+Append: [实战篇：带着大家用鸿蒙HarmonyOS做项目（一）](https://juejin.cn/post/7307889500545400851)
+Append: [Electron 自动更新，绕过 latest.yml 使用自定义接口](https://juejin.cn/post/7307723753907486757)
+append_entries: 4
+Finish: 2023-12-05 04:03:36.878381
