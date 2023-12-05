@@ -1141,3 +1141,9 @@ Append: [实战篇：带着大家用鸿蒙HarmonyOS做项目（一）](https://j
 Append: [Electron 自动更新，绕过 latest.yml 使用自定义接口](https://juejin.cn/post/7307723753907486757)
 append_entries: 4
 Finish: 2023-12-05 04:03:36.878381
+------------------------------------------------------
+Started: 2023-12-05 06:03:56.146440
+Existing_entries: 339
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2023-12-05 06:03:59.206099
