@@ -1147,3 +1147,10 @@ Existing_entries: 339
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-05 06:03:59.206099
+------------------------------------------------------
+Started: 2023-12-05 08:03:53.134078
+Existing_entries: 339
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [canvas实现刮刮乐](https://juejin.cn/post/7308850616763023360)
+append_entries: 1
+Finish: 2023-12-05 08:03:56.271898
