@@ -4,6 +4,7 @@
 <title>Robb Knight</title>
 <link>https://rknight.me</link>
 
+
 <item>
 <title>Advent of Code 2023: Day Six</title>
 <link>https://rknight.me/advent-of-code-2023-day-six/</link>
@@ -64,10 +65,8 @@ $distance = 940200;
 </ol>
 </section>
 ]]></content:encoded>
-
 <pubDate>2023-12-06T11:07:22.654+00:00</pubDate>
 </item>
-
 <item>
 <title>Advent of Code 2023: Day Five</title>
 <link>https://rknight.me/advent-of-code-2023-day-five/</link>
