@@ -1217,3 +1217,17 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-12-05](https://www.daemonology.net/hn-daily/2023-12-05.html)
 append_entries: 1
 Finish: 2023-12-06 00:11:23.655628
+------------------------------------------------------
+Started: 2023-12-06 02:14:19.667953
+Existing_entries: 355
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React 精简代码指南（译）](https://juejin.cn/post/7309158163940130826)
+Append: [行与列的艺术：如何通过表格可视化让数据更生动](https://juejin.cn/post/7309158201471549478)
+Append: [【umi】04 如何写一个umi plugin](https://juejin.cn/post/7308939878682067007)
+Append: [【鸿蒙应用开发基础】常用组件Button](https://juejin.cn/post/7308910246668124201)
+Append: [利用CSS实现页面切换时保留组件](https://juejin.cn/post/7308952364773031955)
+Append: [Typescript基础类型体操会这些就可以了-基础类型体操知识点梳理](https://juejin.cn/post/7308946214107398194)
+Append: [OpenAI COO：不要期待 AI 一举带来实质性的商业变革；传喜马拉雅裁员 30%；xAI 寻求 10 亿美元融资](http://www.geekpark.net/news/328599)
+Append: [思维导图 + 文字 = 让你一次性学会正则表达式](https://juejin.cn/post/7308434215811956786)
+append_entries: 8
+Finish: 2023-12-06 02:14:23.359503
