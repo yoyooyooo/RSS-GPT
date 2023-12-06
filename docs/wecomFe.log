@@ -1231,3 +1231,10 @@ Append: [OpenAI COO：不要期待 AI 一举带来实质性的商业变革；传
 Append: [思维导图 + 文字 = 让你一次性学会正则表达式](https://juejin.cn/post/7308434215811956786)
 append_entries: 8
 Finish: 2023-12-06 02:14:23.359503
+------------------------------------------------------
+Started: 2023-12-06 04:03:27.618792
+Existing_entries: 363
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [从零实现一个React+Antd5.0后台管理系统-多页签及面包屑实现](https://juejin.cn/post/7308996393397059636)
+append_entries: 1
+Finish: 2023-12-06 04:03:30.892789
