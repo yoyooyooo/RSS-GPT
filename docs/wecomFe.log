@@ -1340,3 +1340,10 @@ Append: [23年底，两年前端菜狗被裁后的面试经历](https://juejin.c
 Append: [一个关键词总结2023，你会选择哪个词呢？| 2023年终总结征文活动](https://juejin.cn/post/7308899425149354035)
 append_entries: 2
 Finish: 2023-12-07 06:03:49.046949
+------------------------------------------------------
+Started: 2023-12-07 08:04:04.417109
+Existing_entries: 388
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [可视化学习：WebGL的基础使用](https://juejin.cn/post/7309404662011740199)
+append_entries: 1
+Finish: 2023-12-07 08:04:09.922832
