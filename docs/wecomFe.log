@@ -1311,3 +1311,13 @@ Existing_entries: 377
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-07 00:11:18.118167
+------------------------------------------------------
+Started: 2023-12-07 02:14:29.057865
+Existing_entries: 377
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [派早报：Google 推出 AI 模型 Gemini、Beeper 推出 Android 版 iMessage 等](https://sspai.com/post/84900)
+Append: [谷歌宣布推出Gemini，规模最大功能最强；AMD 正式发布MI300加速器；Altman当选《时代》年度CEO](http://www.geekpark.net/news/328645)
+Append: [浏览器渲染与 ReactFiber 关系](https://juejin.cn/post/7309549333694726195)
+Append: [Daily Hacker News for 2023-12-06](https://www.daemonology.net/hn-daily/2023-12-06.html)
+append_entries: 4
+Finish: 2023-12-07 02:14:34.233411
