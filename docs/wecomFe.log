@@ -1321,3 +1321,14 @@ Append: [浏览器渲染与 ReactFiber 关系](https://juejin.cn/post/7309549333
 Append: [Daily Hacker News for 2023-12-06](https://www.daemonology.net/hn-daily/2023-12-06.html)
 append_entries: 4
 Finish: 2023-12-07 02:14:34.233411
+------------------------------------------------------
+Started: 2023-12-07 04:03:26.507022
+Existing_entries: 381
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [JS+canvas封装全屏水印、局部水印、多个dom水印](https://juejin.cn/post/7309367325782032436)
+Append: [Vite / Node 搭建 Less 本地编译输出 CSS 链接服务](https://juejin.cn/post/7309355198682972186)
+Append: [如何从Webpack迁移到Vite](https://juejin.cn/post/7309392585680224306)
+Append: [【前端性能优化】不定高虚拟滚动列表源码](https://juejin.cn/post/7309392585679683634)
+Append: [Validate表单组件的封装](https://juejin.cn/post/7309158181841846322)
+append_entries: 5
+Finish: 2023-12-07 04:03:30.511232
