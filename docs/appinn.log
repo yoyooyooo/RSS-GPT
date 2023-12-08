@@ -9504,3 +9504,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2023-12-08 00:11:30.766214
+------------------------------------------------------
+Started: 2023-12-08 02:14:38.747027
+Existing_entries: 180
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [有没有管理github的插件？](https://meta.appinn.net/t/topic/50143)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2023-12-08 02:14:42.013612

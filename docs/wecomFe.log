@@ -1401,3 +1401,18 @@ Existing_entries: 395
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-08 00:11:26.399751
+------------------------------------------------------
+Started: 2023-12-08 02:14:31.991172
+Existing_entries: 395
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Bug复盘: Antd Upload组件向当前页面发送xhr请求](https://juejin.cn/post/7309691357014147126)
+Append: [在Tarojs的VirtualList组件中支持下拉刷新功能](https://juejin.cn/post/7309757415872266291)
+Append: [【umi】 依赖预打包是怎么一回事](https://juejin.cn/post/7309655223831543862)
+Append: [再学Blazor——组件建造者](https://juejin.cn/post/7309655223831478326)
+Append: [再学Blazor——组件](https://juejin.cn/post/7309678898026922038)
+Append: [TypeChat、JSONSchemaChat实战 - 让ChatGPT更听你的话](https://juejin.cn/post/7309732396081020928)
+Append: [马斯克怒喷迪士尼停止X广告投放；iPhone 16 或推出 AIGC 功能；快手开启新一轮组织架构调整](http://www.geekpark.net/news/328701)
+Append: [科技爱好者周刊（第 281 期）：新基建的政策选择](http://www.ruanyifeng.com/blog/2023/12/weekly-issue-281.html)
+Append: [Daily Hacker News for 2023-12-07](https://www.daemonology.net/hn-daily/2023-12-07.html)
+append_entries: 9
+Finish: 2023-12-08 02:14:38.325182
