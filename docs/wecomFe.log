@@ -1477,3 +1477,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [从零开发自己的工具库（三）配置 Github Actions CI 自动发布 NPM](https://juejin.cn/post/7310033153904476175)
 append_entries: 1
 Finish: 2023-12-08 14:03:26.187407
+------------------------------------------------------
+Started: 2023-12-08 16:03:35.273535
+Existing_entries: 429
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [5 Common Mistakes When Using useEffect in React](https://blog.bitsrc.io/5-common-mistakes-when-using-useeffect-in-react-84c973060440?source=rss----5c2fdf847f4a---4)
+append_entries: 1
+Finish: 2023-12-08 16:03:38.124928
