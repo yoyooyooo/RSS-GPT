@@ -1490,3 +1490,10 @@ Existing_entries: 430
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-08 18:03:38.105871
+------------------------------------------------------
+Started: 2023-12-08 20:03:25.354354
+Existing_entries: 430
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [如何做好前端项目组组长](https://juejin.cn/post/7309301549154779171)
+append_entries: 1
+Finish: 2023-12-08 20:03:28.224346
