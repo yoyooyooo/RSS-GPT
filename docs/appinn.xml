@@ -4,6 +4,97 @@
 <title>小众软件官方论坛 - 使用macos标记的话题</title>
 <link>https://meta.appinn.net/tag/macos</link>
 
+<item>
+<title>Clipboard-online：在不同设备之间分享剪贴板。附 iOS 和 Android 设备分享方法。</title>
+<link>https://meta.appinn.net/t/topic/20322</link>
+<guid>https://meta.appinn.net/t/topic/20322</guid>
+<content:encoded><![CDATA[
+
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-1" name="h-1"></a>前言</h1>
+<p>缘起于 <a class="mention" href="https://meta.appinn.net/u/feeshy">@feeshy</a> 分享的<a href="https://meta.appinn.net/t/topic/18527">跨平台跨设备剪贴板推送/同步方案合集</a>，受益良多。根据自己的需求折腾了好多 app，最后结果在此分享。</p>
+<hr />
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-2" name="h-2"></a>介绍</h1>
+<p>clipboard-online 是一款 Windows 平台应用，它将本机剪贴板暴露于 HTTP 端口，其他设备通过发送 HTTP 请求来获取、发送剪贴板。而其他设备发送剪贴板后，PC 可以直接粘贴。现已支持文本、文件、图像。</p>
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-3" name="h-3"></a>开始</h1>
+<blockquote>
+<p>1、到项目首页下载应用并运行。2、记下 PC 内网 IP。</p>
+</blockquote>
+<h3>
+<a class="anchor" href="https://meta.appinn.net#ios-4" name="ios-4"></a>iOS 设备获取、发送剪贴板</h3>
+<ul>
+<li>
+<p><strong>获取 PC 剪贴板内容：</strong></p>
+<ol>
+<li>安装<a href="https://www.icloud.com/shortcuts/1c8af082434f4d16bdbe05d09783c82d" rel="noopener nofollow ugc">该快捷指令</a>；</li>
+<li>如开启鉴权，请记得设置和 PC 一样的 authkey。</li>
+</ol>
+</li>
+<li>
+<p><strong>发送剪贴板内容至 PC 剪贴板：</strong></p>
+<ol>
+<li>安装<a href="https://www.icloud.com/shortcuts/2f05ddeec40a40918357a9d40c6f5aad" rel="noopener nofollow ugc">该快捷指令</a>；</li>
+<li>如开启鉴权，请记得设置和 PC 一样的 authkey。</li>
+</ol>
+<blockquote>
+<p>以上两个快捷指令链接均来自 clipboard-online 项目<a href="https://github.com/YanxinTang/clipboard-online/blob/master/README_zh.md" rel="noopener nofollow ugc">中文页面</a>。</p>
+</blockquote>
+</li>
+</ul>
+<h3>
+<a class="anchor" href="https://meta.appinn.net#h-5" name="h-5"></a>安卓设备获取、发送剪贴板</h3>
+<blockquote>
+<p>需安装 HTTP Shortcuts 应用，<a href="https://meta.appinn.net/t/topic/19778">介绍见此</a>。</p>
+</blockquote>
+<ul>
+<li>
+<strong>获取 PC 剪贴板内容：</strong>
+<ol>
+<li>展开以下折叠内容保存为 <code>.json</code> 文件(编码方式选 UTF-8)并拷贝到手机上；</li>
+<li>到 app 首页，点击"导入/导出"，找到文件导入；</li>
+<li>编辑刚导入的快捷方式，将 IP 地址换为你 PC 的内网 IP；</li>
+<li>如开启鉴权，请编辑快捷方式，点击"脚本编写"，在"执行前运行"栏目里按提示填写和 PC 一致的 authkey。</li>
+</ol>
+</li>
+</ul>
+
+点击展开内容 <a href="https://meta.appinn.net/t/topic/20322/1">（点击了解更多详细信息）</a>
+<br />  
+<ul>
+<li>
+<strong>发送文字至 PC 剪贴板：</strong>
+<ol>
+<li>展开以下折叠内容保存为 <code>.json</code> 文件(编码方式选 UTF-8)并拷贝到手机上；</li>
+<li>到 app 首页，点击"导入/导出"，找到文件导入；</li>
+<li>编辑刚导入的快捷方式，将 IP 地址换为你 PC 的内网 IP；</li>
+<li>如开启鉴权，请编辑快捷方式，点击"脚本编写"，在"执行前运行"栏目里按提示填写和 PC 一致的 authkey。</li>
+</ol>
+</li>
+</ul>
+
+点击展开内容 <a href="https://meta.appinn.net/t/topic/20322/1">（点击了解更多详细信息）</a>
+<br />  
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-6" name="h-6"></a>延伸</h1>
+<p>如果将本机暴露到公网，则随时都能操作剪贴板内容，而不受限于局域网。如这样操作请一定要开启鉴权，以稍微增加一点安全性。</p>
+<p>另外，图片及文件的支持也已加入，采用的是将二进制文件进行 Base64 编码再传输。iOS 一切正常，安卓的 HTTP Shortcuts 应用则支持文字类型的 Base64 编码/解码，不支持文件类型的 Base64 编码/解码，比较可惜。</p>
+<p><strong>| <a href="https://github.com/YanxinTang/clipboard-online" rel="noopener nofollow ugc">clipboard-online 开源首页</a> | <a href="https://github.com/Waboodoo/HTTP-Shortcuts" rel="noopener nofollow ugc">HTTP Shortcuts 开源首页</a> |</strong></p>
+<hr />
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-7" name="h-7"></a>后记</h1>
+<p>还是那句话：人呢，总是有许多奇奇怪怪的需求，正因为这些不一样的需求，才催生出各式各样的 app 。这些 app 解决的痛点在另一个人眼里也许就不是问题。这次折腾很久，效果差强人意，特此分享。</p>
+<h1>
+<a class="anchor" href="https://meta.appinn.net#h-8" name="h-8"></a>更新记录</h1>
+<p>2021.08.04   clipboard-online 更新至0.2.5，相应配套也更新支持。<br />
+2020.11.XX   初稿、二稿。</p>
+            <p><small>26 个帖子 - 13 位参与者</small></p>
+            <p><a href="https://meta.appinn.net/t/topic/20322">阅读完整话题</a></p>
+]]></content:encoded>
+<pubDate>Tue, 10 Nov 2020 07:09:23 +0000</pubDate>
+<pubDate>Tue, 10 Nov 2020 07:09:23 +0000</pubDate>
+</item>
 
 <item>
 <title>有没有管理github的插件？</title>
