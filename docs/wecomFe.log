@@ -1462,3 +1462,11 @@ Append: [更符合打工人的第二个AI工具](https://juejin.cn/post/73100463
 Append: [封装一个拖拽容器组件，支持拖拽移动，可以通过拖拽边框更新组件大小](https://juejin.cn/post/7310104657211310107)
 append_entries: 5
 Finish: 2023-12-08 10:03:33.426480
+------------------------------------------------------
+Started: 2023-12-08 12:04:21.736814
+Existing_entries: 426
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [鸿蒙原生开发4.0 list组件横向排列](https://juejin.cn/post/7310124656995844122)
+Append: [React+TailwindCSS快速实现暗黑模式切换](https://juejin.cn/post/7310009007920988187)
+append_entries: 2
+Finish: 2023-12-08 12:04:24.773659
