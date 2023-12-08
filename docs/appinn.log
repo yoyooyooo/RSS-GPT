@@ -9530,3 +9530,12 @@ Append: [Clipboard-online：在不同设备之间分享剪贴板。附 iOS 和 A
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 1
 Finish: 2023-12-08 06:04:09.538450
+------------------------------------------------------
+Started: 2023-12-08 08:04:27.757454
+Existing_entries: 182
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+Append: [Adobe桌面软件的替代品](https://meta.appinn.net/t/topic/17302)
+append_entries: 1
+Finish: 2023-12-08 08:04:31.068355
