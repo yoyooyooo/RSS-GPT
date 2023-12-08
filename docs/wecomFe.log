@@ -1416,3 +1416,11 @@ Append: [科技爱好者周刊（第 281 期）：新基建的政策选择](http
 Append: [Daily Hacker News for 2023-12-07](https://www.daemonology.net/hn-daily/2023-12-07.html)
 append_entries: 9
 Finish: 2023-12-08 02:14:38.325182
+------------------------------------------------------
+Started: 2023-12-08 04:03:31.715491
+Existing_entries: 404
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [啥？GPT4 又被"遥遥领先"啦？Hi，Gemini ~](https://juejin.cn/post/7309786251996659748)
+Append: [React中的空标签与Fragment标签的区别](https://juejin.cn/post/7309687967064490036)
+append_entries: 2
+Finish: 2023-12-08 04:03:37.202043
