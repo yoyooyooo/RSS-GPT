@@ -1525,3 +1525,10 @@ Append: [使用 React 实现 cron 时间选择组件](https://juejin.cn/post/731
 Append: [vite 的配置文件](https://juejin.cn/post/7310109331503955980)
 append_entries: 2
 Finish: 2023-12-09 04:03:33.361898
+------------------------------------------------------
+Started: 2023-12-09 06:03:21.373615
+Existing_entries: 435
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [提升React开发效率的VSCode插件及应用](https://juejin.cn/post/7310101033636380735)
+append_entries: 1
+Finish: 2023-12-09 06:03:38.619873
