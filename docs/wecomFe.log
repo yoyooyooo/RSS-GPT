@@ -1503,3 +1503,10 @@ Existing_entries: 431
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-08 22:03:17.559283
+------------------------------------------------------
+Started: 2023-12-09 00:10:52.670886
+Existing_entries: 431
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Daily Hacker News for 2023-12-08](https://www.daemonology.net/hn-daily/2023-12-08.html)
+append_entries: 1
+Finish: 2023-12-09 00:10:55.464071
