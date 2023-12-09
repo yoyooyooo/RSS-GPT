@@ -1539,3 +1539,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [开源可视化引擎 Meta2d.js 实战 - 属性设定](https://juejin.cn/post/7310412252552429577)
 append_entries: 1
 Finish: 2023-12-09 08:03:25.214942
+------------------------------------------------------
+Started: 2023-12-09 10:03:12.831266
+Existing_entries: 437
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React入门小白版：从零开始学核心概念](https://juejin.cn/post/7310151273004171275)
+Append: [【ahooks源码解析03】-ahooks源码工程化分析](https://juejin.cn/post/7310110917407883299)
+Append: [React中的复合组件模式](https://juejin.cn/post/7310109331505496076)
+append_entries: 3
+Finish: 2023-12-09 10:03:16.075736
