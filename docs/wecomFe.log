@@ -1644,3 +1644,10 @@ Existing_entries: 458
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-10 12:04:06.154502
+------------------------------------------------------
+Started: 2023-12-10 14:03:18.579644
+Existing_entries: 458
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [128 / How to ship fast](https://arne.me/weekly/128)
+append_entries: 1
+Finish: 2023-12-10 14:03:22.321618
