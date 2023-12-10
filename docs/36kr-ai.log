@@ -8898,3 +8898,10 @@ Filter: [AI再颠覆材料学，微软MatterGen直接生成新材料，稳定性
 Filter: [谷歌Gemini被曝视频造假，多模态视频竟是剪辑配音，击败GPT-4靠「作弊」？](https://www.36kr.com/p/2551647138208136)
 append_entries: 0
 Finish: 2023-12-10 04:04:18.914110
+------------------------------------------------------
+Started: 2023-12-10 06:07:11.363341
+Existing_entries: 349
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
