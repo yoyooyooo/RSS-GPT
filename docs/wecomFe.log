@@ -1683,3 +1683,14 @@ Existing_entries: 461
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-11 00:11:11.911152
+------------------------------------------------------
+Started: 2023-12-11 02:14:32.711846
+Existing_entries: 461
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [如何优雅的跨框架跨组件通信](https://juejin.cn/post/7310786611806273563)
+Append: [被裁了，打算年后找工作，还有一个多月时间，打算做一个学习计划加下技能点丰富下简历，比如之前上班未应用到工作中的React和小程序，除此之外，jym有什么推荐掌...](https://juejin.cn/pin/7310168607342886952)
+Append: [全网最全！盘点2023年20大前端状态管理库](https://juejin.cn/post/7310895905574092837)
+Append: [Esbuild深度调研：吹了三年，能上生产了吗？](https://juejin.cn/post/7310168607342624808)
+Append: [Daily Hacker News for 2023-12-10](https://www.daemonology.net/hn-daily/2023-12-10.html)
+append_entries: 5
+Finish: 2023-12-11 02:14:39.826879
