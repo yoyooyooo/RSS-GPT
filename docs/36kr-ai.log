@@ -9229,3 +9229,10 @@ Filter: [AI时代，企业之间的差距是如何拉开的？](https://www.36kr
 Filter: [Pika 1.0首测秒杀Gen-2，网友抢先体验电影级炸裂效果，背后技术细节首公开](https://www.36kr.com/p/2553076539988105)
 append_entries: 3
 Finish: 2023-12-11 10:05:52.306914
+------------------------------------------------------
+Started: 2023-12-11 12:06:00.434926
+Existing_entries: 357
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
