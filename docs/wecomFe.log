@@ -1694,3 +1694,13 @@ Append: [Esbuild深度调研：吹了三年，能上生产了吗？](https://jue
 Append: [Daily Hacker News for 2023-12-10](https://www.daemonology.net/hn-daily/2023-12-10.html)
 append_entries: 5
 Finish: 2023-12-11 02:14:39.826879
+------------------------------------------------------
+Started: 2023-12-11 04:03:29.546923
+Existing_entries: 466
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [《vite技术揭秘、还原与实战》第1节--svite工程搭建](https://juejin.cn/post/7311006602194403338)
+Append: [第 0117 期：stylex、Vitest 1、Astro 4、React Forget、TanStack Router](https://mdhweekly.com/weekly/issue-0117)
+Append: [第二次 「AI 世界大战」](http://www.geekpark.net/news/328781)
+Append: [精通TypeScript：打造一个炫酷的天气预报插件](https://juejin.cn/post/7310787455111168035)
+append_entries: 4
+Finish: 2023-12-11 04:03:38.921199
