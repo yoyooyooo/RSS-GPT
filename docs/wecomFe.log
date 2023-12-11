@@ -1755,3 +1755,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [前端食堂技术周刊第 108 期：StyleX 开源、Astro 4.0、Vitest v1、URL 设计最佳实践、INP](https://juejin.cn/post/7311226497112604691)
 append_entries: 1
 Finish: 2023-12-11 16:03:50.625595
+------------------------------------------------------
+Started: 2023-12-11 18:03:42.134810
+Existing_entries: 485
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [A Chain Reaction](https://overreacted.io/a-chain-reaction/)
+append_entries: 1
+Finish: 2023-12-11 18:03:47.825852
