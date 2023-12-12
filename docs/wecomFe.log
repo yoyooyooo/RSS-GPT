@@ -1791,3 +1791,17 @@ Append: [天天看到有人抵触ref，有人抵触reactive，把我整笑了](h
 Append: [Daily Hacker News for 2023-12-11](https://www.daemonology.net/hn-daily/2023-12-11.html)
 append_entries: 4
 Finish: 2023-12-12 02:14:58.033819
+------------------------------------------------------
+Started: 2023-12-12 04:03:30.703924
+Existing_entries: 491
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [《Typescript 全面进阶指南》学习笔记](https://juejin.cn/post/7311279319416979496)
+Append: [为什么每一个 React 开发者都应该学习复合函数？](https://juejin.cn/post/7311254319323709475)
+Append: [云音乐 AI Agent 探索实践](https://juejin.cn/post/7311271061818081295)
+Append: [妙鸭用 AI 搞修图，「美妙大战」要来了？](http://www.geekpark.net/news/328862)
+Append: [React Hooks学习指北](https://juejin.cn/post/7311216938751950900)
+Append: [React项目优化打包体积](https://juejin.cn/post/7311238053082431542)
+Append: [【ahooks源码解读04】state相关hooks之useSetState](https://juejin.cn/post/7311167273649700916)
+Append: [从React Hooks看React的本质](https://juejin.cn/post/7311139440861151266)
+append_entries: 8
+Finish: 2023-12-12 04:03:34.718339
