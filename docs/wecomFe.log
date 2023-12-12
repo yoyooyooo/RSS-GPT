@@ -1832,3 +1832,11 @@ Append: [使用发布订阅模式监听Localstorage值变化](https://juejin.cn/
 Append: [nodejs从0到1学习与应用（1）：node作用介绍与常见模块](https://juejin.cn/post/7311339991749574696)
 append_entries: 6
 Finish: 2023-12-12 10:03:50.882706
+------------------------------------------------------
+Started: 2023-12-12 12:04:31.254164
+Existing_entries: 508
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [JS浅拷贝及面试时手写源码](https://juejin.cn/post/7311596602261684233)
+Append: [社区速递 024 | NotebookLM、AI 整活以及绍兴之旅](https://sspai.com/post/85007)
+append_entries: 2
+Finish: 2023-12-12 12:04:40.099492
