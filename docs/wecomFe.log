@@ -1774,3 +1774,10 @@ Existing_entries: 486
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-11 22:03:26.492743
+------------------------------------------------------
+Started: 2023-12-12 00:11:15.066502
+Existing_entries: 486
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [JetBrains2023年度报告，编程领域的风向标](https://juejin.cn/post/7311150820579147839)
+append_entries: 1
+Finish: 2023-12-12 00:11:23.161814
