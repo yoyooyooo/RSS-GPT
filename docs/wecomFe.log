@@ -1805,3 +1805,12 @@ Append: [【ahooks源码解读04】state相关hooks之useSetState](https://jueji
 Append: [从React Hooks看React的本质](https://juejin.cn/post/7311139440861151266)
 append_entries: 8
 Finish: 2023-12-12 04:03:34.718339
+------------------------------------------------------
+Started: 2023-12-12 06:04:01.476075
+Existing_entries: 499
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [对现代主流框架状态管理库的思考](https://juejin.cn/post/7311206584204525608)
+Append: [Evolving the infinite canvas](https://wattenberger.com/thoughts/evolving-the-infinite-canvas)
+Append: [CPU都被干冒烟了，拥抱HarmonyOS第二天：自定义组件](https://juejin.cn/post/7311343188362280987)
+append_entries: 3
+Finish: 2023-12-12 06:04:10.514663
