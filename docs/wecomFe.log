@@ -1781,3 +1781,13 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [JetBrains2023年度报告，编程领域的风向标](https://juejin.cn/post/7311150820579147839)
 append_entries: 1
 Finish: 2023-12-12 00:11:23.161814
+------------------------------------------------------
+Started: 2023-12-12 02:14:48.094116
+Existing_entries: 487
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [umi打包编译优化](https://juejin.cn/post/7311219067199750182)
+Append: [使用 TypeDoc 自动为 TypeScript 项目生成 API 文档](https://juejin.cn/post/7310980511454232591)
+Append: [天天看到有人抵触ref，有人抵触reactive，把我整笑了](https://juejin.cn/post/7311226497111916563)
+Append: [Daily Hacker News for 2023-12-11](https://www.daemonology.net/hn-daily/2023-12-11.html)
+append_entries: 4
+Finish: 2023-12-12 02:14:58.033819
