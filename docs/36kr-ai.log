@@ -9715,3 +9715,27 @@ Filter: [把大模型当CPU，前阿里云首席安全科学家创业项目曝�
 Filter: [80后掘金数据闭环，华映“几面之缘”投了数千万](https://www.36kr.com/p/2557196509601921)
 append_entries: 0
 Finish: 2023-12-13 08:04:45.963719
+------------------------------------------------------
+Started: 2023-12-13 10:04:50.736261
+Existing_entries: 365
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Filter: [计算机图形学将迎来新突破？Meta 携手斯坦福大学推出 3D 交互模型，VR 时代似乎不远了](https://www.36kr.com/p/2558983353474181)
+Filter: [首个GPT-4驱动的人形机器人，无需编程+零样本学习，还可根据口头反馈调整行为](https://www.36kr.com/p/2558955296021890)
+Append: [ChatGPT变懒原因：正在给自己放寒假，已被网友测出](https://www.36kr.com/p/2558955441380480)
+Filter: [微软提出变色龙框架，让模型自带工具箱开挂，数学推理任务准确率98%](https://www.36kr.com/p/2558960271187080)
+Append: [OpenAI非营利实体去年收入不到4.5万，Altman薪水7万多点，独董报酬为0](https://www.36kr.com/p/2558942664580483)
+Filter: [2.7B能打Llama 2 70B，微软祭出「小语言模型」，96块A100 14天训出Phi-2，碾压谷歌Gemini nano](https://www.36kr.com/p/2558721385323906)
+Filter: [练习时长两年半，特斯拉人形机器人Optimus二代上线](https://www.36kr.com/p/2558712265579653)
+Filter: [Pika爆火，但AI视频还没到「GPT时刻」](https://www.36kr.com/p/2558743578239112)
+Append: [OpenAI 600万天价年薪震惊网友，全美顶尖AI公司薪酬大曝光](https://www.36kr.com/p/2558721699093639)
+Filter: [Nature 确认：大语言模型只是没有感情的「学人精」](https://www.36kr.com/p/2558649290906760)
+Filter: [AI真的配的上2023年度热词吗？](https://www.36kr.com/p/2557648500482180)
+Filter: [理想汽车的故事进度，凭MindGPT来续写？](https://www.36kr.com/p/2558638578916486)
+Filter: [谷歌的自研芯片帝国](https://www.36kr.com/p/2558544002866310)
+Filter: [手机能跑，微软小模型击败Llama 2，96块A100 GPU训练14天，参数规模仅27亿](https://www.36kr.com/p/2558530806684804)
+Filter: [AI算力芯片，AMD终于站起来了](https://www.36kr.com/p/2558518082740358)
+Filter: [拳打Pika脚踢Gen-2，斯坦福李飞飞联合谷歌，AI文生视频大模型炸圈](https://www.36kr.com/p/2557736232312201)
+Filter: [欧盟达成全球首个 AI 监管法案，有哪些信息需要了解？](https://www.36kr.com/p/2557548955590537)
+Filter: [让大模型操纵无人机，北航团队提出具身智能新架构](https://www.36kr.com/p/2557626587848067)
+append_entries: 3
+Finish: 2023-12-13 10:04:56.527883
