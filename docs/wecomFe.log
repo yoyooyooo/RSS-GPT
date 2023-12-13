@@ -1924,3 +1924,11 @@ Append: [如何在你的NodeJS应用程序中处理多个API请求](https://juej
 Append: [vite项目引入静态文件](https://juejin.cn/post/7311697095504625702)
 append_entries: 2
 Finish: 2023-12-13 10:03:33.338245
+------------------------------------------------------
+Started: 2023-12-13 12:04:27.233710
+Existing_entries: 528
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [纯 svg 实现文字路径动画](https://juejin.cn/post/7311882547688161332)
+Append: [字节三年，谈谈一线团队如何搞工程化一（全景篇）](https://juejin.cn/post/7311596602249134106)
+append_entries: 2
+Finish: 2023-12-13 12:04:30.784123
