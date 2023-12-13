@@ -1907,3 +1907,12 @@ Append: [Figma plugin magic tricks: mixing colors with SVG and Canvas API](https
 Append: [封装一个简单的表单组件，让我的开发效率至少提升了20%](https://juejin.cn/post/7311560444132720694)
 append_entries: 3
 Finish: 2023-12-13 06:03:57.654789
+------------------------------------------------------
+Started: 2023-12-13 08:04:03.591220
+Existing_entries: 523
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [TypeScript 起死回生！Redux 5 官宣使用 TS 完全重构](https://juejin.cn/post/7311707089498390547)
+Append: [React源码：beginWork 工作原理](https://juejin.cn/post/7311652298229055523)
+Append: [Nodejs 第二十四章（zlib）](https://juejin.cn/post/7311633278498226216)
+append_entries: 3
+Finish: 2023-12-13 08:04:07.448755
