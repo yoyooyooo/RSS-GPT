@@ -1969,3 +1969,12 @@ Existing_entries: 531
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-14 00:11:03.129617
+------------------------------------------------------
+Started: 2023-12-14 02:13:23.157827
+Existing_entries: 531
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [【umi】umi dev 和build 的时候在做什么？](https://juejin.cn/post/7311871555528114230)
+Append: [特斯拉 2 代机器人亮相，超强运动能力；传华为将推首款鸿蒙电动自行车；OpenAI 回应 ChatGPT 错误率飙升：问题已修复](http://www.geekpark.net/news/328946)
+Append: [Daily Hacker News for 2023-12-13](https://www.daemonology.net/hn-daily/2023-12-13.html)
+append_entries: 3
+Finish: 2023-12-14 02:13:25.859135
