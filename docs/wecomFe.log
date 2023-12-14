@@ -1998,3 +1998,16 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [react-hook原理](https://juejin.cn/post/7312081875022643211)
 append_entries: 1
 Finish: 2023-12-14 06:04:04.881893
+------------------------------------------------------
+Started: 2023-12-14 08:04:00.965047
+Existing_entries: 542
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Canvas 轻量图文编辑器的一些实践](https://juejin.cn/post/7312243176835334196)
+Append: [TypeScript原始类型与对象类型](https://juejin.cn/post/7312046910045798439)
+Append: [全面揭秘：如何将 OpenAI 的 GPT 技术应用于 ReactJS 开发](https://juejin.cn/post/7312243176834990132)
+Append: [深入剖析 React Hooks：从原理到实战](https://juejin.cn/post/7311961893610864676)
+Append: [脚手架安装自定义模板和组件模板功能实现](https://juejin.cn/post/7311962729557278730)
+Append: [How Figma, Midjourney, Databricks, and Modyfi Harness AI with Design](https://www.designerfund.com/blog/how-figma-midjourney-and-databricks-harness-ai-in-design/)
+Append: [在React中写CSS样式](https://juejin.cn/post/7312035308362661938)
+append_entries: 7
+Finish: 2023-12-14 08:04:04.972584
