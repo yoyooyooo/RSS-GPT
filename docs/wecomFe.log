@@ -1978,3 +1978,16 @@ Append: [特斯拉 2 代机器人亮相，超强运动能力；传华为将推�
 Append: [Daily Hacker News for 2023-12-13](https://www.daemonology.net/hn-daily/2023-12-13.html)
 append_entries: 3
 Finish: 2023-12-14 02:13:25.859135
+------------------------------------------------------
+Started: 2023-12-14 04:03:25.708936
+Existing_entries: 534
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Element-UI源码剖析（二）—— PopupManager的具体实现](https://juejin.cn/post/7312060958175019071)
+Append: [浅显易懂的classnames源码分析](https://juejin.cn/post/7312000801869496383)
+Append: [（31）React 拓展——① React 中使用 CSS3 过渡和动画 | React 基础理论实操](https://juejin.cn/post/7311932190443520035)
+Append: [复刻antfu大佬的svg签名效果](https://juejin.cn/post/7311932190442324003)
+Append: [谈谈企业级 Web 应用里各种不同的 UI 组件设计思路](https://juejin.cn/post/7311972542805803059)
+Append: [手摸手教你利用defineAsyncComponent实现长页面按需加载组件](https://juejin.cn/post/7311893415151501352)
+Append: [工作中的无渲染组件](https://juejin.cn/post/7311881316052467746)
+append_entries: 7
+Finish: 2023-12-14 04:03:28.818097
