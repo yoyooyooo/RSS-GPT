@@ -2089,3 +2089,10 @@ Append: [【umi】 非现代浏览器的兼容](https://juejin.cn/post/731235250
 Append: [React组件实现动态导入的几种方案](https://juejin.cn/post/7312338839695015963)
 append_entries: 8
 Finish: 2023-12-15 04:03:28.443198
+------------------------------------------------------
+Started: 2023-12-15 06:03:54.543533
+Existing_entries: 567
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [如何发布自定义 npm 组件包](https://juejin.cn/post/7312376672665894922)
+append_entries: 1
+Finish: 2023-12-15 06:03:57.741911
