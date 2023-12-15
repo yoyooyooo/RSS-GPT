@@ -2065,3 +2065,13 @@ Existing_entries: 555
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-15 00:11:29.732860
+------------------------------------------------------
+Started: 2023-12-15 02:14:39.220266
+Existing_entries: 555
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [基于数据源驱动的跨组件通信最佳实践(低码篇)](https://juejin.cn/post/7312293783974428672)
+Append: [我也想在 vscode 中写一个 chatGPT 插件](https://juejin.cn/post/7312356320207175691)
+Append: [科技爱好者周刊（第 282 期）：电动皮卡 Cybertruck 的 48V 供电](http://www.ruanyifeng.com/blog/2023/12/weekly-issue-282.html)
+Append: [Daily Hacker News for 2023-12-14](https://www.daemonology.net/hn-daily/2023-12-14.html)
+append_entries: 4
+Finish: 2023-12-15 02:14:42.850624
