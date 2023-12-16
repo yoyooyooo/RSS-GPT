@@ -2162,3 +2162,11 @@ Existing_entries: 580
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-16 00:11:12.910556
+------------------------------------------------------
+Started: 2023-12-16 02:12:14.252931
+Existing_entries: 580
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [第一次使用canvas,实现环状类地铁时刻图](https://juejin.cn/post/7312723512724439094)
+Append: [Daily Hacker News for 2023-12-15](https://www.daemonology.net/hn-daily/2023-12-15.html)
+append_entries: 2
+Finish: 2023-12-16 02:12:16.648977
