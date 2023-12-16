@@ -10333,3 +10333,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2023-12-16 12:04:24.583403
+------------------------------------------------------
+Started: 2023-12-16 14:04:04.353784
+Existing_entries: 193
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [B站有一些公开课或电台节目有cc字幕，有没有办法能让字幕独立于浏览器页面悬浮在屏幕上？](https://meta.appinn.net/t/topic/50426)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2023-12-16 14:04:08.465016

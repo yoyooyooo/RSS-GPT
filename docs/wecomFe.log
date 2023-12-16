@@ -2206,3 +2206,10 @@ Existing_entries: 588
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-16 12:04:20.408653
+------------------------------------------------------
+Started: 2023-12-16 14:04:00.536055
+Existing_entries: 588
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [李彦宏：卷 AI 原生应用才有价值，别卷大模型了！](http://www.geekpark.net/news/329062)
+append_entries: 1
+Finish: 2023-12-16 14:04:03.845525
