@@ -10889,3 +10889,10 @@ Filter: [生成式AI模型转向？微软开始尝试“以小博大”](https:/
 Filter: [Nature重磅：击败人类数学家，AI首次攻破经典数学难题](https://www.36kr.com/p/2561507007503497)
 append_entries: 0
 Finish: 2023-12-17 14:05:35.735886
+------------------------------------------------------
+Started: 2023-12-17 16:04:07.062760
+Existing_entries: 376
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
