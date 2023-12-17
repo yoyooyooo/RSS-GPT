@@ -2297,3 +2297,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [[翻译] 怎么使用React Hooks - useEffect,useState和useContext的代码示例](https://juejin.cn/post/7313043317721284627)
 append_entries: 1
 Finish: 2023-12-17 12:04:19.624868
+------------------------------------------------------
+Started: 2023-12-17 14:03:16.013771
+Existing_entries: 607
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [让Promise为React项目锦上添花3](https://juejin.cn/post/7313027887884877839)
+Append: [129 / Extreme dogfooding](https://arne.me/weekly/129)
+append_entries: 2
+Finish: 2023-12-17 14:03:23.700405
