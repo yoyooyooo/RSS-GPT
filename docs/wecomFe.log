@@ -2255,3 +2255,16 @@ Append: [TypeScript 初探：前端开发新手的学习之路](https://juejin.c
 Append: [Daily Hacker News for 2023-12-16](https://www.daemonology.net/hn-daily/2023-12-16.html)
 append_entries: 5
 Finish: 2023-12-17 02:15:17.515158
+------------------------------------------------------
+Started: 2023-12-17 04:03:29.455775
+Existing_entries: 595
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [刘擎对话叶军｜当人文学者向创业者发问：我们如何理解 AI 时代？](http://www.geekpark.net/news/329063)
+Append: [探索 redux：状态管理的艺术](https://juejin.cn/post/7313242064195338249)
+Append: [Element-UI源码剖析（三）—— 图片组件及其预览功能](https://juejin.cn/post/7313242069099135026)
+Append: [7. 这个知识点，是 React 的命脉](https://juejin.cn/post/7312724606607147049)
+Append: [6. 封装一个 Icon 组件](https://juejin.cn/post/7312844725181906985)
+Append: [Npm包管理工具的下载、安装、发布等使用详解](https://juejin.cn/post/7313048219302854683)
+Append: [第 0118 期：Electron 28、Safa 17.2、SvelteKit 2、状态管理、Waku、PageSpy](https://mdhweekly.com/weekly/issue-0118)
+append_entries: 7
+Finish: 2023-12-17 04:03:36.514227
