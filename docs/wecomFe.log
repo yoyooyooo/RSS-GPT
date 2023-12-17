@@ -2268,3 +2268,10 @@ Append: [Npm包管理工具的下载、安装、发布等使用详解](https://j
 Append: [第 0118 期：Electron 28、Safa 17.2、SvelteKit 2、状态管理、Waku、PageSpy](https://mdhweekly.com/weekly/issue-0118)
 append_entries: 7
 Finish: 2023-12-17 04:03:36.514227
+------------------------------------------------------
+Started: 2023-12-17 06:03:32.396802
+Existing_entries: 602
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [vite3资源打包优化](https://juejin.cn/post/7313242001113071654)
+append_entries: 1
+Finish: 2023-12-17 06:03:41.944880
