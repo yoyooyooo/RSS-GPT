@@ -2348,3 +2348,16 @@ Append: [Element Plus 组件库的打包原理与实践详解](https://juejin.cn
 Append: [Daily Hacker News for 2023-12-17](https://www.daemonology.net/hn-daily/2023-12-17.html)
 append_entries: 6
 Finish: 2023-12-18 02:14:32.265797
+------------------------------------------------------
+Started: 2023-12-18 04:03:30.273303
+Existing_entries: 616
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [《vite技术揭秘、还原与实战》第2节--揭秘yarn create vite](https://juejin.cn/post/7313242116771119130)
+Append: [使用React Hooks创建自动滚动到底部的DOM组件](https://juejin.cn/post/7313589252171300898)
+Append: [提升数据可视化：拖拽编辑自动汇总，树形数据表格展示新方式](https://juejin.cn/post/7313203461705596964)
+Append: [派早报：字节跳动回应被 OpenAI 停用账户](https://sspai.com/post/85139)
+Append: [如何实现一个微信PC端富文本输入框？](https://juejin.cn/post/7312848658718375971)
+Append: [JavaScript + TypeScript 实现并发队列](https://juejin.cn/post/7313135267572367372)
+Append: [在HTML中复用SVG](https://juejin.cn/post/7313242038560391194)
+append_entries: 7
+Finish: 2023-12-18 04:03:42.444646
