@@ -2468,3 +2468,15 @@ Append: [提高Nodejs加载器性能](https://juejin.cn/post/7313979344561766450
 Append: [前端是怎么解析Excel、PDF、Word、PPT等文件的？](https://juejin.cn/post/7313048171797544997)
 append_entries: 2
 Finish: 2023-12-19 08:04:11.026454
+------------------------------------------------------
+Started: 2023-12-19 10:03:20.983020
+Existing_entries: 646
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [浅谈发布——订阅模式](https://juejin.cn/post/7314109846152757285)
+Append: [尝试借助CSS @container实现多行文本展开收起](https://juejin.cn/post/7313387525820776487)
+Append: [前端周报：VSCode 官宣升级！TC39 常见问答。React 替代品？（51 期）](https://juejin.cn/post/7313979467965349926)
+Append: [svg沿路径运动](https://juejin.cn/post/7313979344561946674)
+Append: [😛承接上文，用vite搭建rollup组件库的开发环境](https://juejin.cn/post/7313834600719237183)
+Append: [react 适配移动端 H5 项目](https://juejin.cn/post/7313841072228040715)
+append_entries: 6
+Finish: 2023-12-19 10:03:26.009429
