@@ -2535,3 +2535,11 @@ Append: [派早报：努比亚 Z60 Ultra 发布、Google 公布针对 反垄断�
 Append: [Daily Hacker News for 2023-12-19](https://www.daemonology.net/hn-daily/2023-12-19.html)
 append_entries: 2
 Finish: 2023-12-20 02:03:30.153746
+------------------------------------------------------
+Started: 2023-12-20 04:03:24.714768
+Existing_entries: 659
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [浅谈 web worker 和 react component](https://juejin.cn/post/7314180206742290472)
+Append: [Flutter到鸿蒙,不是有手就行吗? (下拉刷新)](https://juejin.cn/post/7313161940283998260)
+append_entries: 2
+Finish: 2023-12-20 04:03:31.152195
