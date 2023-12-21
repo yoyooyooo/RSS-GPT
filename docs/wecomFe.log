@@ -2627,3 +2627,13 @@ Append: [小米汽车多地招聘销售人员；字节跳动 2023 年销售额�
 Append: [Daily Hacker News for 2023-12-20](https://www.daemonology.net/hn-daily/2023-12-20.html)
 append_entries: 2
 Finish: 2023-12-21 02:12:47.999202
+------------------------------------------------------
+Started: 2023-12-21 04:03:42.635828
+Existing_entries: 679
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [原理探秘：从 redux 到 react-redux 和 redux-toolkit](https://juejin.cn/post/7314599972318380083)
+Append: [基于 OpenLDAP、React、MUI组件库、Next.js、Serverless 等技术实现一个管理后台模板（一）](https://juejin.cn/post/7314556731420606498)
+Append: [使用动画曲线编辑器打造炫酷的3D可视化ACE](https://juejin.cn/post/7314593969022238772)
+Append: [TypeScript类型之any、unknown](https://juejin.cn/post/7314519123177979916)
+append_entries: 4
+Finish: 2023-12-21 04:03:45.599904
