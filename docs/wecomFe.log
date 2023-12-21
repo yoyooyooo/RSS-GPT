@@ -2619,3 +2619,11 @@ Existing_entries: 677
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-21 00:10:58.859529
+------------------------------------------------------
+Started: 2023-12-21 02:12:43.956898
+Existing_entries: 677
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [小米汽车多地招聘销售人员；字节跳动 2023 年销售额或超腾讯；VP 发布在即，苹果致信开发者｜极客早知道](http://www.geekpark.net/news/329296)
+Append: [Daily Hacker News for 2023-12-20](https://www.daemonology.net/hn-daily/2023-12-20.html)
+append_entries: 2
+Finish: 2023-12-21 02:12:47.999202
