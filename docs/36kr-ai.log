@@ -11852,3 +11852,10 @@ Filter: [AI读心术震撼登顶会，模型翻译脑电波，人类思想被投
 Filter: [「2024年最重要AI图」疯狂热转，开源AI模型正在超越专有模型，LeCun大赞](https://www.36kr.com/p/2568908129117570)
 append_entries: 2
 Finish: 2023-12-21 06:06:17.986070
+------------------------------------------------------
+Started: 2023-12-21 08:06:01.591469
+Existing_entries: 391
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
