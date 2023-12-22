@@ -2720,3 +2720,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [科技爱好者周刊（第 283 期）：[年终感想] 没有目的地，向前走](http://www.ruanyifeng.com/blog/2023/12/weekly-issue-283.html)
 append_entries: 1
 Finish: 2023-12-22 02:11:55.966069
+------------------------------------------------------
+Started: 2023-12-22 04:03:28.319536
+Existing_entries: 700
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [AIOps在美团的探索与实践——事件管理篇](https://tech.meituan.com/2023/12/22/aiops-based-incident-management.html)
+Append: [基于 OpenLDAP、React、MUI 组件库、Next.js、Serverless 等技术实现一个管理后台模板（二）](https://juejin.cn/post/7314860085931671567)
+append_entries: 2
+Finish: 2023-12-22 04:03:32.766675
