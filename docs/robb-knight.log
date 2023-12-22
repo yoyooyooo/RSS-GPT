@@ -5712,3 +5712,9 @@ Fetching from https://rknight.me/feed.xml
 Append: [Just 2024 Things](https://rknight.me/just-2024-things/)
 append_entries: 1
 Finish: 2023-12-22 12:04:21.479962
+------------------------------------------------------
+Started: 2023-12-22 14:03:25.640975
+Existing_entries: 136
+Fetching from https://rknight.me/feed.xml
+append_entries: 0
+Finish: 2023-12-22 14:03:27.822938
