@@ -5705,3 +5705,10 @@ Existing_entries: 135
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2023-12-22 10:03:45.736992
+------------------------------------------------------
+Started: 2023-12-22 12:04:19.809756
+Existing_entries: 135
+Fetching from https://rknight.me/feed.xml
+Append: [Just 2024 Things](https://rknight.me/just-2024-things/)
+append_entries: 1
+Finish: 2023-12-22 12:04:21.479962
