@@ -2825,3 +2825,12 @@ Existing_entries: 721
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-23 06:03:28.404789
+------------------------------------------------------
+Started: 2023-12-23 08:03:35.581940
+Existing_entries: 721
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [《vite技术揭秘、还原与实战》第3节--创建本地开发服务器](https://juejin.cn/post/7315461550558167049)
+Append: [【开源自荐】接入GPT API的安卓助手，可音量键唤起、语音交互、拍照上传 Vision、访问网络等](https://github.com/521xueweihan/HelloGitHub/issues/2662)
+Append: [主管让我说说 qiankun 是咋回事😶](https://juejin.cn/post/7314196310647423039)
+append_entries: 3
+Finish: 2023-12-23 08:03:38.800559
