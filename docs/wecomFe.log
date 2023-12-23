@@ -2810,3 +2810,12 @@ Append: [游戏新规引起热议，腾讯网易一日跌去4500亿市值；马�
 Append: [Daily Hacker News for 2023-12-22](https://www.daemonology.net/hn-daily/2023-12-22.html)
 append_entries: 2
 Finish: 2023-12-23 02:09:47.575847
+------------------------------------------------------
+Started: 2023-12-23 04:03:22.691741
+Existing_entries: 718
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [分享一下在 React + Umi + Ant Design Pro 的项目中，遇到的一些需求和问题的解决方案](https://juejin.cn/post/7315461498596294707)
+Append: [AI 版“神笔马良” make-real 工作原理揭秘](https://juejin.cn/post/7315308701047324726)
+Append: [文件上传的各个方案及优化（含nodejs后端）](https://juejin.cn/post/7315242945456160822)
+append_entries: 3
+Finish: 2023-12-23 04:03:26.287792
