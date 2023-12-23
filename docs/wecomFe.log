@@ -2802,3 +2802,11 @@ Existing_entries: 716
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-23 00:10:38.591960
+------------------------------------------------------
+Started: 2023-12-23 02:09:44.057237
+Existing_entries: 716
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [游戏新规引起热议，腾讯网易一日跌去4500亿市值；马斯克超级高铁梦碎；OpenAI寻求新一轮融资，估值超千亿](http://www.geekpark.net/news/329447)
+Append: [Daily Hacker News for 2023-12-22](https://www.daemonology.net/hn-daily/2023-12-22.html)
+append_entries: 2
+Finish: 2023-12-23 02:09:47.575847
