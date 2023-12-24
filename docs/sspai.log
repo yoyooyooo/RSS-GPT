@@ -10632,3 +10632,10 @@ Existing_entries: 369
 Fetching from https://rsshub.app/sspai/index
 append_entries: 0
 Finish: 2023-12-24 06:03:33.369241
+------------------------------------------------------
+Started: 2023-12-24 08:03:42.658600
+Existing_entries: 369
+Fetching from https://rsshub.app/sspai/index
+Append: [用 Ollama 轻松玩转本地大模型](https://sspai.com/post/85193)
+append_entries: 1
+Finish: 2023-12-24 08:03:42.995925
