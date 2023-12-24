@@ -2894,3 +2894,14 @@ Append: [蔚来发布 ET9，预售价 80 万元；马斯克：不建议所有企
 Append: [Daily Hacker News for 2023-12-23](https://www.daemonology.net/hn-daily/2023-12-23.html)
 append_entries: 2
 Finish: 2023-12-24 02:14:07.950103
+------------------------------------------------------
+Started: 2023-12-24 04:03:18.654469
+Existing_entries: 730
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [简述鸿蒙开发中组件的状态管理](https://juejin.cn/post/7315846799083896883)
+Append: [第八章：useEffect源码解析](https://juejin.cn/post/7315606159741419554)
+Append: [react-native 富文本编辑器实现](https://juejin.cn/post/7315846805919907849)
+Append: [react是如何与表单组件保持数据同步的](https://juejin.cn/post/7315612852889845797)
+Append: [看完本篇，教你用Lit实现简单组件开发](https://juejin.cn/post/7315461542698467338)
+append_entries: 5
+Finish: 2023-12-24 04:03:22.104546
