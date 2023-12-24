@@ -12620,3 +12620,10 @@ Filter: [阿里能借助AI电商反杀拼多多吗？](https://www.36kr.com/p/25
 Filter: [Midjourney V6超强升级，细节拉满更懂人话，分辨率提升2倍，网友惊呼太牛 | 最前线](https://www.36kr.com/p/2571375874893447)
 append_entries: 0
 Finish: 2023-12-24 00:12:20.262539
+------------------------------------------------------
+Started: 2023-12-24 02:14:31.227922
+Existing_entries: 392
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai

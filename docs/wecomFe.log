@@ -2886,3 +2886,11 @@ Existing_entries: 728
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-24 00:11:49.387709
+------------------------------------------------------
+Started: 2023-12-24 02:14:04.664378
+Existing_entries: 728
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [蔚来发布 ET9，预售价 80 万元；马斯克：不建议所有企业都上市；Ai Pin 明年三月发货 | 极客早知道](http://www.geekpark.net/news/329450)
+Append: [Daily Hacker News for 2023-12-23](https://www.daemonology.net/hn-daily/2023-12-23.html)
+append_entries: 2
+Finish: 2023-12-24 02:14:07.950103
