@@ -4,6 +4,7 @@
 <title>Robb Knight</title>
 <link>https://rknight.me</link>
 
+
 <item>
 <title>Generating and Caching Open Graph Images with Eleventy</title>
 <link>https://rknight.me/blog/generating-and-caching-open-graph-images-with-eleventy/</link>
@@ -46,10 +47,8 @@
 <pre class="language-diff"><code class="language-diff"><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> eleventyConfig.on('eleventy.before', () => {<br /></span><span class="token prefix deleted">-</span><span class="token line">    const options = mergeOptions(directoriesConfig, pluginOptions);<br /></span><span class="token prefix deleted">-</span><span class="token line">    fs.rmSync(options.outputDir, { recursive: true, force: true });<br /></span><span class="token prefix deleted">-</span><span class="token line"> });</span></span></code></pre>
 <p>This process does require me to run <code>--serve</code> at least once each time I added a blog post but there is rarely a time where I wouldn't do that.</p>
 ]]></content:encoded>
-
 <pubDate>2023-12-24T10:09:42.501+00:00</pubDate>
 </item>
-
 <item>
 <title>Just 2023 Things</title>
 <link>https://rknight.me/blog/just-2024-things/</link>
