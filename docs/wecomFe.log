@@ -2917,3 +2917,12 @@ Existing_entries: 735
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-24 08:03:35.378484
+------------------------------------------------------
+Started: 2023-12-24 10:03:18.373076
+Existing_entries: 735
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [本次报告旨在总结2023年我司在智能工具应用方面的实践经验，特别关注通过AI提升软件开发效率与质量的调研成果，以及在探索过程中所遇到的问题和解决方案。 [7308...](https://juejin.cn/pin/7315846728732557350)
+Append: [圣诞节快乐的 fabritor 2.0 发布！](https://juejin.cn/post/7315436843852152873)
+Append: [一次性密码输入（OTP）组件状态管理 React Hook 开发实践](https://juejin.cn/post/7315656189449666596)
+append_entries: 3
+Finish: 2023-12-24 10:03:21.708888
