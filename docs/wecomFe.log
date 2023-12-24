@@ -2940,3 +2940,10 @@ Append: [掘金2023年度人气创作者打榜中，快来帮我打榜吧～ htt
 Append: [130 / How I Have Fun With Rust](https://arne.me/weekly/130)
 append_entries: 2
 Finish: 2023-12-24 14:03:08.626761
+------------------------------------------------------
+Started: 2023-12-24 16:03:26.550330
+Existing_entries: 740
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [使用JS提取视频中的音频资源](https://www.zhangxinxu.com/wordpress/2023/12/js-fetch-video-audio-mp3-mp4-wav/)
+append_entries: 1
+Finish: 2023-12-24 16:03:29.354712
