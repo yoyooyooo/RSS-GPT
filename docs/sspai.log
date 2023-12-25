@@ -10687,3 +10687,10 @@ Existing_entries: 370
 Fetching from https://rsshub.app/sspai/index
 append_entries: 0
 Finish: 2023-12-25 00:11:26.524944
+------------------------------------------------------
+Started: 2023-12-25 02:13:34.724171
+Existing_entries: 370
+Fetching from https://rsshub.app/sspai/index
+Append: [派早报](https://sspai.com/post/85316)
+append_entries: 1
+Finish: 2023-12-25 02:13:34.936929

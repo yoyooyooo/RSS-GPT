@@ -2971,3 +2971,14 @@ Existing_entries: 741
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-25 00:11:19.267814
+------------------------------------------------------
+Started: 2023-12-25 02:13:23.497482
+Existing_entries: 741
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [手写mini-react！超万字实现mount首次渲染流程🎉🎉](https://juejin.cn/post/7315773030985809954)
+Append: [分享一个免费的 chatGPT3.4 和 chatGPT4 的浏览器插件 https://sider.ai/invited?c=6e28dc9289f2ada93d09787e1f73212c 功能还挺多，有喜欢的可以下载一波](https://juejin.cn/pin/7315727549375266852)
+Append: [栗子前端技术周刊第10期 - 火狐 v121 发布、Tailwind CSS v3.4、BaseLine...](https://juejin.cn/post/7316202589603430427)
+Append: [你一定要知道的「React组件」两种调用方式](https://juejin.cn/post/7315586629309562932)
+Append: [Daily Hacker News for 2023-12-24](https://www.daemonology.net/hn-daily/2023-12-24.html)
+append_entries: 5
+Finish: 2023-12-25 02:13:27.679166
