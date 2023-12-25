@@ -5204,3 +5204,10 @@ Existing_entries: 23
 Fetching from https://lopespm.com/atom.xml
 append_entries: 0
 Finish: 2023-12-25 12:04:28.147651
+------------------------------------------------------
+Started: 2023-12-25 14:03:23.671753
+Existing_entries: 23
+Fetching from https://lopespm.com/atom.xml
+Append: [Job Safety in the AI Era](http://lopespm.github.io/notes/2023/12/25/job_safety_in_ai_era.html)
+append_entries: 1
+Finish: 2023-12-25 14:03:23.917691
