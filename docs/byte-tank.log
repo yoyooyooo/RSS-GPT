@@ -5174,3 +5174,9 @@ Fetching from https://lopespm.com/atom.xml
 Append: [New York City Guide](http://lopespm.github.io/notes/2023/12/25/nyc.html)
 append_entries: 1
 Finish: 2023-12-25 02:13:38.722519
+------------------------------------------------------
+Started: 2023-12-25 04:03:44.796842
+Existing_entries: 23
+Fetching from https://lopespm.com/atom.xml
+append_entries: 0
+Finish: 2023-12-25 04:03:45.196236
