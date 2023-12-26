@@ -3067,3 +3067,13 @@ Existing_entries: 759
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-26 02:11:01.566905
+------------------------------------------------------
+Started: 2023-12-26 04:03:43.012718
+Existing_entries: 759
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [🚀 前端 DApp 开发利器，Ant Design Web3 发布 1.0 🎉🎉🎉](https://juejin.cn/post/7316539685073240064)
+Append: [3D组合地图在数据可视化大屏中的应用](https://juejin.cn/post/7316592794108887091)
+Append: [2023开发原子开放者大会：AI时代的前端开发，挑战与机遇并存](https://juejin.cn/post/7316592697464045594)
+Append: [传暴雪想与网易复合，网易不予回应；抖音或正内测「AI搜索」功能；微信视频号将加大直播带货投入](http://www.geekpark.net/news/329514)
+append_entries: 4
+Finish: 2023-12-26 04:03:45.899492
