@@ -3111,3 +3111,10 @@ Append: [静态类型、超集、面向对象的JavaScript扩展——TS（TypeS
 Append: [有赞白鸦：AI，让 SaaS 真正「人人可用」](http://www.geekpark.net/news/329534)
 append_entries: 8
 Finish: 2023-12-26 10:03:26.646489
+------------------------------------------------------
+Started: 2023-12-26 12:04:26.210479
+Existing_entries: 779
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Webpack 操练场 ②：使用 Webpack 构建 TypeScript 开发环境](https://juejin.cn/post/7316797749517746203)
+append_entries: 1
+Finish: 2023-12-26 12:04:32.229291
