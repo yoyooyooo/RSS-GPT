@@ -3077,3 +3077,11 @@ Append: [2023开发原子开放者大会：AI时代的前端开发，挑战与�
 Append: [传暴雪想与网易复合，网易不予回应；抖音或正内测「AI搜索」功能；微信视频号将加大直播带货投入](http://www.geekpark.net/news/329514)
 append_entries: 4
 Finish: 2023-12-26 04:03:45.899492
+------------------------------------------------------
+Started: 2023-12-26 06:04:03.019257
+Existing_entries: 763
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [解放开发者？也许并不需要使用 TypeScript](https://juejin.cn/post/7316592817342283826)
+Append: [2023: The Year of AI](https://journal.everypixel.com/2023-the-year-of-ai)
+append_entries: 2
+Finish: 2023-12-26 06:04:06.043114
