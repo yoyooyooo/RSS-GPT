@@ -3161,3 +3161,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-12-26](https://www.daemonology.net/hn-daily/2023-12-26.html)
 append_entries: 1
 Finish: 2023-12-27 02:11:00.265777
+------------------------------------------------------
+Started: 2023-12-27 04:03:26.498113
+Existing_entries: 781
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [10. 实战：思考如何拆分组件](https://juejin.cn/post/7316968293943640102)
+Append: [Taro + Scss + Tailwind CSS 初体验](https://juejin.cn/post/7316724521311240244)
+Append: [以Tabs作为例子介绍鸿蒙组件的结构](https://juejin.cn/post/7316819172389208076)
+append_entries: 3
+Finish: 2023-12-27 04:03:31.597614
