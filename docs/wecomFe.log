@@ -3249,3 +3249,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2023-12-27](https://www.daemonology.net/hn-daily/2023-12-27.html)
 append_entries: 1
 Finish: 2023-12-28 00:10:53.685888
+------------------------------------------------------
+Started: 2023-12-28 02:11:10.565696
+Existing_entries: 803
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [[译] React Router v6：入门指南](https://juejin.cn/post/7317141855518834688)
+Append: [纽约时报起诉 OpenAI 侵权，索赔数十亿美元；阿里、京东支持「仅退款」；专家：明年新能源车产销或达 1300 万辆](http://www.geekpark.net/news/329659)
+append_entries: 2
+Finish: 2023-12-28 02:11:16.597618
