@@ -13739,3 +13739,10 @@ Filter: [Adobe 收购 Figma 失败意味着什么？](https://www.36kr.com/p/257
 Filter: [聚焦大模型轻量化和本地化部署，众数信科完成数千万Pre-A轮融资｜36氪首发](https://www.36kr.com/p/2577140159391107)
 append_entries: 0
 Finish: 2023-12-27 22:03:42.831603
+------------------------------------------------------
+Started: 2023-12-28 00:11:14.241081
+Existing_entries: 400
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
