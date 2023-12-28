@@ -13793,3 +13793,10 @@ Filter: [AI大模型“国标”首批测试结果公布，人工智能成市场
 Filter: [超越GPT4的捷径，被国产大模型找到了](https://www.36kr.com/p/2577792552838530)
 append_entries: 0
 Finish: 2023-12-28 04:04:02.277638
+------------------------------------------------------
+Started: 2023-12-28 06:04:44.679100
+Existing_entries: 400
+Fetching from https://rsshub.app/36kr/motif/327686782977
+Feed error: 404
+append_entries: 0
+error when rendering xml, skip docs/36kr-ai
