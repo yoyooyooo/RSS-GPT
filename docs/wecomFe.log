@@ -3394,3 +3394,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [2023年度稀土掘金影响力榜单发布！](https://juejin.cn/post/7317704533013676070)
 append_entries: 1
 Finish: 2023-12-29 12:04:14.086270
+------------------------------------------------------
+Started: 2023-12-29 14:03:20.797409
+Existing_entries: 840
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2023-12-29 14:03:23.991410
