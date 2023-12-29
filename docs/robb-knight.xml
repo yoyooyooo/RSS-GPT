@@ -4,6 +4,7 @@
 <title>Robb Knight</title>
 <link>https://rknight.me</link>
 
+
 <item>
 <title>Another Project I Forgot About</title>
 <link>https://rknight.me/blog/another-project-i-forgot-about/</link>
@@ -14,7 +15,6 @@
 <p>Welcome to the Knight club - RSS-only posts. <a href="https://daverupert.com/rss-club/">Read more about RSS club</a>.</p> <hr /> <p>I totally forgot about one more project I'd like to get done this year. I want to take my current Eleventy-based site I used for <a href="https://ruminatepodcast.com/">my</a> <a href="https://wegot.family/">podcasts</a> and make it usable for anyone to quickly get a podcast up and running. I need to move any hard-coded stuff to a data file, plus decide how to handle file uploads and storage.</p>
 <p>In the spirit of commiting myself to this, I'm posting it here as an addendum to the <a href="https://rknight.me/blog/welcome-to-the-knight-club/">previous post</a>.</p>
 ]]></content:encoded>
-
 <pubDate>2023-12-29T15:58:44.740+00:00</pubDate>
 </item>
 <item>
@@ -22,7 +22,6 @@
 <link>https://rknight.me/blog/welcome-to-the-knight-club/</link>
 <guid>https://rknight.me/blog/welcome-to-the-knight-club/</guid>
 <content:encoded><![CDATA[
-
 <p>Welcome to the Knight club - RSS-only posts. <a href="https://daverupert.com/rss-club/">Read more about RSS club</a>.</p> <hr /> <p>Congratulations on subscribing via RSS, you get these bonus posts. Lucky you. Welcome to the Knight Club<sup class="footnote-ref"><a href="https://rknight.me/feed.xml#fn1" id="fnref1">[1]</a></sup>.</p>
 <p>What am I going to post here? Not a clue to be honest but there are things that I want to talk about that don't need to be full posts. I might &quot;release&quot; these into the <a href="https://rknight.me/blog">main archive page</a> after a year or so, mostly for my own sanity of finding them.</p>
 <p>It's two days before the end of 2023 so I want to write down what projects I plan to do in the next 12 months. I don't mind talking about what I'm working on but I don't think a &quot;proper&quot; blog post makes sense until I have something to release. Firstly, I have a couple of in progress projects I want to finish.</p>
@@ -40,10 +39,8 @@
 </ol>
 </section>
 ]]></content:encoded>
-
 <pubDate>2023-12-29T13:21:50.421+00:00</pubDate>
 </item>
-
 <item>
 <title>The Web is Fantastic</title>
 <link>https://rknight.me/blog/the-web-is-fantastic/</link>
