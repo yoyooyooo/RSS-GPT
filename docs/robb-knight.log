@@ -6311,3 +6311,10 @@ Existing_entries: 273
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2023-12-28 22:03:35.559565
+------------------------------------------------------
+Started: 2023-12-29 00:09:31.472205
+Existing_entries: 273
+Fetching from https://rknight.me/feed.xml
+Append: [The Web is Fantastic](https://rknight.me/blog/the-web-is-fantastic/)
+append_entries: 1
+Finish: 2023-12-29 00:09:33.322302
