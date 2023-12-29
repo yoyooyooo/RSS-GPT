@@ -6318,3 +6318,9 @@ Fetching from https://rknight.me/feed.xml
 Append: [The Web is Fantastic](https://rknight.me/blog/the-web-is-fantastic/)
 append_entries: 1
 Finish: 2023-12-29 00:09:33.322302
+------------------------------------------------------
+Started: 2023-12-29 02:08:57.700622
+Existing_entries: 274
+Fetching from https://rknight.me/feed.xml
+append_entries: 0
+Finish: 2023-12-29 02:08:59.486558
