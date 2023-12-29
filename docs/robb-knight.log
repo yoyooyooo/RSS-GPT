@@ -6360,3 +6360,11 @@ Existing_entries: 274
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2023-12-29 14:03:34.677074
+------------------------------------------------------
+Started: 2023-12-29 16:03:41.092675
+Existing_entries: 274
+Fetching from https://rknight.me/feed.xml
+Append: [Another Project I Forgot About](https://rknight.me/blog/another-project-i-forgot-about/)
+Append: [Welcome to the Knight Club](https://rknight.me/blog/welcome-to-the-knight-club/)
+append_entries: 2
+Finish: 2023-12-29 16:03:42.682597
