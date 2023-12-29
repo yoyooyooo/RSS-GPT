@@ -3379,3 +3379,11 @@ Append: [深入React框架](https://juejin.cn/post/7317704531207012361)
 Append: [JYM，airpods怎么样呀，还是看看其他蓝牙耳机](https://juejin.cn/pin/7317815765217935412)
 append_entries: 5
 Finish: 2023-12-29 08:04:02.630477
+------------------------------------------------------
+Started: 2023-12-29 10:03:32.137514
+Existing_entries: 837
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [记一次修复移动端html2canvas加载图片失败](https://juejin.cn/post/7317827078115950619)
+Append: [vite5.0 hmr中是如何处理循环依赖的](https://juejin.cn/post/7317821499868495872)
+append_entries: 2
+Finish: 2023-12-29 10:03:35.728629
