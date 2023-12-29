@@ -3387,3 +3387,10 @@ Append: [记一次修复移动端html2canvas加载图片失败](https://juejin.c
 Append: [vite5.0 hmr中是如何处理循环依赖的](https://juejin.cn/post/7317821499868495872)
 append_entries: 2
 Finish: 2023-12-29 10:03:35.728629
+------------------------------------------------------
+Started: 2023-12-29 12:04:11.207630
+Existing_entries: 839
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [2023年度稀土掘金影响力榜单发布！](https://juejin.cn/post/7317704533013676070)
+append_entries: 1
+Finish: 2023-12-29 12:04:14.086270
