@@ -11703,3 +11703,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2023-12-30 14:03:25.880085
+------------------------------------------------------
+Started: 2023-12-30 16:03:23.935732
+Existing_entries: 211
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [俺有个想法，使用“发送到”生成everything服务器的http二维码，来传输文件如何？](https://meta.appinn.net/t/topic/50934)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2023-12-30 16:03:27.707474
