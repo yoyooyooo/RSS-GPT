@@ -3431,3 +3431,12 @@ Existing_entries: 841
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-30 00:10:52.473715
+------------------------------------------------------
+Started: 2023-12-30 02:11:20.399183
+Existing_entries: 841
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [深入浅出Virtual DOM及其在现代前端框架中的实践](https://juejin.cn/post/7318083964107096091)
+Append: [被判赔京东 10亿，阿里：尊重判决；华为：年营收超过 7000 亿；NASA 发布好奇号火星车「休假视频」](http://www.geekpark.net/news/329816)
+Append: [Daily Hacker News for 2023-12-29](https://www.daemonology.net/hn-daily/2023-12-29.html)
+append_entries: 3
+Finish: 2023-12-30 02:11:23.666987
