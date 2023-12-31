@@ -3534,3 +3534,10 @@ Existing_entries: 854
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-31 08:03:30.028888
+------------------------------------------------------
+Started: 2023-12-31 10:03:30.918747
+Existing_entries: 854
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [我的 2023 总结：追着生成式  AI 变化的计划](https://zhuanlan.zhihu.com/p/675442274)
+append_entries: 1
+Finish: 2023-12-31 10:03:34.227666
