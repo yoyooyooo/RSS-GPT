@@ -3547,3 +3547,10 @@ Existing_entries: 855
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2023-12-31 12:04:10.946538
+------------------------------------------------------
+Started: 2023-12-31 14:03:09.022386
+Existing_entries: 855
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [131 / Cold-blooded software](https://arne.me/weekly/131)
+append_entries: 1
+Finish: 2023-12-31 14:03:11.814910
