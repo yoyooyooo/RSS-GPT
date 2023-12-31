@@ -6452,3 +6452,11 @@ Existing_entries: 276
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2023-12-30 22:03:33.976212
+------------------------------------------------------
+Started: 2023-12-31 00:12:34.251531
+Existing_entries: 276
+Fetching from https://rknight.me/feed.xml
+Append: [Roast Potato Recipe](https://rknight.me/blog/roast-potato-recipe/)
+Append: [Letters with Kev Quirk](https://rknight.me/blog/letters-with-kev-quirk/)
+append_entries: 2
+Finish: 2023-12-31 00:12:35.964584
