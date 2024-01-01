@@ -6568,3 +6568,10 @@ Existing_entries: 278
 Fetching from https://rknight.me/feed.xml
 append_entries: 0
 Finish: 2024-01-01 12:04:36.309946
+------------------------------------------------------
+Started: 2024-01-01 14:03:31.967732
+Existing_entries: 278
+Fetching from https://rknight.me/feed.xml
+Append: [Creating Permanent and Temporary Redirects with Nginx](https://rknight.me/blog/creating-permanent-and-temporary-redirects-with-nginx/)
+append_entries: 1
+Finish: 2024-01-01 14:03:34.288013
