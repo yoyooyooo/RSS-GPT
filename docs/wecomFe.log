@@ -3586,3 +3586,12 @@ Append: [Daily Hacker News for 2023-12-31](https://www.daemonology.net/hn-daily/
 Append: [Using Generative AI to Detect Cat Breeds](https://www.raymondcamden.com/2023/12/18/using-generative-ai-to-detect-cat-breeds)
 append_entries: 2
 Finish: 2024-01-01 00:12:32.347794
+------------------------------------------------------
+Started: 2024-01-01 02:16:20.958491
+Existing_entries: 858
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Webstorm无法识别Vite构建的工程的@别名符号解决方案——偷梁换柱骚操作。](https://juejin.cn/post/7317994541713342498)
+Append: [element ui upload 源码解析-逐行逐析](https://juejin.cn/post/7318446286491156530)
+Append: [第十三章：useCallback源码解析](https://juejin.cn/post/7318446267033796634)
+append_entries: 3
+Finish: 2024-01-01 02:16:24.831696
