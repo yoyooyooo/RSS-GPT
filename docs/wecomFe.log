@@ -3692,3 +3692,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [业界React Native 实践集录](https://juejin.cn/post/7319181238374858789)
 append_entries: 1
 Finish: 2024-01-02 06:04:02.492209
+------------------------------------------------------
+Started: 2024-01-02 08:04:03.359511
+Existing_entries: 874
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [源码学习~vite用过了嘛，那你知道它是怎么帮你创建项目的吗？](https://juejin.cn/post/7318405525188050998)
+append_entries: 1
+Finish: 2024-01-02 08:04:07.356086
