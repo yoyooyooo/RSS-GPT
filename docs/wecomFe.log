@@ -3677,3 +3677,11 @@ Append: [派早报：微信发布 2023 年度朋友圈十大谣言等](https://s
 Append: [百度宣布终止收购 YY；比亚迪 2023 年销量破 300 万；ChatGPT 变笨了？学界给出新解释 | 极客早知道](http://www.geekpark.net/news/329826)
 append_entries: 2
 Finish: 2024-01-02 02:14:13.389115
+------------------------------------------------------
+Started: 2024-01-02 04:03:34.166275
+Existing_entries: 871
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [75K star！让生产力起飞的超火开源CSS框架：tailwindcss](https://juejin.cn/post/7319181190493437990)
+Append: [Weekly 第 006 期：OneFlow 技术年货、Ant Design Web3 发布、V8 新编译器、NodeJS 2023 Performance](https://juejin.cn/post/7318950135618027583)
+append_entries: 2
+Finish: 2024-01-02 04:03:39.297797
