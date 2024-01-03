@@ -3747,3 +3747,11 @@ Existing_entries: 881
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-02 22:03:26.598640
+------------------------------------------------------
+Started: 2024-01-03 00:11:00.931198
+Existing_entries: 881
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Daily Hacker News for 2024-01-02](https://www.daemonology.net/hn-daily/2024-01-02.html)
+Append: [如何去掉Ant Design Badge组件的动画效果](https://juejin.cn/post/7319541572047044635)
+append_entries: 2
+Finish: 2024-01-03 00:11:04.531232
