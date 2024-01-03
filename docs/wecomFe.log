@@ -3762,3 +3762,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [【100个Cocos实例】通过重写源码实现循环PageView](https://juejin.cn/post/7319541565318610995)
 append_entries: 1
 Finish: 2024-01-03 02:12:35.089492
+------------------------------------------------------
+Started: 2024-01-03 04:03:29.625544
+Existing_entries: 884
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [大模型入门课和AI应用开发](https://juejin.cn/post/7319541656398528562)
+append_entries: 1
+Finish: 2024-01-03 04:03:34.667924
