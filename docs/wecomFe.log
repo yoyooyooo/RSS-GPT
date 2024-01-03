@@ -3816,3 +3816,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [🚀自定义属于你的脚手架并发布到NPM仓库](https://juejin.cn/post/7319698586421477417)
 append_entries: 1
 Finish: 2024-01-03 16:03:44.131103
+------------------------------------------------------
+Started: 2024-01-03 18:03:34.579641
+Existing_entries: 896
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Harmful complexity: using React for static content](https://gomakethings.com/harmful-complexity-using-react-for-static-content/)
+append_entries: 1
+Finish: 2024-01-03 18:03:37.783511
