@@ -3802,3 +3802,10 @@ Append: [苹果：别争了，AI 时代的新「iPhone」，还是 iPhone！](ht
 Append: [利用svg.js结合向量法实现多边形新增点与剪裁功能](https://juejin.cn/post/7319464401069572096)
 append_entries: 2
 Finish: 2024-01-03 12:04:24.084318
+------------------------------------------------------
+Started: 2024-01-03 14:03:23.986140
+Existing_entries: 894
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [vite 是如何解析用户配置的 .env 的](https://juejin.cn/post/7319689232841769011)
+append_entries: 1
+Finish: 2024-01-03 14:03:27.231788
