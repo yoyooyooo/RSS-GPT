@@ -3794,3 +3794,11 @@ Append: [Thousands of Films, Books, and Illustrations Just Entered the Public Do
 Append: [深入React的JSX世界](https://juejin.cn/post/7319624802678882341)
 append_entries: 4
 Finish: 2024-01-03 10:03:32.236687
+------------------------------------------------------
+Started: 2024-01-03 12:04:20.760273
+Existing_entries: 892
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [苹果：别争了，AI 时代的新「iPhone」，还是 iPhone！](http://www.geekpark.net/news/329919)
+Append: [利用svg.js结合向量法实现多边形新增点与剪裁功能](https://juejin.cn/post/7319464401069572096)
+append_entries: 2
+Finish: 2024-01-03 12:04:24.084318
