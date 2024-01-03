@@ -3769,3 +3769,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [大模型入门课和AI应用开发](https://juejin.cn/post/7319541656398528562)
 append_entries: 1
 Finish: 2024-01-03 04:03:34.667924
+------------------------------------------------------
+Started: 2024-01-03 06:03:57.382448
+Existing_entries: 885
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2024-01-03 06:04:03.037535
