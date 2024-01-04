@@ -3841,3 +3841,14 @@ Existing_entries: 897
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-04 00:11:18.580682
+------------------------------------------------------
+Started: 2024-01-04 02:13:00.050814
+Existing_entries: 897
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Umi 框架中的 history 对象及其使用方法](https://juejin.cn/post/7319903441744592933)
+Append: [记录一次Vite插件的完整开发过程](https://juejin.cn/post/7319689232841834547)
+Append: [啊？两个vite项目怎么共用一个端口号啊](https://juejin.cn/post/7319699173740363802)
+Append: [华为停止和懂车帝等三家汽车门户合作；Vision Pro 或将于本月底开售；科技部：禁用 AIGC 生成申报材料](http://www.geekpark.net/news/329920)
+Append: [Daily Hacker News for 2024-01-03](https://www.daemonology.net/hn-daily/2024-01-03.html)
+append_entries: 5
+Finish: 2024-01-04 02:13:03.137183
