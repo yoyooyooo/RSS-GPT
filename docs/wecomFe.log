@@ -3866,3 +3866,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [【开源自荐】将 Github Copilot 请求转换为 ChatGPT 请求，免费使用 GPT-4 模型](https://github.com/521xueweihan/HelloGitHub/issues/2669)
 append_entries: 1
 Finish: 2024-01-04 06:03:56.602841
+------------------------------------------------------
+Started: 2024-01-04 08:03:52.187254
+Existing_entries: 904
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [玩转TypeScript枚举](https://juejin.cn/post/7319781980975087651)
+Append: [Typescript 在 AST 解析上的妙用](https://juejin.cn/post/7319797961235398690)
+Append: [新手如何配置react-native底部导航栏](https://juejin.cn/post/7319775914438590527)
+Append: [Vite的学习之旅（二）：基本配置和环境变量配置](https://juejin.cn/post/7319903465539649574)
+Append: [硅谷精英信奉的「AI 神教」，到底要干什么？](http://www.geekpark.net/news/329946)
+append_entries: 5
+Finish: 2024-01-04 08:03:55.000085
