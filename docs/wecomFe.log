@@ -3940,3 +3940,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [The Two Reacts](https://overreacted.io/the-two-reacts/)
 append_entries: 1
 Finish: 2024-01-05 00:11:20.107834
+------------------------------------------------------
+Started: 2024-01-05 02:13:45.531884
+Existing_entries: 924
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [科技爱好者周刊（第 285 期）：为什么 PPT 不如备忘录](http://www.ruanyifeng.com/blog/2024/01/weekly-issue-285.html)
+Append: [Daily Hacker News for 2024-01-04](https://www.daemonology.net/hn-daily/2024-01-04.html)
+append_entries: 2
+Finish: 2024-01-05 02:13:47.890003
