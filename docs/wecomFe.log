@@ -3948,3 +3948,12 @@ Append: [科技爱好者周刊（第 285 期）：为什么 PPT 不如备忘录]
 Append: [Daily Hacker News for 2024-01-04](https://www.daemonology.net/hn-daily/2024-01-04.html)
 append_entries: 2
 Finish: 2024-01-05 02:13:47.890003
+------------------------------------------------------
+Started: 2024-01-05 04:03:33.539877
+Existing_entries: 926
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [🚀🚀 飞一般的Vite-为何速度如此之快,叫人心生震撼!!🎉🎉🎉](https://juejin.cn/post/7320052254374592521)
+Append: [在 React 函数式组件中使用 MobX](https://juejin.cn/post/7320288155400437810)
+Append: [React18源码-react-reconciler包实现](https://juejin.cn/post/7320037969982111785)
+append_entries: 3
+Finish: 2024-01-05 04:03:37.013271
