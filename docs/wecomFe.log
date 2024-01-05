@@ -3998,3 +3998,11 @@ Existing_entries: 940
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-05 14:03:34.690158
+------------------------------------------------------
+Started: 2024-01-05 16:03:25.997526
+Existing_entries: 940
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [A lot of what people use React for would be better handled with vanilla JavaScript](https://gomakethings.com/a-lot-of-what-people-use-react-for-would-be-better-handled-with-vanilla-javascript/)
+Append: [AI 时代，为什么「智能体」将成为第一入口](http://www.geekpark.net/news/330021)
+append_entries: 2
+Finish: 2024-01-05 16:03:29.071145
