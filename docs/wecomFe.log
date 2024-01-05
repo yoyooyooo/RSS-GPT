@@ -3963,3 +3963,14 @@ Existing_entries: 929
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-05 06:03:59.433984
+------------------------------------------------------
+Started: 2024-01-05 08:03:54.697745
+Existing_entries: 929
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [官网来了新需求，要重新画页面，有各种适配的需求，以前的官网使用 jq 配合裸html 和 css 写的，这货居然直接他妈接着这样搞，明明有机会起个新项目用 tailwind ...](https://juejin.cn/pin/7320288264202862630)
+Append: [浅谈JavaScript中的Promise、Async和Await](https://juejin.cn/post/7320288262400311333)
+Append: [一文看尽Get库——Flutter状态管理利器](https://juejin.cn/post/7320288231110197298)
+Append: [React全家桶项目搭建](https://juejin.cn/post/7320288224416874534)
+Append: [面试官：手写一个“发布-订阅模式”](https://juejin.cn/post/7320075000702533671)
+append_entries: 5
+Finish: 2024-01-05 08:03:58.301439
