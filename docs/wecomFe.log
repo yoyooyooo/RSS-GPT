@@ -4043,3 +4043,10 @@ Existing_entries: 943
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-06 04:03:36.646931
+------------------------------------------------------
+Started: 2024-01-06 06:03:28.327002
+Existing_entries: 943
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Building a Generative AI Image Generator App like MidJourney or DALLE-2](https://blog.bitsrc.io/building-a-generative-ai-application-in-2024-b318064a454b?source=rss----5c2fdf847f4a---4)
+append_entries: 1
+Finish: 2024-01-06 06:03:31.421846
