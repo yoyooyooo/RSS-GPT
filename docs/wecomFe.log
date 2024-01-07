@@ -4111,3 +4111,11 @@ Append: [英伟达将恢复中国特供版 AI 芯片出货；用户喊话马斯�
 Append: [Daily Hacker News for 2024-01-06](https://www.daemonology.net/hn-daily/2024-01-06.html)
 append_entries: 2
 Finish: 2024-01-07 02:16:08.505852
+------------------------------------------------------
+Started: 2024-01-07 04:03:29.160861
+Existing_entries: 951
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [基于 Monorepo 解决依赖统一，业务组件代码重复度高的问题](https://juejin.cn/post/7320606758238126119)
+Append: [项目基建 React+Ts+Eslint+Prettier 代码规范 格式化](https://juejin.cn/post/7320655427247063078)
+append_entries: 2
+Finish: 2024-01-07 04:03:32.560282
