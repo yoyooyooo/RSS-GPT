@@ -4243,3 +4243,10 @@ Append: [Stuff we figured out about AI in 2023](https://simonwillison.net/2023/D
 Append: [How To Create React Components That Run On Every React Framework?](https://blog.bitsrc.io/create-react-components-in-nextjs-bea5ce6d7171?source=rss----5c2fdf847f4a---4)
 append_entries: 2
 Finish: 2024-01-08 12:04:37.149334
+------------------------------------------------------
+Started: 2024-01-08 14:03:31.602099
+Existing_entries: 981
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [好了，俺要开始学习React了 （基础一）](https://juejin.cn/post/7321596167585333284)
+append_entries: 1
+Finish: 2024-01-08 14:03:35.906806
