@@ -4198,3 +4198,11 @@ Append: [原生details支持手风琴模式了！](https://juejin.cn/post/732141
 Append: [GPT自动投简历，一周斩获三offer，开源分享！](https://juejin.cn/post/7320949203542409231)
 append_entries: 3
 Finish: 2024-01-08 02:14:44.781419
+------------------------------------------------------
+Started: 2024-01-08 04:03:32.090007
+Existing_entries: 966
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Zustand 状态库：轻便、简洁、强大的 React 状态管理工具](https://juejin.cn/post/7321049446443384870)
+Append: [嘿，我用canvas画了一个甘特图的demo](https://juejin.cn/post/7321049411852599346)
+append_entries: 2
+Finish: 2024-01-08 04:03:35.532534
