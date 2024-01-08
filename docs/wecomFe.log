@@ -4213,3 +4213,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [TypeScript 内置类型方法和工具类型大全解](https://juejin.cn/post/7321049436351479835)
 append_entries: 1
 Finish: 2024-01-08 06:04:04.249223
+------------------------------------------------------
+Started: 2024-01-08 08:04:09.513647
+Existing_entries: 969
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React hooks原理浅谈](https://juejin.cn/post/7321526403433758755)
+Append: [React JSX到底是什么？7个关键问题为你解答](https://juejin.cn/post/7321331038244028455)
+Append: [nextjs是怎么获得绝佳SEO的？](https://juejin.cn/post/7321331038242930727)
+Append: [2024 前端图标趋势：在 TailwindCSS 中使用 SVG 图标](https://juejin.cn/post/7321410893680984101)
+Append: [【开源自荐】AI Group Tabs 用 AI 分类归纳浏览器标签页](https://github.com/521xueweihan/HelloGitHub/issues/2670)
+append_entries: 5
+Finish: 2024-01-08 08:04:17.919209
