@@ -4182,3 +4182,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [集atom、signal、依赖追踪为一体的helux发布了，为react带来细粒度响应式更新能力 https://juejin.cn/spost/7320565988180574242](https://juejin.cn/pin/7320610619715452980)
 append_entries: 1
 Finish: 2024-01-07 22:03:19.775892
+------------------------------------------------------
+Started: 2024-01-08 00:11:53.108735
+Existing_entries: 962
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Daily Hacker News for 2024-01-07](https://www.daemonology.net/hn-daily/2024-01-07.html)
+append_entries: 1
+Finish: 2024-01-08 00:11:56.383672
