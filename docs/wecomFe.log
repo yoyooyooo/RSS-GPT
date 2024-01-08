@@ -4235,3 +4235,11 @@ Append: [TypeScript高频面试题及解析](https://juejin.cn/post/732154277307
 Append: [vite 5.0 源码分析（一）：cli 和 服务器快捷键 和 server.warmup](https://juejin.cn/post/7321410951323713573)
 append_entries: 5
 Finish: 2024-01-08 10:03:35.949184
+------------------------------------------------------
+Started: 2024-01-08 12:04:33.770493
+Existing_entries: 979
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Stuff we figured out about AI in 2023](https://simonwillison.net/2023/Dec/31/ai-in-2023/)
+Append: [How To Create React Components That Run On Every React Framework?](https://blog.bitsrc.io/create-react-components-in-nextjs-bea5ce6d7171?source=rss----5c2fdf847f4a---4)
+append_entries: 2
+Finish: 2024-01-08 12:04:37.149334
