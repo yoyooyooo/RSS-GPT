@@ -4206,3 +4206,10 @@ Append: [Zustand 状态库：轻便、简洁、强大的 React 状态管理工�
 Append: [嘿，我用canvas画了一个甘特图的demo](https://juejin.cn/post/7321049411852599346)
 append_entries: 2
 Finish: 2024-01-08 04:03:35.532534
+------------------------------------------------------
+Started: 2024-01-08 06:04:01.006624
+Existing_entries: 968
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [TypeScript 内置类型方法和工具类型大全解](https://juejin.cn/post/7321049436351479835)
+append_entries: 1
+Finish: 2024-01-08 06:04:04.249223
