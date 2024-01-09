@@ -4349,3 +4349,10 @@ Append: [rollup-plugin-copy在 vite@5.0.11中不生效解决办法](https://juej
 Append: [React的hooks理解和使用](https://juejin.cn/post/7321967886934294528)
 append_entries: 2
 Finish: 2024-01-09 14:03:40.974598
+------------------------------------------------------
+Started: 2024-01-09 16:03:42.718450
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [好了，俺要开始学习React了（基础二）](https://juejin.cn/post/7321922279557808164)
+append_entries: 1
+Finish: 2024-01-09 16:03:46.044691
