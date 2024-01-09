@@ -4281,3 +4281,18 @@ Existing_entries: 983
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-09 00:11:48.573203
+------------------------------------------------------
+Started: 2024-01-09 02:14:55.359848
+Existing_entries: 983
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [浅析 5 种 React 组件设计模式](https://juejin.cn/post/7321779195361280027)
+Append: [如何实现一个redux状态管理库](https://juejin.cn/post/7321550265610076211)
+Append: [使用dom扩展第三方组件来满足业务需求](https://juejin.cn/post/7321596167584923684)
+Append: [两个月从0接触React生态到开发一个地图平台，我学到的不仅仅是代码](https://juejin.cn/post/7321551188091797556)
+Append: [让我们浅浅的深入了解一下天天都在用的 el-form 组件（二）之el-form-item](https://juejin.cn/post/7321539773612883978)
+Append: [React 文档拾遗](https://juejin.cn/post/7321587195327954970)
+Append: [派早报：OPPO 发布 Find X7 系列，CES 2024 周一发布了什么等](https://sspai.com/post/85670)
+Append: [Vision Pro  2 月 2 日开售；微软将在印度培养 10 万 AI 开发者；字节：出售多款游戏给腾讯未敲定｜极客早知道](http://www.geekpark.net/news/330072)
+Append: [Daily Hacker News for 2024-01-08](https://www.daemonology.net/hn-daily/2024-01-08.html)
+append_entries: 9
+Finish: 2024-01-09 02:14:58.749047
