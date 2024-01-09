@@ -4312,3 +4312,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [对话刘作虎：OPPO 成立 AI 中心，手机公司再不布局大模型就没戏了](http://www.geekpark.net/news/330089)
 append_entries: 1
 Finish: 2024-01-09 06:04:02.948869
+------------------------------------------------------
+Started: 2024-01-09 08:04:06.142703
+Existing_entries: 996
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [⚡node系列 - 观察者模式和发布订阅是有区别的](https://juejin.cn/post/7321643424952549391)
+Append: [React中的Hooks](https://juejin.cn/post/7321706121659727872)
+Append: [使用 Lodash 的 Debounce 实现 React 表单提交防抖功能](https://juejin.cn/post/7321643424952369167)
+append_entries: 3
+Finish: 2024-01-09 08:04:09.307569
