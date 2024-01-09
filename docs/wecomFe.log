@@ -4296,3 +4296,12 @@ Append: [Vision Pro  2 月 2 日开售；微软将在印度培养 10 万 AI 开�
 Append: [Daily Hacker News for 2024-01-08](https://www.daemonology.net/hn-daily/2024-01-08.html)
 append_entries: 9
 Finish: 2024-01-09 02:14:58.749047
+------------------------------------------------------
+Started: 2024-01-09 04:03:35.725911
+Existing_entries: 992
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [鸿蒙--canvas 实现波浪效果](https://juejin.cn/post/7321587195328692250)
+Append: [[0 to 1] 搭建一个极简的 React 工程](https://juejin.cn/post/7321558573519519770)
+Append: [源码共读 | react-use 源码](https://juejin.cn/post/7321550265610207283)
+append_entries: 3
+Finish: 2024-01-09 04:03:39.147627
