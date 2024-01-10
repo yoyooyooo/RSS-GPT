@@ -4382,3 +4382,12 @@ Append: [微软投资 OpenAI 或遭欧盟反垄断审查；董宇辉「与辉同
 Append: [如何在React中实现编辑框自动获取焦点与失焦更新功能](https://juejin.cn/post/7322156683466997811)
 append_entries: 2
 Finish: 2024-01-10 00:11:20.042499
+------------------------------------------------------
+Started: 2024-01-10 02:15:03.240774
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React Query 项目实用指南](https://juejin.cn/post/7321924572055552034)
+Append: [进击的hooks！实现react中的hooks架构和useState 🚀🚀](https://juejin.cn/post/7321943946309369896)
+Append: [Daily Hacker News for 2024-01-09](https://www.daemonology.net/hn-daily/2024-01-09.html)
+append_entries: 3
+Finish: 2024-01-10 02:15:06.589297
