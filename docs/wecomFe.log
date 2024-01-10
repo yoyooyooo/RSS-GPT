@@ -4409,3 +4409,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [learn by coderWhy(REACT)](https://juejin.cn/post/7321996765977395219)
 append_entries: 1
 Finish: 2024-01-10 06:04:04.538598
+------------------------------------------------------
+Started: 2024-01-10 08:03:55.722055
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [基于 Canvas 的多行文本溢出方案](https://juejin.cn/post/7322096880426254375)
+Append: [前端关于SVG的万字知识梳理](https://juejin.cn/post/7322229620391903284)
+Append: [用React给XXL-JOB开发一个新皮肤（二）：目录规划和路由初始化](https://juejin.cn/post/7322156804849303562)
+append_entries: 3
+Finish: 2024-01-10 08:04:01.262574
