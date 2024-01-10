@@ -4391,3 +4391,14 @@ Append: [进击的hooks！实现react中的hooks架构和useState 🚀🚀](http
 Append: [Daily Hacker News for 2024-01-09](https://www.daemonology.net/hn-daily/2024-01-09.html)
 append_entries: 3
 Finish: 2024-01-10 02:15:06.589297
+------------------------------------------------------
+Started: 2024-01-10 04:03:36.426212
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [谁能做好中国的 GPT Store？](http://www.geekpark.net/news/330120)
+Append: [uniapp中实现H5录音和上传、实时语音识别（兼容App小程序）和波形可视化](https://juejin.cn/post/7321965621717434407)
+Append: [React Native拆包优化：助力如祺App提升热更新效率](https://juejin.cn/post/7321896126312267791)
+Append: [React jsx 语法解析 & 转换原理](https://juejin.cn/post/7321930742400876581)
+Append: [You Should Have A Virtual Mailbox](https://www.swyx.io/virtual-mailbox)
+append_entries: 5
+Finish: 2024-01-10 04:03:39.832053
