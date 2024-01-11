@@ -4525,3 +4525,10 @@ Append: [1. 地理可视化deck.gl基础使用](https://juejin.cn/post/732251878
 Append: [The Rabbit R1 is an AI-powered gadget that can use your apps for you](https://www.theverge.com/2024/1/9/24030667/rabbit-r1-ai-action-model-price-release-date)
 append_entries: 9
 Finish: 2024-01-11 10:03:38.512943
+------------------------------------------------------
+Started: 2024-01-11 12:04:36.848938
+Existing_entries: 1009
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [字节面试官：手搓一个发布订阅 【从影子dom谈到es6Class】](https://juejin.cn/post/7322662132091289652)
+append_entries: 1
+Finish: 2024-01-11 12:04:43.518866
