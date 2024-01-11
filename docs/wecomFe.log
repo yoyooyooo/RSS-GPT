@@ -4545,3 +4545,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [时代变了，该使用原生popover属性模拟下拉了](https://www.zhangxinxu.com/wordpress/2024/01/js-html-popover-dropdown/)
 append_entries: 1
 Finish: 2024-01-11 16:03:51.204271
+------------------------------------------------------
+Started: 2024-01-11 18:03:36.333366
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2024-01-11 18:03:42.764112
