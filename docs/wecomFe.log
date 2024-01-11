@@ -4485,3 +4485,14 @@ Append: [OpenAI 正式上线 GPT 商店；美 SEC 批准比特币现货 ETF；�
 Append: [Daily Hacker News for 2024-01-10](https://www.daemonology.net/hn-daily/2024-01-10.html)
 append_entries: 3
 Finish: 2024-01-11 02:15:03.058357
+------------------------------------------------------
+Started: 2024-01-11 04:03:32.000374
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [前端的你应该知道的SVG知识](https://juejin.cn/post/7322344486159106100)
+Append: [RxJS入门概念理解](https://juejin.cn/post/7322518786405154826)
+Append: [一次重构优化 Element Plus Select 与 SelectV2 组件的心得](https://juejin.cn/post/7322518684845867046)
+Append: [有关 typescript 中 判断是否是 never 和 unknown 类型的解释](https://juejin.cn/post/7322306608104276018)
+Append: [拆解一个带有表单、表格、抽屉等组件的页面](https://juejin.cn/post/7322352551089274907)
+append_entries: 5
+Finish: 2024-01-11 04:03:39.605548
