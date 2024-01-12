@@ -4581,3 +4581,16 @@ Append: [科技爱好者周刊（第 286 期）：蓝色指示灯的解决方案
 Append: [Daily Hacker News for 2024-01-11](https://www.daemonology.net/hn-daily/2024-01-11.html)
 append_entries: 4
 Finish: 2024-01-12 02:15:20.497727
+------------------------------------------------------
+Started: 2024-01-12 04:03:33.349664
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [滴滴小程序框架 Mpx 2.9 正式发布，支持原子类、SSR 和包体积优化](https://juejin.cn/post/7322732331991466018)
+Append: [5分钟教你实现React调度器，让你执行上千万个函数也不卡顿](https://juejin.cn/post/7322850477689929737)
+Append: [如何用 Canvas 实现 PS 的液化功能](https://juejin.cn/post/7322734881410662427)
+Append: [「TypeScript」类型守卫（TypeGuard)🍃](https://juejin.cn/post/7322677530467549247)
+Append: [【HarmonyOS4.0】第六篇-ArkUI系统组件(二)](https://juejin.cn/post/7322714226290884618)
+Append: [使用 React + Node.js 实现图片上传功能！](https://juejin.cn/post/7322661615983149066)
+Append: [关于 typescript 中 extends 的理解](https://juejin.cn/post/7322714226290638858)
+append_entries: 7
+Finish: 2024-01-12 04:03:42.039126
