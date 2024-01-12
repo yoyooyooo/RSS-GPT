@@ -4564,3 +4564,10 @@ Existing_entries: 1001
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-11 22:03:29.527763
+------------------------------------------------------
+Started: 2024-01-12 00:11:07.864236
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [李飞飞、吴恩达对谈：这一次，AI 冬天不会到来](http://www.geekpark.net/news/330213)
+append_entries: 1
+Finish: 2024-01-12 00:11:14.119186
