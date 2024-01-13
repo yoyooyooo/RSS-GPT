@@ -4738,3 +4738,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Rails World and Rails 8 in 2024](https://world.hey.com/dhh/rails-world-2024-and-rails-8-c7b090ba)
 append_entries: 1
 Finish: 2024-01-13 20:03:32.910656
+------------------------------------------------------
+Started: 2024-01-13 22:03:20.758407
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2024-01-13 22:03:29.614888
