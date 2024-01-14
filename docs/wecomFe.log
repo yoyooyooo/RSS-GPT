@@ -4759,3 +4759,12 @@ Append: [OpenAI 删除「禁止用于军事和战争」政策；华为确定「�
 Append: [Daily Hacker News for 2024-01-13](https://www.daemonology.net/hn-daily/2024-01-13.html)
 append_entries: 3
 Finish: 2024-01-14 02:16:08.427910
+------------------------------------------------------
+Started: 2024-01-14 04:03:32.761422
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [从回调地狱到async/await：JavaScript异步执行的进化之路！](https://juejin.cn/post/7323251349301428287)
+Append: [React源码系列（二）：实现React.createElement和JSX](https://juejin.cn/post/7323398442729209893)
+Append: [uni-app 运行时源码解析](https://juejin.cn/post/7323251349301313599)
+append_entries: 3
+Finish: 2024-01-14 04:03:40.547605
