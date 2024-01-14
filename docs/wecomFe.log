@@ -4750,3 +4750,12 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-14 00:12:33.178556
+------------------------------------------------------
+Started: 2024-01-14 02:15:59.917274
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [最详细的前端单元测试入门教程(Vitest)📖](https://juejin.cn/post/7323264134220529700)
+Append: [OpenAI 删除「禁止用于军事和战争」政策；华为确定「享界」「傲界」车型；NASA「静音超音速」飞机问世播](http://www.geekpark.net/news/330330)
+Append: [Daily Hacker News for 2024-01-13](https://www.daemonology.net/hn-daily/2024-01-13.html)
+append_entries: 3
+Finish: 2024-01-14 02:16:08.427910
