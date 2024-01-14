@@ -13139,3 +13139,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2024-01-14 12:04:32.724449
+------------------------------------------------------
+Started: 2024-01-14 14:03:27.236026
+Existing_entries: 231
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [Iconce - 快速生成炫丽的svg图标](https://meta.appinn.net/t/topic/51419)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2024-01-14 14:03:31.006712
