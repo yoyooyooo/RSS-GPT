@@ -4835,3 +4835,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2024-01-14](https://www.daemonology.net/hn-daily/2024-01-14.html)
 append_entries: 1
 Finish: 2024-01-15 00:11:57.497266
+------------------------------------------------------
+Started: 2024-01-15 02:15:46.455864
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [CES 2024：AI 硬件「狂欢」背后，真正的「希望」是什么？](http://www.geekpark.net/news/330337)
+Append: [马斯克：特斯拉 Cybertruck 在中国很难合法上路；饿了么再次否认将被抖音收购；GPT 商城 AI 女友泛滥](http://www.geekpark.net/news/330336)
+Append: [JSPDF + html2canvas A4分页截断](https://juejin.cn/post/7323436080312893476)
+append_entries: 3
+Finish: 2024-01-15 02:15:55.194842
