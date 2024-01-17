@@ -5020,3 +5020,15 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Nodejs 第三十二章（数据库）](https://juejin.cn/post/7324633501242851366)
 append_entries: 1
 Finish: 2024-01-17 00:11:11.353853
+------------------------------------------------------
+Started: 2024-01-17 02:14:52.133051
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React 18 官网阅读笔记](https://juejin.cn/post/7324564861903257651)
+Append: [打破组件孤岛，带你了解组件通信](https://juejin.cn/post/7324535599657500723)
+Append: [记录一次 AI 聊天上拉刷新加载历史的踩坑经历](https://juejin.cn/post/7324522207715819572)
+Append: [Pro-Chat: 一款面向未来的开源智能聊天组件](https://juejin.cn/post/7324705027276177445)
+Append: [Apple actually lost a court case for once, but they refuse to comply in good faith](https://world.hey.com/dhh/apple-actually-lost-a-court-case-for-once-but-they-refuse-to-comply-in-good-faith-2bc316a5)
+Append: [Daily Hacker News for 2024-01-16](https://www.daemonology.net/hn-daily/2024-01-16.html)
+append_entries: 6
+Finish: 2024-01-17 02:14:56.695114
