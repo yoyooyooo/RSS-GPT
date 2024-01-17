@@ -5090,3 +5090,11 @@ Existing_entries: 1001
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-17 16:03:44.674053
+------------------------------------------------------
+Started: 2024-01-17 18:03:41.466716
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Less annoying ChatGPT with custom instructions](https://critter.blog/2024/01/17/less-annoying-chatgpt-with-custom-instructions/)
+Append: [低代码实践：标尺组件的二次封装，这刻度一直对不齐愁死我了😫😫😫](https://juejin.cn/post/7324992318418845759)
+append_entries: 2
+Finish: 2024-01-17 18:03:48.746710
