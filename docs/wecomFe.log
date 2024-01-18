@@ -5118,3 +5118,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2024-01-17](https://www.daemonology.net/hn-daily/2024-01-17.html)
 append_entries: 1
 Finish: 2024-01-18 00:11:21.016779
+------------------------------------------------------
+Started: 2024-01-18 02:14:41.342451
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [从零构建前端可视化知识体系：SVG篇](https://juejin.cn/post/7324867096604655650)
+Append: [奥特曼：人类水平的 AI 即将出现；美团「破发」市值跌去八成；苹果推 Vision Pro 应用商店 | 极客早知道](http://www.geekpark.net/news/330505)
+append_entries: 2
+Finish: 2024-01-18 02:14:47.907361
