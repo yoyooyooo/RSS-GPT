@@ -5212,3 +5212,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Nodejs 第三十四章（查询）](https://juejin.cn/post/7325261939432603684)
 append_entries: 1
 Finish: 2024-01-19 00:11:18.483482
+------------------------------------------------------
+Started: 2024-01-19 02:15:21.226379
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Adobe Firefly is doing generative AI differently and it may even be good for you](https://www.techradar.com/computing/artificial-intelligence/adobe-firefly-is-doing-generative-ai-differently-and-it-may-even-be-good-for-you)
+Append: [科技爱好者周刊（第 287 期）：禄丰恐龙谷记行](http://www.ruanyifeng.com/blog/2024/01/weekly-issue-287.html)
+Append: [Daily Hacker News for 2024-01-18](https://www.daemonology.net/hn-daily/2024-01-18.html)
+append_entries: 3
+Finish: 2024-01-19 02:15:24.562450
