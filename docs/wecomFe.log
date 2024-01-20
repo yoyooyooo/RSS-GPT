@@ -5326,3 +5326,10 @@ Append: [Vite5.0 moduleGraph软失效(soft invalidate)浅析](https://juejin.cn/
 Append: [深入浅出 Quill 系列之使用篇1：Quill 基本使用和配置](https://juejin.cn/post/7325705832070021120)
 append_entries: 3
 Finish: 2024-01-20 06:03:48.674722
+------------------------------------------------------
+Started: 2024-01-20 08:03:32.761401
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [用React构建fiber树的思想解决“反转链表”问题](https://juejin.cn/post/7325647896048369705)
+append_entries: 1
+Finish: 2024-01-20 08:03:37.796292
