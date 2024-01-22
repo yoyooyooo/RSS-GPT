@@ -5532,3 +5532,11 @@ Append: [仿chatgpt光标自动移动到文本最后效果](https://juejin.cn/po
 Append: [mini-react 打卡记录](https://juejin.cn/post/7326330936433541183)
 append_entries: 7
 Finish: 2024-01-22 10:03:40.521354
+------------------------------------------------------
+Started: 2024-01-22 12:04:31.444650
+Existing_entries: 1007
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [实现自己的mini-React 1（手摸手系列）](https://juejin.cn/post/7326735504581345330)
+Append: [爆肝手写 · 一镜到底特效 · 龙年大吉](https://juejin.cn/post/7325739662033879090)
+append_entries: 2
+Finish: 2024-01-22 12:04:35.014000
