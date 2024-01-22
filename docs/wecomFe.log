@@ -5504,3 +5504,10 @@ Append: [如何实现一个Canvas渲染引擎(二)：Graphics类](https://juejin
 Append: [更新！更新！实现react更新及diff流程](https://juejin.cn/post/7326311346663456768)
 append_entries: 3
 Finish: 2024-01-22 04:03:46.756232
+------------------------------------------------------
+Started: 2024-01-22 06:04:13.203354
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [浅谈JavaScript操作符和隐式转换](https://juejin.cn/post/7326268986798178341)
+append_entries: 1
+Finish: 2024-01-22 06:04:18.301032
