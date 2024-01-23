@@ -12848,3 +12848,10 @@ Existing_entries: 449
 Fetching from https://rsshub.app/sspai/index
 append_entries: 0
 Finish: 2024-01-23 02:15:35.177624
+------------------------------------------------------
+Started: 2024-01-23 04:03:48.534007
+Existing_entries: 449
+Fetching from https://rsshub.app/sspai/index
+Append: [派早报：Apple 发布 iOS/iPadOS 17.3 与 macOS 14.3 等正式版](https://sspai.com/post/85997)
+append_entries: 1
+Finish: 2024-01-23 04:03:48.699124
