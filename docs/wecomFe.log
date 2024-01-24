@@ -5689,3 +5689,11 @@ Append: [深入浅出 Quill 系列之原理篇2：现代富文本编辑器 Quill
 Append: [深入探讨TypeScript中implements与extends的区别](https://juejin.cn/post/7327125573290442815)
 append_entries: 2
 Finish: 2024-01-24 04:03:43.313052
+------------------------------------------------------
+Started: 2024-01-24 06:04:16.277108
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [专访:前端出身, 98后的AI创业者](https://juejin.cn/post/7327262935154278419)
+Append: [【事故记录】子组件样式没有被正确应用？关于style写的时候为啥应该嵌套在一个总的容器class里](https://juejin.cn/post/7327353573935136818)
+append_entries: 2
+Finish: 2024-01-24 06:04:19.683457
