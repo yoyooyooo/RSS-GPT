@@ -5728,3 +5728,10 @@ Append: [深入浅出 Quill 系列之实践篇1：如何将龙插入到编辑器
 Append: [前端开发小技巧 - 【React】- 配置@别名路径 以及 路径联想](https://juejin.cn/post/7327500902109806629)
 append_entries: 2
 Finish: 2024-01-24 14:03:28.190760
+------------------------------------------------------
+Started: 2024-01-24 16:03:46.800665
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [开源啦！！！基于鸿蒙ArkTS封装的图表组件《McCharts》，大家快来一起共创](https://juejin.cn/post/7327478228188856346)
+append_entries: 1
+Finish: 2024-01-24 16:03:50.099774
