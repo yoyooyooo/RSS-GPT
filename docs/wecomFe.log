@@ -5790,3 +5790,12 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [实现一个鼠标框选的功能，要怎么实现和设计 api？](https://juejin.cn/post/7326979670485123110)
 append_entries: 1
 Finish: 2024-01-25 06:04:16.941445
+------------------------------------------------------
+Started: 2024-01-25 08:04:09.794917
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [袋鼠云数栈产品中 AI+ 实现原理剖析](https://juejin.cn/post/7327686118886916108)
+Append: [深入理解高阶函数与函数柯里化在React中的应用](https://juejin.cn/post/7327686547808370722)
+Append: [我读 webpack-cli 源码得到的 CLI 优化启示](https://juejin.cn/post/7327501508660281384)
+append_entries: 3
+Finish: 2024-01-25 08:04:13.585277
