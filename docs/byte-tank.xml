@@ -1572,11 +1572,11 @@ The same for any other investment you did in the past.</p>
 <p>I’ve tried several tools to track time. Physical and digital. Complex and simple. One has stuck for several years, and is the only one I use right now: <a href="https://www.klokki.com/">Klokki</a></p>
 
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/custom_pomodoro/timer_full_dialog.png" />
-           
+
          </center>
 
 <p>Klokki is a concise Mac application that tracks time and generates nice time reports. It also allows you to track your time automatically, but I don’t use that feature.</p>
@@ -1593,11 +1593,11 @@ The same for any other investment you did in the past.</p>
 <h2 id="the-rules">The rules</h2>
 
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/custom_pomodoro/timer_on_1_minute.png" />
-           
+
          </center>
 
 <ol>
@@ -1619,11 +1619,11 @@ The same for any other investment you did in the past.</p>
 </ol>
 
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/custom_pomodoro/timer_off.png" />
-           
+
          </center>
 
 <h2 id="the-benefits">The benefits</h2>
@@ -1773,11 +1773,11 @@ The same for any other investment you did in the past.</p>
 <guid>http://lopespm.github.io/2022/12/29/book-quotes-collection-part-one.html</guid>
 <content:encoded><![CDATA[
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/book_quotes_1/book_quotes_2_705.png" />
-           
+
          </center>
 
 <p><br /></p>
@@ -2212,7 +2212,7 @@ The same for any other investment you did in the past.</p>
       <li><strong>But don’t plan too much</strong> - healthy balance is the secret: if your organization is fast moving and dynamic, excessive planning can have the deleterious effect that <a href="https://en-academic.com/dic.nsf/enwiki/11647520">little execution is actually done</a>, since most of the time is spent planning.</li>
     </ul>
   </li>
-  <li><strong>Design Docs, Strategy and Vision</strong>: 
+  <li><strong>Design Docs, Strategy and Vision</strong>:
     <ul>
       <li><strong>Design Docs</strong> are a valuable vehicle to crystalize how a complex system or process can be implemented, they incentivize the owner to structure their thoughts, are made stronger by receiving feedback from peers, and serve as an exceptional piece of documentation that will not only explain how a given system/process works, but also serve a rationale on why they were built that way. Here is an <a href="https://www.industrialempathy.com/posts/design-docs-at-google/">example template from Google</a></li>
       <li><strong>Strategy and Vision</strong> - <em>This reflection will be mostly based on this great <a href="https://staffeng.com/guides/engineering-strategy">StaffEng article</a>, which I vividly recommend.</em> If you realize that you’ve rehashed the same discussion three or four times, look into your organization’s objectives, find the commonalities from five of your organization’s design docs, combine all of these together, and you have material to write a strategy. When the future’s too hazy to identify investments worth making, grab five strategies, combine them with your organization’s objectives and write a vision for two to three years out.</li>
@@ -2226,7 +2226,7 @@ The same for any other investment you did in the past.</p>
           <li>If you are 100% certain that the delegatee will successfully achieve a given project/task, they will not grow. On the other hand, if the probability of success is too low, then the project/task will be frustrating, probably will not be completed, and will jeopardize the team’s objectives.</li>
         </ul>
       </li>
-      <li><strong>By default, don’t micromanage</strong>: 
+      <li><strong>By default, don’t micromanage</strong>:
         <ul>
           <li>When delegating a task/project, give enough space for the delegatee to own it. In general, the objective is to clearly define expectations, clearly define areas of ownership, and agree upon which details you should be kept up to date, which meetings you should attend, and in which situations you would expect to be pinged for escalations.</li>
           <li>Micromanaging only makes sense in very specific situations, such as when there is a high possibility of a major failure and help is needed to firefight and course correct.</li>
@@ -2245,7 +2245,7 @@ The same for any other investment you did in the past.</p>
       <li><strong>Receive: having good mentors is one of the best ways to quickly grow and learn.</strong> I have had the good fortune to learn from specially good mentors throughout my tenure, who apart from sharing their deep technical knowledge about our systems and processes, provided me solid foundations (either directly or by example) on how to navigate ambiguity and tackle challenging projects/situations. Every new mentor will have something novel to share and teach to you, it is an ongoing process. Good mentors provide you a golden path that you can follow to cut through the exhausting search for viable solutions to a given problem.</li>
     </ul>
   </li>
-  <li><strong>Learn from others</strong>: 
+  <li><strong>Learn from others</strong>:
     <ul>
       <li><strong>Outside your organization</strong>: other people’s experiences are immensely helpful, specially the ones that have been time tested and are well structured. Books are a good source of this knowledge, and I would recommend <a href="https://www.amazon.co.uk/Manager%60s-Path-Camille-Fournier/dp/1491973897">The Manager’s Path</a>, from which I extracted many of my base understandings of what a techlead should be, do and behave. The book goes straight to the point, gives actionable examples and was written by a very experienced manager.</li>
       <li><strong>Reach out to your peers</strong>: specially in the beginning of my role as techlead, I was struggling to find the right balance between personal impact from my own actions and (the less concrete) directional impact. To resolve my conundrum, I’ve reached out for support from my manager, my original mentor and a fellow experienced techlead. Their experiences and advices helped me to tackle this subject, and other challenges that came along the way.</li>
@@ -2281,11 +2281,11 @@ The same for any other investment you did in the past.</p>
 <p>This article will dive into the system behind the generation of <a href="https://lopespm.github.io/hackernews_daily">Hacker News Daily</a>, an <a href="https://github.com/lopespm/hackernews_daily">open source</a> lightweight daily Hacker News best stories website, with screenshots and top comments.</p>
 
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/hackernews_daily/screenshots_cropped2_705.png" />
-           
+
          </center>
 
 <!--more-->
@@ -2420,11 +2420,11 @@ The same for any other investment you did in the past.</p>
 
 <div style="margin-bottom: 7px;">
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/autocomplete/phigh_level_design.png" />
-           
+
          </center>
 </div>
 
@@ -2439,11 +2439,11 @@ The same for any other investment you did in the past.</p>
 
 <div style="margin-top: 25px;">
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/autocomplete/psystem_design_diagram.png" />
-           
+
          </center>
 </div>
 
@@ -2629,11 +2629,11 @@ The same for any other investment you did in the past.</p>
 <p>You can interact with the system by accessing <code>http://localhost</code> in your browser. The search suggestions will be provided by the system as you write a query, and you can feed more queries/phrases into the system by submitting more searches.</p>
 
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/autocomplete/pclient_web_705.png" />
-           
+
          </center>
 
 <h1 id="source-code">Source Code</h1>
@@ -3295,7 +3295,7 @@ The same for any other investment you did in the past.</p>
 		<source src="http://lopespm.github.io/files/camera_multi_target/demo.webm" type="video/webm" />
 		<source src="http://lopespm.github.io/files/camera_multi_target/demo.mp4" type="video/mp4" />
 		<!--[if lt IE 9]><img src="http://lopespm.github.io/files/camera_multi_target/demo.gif"><![endif]-->
-	</video> 
+	</video>
 </a></p>
 
 <p>Mostly invisible, yet essential, camera work is key to any game with dynamic cameras. This article dissects a concise Unity <a href="https://github.com/lopespm/unity-camera-multi-target">open source</a> library which dynamically keeps a set of objects (e.g. players and important objects) in view, a common problem for a wide range of games.</p>
@@ -3427,11 +3427,11 @@ The same for any other investment you did in the past.</p>
 <guid>http://lopespm.github.io/apps/2018/03/12/arxiv-papers.html</guid>
 <content:encoded><![CDATA[
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/arxiv-papers/arxiv_layout_implementation.png" />
-           
+
          </center>
 
 <p>ArXiv Papers is an <a href="https://github.com/lopespm/arxiv-papers-mobile">open source</a> mobile application to search, download and save arXiv papers. It was developed using a react native / redux framework and is currently available for smartphone and tablet devices. You can get it on <a href="https://play.google.com/store/apps/details?id=com.rockbyte.arxiv">Google Play</a>.</p>
@@ -3535,13 +3535,13 @@ The same for any other investment you did in the past.</p>
         <source src="http://lopespm.github.io/files/rn-offscreen-toolbar/simplelist_demo.webm" type="video/webm" />
         <source src="http://lopespm.github.io/files/rn-offscreen-toolbar/simplelist_demo.mp4" type="video/mp4" />
         <!--[if lt IE 9]><img src="http://lopespm.github.io/files/rn-offscreen-toolbar/simplelist_demo.gif"><![endif]-->
-    </video> 
+    </video>
     <div style="float: left; height: 10px; width: 4%;"></div>
     <video loop="">
         <source src="http://lopespm.github.io/files/rn-offscreen-toolbar/search_demo.webm" type="video/webm" />
         <source src="http://lopespm.github.io/files/rn-offscreen-toolbar/search_demo.mp4" type="video/mp4" />
         <!--[if lt IE 9]><img src="http://lopespm.github.io/files/rn-offscreen-toolbar/search_demo.gif"><![endif]-->
-    </video> 
+    </video>
   </div>
   <figcaption class="media-caption">Library usage in both the <a href="https://github.com/lopespm/react-native-offscreen-toolbar/tree/master/example">example</a> bundled with the library and in the search screen of a to be released application</figcaption>
 </center>
@@ -3564,7 +3564,7 @@ The same for any other investment you did in the past.</p>
 
 <div><div class="CodeRay">
   <div class="code"><pre>import OffscreenToolbar from 'react-native-offscreen-toolbar';
- 
+
 export default class YourComponent extends React.Component {
     render() {
         const toolbar = () =&gt; (&lt;ToolbarAndroid title={'Title'} /&gt;);
@@ -3638,7 +3638,7 @@ export default class YourComponent extends React.Component {
 
 <p>At the heart of deep Q-learning lies Q-learning, a popular and effective <a href="https://www.youtube.com/watch?time_continue=258&amp;v=bFPoHrAoPoQ">model-free</a> algorithm for learning from delayed reinforcement.  </p>
 
-<p>Jacob Schrum has made available a terse and accessible <a href="https://www.youtube.com/playlist?list=PL4uSLeZ-ET3xLlkPVEGw9Bn4Z8Mbp-SQc">explanation</a> which takes around 45 minutes to watch and serves as a great starting point for the paragraphs below. 
+<p>Jacob Schrum has made available a terse and accessible <a href="https://www.youtube.com/playlist?list=PL4uSLeZ-ET3xLlkPVEGw9Bn4Z8Mbp-SQc">explanation</a> which takes around 45 minutes to watch and serves as a great starting point for the paragraphs below.
 Let’s take the canonical reinforcement learning example presented by Jacob (grid world):</p>
 
 <p><img class="center" src="http://lopespm.github.io/files/dqn_outrun/gridworld.png" /></p>
@@ -4030,11 +4030,11 @@ loaded_collection = CompressedDeque.load_from_file(<span class="string"><span cl
 <guid>http://lopespm.github.io/workflow/2015/01/27/customizing-terminal.html</guid>
 <content:encoded><![CDATA[
 <center>
-          
+
              <source type="image/webp" />
              <source type="image/png" />
              <img src="http://lopespm.github.io/files/terminal_custom/terminal_before_after.png" />
-           
+
          </center>
 
 <!--more-->
