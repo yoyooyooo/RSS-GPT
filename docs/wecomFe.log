@@ -5799,3 +5799,12 @@ Append: [深入理解高阶函数与函数柯里化在React中的应用](https:/
 Append: [我读 webpack-cli 源码得到的 CLI 优化启示](https://juejin.cn/post/7327501508660281384)
 append_entries: 3
 Finish: 2024-01-25 08:04:13.585277
+------------------------------------------------------
+Started: 2024-01-25 10:03:26.355119
+Existing_entries: 1003
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [编程语言的 AI 支持](https://zhuanlan.zhihu.com/p/679801433)
+Append: [快速上手Typescript](https://juejin.cn/post/7327691403846041636)
+Append: [手摸手带你实现最简单的mini-react](https://juejin.cn/post/7327831782703185971)
+append_entries: 3
+Finish: 2024-01-25 10:03:32.324353
