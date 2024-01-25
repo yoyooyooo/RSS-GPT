@@ -5814,3 +5814,11 @@ Existing_entries: 1003
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-25 12:04:55.800699
+------------------------------------------------------
+Started: 2024-01-25 14:03:30.003916
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [The AI Dilemma In Graphic Design](https://www.smashingmagazine.com/2024/01/ai-dilemma-graphic-design-typography/)
+Append: [Letterboxd: How to nail product market fit with clear Jobs‑To‑Be‑Done](https://growth.design/case-studies/letterboxd-jobs-to-be-done)
+append_entries: 2
+Finish: 2024-01-25 14:03:34.962355
