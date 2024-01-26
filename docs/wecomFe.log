@@ -5883,3 +5883,12 @@ Append: [umijs + pro-chat + gemini 搭建个人对话大模型](https://juejin.c
 Append: [使用 React-Window实现虚拟滚动](https://juejin.cn/post/7327902809060360243)
 append_entries: 2
 Finish: 2024-01-26 06:03:51.092454
+------------------------------------------------------
+Started: 2024-01-26 08:03:44.195809
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Vite vs Create React App in 2024](https://blog.bitsrc.io/vite-vs-create-react-app-326e8cc2c46b?source=rss----5c2fdf847f4a---4)
+Append: [二维码技术及其在 React 中的实现](https://juejin.cn/post/7328112737762902025)
+Append: [用 Svg 手撸一个流程图](https://juejin.cn/post/7328112737762361353)
+append_entries: 3
+Finish: 2024-01-26 08:03:47.717331
