@@ -5957,3 +5957,10 @@ Append: [苹果即将开放欧洲第三方应用商店；马斯克的 xAI 拟融
 Append: [Daily Hacker News for 2024-01-26](https://www.daemonology.net/hn-daily/2024-01-26.html)
 append_entries: 5
 Finish: 2024-01-27 02:07:24.494346
+------------------------------------------------------
+Started: 2024-01-27 04:03:42.055686
+Existing_entries: 1005
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [基于草图或界面截图，快速生成可交互代码——Tldraw、GPTs使用方式与体验（上）](https://juejin.cn/post/7328234485589295143)
+append_entries: 1
+Finish: 2024-01-27 04:03:48.007989
