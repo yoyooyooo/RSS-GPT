@@ -6032,3 +6032,13 @@ Append: [Daily Hacker News for 2024-01-27](https://www.daemonology.net/hn-daily/
 Append: [Nodejs 第三十六章（表达式和函数）](https://juejin.cn/post/7328619739546189833)
 append_entries: 2
 Finish: 2024-01-28 00:11:51.007362
+------------------------------------------------------
+Started: 2024-01-28 02:10:08.913956
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React Native原理系列-老架构](https://juejin.cn/post/7328388226966634496)
+Append: [TypeScript 5.2 有哪些新特性](https://juejin.cn/post/7328335887016460322)
+Append: [TypeScript 5.2 有哪些新特性 - 显式的资源管理](https://juejin.cn/post/7328390254997798964)
+Append: [xAI 融资60亿？马斯克：假的；2023 中国汽车收入超 10 万亿；「霉霉」AI 成人图疯传，白宫：震惊！必须立法解决｜极客早知道](http://www.geekpark.net/news/330898)
+append_entries: 4
+Finish: 2024-01-28 02:10:14.913430
