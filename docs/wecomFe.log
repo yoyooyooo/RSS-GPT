@@ -6055,3 +6055,9 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [如何基于文档的内容实现 AI 对话功能，以 documate 为例](https://juejin.cn/post/7328394754257387561)
 append_entries: 1
 Finish: 2024-01-28 06:03:35.750530
+------------------------------------------------------
+Started: 2024-01-28 08:03:59.133165
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+append_entries: 0
+Finish: 2024-01-28 08:04:02.884771
