@@ -6141,3 +6141,11 @@ Existing_entries: 1004
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-01-29 06:04:04.107719
+------------------------------------------------------
+Started: 2024-01-29 08:03:42.807740
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [从 Typescript 角度学习 Rust](https://juejin.cn/post/7329126541320421386)
+Append: [Android app开发布局以及简单控件总结](https://juejin.cn/post/7329206769221009418)
+append_entries: 2
+Finish: 2024-01-29 08:03:49.910089
