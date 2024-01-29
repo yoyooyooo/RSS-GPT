@@ -6182,3 +6182,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [PHP如何解析Youtube的RSS【ChatGPT】](https://codechina.org/2024/01/php%e5%a6%82%e4%bd%95%e8%a7%a3%e6%9e%90youtube%e7%9a%84rss%e3%80%90chatgpt%e3%80%91/)
 append_entries: 1
 Finish: 2024-01-29 16:03:34.878261
+------------------------------------------------------
+Started: 2024-01-29 18:03:50.305359
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Using AI for 3D rendering—a practical guide for designers](https://uxdesign.cc/using-ai-for-3d-rendering-a-practical-guide-for-designers-a2a037ed1ad0)
+append_entries: 1
+Finish: 2024-01-29 18:03:57.600919
