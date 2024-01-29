@@ -6189,3 +6189,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Using AI for 3D rendering—a practical guide for designers](https://uxdesign.cc/using-ai-for-3d-rendering-a-practical-guide-for-designers-a2a037ed1ad0)
 append_entries: 1
 Finish: 2024-01-29 18:03:57.600919
+------------------------------------------------------
+Started: 2024-01-29 20:03:20.616739
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Announcing TypeScript 5.4 Beta](https://devblogs.microsoft.com/typescript/announcing-typescript-5-4-beta/)
+append_entries: 1
+Finish: 2024-01-29 20:03:31.156933
