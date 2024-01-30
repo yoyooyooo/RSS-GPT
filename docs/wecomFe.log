@@ -6240,3 +6240,11 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [构建沉浸式 AI 文本编辑器：开源 3B 编辑器的设计原则与思路](https://zhuanlan.zhihu.com/p/668926045)
 append_entries: 1
 Finish: 2024-01-30 06:03:44.868704
+------------------------------------------------------
+Started: 2024-01-30 08:03:46.102214
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [《vite技术揭秘、还原与实战》第6节--defineConfig引发的问题思考与解决方案分析](https://juejin.cn/post/7329718699341709338)
+Append: [用canvas呈现椭圆的命中注定](https://juejin.cn/post/7329691357210951718)
+append_entries: 2
+Finish: 2024-01-30 08:03:53.674657
