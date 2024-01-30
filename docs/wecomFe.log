@@ -6219,3 +6219,17 @@ Append: [爆肝第五篇！ 实现react调度更新与Lane模型✌️✌️](ht
 Append: [Daily Hacker News for 2024-01-29](https://www.daemonology.net/hn-daily/2024-01-29.html)
 append_entries: 5
 Finish: 2024-01-30 02:08:37.047407
+------------------------------------------------------
+Started: 2024-01-30 04:03:20.908122
+Existing_entries: 1005
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [git报错：Failed to connect to github.com port 443 after 77120 ms](https://juejin.cn/post/7329353359878045715)
+Append: [图解 VSCode 源码架构](https://juejin.cn/post/7329573754987528229)
+Append: [CSS 和 SVG 实现彩色图片阴影](https://juejin.cn/post/7329413905029103628)
+Append: [调用ReactDOM.createRoot().render()时发生了什么](https://juejin.cn/post/7329438011388985344)
+Append: [W-Design组件库：Tabs 组件](https://juejin.cn/post/7329387387061846025)
+Append: [mini-react（一）实现最简mini-react](https://juejin.cn/post/7329148187944124470)
+Append: [DailyHot今日热榜部署教程](https://juejin.cn/post/7329336334111162409)
+Append: [🐲龙年使用HarmonyOS Canvas绘制龙年对联](https://juejin.cn/post/7329402646061006900)
+append_entries: 8
+Finish: 2024-01-30 04:03:27.546167
