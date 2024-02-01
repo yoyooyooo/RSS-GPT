@@ -14847,3 +14847,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2024-02-01 02:11:28.938011
+------------------------------------------------------
+Started: 2024-02-01 04:04:00.868876
+Existing_entries: 251
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Append: [【开发者自荐】ChatY: 内置chatgpt、gemini双模型苹果ios/ipad聊天客户端](https://meta.appinn.net/t/topic/52259)
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2024-02-01 04:04:04.194855

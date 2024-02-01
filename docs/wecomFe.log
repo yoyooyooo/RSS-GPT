@@ -6428,3 +6428,12 @@ Append: [如何在 npm 上发布二进制文件？](https://juejin.cn/post/73300
 Append: [Daily Hacker News for 2024-01-31](https://www.daemonology.net/hn-daily/2024-01-31.html)
 append_entries: 7
 Finish: 2024-02-01 02:11:23.138288
+------------------------------------------------------
+Started: 2024-02-01 04:03:51.740417
+Existing_entries: 1007
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [svg制作一个视差背景动画](https://juejin.cn/post/7330087637926215730)
+Append: [React-Router](https://juejin.cn/post/7330053771785732108)
+Append: [Build Your React Component Library with Shadcn UI and Bit](https://blog.bitsrc.io/build-your-react-component-library-with-shadcn-ui-and-bit-5930b4ac05f4?source=rss----5c2fdf847f4a---4)
+append_entries: 3
+Finish: 2024-02-01 04:04:00.252397
