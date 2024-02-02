@@ -6518,3 +6518,15 @@ Append: [科技爱好者周刊（第 289 期）：宽容从何而来](http://www
 Append: [Daily Hacker News for 2024-02-01](https://www.daemonology.net/hn-daily/2024-02-01.html)
 append_entries: 4
 Finish: 2024-02-02 02:08:52.211498
+------------------------------------------------------
+Started: 2024-02-02 04:03:54.466791
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [终极AI缝合怪爆火来袭！最简单的《幻兽帕鲁》服务器部署教程](https://juejin.cn/post/7330556947417415695)
+Append: [开发了一款新产品!可视化试卷搭建平台](https://juejin.cn/post/7330543961788907539)
+Append: [Reudx 源码解析](https://juejin.cn/post/7330563730533875748)
+Append: [效能工具之前端自动化部署打包发布上传脚本（五）命令行加载、上传进度功能](https://juejin.cn/post/7330549231935766563)
+Append: [❤ 拿扣子做一个自己的AI智能机器人(龙年大吉)](https://juejin.cn/post/7330556947416875023)
+Append: [Nest入门笔记①2024版nodejs全栈新兵营](https://juejin.cn/post/7330503771075444787)
+append_entries: 6
+Finish: 2024-02-02 04:04:02.282731
