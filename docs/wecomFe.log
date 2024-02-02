@@ -6537,3 +6537,14 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [京东零售前端团队 | 微前端框架MicroApp 1.0正式发布](https://juejin.cn/post/7327892137880649782)
 append_entries: 1
 Finish: 2024-02-02 06:03:43.841885
+------------------------------------------------------
+Started: 2024-02-02 08:03:36.111560
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Taro 4.0 Beta 发布：支持开发鸿蒙应用、小程序编译模式、Vite 编译等](https://juejin.cn/post/7330792655125463067)
+Append: [深入探讨 React 组件生命周期（新版）](https://juejin.cn/post/7330556947417792527)
+Append: [Canvas实现音频可视化波形图](https://juejin.cn/post/7330504778563305524)
+Append: [React Server Components引发的分歧与机遇](https://juejin.cn/post/7330602636934774823)
+Append: [给 react 项目中加入 eslint + prettier](https://juejin.cn/post/7330792655125168155)
+append_entries: 5
+Finish: 2024-02-02 08:03:40.306007
