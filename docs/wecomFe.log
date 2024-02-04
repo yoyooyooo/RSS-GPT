@@ -6696,3 +6696,17 @@ Append: [还在头破血流抢红包封面？不如自己用 AI 一键免费生�
 Append: [库克：Vision Pro 很快将在中国上市；雷军不再主讲小米手机发布会；字节推出一站式 AI 开发平台｜极客早知道](http://www.geekpark.net/news/331152)
 append_entries: 4
 Finish: 2024-02-04 02:11:44.306281
+------------------------------------------------------
+Started: 2024-02-04 04:03:33.430063
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [如何给你的GPT网站加上微信登录](https://juejin.cn/post/7330922611512688655)
+Append: [React 初学者要知道的4个 useState 错误用法](https://juejin.cn/post/7330917977758367798)
+Append: [Promise, async, await实现异步编程，代码详解](https://juejin.cn/post/7330945097402449954)
+Append: [《vite技术揭秘、还原与实战》第7节--在svite中引入defineConfig类型辅助函数](https://juejin.cn/post/7331070745924632586)
+Append: [手撕pinia源码（三）：实现pinia内置方法](https://juejin.cn/post/7331070732967968806)
+Append: [如何发布NPM包](https://juejin.cn/post/7330910316605620236)
+Append: [手撕pinia源码（二）：实现defineStore](https://juejin.cn/post/7330847148182667283)
+Append: [react语法从入门到项目实战系列（2)-组件基础](https://juejin.cn/post/7331070714765869082)
+append_entries: 8
+Finish: 2024-02-04 04:03:41.730969
