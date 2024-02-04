@@ -6686,3 +6686,13 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2024-02-03](https://www.daemonology.net/hn-daily/2024-02-03.html)
 append_entries: 1
 Finish: 2024-02-04 00:12:11.766180
+------------------------------------------------------
+Started: 2024-02-04 02:11:34.845853
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [面试官问我 react scheduler 调度机制原理? 我却支支吾吾答不上来...😭😭](https://juejin.cn/post/7331135154209308687)
+Append: [[7330436109823901722# 扣子（coze.cn）初体验#] 我用Coze来掘金 | AI Agent 创意征文大赛来啦！ 使用扣子平台（coze.cn）搭建一个属于自己的 AI bot，并在掘金 ...](https://juejin.cn/pin/7330945097401974818)
+Append: [还在头破血流抢红包封面？不如自己用 AI 一键免费生成](https://juejin.cn/post/7331246298508640265)
+Append: [库克：Vision Pro 很快将在中国上市；雷军不再主讲小米手机发布会；字节推出一站式 AI 开发平台｜极客早知道](http://www.geekpark.net/news/331152)
+append_entries: 4
+Finish: 2024-02-04 02:11:44.306281
