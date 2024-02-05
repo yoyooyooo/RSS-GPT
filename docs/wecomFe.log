@@ -6821,3 +6821,21 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [来试试打造私人助手用 AI 生成 龙年年画吧！](https://juejin.cn/post/7331657679013593138)
 append_entries: 1
 Finish: 2024-02-05 08:04:03.304590
+------------------------------------------------------
+Started: 2024-02-05 10:04:31.736592
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Shining a light on Caustics with Shaders and React Three Fiber](https://blog.maximeheckel.com/posts/caustics-in-webgl/)
+Append: [SVG Filter Maker](https://svgfm.chriskirknielsen.com/)
+Append: [过年期间使用 wechaty + chatGPT 做个微信聊天机器人定时给大家发龙年祝福吧（含防撤回以及服务器部署）](https://juejin.cn/post/7331726355800145972)
+Append: [RxJS 夯实基础 | 想要的这里都有](https://juejin.cn/post/7331676854913351730)
+Append: [要怎么才可以发布一个自己的npm包？](https://juejin.cn/post/7331924057926385714)
+Append: [TypeScript-函数篇](https://juejin.cn/post/7331646174297243648)
+Append: [微信小程序封装modal对话框组件](https://juejin.cn/post/7331750841437044755)
+Append: [TypeScript 函数重载 -> 箭头函数方式 报错处理；](https://juejin.cn/post/7331726355799687220)
+Append: [左手模型，右手应用，「全能型选手」商汤日日新再升级！多项垂直能力比肩 GPT-4](http://www.geekpark.net/news/331257)
+Append: [历史演进中的 react](https://juejin.cn/post/7331726568363048971)
+Append: [怎么避免按钮组件闪现-watch监听实践](https://juejin.cn/post/7331799381894692891)
+Append: [React 浮层组件实现思路](https://juejin.cn/post/7331758803480854580)
+append_entries: 12
+Finish: 2024-02-05 10:04:37.140270
