@@ -6890,3 +6890,11 @@ Append: [Daily Hacker News for 2024-02-05](https://www.daemonology.net/hn-daily/
 Append: [简化React Native开发：rn-icons 革命性图标库解决方案](https://juejin.cn/post/7331949295395979276)
 append_entries: 2
 Finish: 2024-02-06 00:10:55.138998
+------------------------------------------------------
+Started: 2024-02-06 02:08:25.975139
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [React源码系列之任务调度机制Scheduler](https://juejin.cn/post/7331925629082878003)
+Append: [从零开始写一个简单高效的 React 状态管理库！](https://juejin.cn/post/7331750841437945875)
+append_entries: 2
+Finish: 2024-02-06 02:08:29.603337
