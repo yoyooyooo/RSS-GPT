@@ -6882,3 +6882,11 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-05 22:04:23.769732
+------------------------------------------------------
+Started: 2024-02-06 00:10:50.720012
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Daily Hacker News for 2024-02-05](https://www.daemonology.net/hn-daily/2024-02-05.html)
+Append: [简化React Native开发：rn-icons 革命性图标库解决方案](https://juejin.cn/post/7331949295395979276)
+append_entries: 2
+Finish: 2024-02-06 00:10:55.138998
