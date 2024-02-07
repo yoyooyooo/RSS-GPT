@@ -6974,3 +6974,12 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-07 00:10:27.519773
+------------------------------------------------------
+Started: 2024-02-07 02:07:32.528445
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [基于 React Antd 自定义表单控件：Icon选择器组件](https://juejin.cn/post/7332102508976996362)
+Append: [派早报：2025 款保时捷 Taycan 发布、OpenAI 引入 C2PA 标准水印等](https://sspai.com/post/86366)
+Append: [Daily Hacker News for 2024-02-06](https://www.daemonology.net/hn-daily/2024-02-06.html)
+append_entries: 3
+Finish: 2024-02-07 02:07:37.014507
