@@ -7075,3 +7075,14 @@ Existing_entries: 1002
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-08 04:03:47.526156
+------------------------------------------------------
+Started: 2024-02-08 06:04:49.216864
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [奖金最高 10 万元，天工「巧绘龙年」AI 绘画大赛正式开赛](http://www.geekpark.net/news/331335)
+Append: [端侧 AI 加持、功能大满贯：荣耀Magic6 Pro 上手体验](https://sspai.com/post/86384)
+Append: [新年假期弯道超车：每天都在使用的Axios源码竟然这么简单？---取消请求篇（三）](https://juejin.cn/post/7332386070050160692)
+Append: [canvas 两种拖尾效果实现烟花](https://juejin.cn/post/7332673848997658633)
+Append: [A Guide on AI Safety for CTOs](https://blog.bitsrc.io/ai-safety-for-ctos-73a2e98ebb0b?source=rss----5c2fdf847f4a---4)
+append_entries: 5
+Finish: 2024-02-08 06:04:52.830533
