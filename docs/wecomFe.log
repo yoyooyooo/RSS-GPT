@@ -7485,3 +7485,10 @@ Existing_entries: 1001
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-13 06:04:13.536090
+------------------------------------------------------
+Started: 2024-02-13 08:03:48.400530
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Storybook 8 Beta](https://storybook.js.org/blog/storybook-8-beta/)
+append_entries: 1
+Finish: 2024-02-13 08:03:51.102149
