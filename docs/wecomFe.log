@@ -7540,3 +7540,11 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-14 00:10:51.575217
+------------------------------------------------------
+Started: 2024-02-14 02:08:34.412054
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [OpenAI 测试 ChatGPT「记忆」功能；微信「摇一摇」下线；拜登开通 TikTok 账号](http://www.geekpark.net/news/331359)
+Append: [Daily Hacker News for 2024-02-13](https://www.daemonology.net/hn-daily/2024-02-13.html)
+append_entries: 2
+Finish: 2024-02-14 02:08:37.366075
