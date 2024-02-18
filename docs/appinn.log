@@ -16502,3 +16502,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2024-02-18 02:10:05.851855
+------------------------------------------------------
+Started: 2024-02-18 04:03:27.418269
+Existing_entries: 274
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [我之前想用瀑布流扩展不停加载网页，然后用singlefile扩展保存，最后还是失算了。](https://meta.appinn.net/t/topic/52738)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2024-02-18 04:03:31.395098
