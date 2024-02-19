@@ -7929,3 +7929,29 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-19 04:03:36.664488
+------------------------------------------------------
+Started: 2024-02-19 06:03:55.562431
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [深入理解NodeJs的事件循环](https://juejin.cn/post/7336870259582418963)
+Append: [TypeScript-对象篇](https://juejin.cn/post/7336921343205589032)
+Append: [Tailwind marketing and misinformation engine](https://nuejs.org/blog/tailwind-misinformation-engine/)
+Append: [2024最新程序员接活儿搞钱平台盘点](https://juejin.cn/post/7336831338118955023)
+Append: [魅族停止传统手机开发，全力投入 AI；传任天堂下代主机推迟到 2025 年发售；NASA 招募火星模拟任务志愿者](http://www.geekpark.net/news/331405)
+Append: [OpenAI最新估值800亿美元；Reddit签AI协议，6000万美元卖数据；新极氪001将发，升级双腔空悬](http://www.geekpark.net/news/331378)
+Append: [软银孙正义砸1000 亿美元做 AI 芯片；比亚迪百万纯电超跑 U9 即将开售；三星已斩获首个 2nm 工艺芯片订单｜极客早知道](http://www.geekpark.net/news/331377)
+Append: [Daily Hacker News for 2024-02-18](https://www.daemonology.net/hn-daily/2024-02-18.html)
+Append: [Daily Hacker News for 2024-02-17](https://www.daemonology.net/hn-daily/2024-02-17.html)
+Append: [Daily Hacker News for 2024-02-16](https://www.daemonology.net/hn-daily/2024-02-16.html)
+Append: [演示大考：全新家具、个性化试戴，Vision Pro 发布对零售店的一次大考](https://sspai.com/post/86439)
+Append: [react 19：前瞻版本功能React compiler](https://juejin.cn/post/7336846158704345139)
+Append: [TypeScript类型体操--获取数组的中间元素](https://juejin.cn/post/7336840956058845221)
+Append: [盘点2024年 React 生态圈技术](https://juejin.cn/post/7336779949327138835)
+Append: [Taro + react + tailwindcss 跨平台开发创建记录](https://juejin.cn/post/7336750424680857650)
+Append: [前端 | 管理系统UI框架React](https://juejin.cn/post/7336769781343240244)
+Append: [沉寂已久的 Node.js 老牌框架 Express 提出未来发展计划，包括 5.0/6.0/7.0 版本！](https://juejin.cn/post/7336095267189817354)
+Append: [新年首秀，React 19 预热！](https://juejin.cn/post/7335466697396649996)
+Append: [面试：百度一面，吓尿了](https://juejin.cn/post/7335337310547017768)
+Append: [两年经验前端社招中大厂面经（上）](https://juejin.cn/post/7334311273339011087)
+append_entries: 20
+Finish: 2024-02-19 06:03:59.164570
