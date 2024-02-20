@@ -8039,3 +8039,14 @@ Append: [关于 React19，你需要了解的前因后果](https://juejin.cn/post
 Append: [Moonshot 完成超 10 亿美元融资；马斯克：OpenAI 曾授予股权，但我没要；小米、徕卡成立光学研究所｜极客早知道](http://www.geekpark.net/news/331428)
 append_entries: 6
 Finish: 2024-02-20 02:07:47.441688
+------------------------------------------------------
+Started: 2024-02-20 04:04:25.399134
+Existing_entries: 1006
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [初探富文本之富文本diff算法与文档对比视图的实现](https://juejin.cn/post/7337169269951676451)
+Append: [流程图之美：手把手教你设计一个流程图](https://juejin.cn/post/7337208702200578098)
+Append: [最近手有点痒，手搓一个reactive](https://juejin.cn/post/7337208702199726130)
+Append: [Garfish源码解析：子应用加载流程](https://juejin.cn/post/7337132106202185739)
+Append: [为什么现在前端面试都不考八股文了？](https://juejin.cn/post/7336859385782583308)
+append_entries: 5
+Finish: 2024-02-20 04:04:30.692754
