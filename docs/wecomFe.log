@@ -8027,3 +8027,15 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Daily Hacker News for 2024-02-19](https://www.daemonology.net/hn-daily/2024-02-19.html)
 append_entries: 1
 Finish: 2024-02-20 00:10:33.060143
+------------------------------------------------------
+Started: 2024-02-20 02:07:44.048310
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [关于vite源码一些自己的理解 （一）：cli](https://juejin.cn/post/7337125978803208244)
+Append: [老生常谈响应式之 reactive & ref](https://juejin.cn/post/7337148150619963442)
+Append: [[react-native] 09 touchable组件 + 滚动视图](https://juejin.cn/post/7337120495572566016)
+Append: [await-to-js 基本使用 & 源码分析](https://juejin.cn/post/7337135278634614834)
+Append: [关于 React19，你需要了解的前因后果](https://juejin.cn/post/7337207433868197915)
+Append: [Moonshot 完成超 10 亿美元融资；马斯克：OpenAI 曾授予股权，但我没要；小米、徕卡成立光学研究所｜极客早知道](http://www.geekpark.net/news/331428)
+append_entries: 6
+Finish: 2024-02-20 02:07:47.441688
