@@ -8056,3 +8056,18 @@ Existing_entries: 1005
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-20 06:04:59.895775
+------------------------------------------------------
+Started: 2024-02-20 08:03:42.723156
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [面试说我不知道响应式reactive原理，我怒了](https://juejin.cn/post/7337481770407706633)
+Append: [coze扣子，创建属于你的简历优化AI Bot【提示词工程、AI赋能】](https://juejin.cn/post/7336831338119315471)
+Append: [Figma’s CEO on life after his failed sale to Adobe](https://www.theverge.com/2024/2/16/24075126/figma-ceo-dylan-field-interview-after-adobe)
+Append: [umi max配置文件问题排查](https://juejin.cn/post/7337340630077505545)
+Append: [如何使用Napi-RS 开发nodejs插件](https://juejin.cn/post/7337186171209744399)
+Append: [从React框架设计学习到的哲学思想](https://juejin.cn/post/7337186171209547791)
+Append: [[react-native] 10 组件 sectionlist](https://juejin.cn/post/7337233636083679284)
+Append: [Redux及其相关库使用与源码学习](https://juejin.cn/post/7337233636083580980)
+Append: [禁止调试，阻止浏览器F12开发者工具](https://juejin.cn/post/7337188759055663119)
+append_entries: 9
+Finish: 2024-02-20 08:03:52.040567
