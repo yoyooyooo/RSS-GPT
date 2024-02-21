@@ -8160,3 +8160,11 @@ Existing_entries: 1010
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-21 06:03:52.121978
+------------------------------------------------------
+Started: 2024-02-21 08:03:56.710309
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [在实际开发中巧用promise和async/await](https://juejin.cn/post/7330143281525571638)
+Append: [OPPO 刘作虎：10 年内，手机还是 AI 的最好载体](http://www.geekpark.net/news/331469)
+append_entries: 2
+Finish: 2024-02-21 08:04:03.608254
