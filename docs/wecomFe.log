@@ -8235,3 +8235,13 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [Tailwind marketing and misinformation engine](https://www.bram.us/2024/02/21/tailwind-marketing-and-misinformation-engine/)
 append_entries: 1
 Finish: 2024-02-22 00:10:35.129350
+------------------------------------------------------
+Started: 2024-02-22 02:08:00.434147
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [说了多少遍要用interface定义组件属性类型](https://juejin.cn/post/7337957655191748642)
+Append: [推荐一个能让你在 Sora API 发布之前就上线网站接住泼天流量的开源 Sora Web 客户端 SoraWebui](https://juejin.cn/post/7337892215225991205)
+Append: [ChatGPT对话用Websocket和使用EventSource区别](https://juejin.cn/post/7337874795683528740)
+Append: [Daily Hacker News for 2024-02-21](https://www.daemonology.net/hn-daily/2024-02-21.html)
+append_entries: 4
+Finish: 2024-02-22 02:08:03.787449
