@@ -8245,3 +8245,16 @@ Append: [ChatGPT对话用Websocket和使用EventSource区别](https://juejin.cn/
 Append: [Daily Hacker News for 2024-02-21](https://www.daemonology.net/hn-daily/2024-02-21.html)
 append_entries: 4
 Finish: 2024-02-22 02:08:03.787449
+------------------------------------------------------
+Started: 2024-02-22 04:03:37.582220
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [关于React中diff算法数据和视图对应问题](https://juejin.cn/post/7337941065021685801)
+Append: [Rust第十三节-进一步认识Cargo & 如何发布Rust 包](https://juejin.cn/post/7337849561481003071)
+Append: [React新hook](https://juejin.cn/post/7337941065020915753)
+Append: [nodejs+esp32 小型检测温度火宅警告器](https://juejin.cn/post/7337967530970775604)
+Append: [在 React 和 Next.js 项目中使用 Zustand](https://juejin.cn/post/7337896254545330230)
+Append: [使用vitepreee搭建自己的静态个人博客 || 个人知识库](https://juejin.cn/post/7337882838845997090)
+Append: [Vite双引擎架构——ESBuild](https://juejin.cn/post/7337918042255392794)
+append_entries: 7
+Finish: 2024-02-22 04:03:40.695610
