@@ -8406,3 +8406,12 @@ Append: [Nextjs + tailwindcss 实现 大神 dan 一模一样的博客](https://j
 Append: [React状态更新揭秘：深入理解批量与同步更新机制](https://juejin.cn/post/7338645700099588147)
 append_entries: 4
 Finish: 2024-02-23 12:04:48.567338
+------------------------------------------------------
+Started: 2024-02-23 14:03:15.218444
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [小米 AI 的第一个「大招」，用在了影像能力上](http://www.geekpark.net/news/331567)
+Append: [vite 原理源码 - 启动开发服务器](https://juejin.cn/post/7338614904393924659)
+Append: [记录 re:Invent 大会，使用 PartyRock 编写我们第一个 AI 应用以及心得](https://juejin.cn/post/7338645700099768371)
+append_entries: 3
+Finish: 2024-02-23 14:03:19.882943
