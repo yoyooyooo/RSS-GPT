@@ -8336,3 +8336,13 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-23 00:10:18.068412
+------------------------------------------------------
+Started: 2024-02-23 02:08:18.748851
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [派早报：小米发布小米 14 Ultra 手机、三星发布 Galaxy Fit 3 健身手环等](https://sspai.com/post/86608)
+Append: [英伟达市值涨 2770 亿美元，创单日增长记录；小米 14 Ultra 发布，6499 元起；李一舟 AI 课程下架](http://www.geekpark.net/news/331520)
+Append: [科技爱好者周刊（第 290 期）：苹果头盔的最大问题](http://www.ruanyifeng.com/blog/2024/02/weekly-issue-290.html)
+Append: [Daily Hacker News for 2024-02-22](https://www.daemonology.net/hn-daily/2024-02-22.html)
+append_entries: 4
+Finish: 2024-02-23 02:08:22.172001
