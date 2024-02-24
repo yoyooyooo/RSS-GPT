@@ -8458,3 +8458,12 @@ Existing_entries: 1001
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-02-24 04:04:19.456202
+------------------------------------------------------
+Started: 2024-02-24 06:03:25.402775
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [探索TypeScript：装饰器](https://juejin.cn/post/7338693163487952931)
+Append: [美国民营公司航天器登陆月球；传苹果内测类 ChatGPT 工具「ASK」；阿尔特曼否认「7 万亿美元」造芯 | 极客早知道](http://www.geekpark.net/news/331569)
+Append: [【翻译】谈判Offer的十条准则(上)](https://juejin.cn/post/7333458486434938918)
+append_entries: 3
+Finish: 2024-02-24 06:03:30.840491
