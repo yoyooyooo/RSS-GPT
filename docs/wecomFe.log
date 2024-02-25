@@ -8533,3 +8533,17 @@ Append: [巴菲特发布 2024 年致股东信；特斯拉展示第二代人形�
 Append: [Daily Hacker News for 2024-02-24](https://www.daemonology.net/hn-daily/2024-02-24.html)
 append_entries: 2
 Finish: 2024-02-25 02:10:26.742373
+------------------------------------------------------
+Started: 2024-02-25 04:03:39.797028
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [three-mesh-bvh 源码阅读(2) buildTree](https://juejin.cn/post/7338665672468791347)
+Append: [ArcGIS JSAPI 源码解读 之 Accessor元数据](https://juejin.cn/post/7338731016738291749)
+Append: [typescript实现观察者模式&发布订阅模式](https://juejin.cn/post/7338835708504129574)
+Append: [React中的 React.memo() 超级详细介绍](https://juejin.cn/post/7338771486399922176)
+Append: [英伟达首次透露：上季度 180 亿美元数据中心收入，AI 推理已高达四成](http://www.geekpark.net/news/331574)
+Append: [Bun 1.0.29 正式发布，这个特性改进带来速度提升 6756 倍！](https://juejin.cn/post/7338783017122938892)
+Append: [Canvas初学踩坑](https://juejin.cn/post/7338783017122807820)
+Append: [深入浅出React的useState钩子：原理与源码解析](https://juejin.cn/post/7338742634167894028)
+append_entries: 8
+Finish: 2024-02-25 04:03:44.827389
