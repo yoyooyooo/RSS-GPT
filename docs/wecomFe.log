@@ -8554,3 +8554,15 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [daisyUI：最受欢迎的 Tailwind CSS 组件库 | 开源日报 No.181](https://juejin.cn/post/7339104098897117247)
 append_entries: 1
 Finish: 2024-02-25 06:03:45.211110
+------------------------------------------------------
+Started: 2024-02-25 08:03:27.055514
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [Nodejs 第四十四章（redis基本使用）](https://juejin.cn/post/7338778403553312802)
+Append: [深入理解和实现 useFirstState 自定义 React 钩子](https://juejin.cn/post/7339085624835588106)
+Append: [深入理解React Fiber架构](https://juejin.cn/post/7338693064965210124)
+Append: [antd 快捷键录制组件来了（社区版](https://juejin.cn/post/7338771486400708608)
+Append: [React前端懒加载组件技术深入解析](https://juejin.cn/post/7339035831401922596)
+Append: [制作一个搜索弹窗组件（Tailwind CSS + shadcn/ui）](https://juejin.cn/post/7338778403553148962)
+append_entries: 6
+Finish: 2024-02-25 08:03:30.667175
