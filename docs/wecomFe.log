@@ -8583,3 +8583,12 @@ Append: [137 / Casual Programming](https://arne.me/weekly/137)
 Append: [深入浅出TypeScript装饰器](https://juejin.cn/post/7339364757385822244)
 append_entries: 2
 Finish: 2024-02-25 12:04:34.819131
+------------------------------------------------------
+Started: 2024-02-25 14:03:15.523474
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [看完zustand源码后，我的TypeScript水平突飞猛进。](https://juejin.cn/post/7339364757386264612)
+Append: [这都快React19了，快来学习一下服务端渲染吧！🦧🦧🦧](https://juejin.cn/post/7339042939602108468)
+Append: [AI革新：自动化PR审查与GitLab集成指南](https://juejin.cn/post/7338797433898598451)
+append_entries: 3
+Finish: 2024-02-25 14:03:19.087341
