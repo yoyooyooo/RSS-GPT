@@ -17320,3 +17320,11 @@ Fetching from https://meta.appinn.net/tag/macos.rss
 Append: [【自荐】游戏存档管理工具 - 开源、支持WebDAV](https://meta.appinn.net/t/topic/53101)
 append_entries: 1
 Finish: 2024-02-26 12:04:31.992510
+------------------------------------------------------
+Started: 2024-02-26 14:03:32.409306
+Existing_entries: 284
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 0
+Finish: 2024-02-26 14:03:36.394419
