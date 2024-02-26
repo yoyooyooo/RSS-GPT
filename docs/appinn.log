@@ -17339,3 +17339,11 @@ Fetching from https://meta.appinn.net/tag/macos.rss
 Feed error: 523
 append_entries: 0
 error when rendering xml, skip docs/appinn
+------------------------------------------------------
+Started: 2024-02-26 18:03:36.042353
+Existing_entries: 284
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 0
+Finish: 2024-02-26 18:03:40.028613
