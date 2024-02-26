@@ -8638,3 +8638,16 @@ Append: [批量修改typescript代码：使用ts-morph实现版本无缝升级](
 Append: [Daily Hacker News for 2024-02-25](https://www.daemonology.net/hn-daily/2024-02-25.html)
 append_entries: 4
 Finish: 2024-02-26 02:10:23.848601
+------------------------------------------------------
+Started: 2024-02-26 04:03:54.088835
+Existing_entries: 1004
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [umi v3配置 优化打包体积+提升缓存效率](https://juejin.cn/post/7339210740454785059)
+Append: [mini-react - 实现fiber架构](https://juejin.cn/post/7339364757386100772)
+Append: [react18 并发模式中的一些小细节](https://juejin.cn/post/7339016190612242432)
+Append: [小程序（自定义组件，第三方库使用）](https://juejin.cn/post/7339024907718230079)
+Append: [用 SVG 实现手绘效果](https://juejin.cn/post/7339376488028880896)
+Append: [React 19 发布在即，抢先学习一下新特性](https://juejin.cn/post/7339221543992426559)
+Append: [雷军悼念宗庆后：没喝过AD钙奶，但他是传奇；比亚迪发布纯电超跑仰望 U9，168万元；贾跃亭：高合汽车是行业耻辱](http://www.geekpark.net/news/331582)
+append_entries: 7
+Finish: 2024-02-26 04:03:57.611212
