@@ -8775,3 +8775,13 @@ Append: [深入浅出扫码登录](https://juejin.cn/post/7339929216006144034)
 Append: [element组件库系列（三）-- element-plus表单范围字段的校验](https://juejin.cn/post/7340093152861765632)
 append_entries: 5
 Finish: 2024-02-27 10:03:29.668730
+------------------------------------------------------
+Started: 2024-02-27 12:04:23.400218
+Existing_entries: 1005
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [AI，正在被手机厂商卷出形状](http://www.geekpark.net/news/331695)
+Append: [vitepress项目部署到github Pages](https://juejin.cn/post/7340127788052840485)
+Append: [React 优先级管理 - Lane 模型](https://juejin.cn/post/7340085399954178060)
+Append: [莫名其妙的node-canvas，图片加载回调失败咯。](https://juejin.cn/post/7340093152862568448)
+append_entries: 4
+Finish: 2024-02-27 12:04:28.605899
