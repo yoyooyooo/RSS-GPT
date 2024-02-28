@@ -8838,3 +8838,11 @@ Append: [苹果取消电动汽车项目，2000 人转岗做 AI；董宇辉清空
 Append: [Daily Hacker News for 2024-02-27](https://www.daemonology.net/hn-daily/2024-02-27.html)
 append_entries: 6
 Finish: 2024-02-28 02:08:26.804920
+------------------------------------------------------
+Started: 2024-02-28 04:04:40.936530
+Existing_entries: 1006
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [element组件库系列（四）-- 实际项目中弹出层组件的样式改造](https://juejin.cn/post/7340191765699411983)
+Append: [通过源码解读React Diff](https://juejin.cn/post/7340127788053610533)
+append_entries: 2
+Finish: 2024-02-28 04:04:44.346852
