@@ -17978,3 +17978,12 @@ Fetching from https://meta.appinn.net/tag/ios.rss
 Fetching from https://meta.appinn.net/tag/macos.rss
 append_entries: 0
 Finish: 2024-03-04 06:17:50.634147
+------------------------------------------------------
+Started: 2024-03-04 08:15:07.031363
+Existing_entries: 291
+Fetching from https://meta.appinn.net/tag/chrome.rss
+Append: [【喜大普奔】百分浏览器更新测试版（5.1.1130.26）](https://meta.appinn.net/t/topic/53404)
+Fetching from https://meta.appinn.net/tag/ios.rss
+Fetching from https://meta.appinn.net/tag/macos.rss
+append_entries: 1
+Finish: 2024-03-04 08:15:09.995302
