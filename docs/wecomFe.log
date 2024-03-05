@@ -9302,3 +9302,10 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-03-05 06:03:51.043328
+------------------------------------------------------
+Started: 2024-03-05 08:04:09.574571
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [离不开钱的flex](https://juejin.cn/post/7339042131467747368)
+append_entries: 1
+Finish: 2024-03-05 08:05:24.372489
