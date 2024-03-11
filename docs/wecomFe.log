@@ -9763,3 +9763,10 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-03-11 12:04:35.140461
+------------------------------------------------------
+Started: 2024-03-11 14:03:14.486409
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [我的 2023 总结：追着生成式 AI 变化的计划](https://zhuanlan.zhihu.com/p/675442274)
+append_entries: 1
+Finish: 2024-03-11 14:03:17.098302
