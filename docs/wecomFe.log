@@ -9855,3 +9855,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [129 / Extreme dogfooding](https://arne.me/weekly/129)
 append_entries: 1
 Finish: 2024-03-12 16:04:09.929164
+------------------------------------------------------
+Started: 2024-03-12 18:03:56.377944
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [第 0118 期：Electron 28、Safa 17.2、SvelteKit 2、状态管理、Waku、PageSpy](https://mdhweekly.com/weekly/issue-0118)
+append_entries: 1
+Finish: 2024-03-12 18:03:59.360453
