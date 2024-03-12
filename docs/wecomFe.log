@@ -9828,3 +9828,11 @@ Append: [使用JS提取视频中的音频资源](https://www.zhangxinxu.com/word
 Append: [130 / How I Have Fun With Rust](https://arne.me/weekly/130)
 append_entries: 2
 Finish: 2024-03-12 08:03:48.443411
+------------------------------------------------------
+Started: 2024-03-12 10:03:24.054976
+Existing_entries: 1002
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [【开源自荐】gpt-assistant-android：接入GPT API的安卓助手，可音量键唤起、语音交互、拍照上传 Vision、访问网络等](https://github.com/521xueweihan/HelloGitHub/issues/2662)
+Append: [AIOps在美团的探索与实践——事件管理篇](https://tech.meituan.com/2023/12/22/aiops-based-incident-management.html)
+append_entries: 2
+Finish: 2024-03-12 10:03:31.816381
