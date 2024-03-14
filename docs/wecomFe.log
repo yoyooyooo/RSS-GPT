@@ -9988,3 +9988,10 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-03-14 10:03:28.612916
+------------------------------------------------------
+Started: 2024-03-14 12:05:36.562304
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [生成式 AI 应用落地小结：高估的模型能力，低估的工程实施](https://zhuanlan.zhihu.com/p/670598821)
+append_entries: 1
+Finish: 2024-03-14 12:05:39.576824
