@@ -9956,3 +9956,11 @@ Existing_entries: 1000
 Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
 append_entries: 0
 Finish: 2024-03-14 00:10:32.493057
+------------------------------------------------------
+Started: 2024-03-14 02:08:19.968088
+Existing_entries: 1000
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [第 0117 期：stylex、Vitest 1、Astro 4、React Forget、TanStack Router](https://mdhweekly.com/weekly/issue-0117)
+Append: [128 / How to ship fast](https://arne.me/weekly/128)
+append_entries: 2
+Finish: 2024-03-14 02:08:22.968347
