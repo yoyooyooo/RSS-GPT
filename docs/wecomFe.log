@@ -9995,3 +9995,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Append: [生成式 AI 应用落地小结：高估的模型能力，低估的工程实施](https://zhuanlan.zhihu.com/p/670598821)
 append_entries: 1
 Finish: 2024-03-14 12:05:39.576824
+------------------------------------------------------
+Started: 2024-03-14 14:03:51.498269
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Append: [第 0116 期：Astro 4 Beta、XState 5、Fresh 1.6、Prettier 性能、Biome、VSCode 调试](https://mdhweekly.com/weekly/issue-0116)
+append_entries: 1
+Finish: 2024-03-14 14:03:54.281401
