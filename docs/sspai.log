@@ -16911,3 +16911,10 @@ Existing_entries: 630
 Fetching from https://rsshub.app/sspai/index
 append_entries: 0
 Finish: 2024-03-17 04:03:52.724207
+------------------------------------------------------
+Started: 2024-03-17 06:03:34.354309
+Existing_entries: 630
+Fetching from https://rsshub.app/sspai/index
+Feed error: <unknown>:23:57013: not well-formed (invalid token)
+append_entries: 0
+Finish: 2024-03-17 06:03:34.595924
