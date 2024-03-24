@@ -10791,3 +10791,10 @@ Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&ke
 Feed error: text/html; charset=UTF-8 is not an XML media type
 append_entries: 0
 error when rendering xml, skip docs/wecomFe
+------------------------------------------------------
+Started: 2024-03-24 10:03:33.321252
+Existing_entries: 1001
+Fetching from http://121.5.102.156:181/public.php?op=rss&id=-1056&is_cat=0&q=&key=nkcwzk649269d784db8
+Feed error: text/html; charset=UTF-8 is not an XML media type
+append_entries: 0
+error when rendering xml, skip docs/wecomFe
