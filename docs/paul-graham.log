@@ -9934,3 +9934,9 @@ Fetching from https://rsshub.app/paulgraham/articles
 Append: [The Reddits](http://paulgraham.com/reddits.html)
 append_entries: 1
 Finish: 2024-03-24 12:04:29.766518
+------------------------------------------------------
+Started: 2024-03-24 14:03:56.459958
+Existing_entries: 33
+Fetching from https://rsshub.app/paulgraham/articles
+append_entries: 0
+Finish: 2024-03-24 14:03:56.678695
